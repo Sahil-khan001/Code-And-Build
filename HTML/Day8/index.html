@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORMS ADVANCE</title>
+</head>
+<body>
+    
+    <form>
+
+        <fieldset>
+
+            <legend>Form</legend>
+
+        <label for="fname">Username : </label>
+        <input type="text" id="fname" name="first">
+
+         <br><br>
+        <label for="choose">Department :</label>
+        <select name="one" id="choose">
+            <option value="" disabled selected>Select your Department</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="electrical">electrical</option>
+            <option value="Mechanical">Mechanical</option>
+        </select>
+        <br><br>
+
+        <label for="date">DOB</label>
+        <input type="date" id="date" name="dob" min="2001-01-01" max="2005-12-31">
+        <br><br>
+
+        <label for="pass">Year of Passing :</label>
+        <input type="number" id="pass" name="pass" min="2023" max="2026">
+        <br><br>
+
+        <button>Submit</button>
+
+        </fieldset>
+    </form>
+
+    <p>
+        the disabled selected -- if u write this attribute then the value u mention in the form u can't select it especially in the option once in the select area
+
+
+        min and maximum attribute in the forms
+        select and option in form
+        fieldset -- for outer box
+        legend -- box with text heading 
+    </p>
+
+
+</body>
+</html>
