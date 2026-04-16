@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEDIA IN HTML</title>
+</head>
+<body>
+    <!-- how to attach Audio file   -->
+    <audio src=""></audio>
+<!-- 2nd method  -->
+<audio controls>
+    <source src="">   <!-- if first song not play then play the next one -->
+     <source src="">  <!-- if this one also not play then u can comment also -->
+    <!-- due to copyright issue we can't play song  -->
+</audio>
+    <!-- Video file attach -->
+
+    <video src="" height="250" width="300" controls autoplay muted></video>
+
+    <!-- 2nd method  -->
+    <video controls>
+         <source src="video url paste" type="video/mp3"> <!-- if first not play then next -->
+        <source src="video url paste">
+       <!-- Video is not played due to ERROR  -->
+    </video>
+
+    <!-- Youtube Video attach -->
+
+    <!-- for this we use IFRAME -->
+     <!-- THE SYNTAX WE WANT FOR IFRAME IS  
+      
+    "https://www.youtube.com/embed/ here the video id"
+    it means embed this with ur website 
+
+    we can use attributes like allowfulscreen etc.
+
+    you can also attach other website into it like from ur own folder using ../ ../ go into that folder and ur fully website shown on this page
+     -->
+
+     <iframe src="../Day8/index.html" frameborder="0"></iframe>
+     <!-- we can use other website also using iframe -->
+
+     
+    
+</body>
+</html>
