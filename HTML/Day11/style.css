@@ -1,0 +1,48 @@
+/* SELECTORS --
+
+
+class selector*/
+.hell{
+    background-color: red;
+}
+
+
+/* id selector */
+/* #external{
+    background-color: green;
+    color: white;
+} */
+
+/* universal selector --  */
+*{
+    /* background-color: yellow; */
+}
+
+
+/* grouping selector  */
+/* 
+h2 , h4{
+    background-color: pink;
+}
+
+h2[draggable = "true"]{
+    background-color: orange;
+
+}
+
+body{
+    background-color: white;
+} */
+
+/* 
+
+descendent selector -- go inside whereever he finds p block he change the color means he goes inside
+section p{
+    background-color: aqua;
+} */
+
+/* child selector -- he not goes inside he only check on 1st layer then read it  */
+/* section > p{
+    background-color: green;
+} */
+

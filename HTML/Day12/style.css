@@ -1,0 +1,35 @@
+h1{
+    color: blue;
+}
+
+/* change color by rgb */
+h2{
+    background-color: rgb(91,92,95); 
+}
+
+/* change color by hexadecimal  */
+
+.hexadecimal{
+    background-color: #fff;
+}
+
+/* color change by hsl */
+.hsl{
+    color: hsl(80, 80%, 40%);
+}
+
+/* color changed by rgba a for alpha/ */
+.rgba{
+    color: rgba(56, 22, 211, 0.5);
+    /*the last one is a for alpha in which value is from 0 to 1 if 0 then it is vanished the more value it show*/
+    
+}
+
+/* background image  */
+
+body{
+    background-image: url(./solana.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+

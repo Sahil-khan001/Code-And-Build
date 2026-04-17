@@ -1,0 +1,16 @@
+h3{
+    font-family: 'Courier New', Courier, monospace;
+    /* font-size: 40px; */
+    font-size: 14px;
+}
+
+/* h3 > p{
+    font-size: 2em; */
+    /* this p font size represent 30px means 2 guna of his parent h3 means 15*2 -- 30px  
+    if there is no parent then it take body size if not may be take universal size */
+/* } */
+
+h3 > p{
+    font-size: 3rem;
+    /* it means size root element ke 3 guna here we have html root element which have 16px default size so 3rem means 16 * 3 -- 48px */
+}
