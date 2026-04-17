@@ -1,0 +1,67 @@
+h2{
+    background-color: yellow;
+}
+
+/* .h2{
+    background-color: green;
+} */
+
+
+/* h2[draggable = "true"]{
+    background-color: yellow;
+} */
+
+/* #h2id{
+    background-color: purple;
+} */
+
+/* h2{
+    background-color: aqua !important;
+} */
+
+/* child selector  */
+/* body > h2{
+    background-color: khaki;
+} */
+
+/* descendent selector  */
+
+/* body h2{
+    background-color: black;
+} */
+
+/* so the css specificity is -- 
+
+first is ordering -- the one who came at last
+
+then 
+
+id > attribute > class > child and descendent(for this ordering method is used who came last will execute) > element and group element 
+
+then 
+
+type > inline > internal and external css it depends also on the ORDERING also only for internal and external tag
+
+then 
+
+!important 
+*/
+
+/* also it depend on ordering also -- the property who is come later it will change it
+like 
+h1{
+    background-color: red;
+}
+
+h1{
+    font-size: 20px;
+    background-color: brown;
+}
+    so the final color is brown who is come at last 
+*/
+
+p{
+    font-family: "Saira Stencil";
+}
+
+/* in this way we can set the new font from google font  */

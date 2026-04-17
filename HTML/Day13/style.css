@@ -1,0 +1,17 @@
+h1{
+    font-size: 10vw;
+    font-weight: 200;
+    font-style: none;
+    /* it depends on the screen size means its original width */
+}
+
+.line{
+    letter-spacing: 4px;
+    line-height: 15px;
+    word-spacing: 15px;
+}
+
+.transforam{
+    text-transform: uppercase;
+    
+}
