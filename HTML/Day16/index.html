@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POSTITION IN CSS</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h2>TODAY WE TALK ABOUT -- 
+
+        Positon -- static , relative , absolute , fixed , sticky
+        z-index
+        overflow-- hidden, visible , scroll , auto
+        flow and clear
+        
+    </h2>
+    <P>suppose we have inline box in a line
+
+        now we want to move one box then we use POSTITION concept
+
+        BY DEFAULT -- Position is Static
+    </P>
+
+    <div class="container">
+
+        <div class="box box1">Box1</div>
+        <div class="box box2">Box2</div>
+        <div class="box box3">Box3</div>
+        <div class="box box4">Box4</div>
+    </div>
+<!-- 
+    <p>
+        Position -- we have -- relative 
+
+        relative set acc to its box size -- At his position NO OTHER ELEMENT IS COME and his postion is going to change
+        static -- no change
+        if u write z index in negative value in given box it goes into under other box and other box appear on top on this box 
+        postion : absolute ; -- if u write this then it leave its original position and other element occupy its position 
+        -- it check first their parent and check its position  like in this the parent is container then it check parent have other position other then static if not then it goes its parent which is viewport ke basis pe
+        but if u write position : relative into container other than static then it set its height according to parent , Parent is container so set height acc to it 
+        absolute -- first check parent position if have relative then set acc to it other set on the basis of VIEWPORT -- also anyone can occupy this box space 
+        Position : fixed ; -- when u write this other element occupy its space also it set it position acc to VIEWPORT only -- not acc to Parent position
+        also when u scroll the page its postion not changed it is fixed
+        Position:sticky -- if we give top left bottom right into it it can't apply it 
+        it present it only its parent container no other container parent container means its own box 
+        but in Position:Fixed ; -- it present on other parent container also apart form own container 
+
+
+
+        
+    </p> -->
+
+    <div class="otherbox"></div>
+</body>
+</html>

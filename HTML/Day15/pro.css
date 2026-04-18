@@ -1,0 +1,82 @@
+*{
+    margin: 0;    
+}
+/* 
+.box1 , .box3{
+    height: 40vh;
+    width: 25vw ;
+    background-color: red;
+    border: 2px solid black;
+    display: inline-block;
+
+    
+}
+
+.box2 , .box4{
+     height: 40vh;
+    width: 60vw ;
+    background-color: red;
+    border: 2px solid black;
+    display: inline-block;
+    margin-left: 14vw;
+    
+    
+} */
+
+
+/* .japan{
+    height: 60vh;
+    width: 60vh; */
+    /* why we take vh instead of vw because height and width are different of device so we have to choose one */
+    /* background-color: red;
+    border-radius:50%;
+    margin: auto; */
+    /* margin : auto ; set the elements in middle horizontally */
+    /* margin-top: 20vh;
+} */
+/* 
+.ireland{
+    height: 100vh;
+    width: 32.9vw;
+    display: inline-block;
+
+}
+.box1{
+    background-color: green;
+}
+
+.box2{
+    background-color: white;
+}
+
+.box3{
+    background-color: orange;
+} */
+
+
+.indianflag{
+    width: 100vw;
+    height: 33vh;
+}
+.box1{
+    background-color: orange;
+}
+
+.box2{
+    background-color: white;
+}
+
+.box3{
+    background-color: green;
+} 
+
+.circle{
+    height: 30vh;
+    width: 30vh;
+    background-color: #fff;
+    border: 5px solid black;
+    border-radius: 50%;
+    margin: auto;
+    margin-top: 3vh;
+
+}

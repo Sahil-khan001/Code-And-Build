@@ -1,0 +1,58 @@
+the element is arrange either in main axis or cross axis
+we have to give display:flex; to the container and the items into it acts a flexbox items
+
+if we give display flex then its child arrange acc to main axis 
+
+basically the main axis is decided by flex direction either it is row or column 
+row : horizontally is main axis
+column : vertically is main axis 
+
+flex-direction -- 
+
+row  - default items align horizontally from left to right 
+row-reverse - items align horizontally from left to right 
+column  - items align vertically from top to bottom
+column-reverse - items align vertically from  bottom to top
+
+Justify-content -- it will be around main axis 
+
+flex-start -- items align to start of the container
+flex-end -- items align to end of the container
+center -- items are centered along the main axis 
+space-between -- items are spaced with equal space between , but no space at the end
+space-around -- left and right equal space of box
+space-evenly -- items have equal space between and around them
+
+align items -- 
+
+flex-start -- align items to the start of the cross axis 
+flex-start -- align items to the end of the cross axis 
+center -- centers items along the cross axis
+stretch -- if u remove the height from the box then it stretch the box.
+baseline -- align items based on their text baseline or sets all the items on the base line 
+
+flex-wrap
+
+nowrap -- all items stay on a single line
+wrap -- items wrap onto multiple lines from top to bottom
+wrap-reverse -- items wrap onto multiple lines from bottom to top
+
+align-content
+-- basically when we have multiple rows of items and we use flex-wrap:wrap -- to get elements on the next line then the space between those rows is set by align content CROSS AXIS WISE 
+
+the align content property in flexbox is essential for managing how multiple rows of items are aligned
+within a flex container, especially when there is extra space on the cross-axis.
+align-content : flex-start;
+align-content : flex-end;
+align-content : center;
+align-content : space-around;
+align-content : space-between;
+align-content : space-evenly;
+
+flex-items -- 
+
+order
+
+
+
+

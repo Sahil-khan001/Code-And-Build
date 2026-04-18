@@ -1,0 +1,18 @@
+img{
+    height: 300px;
+    width: auto;
+    float: right;
+    /* float: left; */
+    margin-left: 20px;
+    
+}
+
+.img2{
+    height: 300px;
+    width: auto;
+    /* float: left; */
+    float: right;  
+    clear: right;
+    /* we use float right then both img appear on right if we use clear right then 1 img move to next line */
+    margin-right: 20px;
+}

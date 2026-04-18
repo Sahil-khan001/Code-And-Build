@@ -1,0 +1,22 @@
+.block1{
+    background-color: green;
+    height: 10vw;
+    width: 12vw;
+    margin: 5px;
+}
+
+.block2{
+    background-color: pink;
+    height: 12vw;
+    width: 12vw;
+    display: inline;
+}
+
+span{
+    background-color: purple;
+    height: 15vw;
+    width: 15vw;
+    /* display: block; */
+    margin: 10px;
+    display: inline-block;
+}

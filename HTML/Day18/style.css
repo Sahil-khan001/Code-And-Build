@@ -1,0 +1,50 @@
+.container{
+    background-color: pink;
+    display: flex;
+    flex-direction: row;
+    height: 1000px;
+    /* justify-content: center; */
+    /* align-items: baseline ; */
+    flex-wrap: wrap;  
+    /* in wrap -- box going from top to bottom */
+    /* flex-wrap: wrap-reverse; */
+    /* in wrap-reverse -- box going from bottom to top */
+    align-content: space-evenly;
+
+
+}
+
+.box{
+    height: 150px;
+    width: 150px;
+    border: 5px solid black;
+    margin: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+
+}
+
+.box1{
+    background-color: red;
+}
+
+.box2{
+    background-color: yellow;
+}
+
+.box3{
+    background-color: purple;
+}
+
+.box4{
+    background-color: green;
+}
+
+.first{
+    font-size: 50px;
+}
+
+.second{
+    font-size: 30px;
+}

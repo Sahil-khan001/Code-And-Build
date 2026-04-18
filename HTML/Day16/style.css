@@ -1,0 +1,49 @@
+.container{
+    background-color: yellow;
+    margin-left: 200px;
+    margin-top: 150px;
+    /* position: relative; */
+    height: 1000px;
+    
+}
+
+.box{
+    height: 100px;
+    width: 100px;
+    display: inline-block; 
+}
+
+.box1{
+    background-color: red;
+}
+
+.box2{
+    background-color: blue;
+    /* position: relative; */
+    /* top: 30px;
+    left: 15px; */
+    /* z-index: -1; */
+    /* if u write z index in negative value in given box it goes into under other box and other box appear on top on this box */
+}
+
+/* top ,bottom , left , right */
+
+.box3{
+    background-color: purple;
+    /* position:absolute; */
+    /* position: sticky;   */
+    position: fixed;
+    /* it sets its position acc to VIEWPORT and it is fixed in the screen u can check it by scrolling the page */
+    top: 15px;
+}
+
+.box4{
+    background-color: gold;
+}
+
+.otherbox{
+    height: 700px;
+    width: 900px;
+    background-color: brown;
+
+}

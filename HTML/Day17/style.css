@@ -1,0 +1,39 @@
+.container{
+    background-color: aqua;
+
+}
+
+
+.box{
+    height: 200px;
+    width: 200px;
+    background-color: red;
+    display: inline-block;
+}
+
+.box1{
+    background-color: red;
+    position: relative;
+    left: 250px;
+    z-index: 9; 
+    /* the element which have more zindex it appear on the top  */
+
+}
+
+.box2{
+    background-color: blue;
+    position: relative;
+    left: 20px;
+    top: 20px;
+    z-index: 8;
+}
+
+.box3{
+    background-color: yellow;
+    position: relative;
+    z-index: 4;
+}
+
+.box4{
+    background-color: purple;
+}

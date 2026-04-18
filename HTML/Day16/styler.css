@@ -1,0 +1,21 @@
+
+/* *{
+    margin: 0;
+} */
+
+header{
+    background-color: cadetblue;
+    position: fixed;
+    /* width: 100%;  */
+    /* instead of width u can give top ,left , right 
+    */
+    top: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+
+main{
+    /* margin-top: 100px; it give error because now box start after 100px and in case of padding the box start from the top even after apply padding */ 
+    padding-top: 60px;
+}
