@@ -1,0 +1,36 @@
+/* .container{
+    background-color: cadetblue;
+    height: 200px;
+    width: 200px;
+    text-align: center;
+} */
+/* THIS IS GENERAL CSS */
+
+/* THIS IS DEVICE SPECIFIC CSS */
+/* @media (max-width : 400px){
+   .container{
+    background-color: red;
+    width: 50px;
+   }
+   h2{
+    height: 50px;
+    width:50px;
+    background-color: black;
+       }
+}
+ */
+
+/* WE HAVE CASCADING EFFECT which is starting from top to bottom */
+
+
+.container{
+    background-color: cadetblue;
+    height: 500px;
+    width: auto;
+
+}
+
+.box{
+    background-color: green;
+
+}

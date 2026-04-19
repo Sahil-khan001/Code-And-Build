@@ -23,10 +23,10 @@ space-between -- items are spaced with equal space between , but no space at the
 space-around -- left and right equal space of box
 space-evenly -- items have equal space between and around them
 
-align items -- 
+align items -- it will be around the cross axis
 
 flex-start -- align items to the start of the cross axis 
-flex-start -- align items to the end of the cross axis 
+flex-end -- align items to the end of the cross axis 
 center -- centers items along the cross axis
 stretch -- if u remove the height from the box then it stretch the box.
 baseline -- align items based on their text baseline or sets all the items on the base line 
@@ -37,7 +37,7 @@ nowrap -- all items stay on a single line
 wrap -- items wrap onto multiple lines from top to bottom
 wrap-reverse -- items wrap onto multiple lines from bottom to top
 
-align-content
+align-content -- it will be around cross axis with multiple rows with mandatory of flex-wrap : wrap;
 -- basically when we have multiple rows of items and we use flex-wrap:wrap -- to get elements on the next line then the space between those rows is set by align content CROSS AXIS WISE 
 
 the align content property in flexbox is essential for managing how multiple rows of items are aligned
@@ -49,9 +49,60 @@ align-content : space-around;
 align-content : space-between;
 align-content : space-evenly;
 
+-- to use the align-content flex-wrap:wrap; is mandatory to ONN then u will be able to use these properties
+
 flex-items -- 
 
-order
+order -- it defines the order of element
+if order is negative it comes first and the more number on the order it comes last
+Default : Order : 0;  if it is zero then it set according to its position
+
+flex-grow  -- how much a flex-item grow relative to other element when extra space available in the flex container;
+Default flex-grow : 0;  -- if u give flex-grow : 1; in a specific box then it takes the remaining space of box if u give flex-grow ; 2; to other box it takes 2 times of previous box the more value the more *x it takes the space 
+flexgrow formula to find how much space a element take -- flexgrow/sum of flexgrow * total space-around
+FLEX GROW -- it increase in the direction of main axis 
+if we give flex-direction : column then it grow height wise.
+
+flex-shrink- -- how much a flex-item should shrink relative to other element when the container is too small to fit all items at their initial age
+Default flex-shrink : 2; -- if we give flex-shrink:2; -- then it shrink 2 times faster then others
+
+flex-basis -- it sets the initial size of a flex item before any extra space is distributed or the item is allowed to grow or shrink.
+flex-basis:auto; -- uses the item content size, width/height if explicitly set
+-- it increase the size or work as a width increase of a box acc to MAIN AXIS apart from normal width; 
+default -- flex-basis-auto; -- the width u already give is default 
+
+YOU CAN GIVE THESE PROPERTIES ALL TOGETHER -- shorthand notation--
+flex : [flex-grow] [flex-shrink] [flex-basis]
+
+align-self -- it allows u to override the align property of an specific align item each items can have its own cross axis alignment
+-- IT work acc to CROSS AXIS 
+
+align-self : flex-start;
+align-self : flex-end;
+align-self : center;
+
+
+MEDIA QUERY -- it is used to make website Responsiveness
+
+@media-type:screen , print , allowed
+
+Media features -- 
+
+1. width and height
+2. aspect-ratio; -- the ratio of the width to the height of the viewport
+3. Orientation -- portrait or landscape
+4. 
+
+@media screen and (Orientation : portrait){
+    Mobile-first vs Desktop-first-Search
+}
+
+
+
+
+
+
+
 
 
 

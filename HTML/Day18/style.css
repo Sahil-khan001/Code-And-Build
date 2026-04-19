@@ -5,11 +5,13 @@
     height: 1000px;
     /* justify-content: center; */
     /* align-items: baseline ; */
-    flex-wrap: wrap;  
+    /* flex-wrap: wrap;   */
     /* in wrap -- box going from top to bottom */
     /* flex-wrap: wrap-reverse; */
     /* in wrap-reverse -- box going from bottom to top */
-    align-content: space-evenly;
+    /* align-content: space-evenly; */
+    justify-content: center;
+    align-items: center;
 
 
 }
@@ -27,19 +29,34 @@
 
 .box1{
     background-color: red;
+    /* flex-grow: 3; */
+    /* flex-basis: 500px; */
+    /* basically u override the original width that is flex:basis; */
 }
 
 .box2{
     background-color: yellow;
+    /* flex-grow: 1; */
+    /* width: 600px; */
+    /* flex-shrink: 2; */
+    /* shorthand for flex */
+    /* flex: 2 2 200px; */
+
+    align-self : flex-end;
+    
 }
 
 .box3{
     background-color: purple;
+    /* flex-shrink: 1; */
+    /* flex-grow: 1; */
 }
 
 .box4{
     background-color: green;
+    order: 0;
 }
+
 
 .first{
     font-size: 50px;
