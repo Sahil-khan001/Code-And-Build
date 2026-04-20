@@ -14,15 +14,164 @@ body{
 
     height: 80vw;
     width: 80vw;
+    padding: 4rem;
     background-color: bisque;
     display: grid;
-    grid-template-columns: repeat(4 , 1fr);
-    /* grid-template-rows: repeat(3 , 1fr); */
+    /* grid-template-columns: repeat(4 , 1fr);
+    grid-template-rows: repeat(3 , 1fr); */
+    gap: 1rem;
+    font-size: 2rem;
     
+    /* OTHER WAY TO DO THIS IS -- using grid template areas like we have to define the boxes into it and the grid area that is most important*/ 
+
+    /* grid-template-areas:
+    "box1 box2 box2 box3"
+    "box1 box4 box5 box6"
+    "box1 box7 box8 box6" ; */
+
+    /* these same box1 name u have to fill in the grid area
+    same name in both is imp. */
+}
+/* 
+.box{
+    background-color: yellowgreen;
+
+}
+
+.box1{
+    grid-area: box1;
+}
+
+.box2{
+    grid-area: box2;
+}
+
+.box3{
+    grid-area: box3;
+}
+
+.box4{
+    grid-area: box4;
+}
+
+.box5{
+    grid-area: box5;
+}
+
+.box6{
+    grid-area: box6;
+}
+
+.box7{
+    grid-area: box7;
+}
+
+.box8{
+    grid-area: box8;
+} */
+
+.Sidebar{
+background-color: darkgreen;
+}
+
+.header{
+    background-color: greenyellow;
+}
+
+.content1{
+    background-color: red;
 }
 
 
+.yellow1{
+    background-color: goldenrod;
+}
 
+.yellow2{
+    background-color: goldenrod;    
+
+}
+
+.rightbar{
+    background-color: greenyellow;
+}
+
+.content2{
+    background-color: red;
+}
+
+.content3{
+    background-color: red;
+}
+    
+
+
+
+@media (min-width :500px) { */
+    .container{
+         grid-template-columns: repeat(4 , 1fr);
+    grid-template-rows: repeat(3 , 1fr);
+    }
+
+    .Sidebar{
+background-color: darkgreen;
+grid-row-start: 1;
+grid-row-end: 4;
+}
+
+
+.header{
+    background-color: greenyellow;
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+
+.content1{
+    background-color: red;
+    grid-column-start: 4;
+    grid-column-end: 5;
+}
+
+.yellow1{
+    background-color: goldenrod;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+.yellow2{
+    background-color: goldenrod;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    
+
+}
+
+.rightbar{
+    background-color: greenyellow;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    grid-column-start: 4;
+    grid-column-end: 5;
+}
+
+.content2{
+    background-color: red;
+}
+
+.content3{
+    background-color: red;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+    
+} 
+
+
+/* THIS IS 1ST METHOD */
+/* 
 .Sidebar{
 background-color: darkgreen;
 grid-row-start: 1;
@@ -77,3 +226,5 @@ grid-row-end: 4;
     grid-column-end: 3;
 }
 
+
+ */

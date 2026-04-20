@@ -1,0 +1,77 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+}
+
+.container{ 
+
+    height: 100%;
+    gap: 1rem;
+    background-color: black;
+    display: grid;
+    padding: 4rem;
+    /* grid-template-columns: repeat(4 , 1fr); */
+    /* now we make responsive columns using min and max concept now it will be responsive  --  */
+    /* grid-template-columns: minmax(100px , 200px) minmax(100px , 200px) minmax(100px , 200px) minmax(100px , 200px); */
+    /* now if u want to make it responsive like flexwrap means elment one by one then u can use  */
+    /* grid-template-columns: repeat(auto , minmax(100px , 200px ));  */
+    /* it means same as above but for responsive */
+    /* grid-template-columns: repeat(auto-fill , minmax(100px , 200px));
+    justify-content: center; */
+    /*NOW IT IS RESPONSIVE as flexwrap so for this u can use auto-fill , auto-fit size set acc to 2nd value that is 200px*/
+    grid-template-columns: repeat(4 , 1fr);
+    /* align-items: center;
+    justify-items: center; */
+    /* basically instead of justify-content here is justify items for the main axis
+    for the cross axis align items is here also there is a shorthand for both which is place-items : center end; */
+    /* place-items: center end; */
+    /* 1st val represent the align items and second is justify items */
+    /* the content present in grid box come in center */
+    
+    /* we can use justify-content : left , right , center and we can move whole container one side to other
+    SO BASICALLY justify content move whole container
+    */
+    /* grid-template-columns: repeat(4 , 100px);
+    justify-content: right ; */
+ } 
+
+
+.box{
+    background-color: goldenrod;
+    font-size: 2rem;
+    color: black;
+    height: 100px;
+    width: 100px ;
+}
+
+/* now we have justify-self -- it work in horizontally  main axis -- it is in grid for specific grid element
+align-self -- it work in cross axis  same as in flexbox
+*/
+
+.box2{
+    /* justify-self: center; */
+    /* align-self: center; */
+}
+
+
+/* 
+justify-items -- multiple -- main axis
+align-items -- multiple -- cross axis 
+both shorthand is --place-items -- single -- first cross then main 
+it is used to move the items only inside the box space of box itself if space is remaining
+small box move in its full box size if space remain
+
+justify-self -- single -- main axis
+align-self -- single -- cross axis
+
+justify-content -- for whole container to move in main axis -- left right center -- it is used to move whole container and 
+
+all box move as one in container if space remain in container
+*/
+

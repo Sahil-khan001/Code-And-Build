@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+}
+
+.container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.box{
+    height: 200px;
+    width: 200px;
+    background-color: orange;
+    font-size: 2rem;
+    transition: transform 2s ease-in 1s;
+    
+}
+
+.box:hover{
+/* transform: translate(200px , 200px);   the one is x axis , the other is y axis*/
+/* transform: scale(2);     */
+/* transform: scale(2,3);     */
+/* it have x and y axis */
+/* transform: rotate(360deg); */
+/* we have to give value in degree and it rotate the element , positive value -- clockwise else anticlockwise
+ */
+/* transform: skew(40deg);/
+/* give value in deg */
+/* transform: translate(200px , 200px) scale(2) rotate(50deg); */
+transform: perspective(200px) translateZ(200px);
+}
