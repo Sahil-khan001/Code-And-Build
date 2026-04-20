@@ -1,0 +1,46 @@
+h3{
+    /* direction: ltr; */
+    /* direction: rtl;
+    unicode-bidi: bidi-override; */
+}
+
+p{
+    /* text-transform: capitalize;
+    text-decoration-line: overline;
+    text-decoration-color: rebeccapurple; */
+    /* text-transform: uppercase; */
+    /* text-indent: 10px; */
+    /* letter-spacing: 13px;
+    word-spacing: 22px; */
+
+}
+
+.container{
+    height: 500px;
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.box{
+    height: 150px;
+    width: 150px;
+    background-color: red;
+    /* box-shadow: 20px 20px 29px blue; */
+transition: all 5s linear;
+}
+
+.box:hover{
+    background-color: purple;
+    height: 400px;
+    width: 400px;
+    border: 2px solid black;
+    
+}
+
+
+.text{
+    text-shadow: 2px 2px 3px;
+}

@@ -27,10 +27,44 @@
     background-color: cadetblue;
     height: 500px;
     width: auto;
+    display: flex;
 
 }
 
 .box{
-    background-color: green;
+    height: 200px;
+    width: 200px;
+    background-color: red;
+    color: blue;
+    border: 2px solid black;
+    margin: 10px;
 
+}
+
+/* THIS MEDIA QUERY IS FOR MOBILE PHONE FROM 0 TO 600PX*/
+@media (max-width : 600px){
+    .container{
+        /* flex-wrap: wrap;  */
+        /* you can do also flex-direction: column;  THIS IS MORE PREFERRED  all items come directly*/
+        flex-direction: column;
+    }
+}
+
+/* THIS MEDIA QUERY IS FOR TABLET FROM 600PX TO 900PX PHONE*/
+@media (min-width:601px) and (max-widht:900px) {
+    
+  .container{
+    background-color: purple;
+  }
+
+}
+
+/* we can also set acc to width and height */
+
+@media screen and (orientation: landscape) {
+
+.container{
+    background-color: blue;
+}
+    
 }

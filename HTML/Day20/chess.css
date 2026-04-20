@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+}
+
+.container{
+    height: 50vw;
+    width: 50vw;
+    background-color: gray;
+    display: grid;
+    /* grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px;  */
+    /* you can use repeat function instead of writing again and again  */
+    /* grid-template-columns: repeat(8 , 100px);
+    grid-template-rows: repeat(8 , 100px); */
+    /* grid-template-columns: repeat(8 , 100px); */
+    /* grid-template-rows: repeat(8 , 100px); */
+    grid-template-rows: repeat(8 , 1fr);
+    grid-template-columns: repeat(8 , 1fr);
+    /* grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px; */
+    /* if we write 100px each take 100px but if u write fr then it takes full width */
+}
+
+.white{
+    /* height: 100px;
+    width: 100px; */
+    background-color: white;
+    
+}
+
+.black{
+    /* height: 100px;
+    width: 100px; */
+    background-color: black;
+
+}
+
+
+
+/*when u are giving 1 fr means it allocate space according to them 
+no need to give space alag se
+*/
