@@ -10,26 +10,27 @@ body{
 }
 
 .container{ 
-
     height: 100%;
     gap: 1rem;
     background-color: black;
     display: grid;
     padding: 4rem;
+
     /* grid-template-columns: repeat(4 , 1fr); */
     /* now we make responsive columns using min and max concept now it will be responsive  --  */
     /* grid-template-columns: minmax(100px , 200px) minmax(100px , 200px) minmax(100px , 200px) minmax(100px , 200px); */
-    /* now if u want to make it responsive like flexwrap means elment one by one then u can use  */
     /* grid-template-columns: repeat(auto , minmax(100px , 200px ));  */
-    /* it means same as above but for responsive */
+    /* now if u want to make it responsive like flexwrap means elment one by one then u can use  */
     /* grid-template-columns: repeat(auto-fill , minmax(100px , 200px));
     justify-content: center; */
     /*NOW IT IS RESPONSIVE as flexwrap so for this u can use auto-fill , auto-fit size set acc to 2nd value that is 200px*/
+
     grid-template-columns: repeat(4 , 1fr);
     /* align-items: center;
     justify-items: center; */
-    /* basically instead of justify-content here is justify items for the main axis
-    for the cross axis align items is here also there is a shorthand for both which is place-items : center end; */
+    /* basically instead of justify-content here is justify-items for the main axis a
+    for the cross axis align items is here
+    Also there is a shorthand for both which is place-items : center end; */
     /* place-items: center end; */
     /* 1st val represent the align items and second is justify items */
     /* the content present in grid box come in center */
@@ -61,8 +62,8 @@ align-self -- it work in cross axis  same as in flexbox
 
 
 /* 
-justify-items -- multiple -- main axis
-align-items -- multiple -- cross axis 
+justify-items -- multiple elements -- main axis
+align-items -- multiple elements-- cross axis 
 both shorthand is --place-items -- single -- first cross then main 
 it is used to move the items only inside the box space of box itself if space is remaining
 small box move in its full box size if space remain

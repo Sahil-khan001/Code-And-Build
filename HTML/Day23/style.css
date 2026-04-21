@@ -1,0 +1,47 @@
+button:hover{
+background-color: red;
+}
+
+
+button:active{
+    background-color: yellow;
+}
+
+p::first-letter{
+    color: purple;
+    background-color: yellow;
+}
+
+p::selection{
+    background-color: blue;
+}
+
+P::first-line{
+    background-color: #000;
+}
+
+
+/* this is the PSEUDO CLASSES */
+
+input[type = "checkbox"]:checked+label{
+    background-color: red;
+    color: orange;
+}
+
+
+.chk:checked+label{
+    background-color: brown;
+    color: blue;
+}
+
+h3{
+
+    /* opacity: 0.5; */
+    display: none;
+    /* it is used to invisible the element or transparency is there */
+
+
+}
+
+
+

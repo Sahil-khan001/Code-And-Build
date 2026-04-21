@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+}
+
+.container{
+    height: 100%;
+    background-color: aqua;
+}
+
+.box{
+    height: 100px;
+    width: 100px;
+    background-color: red;
+    animation: movement 1s ease-in infinite alternate-reverse ;
+}
+
+@keyframes movement {
+    from{
+        transform: translate(0px , 0px);
+    }
+    to{
+        transform: translate(200px , 200px);
+    }
+}
+

@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    height: 100vh;
+    width: 100vw;
+}
+
+
+.container{
+    height: 100%;
+    width: 100%;
+    padding: 4rem;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box{
+height: 150px;
+width: 150px;
+background-color: orange;
+border-radius: 50%;
+font-size: 2rem;
+display: flex;
+justify-content: center;
+align-items: center;
+animation: spin 5s linear infinite 1s ;
+}
+
+@keyframes spin {
+    
+    from{
+        transform: rotate(0deg) translate(200px);
+    
+    }
+
+    to{
+        transform: rotate(360deg) translate(200px);
+    }
+}

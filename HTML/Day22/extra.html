@@ -1,0 +1,728 @@
+Extra things that is remaining in css -- 
+
+/* PSEUDO SELECTOR -- 
+ */
+button:hover{
+    background-color: black;
+    color: white;
+}
+
+h3:hover{
+    text-decoration: none;
+}
+
+button:active{
+    background-color: hotpink;
+}
+
+p:active{
+    font-weight: bold;
+    color: green;
+}
+
+input[type = "radio"]:checked + label{
+    color: red;
+    font-weight: bold;
+}
+
+div:nth-of-type(2){
+    background-color: aquamarine;
+}
+
+h1::first-letter{
+    color: green;
+}
+
+
+p::first-line{
+    color:#b92b27;
+    font-weight: bold;
+}
+p::selection{
+    color: yellow;
+}
+h3{
+    background-color: #b92b27;
+}
+
+#chk:checked + label{
+    color: red;
+    background-color: blue;
+}
+
+
+input[type = "text"]{
+    background-color: pink;
+}
+
+input[type = "checkbox"]:checked + label{
+    background-color: purple;
+    color: orange;
+}
+
+now move to opacity --
+alpha means -- set the opacity for the <b>COLOR</b> it include rgba -- a means 0 to 1
+Opacity means -- set the opacity for the <b>whole element</b>
+
+.card{
+    height: 200px;
+    width: 200px;
+    border: 2px solid black;
+    display: inline-block;
+    margin: 10px;
+    border-radius: 12px;
+     box-shadow: 0 4px 8px black;
+     transition: box-shadow 1s;
+}
+
+img{
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.desc{
+    margin: 0 5px 0 5px;
+}
+
+.card:hover{
+    box-shadow: 0 16px 32px black;
+}
+
+.loader{
+    height: 300px;
+    width:300px;
+    background-color: white;
+    border: 40px solid aqua;
+    border-top: 40px solid goldenrod;
+    margin: 0 auto;
+    border-radius: 50%;
+   animation: loader 3s linear  infinite  ;
+
+}
+
+@keyframes loader {
+    from{
+        transform: rotate(0deg) translate(200px) rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg) translate(200px)rotate(-360deg);
+    }
+}
+
+h1{
+    background-color: yellow;
+    border: 2px solid black;
+}
+
+@media (width: 400px) {
+    h1{
+        background-color: red;
+        color: white;
+    }
+    div{
+        height: 100px;
+        width: 100px;
+        background-color: blue;
+
+    }
+}
+
+ /* @media (min-width: 400px) {
+    h1{
+        background-color: red;
+        color: white;
+    }
+    div{
+        height: 100px;
+        width: 100px;
+        background-color: blue;
+        
+    }
+} */
+
+ /* @media (max-width: 400px) {
+    h1{
+        background-color: red;
+        color: white;
+    }
+    div{
+        height: 100px;
+        width: 100px;
+        background-color: blue;
+        
+    }
+} */
+ 
+/* you can also combine this min and max property -- */
+ /* @media (min-width: 400px)  and (max-width: 600px){
+    h1{
+        background-color: red;
+        color: white;
+    }
+    div{
+        height: 100px;
+        width: 100px;
+        background-color: blue;
+        
+    }
+} */
+
+/* @media (orientation: landscape){
+    h1{
+        background-color: red;
+        color: white;
+    }
+} */
+
+/* @media (orientation: portrait){
+    h1{
+        background-color: red;
+        color: white;
+    }
+} */
+
+for better looking websites
+    1. colors 
+    2. typography
+
+    the color wheel consist -- red , blue  , yellow primary color then make other from them
+
+    Subtle color combination -- Monochromatic  like a color with its different shades
+    Impactful color combination -- complementary like a comelor with different color
+    high contrast combination -- Triadic
+
+    if you want to study more on this then go to Canva.com color wheel and read
+
+    <hr>
+    TYPOGRAPHY -- Style and Appearance of Text
+    it include different font styles and colors --
+    font families include --  sans serif 
+                              monospace 
+                              serif 
+                              cursive
+
+    all these have different styles in it like how we use it like
+    for icecream -- fun  -- fantasy
+    for museum -- vintage , old
+    
+    in website use max 2 font in a context not more than it
+    means use 2 font  max in one section
+   <hr>
+   Google Fonts -- for google font use https://font.google.com
+   you already use this if you remember sigma web development course 
+like baloo bhaiya , baloo bhaina
+
+ like in google font you also download whole file for any font but it make your html files heavy so use only what you want means single only
+ you can use it in 2 ways like using link , import with css file which you have to paste in css files
+
+ <hr>
+ ICONS -- Different websites have different ICONS
+ want free icons use -- GOOGLE ICONS and check its
+
+ want to use this -- then use same as link paste after title tag and in css paste file from it
+ then it will be showing icons
+
+ 2nd free site is -- font Awesome site for use this use -- <br>cdnjs.com in this two options copy url and copy link tag -- use tag and paste same like link tag after title tag 
+ after doing this go to font Awesome site again click on icon and copy <i>whatever written just copy it</i>
+ and paste in html it work 
+ but if you want to paid then use different sites
+ 
+  Bootstrap -- it is CSS framework it works like toolkit and first add that you have seen many things in css 
+    that how to make nav bar , form and many more from scratch in css but in bootstrap they give a template to you so you use these and make things easier for you 
+
+    in bootstrap -- focus on Understanding rather than learning because for this you refer MDN Docs 
+
+    it work on flexbox in which they have some pre built components for buttons , form , navbar , card 
+    what is BOOTSTRAP -- Bootstrap is a powerful featured packed frontend toolkit . build anything from prototype to production - in minutes 
+
+    it include prebuilt components like -- buttons , forms , nav bar , 
+    Benefits of Bootstrap -- Make Development Faster and easier
+    Good Choice of Pre built components
+    Good Browser Compatability
+
+    when to use Bootstrap -- when you have a nice layout in bootstrap then use it or edit with it pure css to make to more attractive 
+    it is not compulsory to use bootstrap when we do not have time we use bootstrap other wise CSS
+
+    <hr>
+    
+    WHAT IS CDN -- content Delivery Network -- it work on nearby server so loading time is less and make our site more fast -- 
+
+    we have to go to bootstrap site and copy CDN links of css from it and paste it here after title tag in link tag with rel with stylesheet
+    
+    real eg of cdn is yt where we watch videos so cdn helps to take those videos from server 
+
+    we can also copy javascript link from bootstrap site so that it work with css with functionality 
+    means use both links from cdn site
+
+        <hr>
+
+  use link in series wise -- 
+  like first if you use -- bootstrap link 
+  then css stylesheet link   then css link override it 
+  generally it is good to override to make it more attractive
+
+  and if you do vice versa then bootstrap will override 
+
+components -- Prebuilt and reusable piece of user interface  eg -- buttons , forms , navbar  
+Layouts -- overall structure and arrangements of the elements eg -- container , grid  -- like flexbox to set structure of website
+
+<hr>
+
+NOW MOVE IN LAYOUT --
+it include when you use Bootstrap--
+container -- container are used to contain , pad and sometimes center the content within them
+means when you make a div with class container and give content into it then container do some width and margin also font type change
+because bootstrap comes with width margin and even font style
+you can use container-md- for different widgth properties and in container-fluid -- contain full width 
+you can go to bootstrap site then check it out for more ...................
+
+<hr>
+
+now in Prebuilt components --
+button -- 
+1. to make color of buttons 
+     <button class="btn btn-primary">Click Me!</button>
+     <button class="btn btn-secondary">Click Me!</button>
+     <button class="btn btn-danger">Click Me!</button>
+     <button class="btn btn-success">Click Me!</button>
+     <button class="btn btn-info">Click Me!</button>
+     <button class="btn btn-Light">Click Me!</button>
+     <button class="btn btn-dark">Click Me!</button>
+     <button class="btn btn-link">Click Me!</button>
+
+2. to make outline button 
+     <button class="btn btn-outline-primary">Click Me!</button>
+     <button class="btn btn-outline-secondary">Click Me!</button>
+     <button class="btn btn-outline-danger">Click Me!</button>
+     <button class="btn btn-outline-success">Click Me!</button>
+     <button class="btn btn-outline-info">Click Me!</button>
+     <button class="btn btn-outline-Light">Click Me!</button>
+     <button class="btn btn-outline-dark">Click Me!</button>
+     <button class="btn btn-outline-link">Click Me!</button>
+
+3. to make button large and small
+     <button class="btn btn-outline-primary btn-lg">Click Me!</button>
+     <button class="btn btn-outline-secondary btn-sm">Click Me!</button>
+     <button class="btn btn-outline-danger">Click Me!</button>
+     <button class="btn btn-outline-success">Click Me!</button>
+     <button class="btn btn-outline-info">Click Me!</button>
+     <button class="btn btn-outline-Light">Click Me!</button>
+     <button class="btn btn-outline-dark">Click Me!</button>
+     <button class="btn btn-outline-link">Click Me!</button>
+
+4. to make unlickable button
+
+     <button class="btn btn-outline-primary btn-lg disabled">Click Me!</button>
+     <button class="btn btn-outline-secondary btn-sm disabled">Click Me!</button>
+     <button class="btn btn-outline-danger">Click Me!</button>
+     <button class="btn btn-outline-success">Click Me!</button>
+     <button class="btn btn-outline-info">Click Me!</button>
+     <button class="btn btn-outline-Light">Click Me!</button>
+     <button class="btn btn-outline-dark">Click Me!</button>
+     <button class="btn btn-outline-link">Click Me!</button>
+
+
+
+     
+5. to style a href button
+ <a href="#" class="btn btn-outline-danger">Google me</a>
+
+ <hr>
+it include -- 
+
+COMPONENTS -- Badges --
+it include -- when you see on whatsapp it show some notification with how many messages is there  , in email and inbox a badge with how many messages 
+you can make badge along with Heading --
+     <h1>Heading with badge <span class="badge bg-primary">Badge 1</span></h1>
+     <h2 >Heading with badge <span class="badge bg-secondary">Badge 2</span></h2>
+     <h3 >Heading with badge <span class="badge bg-danger">New</span></h3>
+     <h4 >Heading with badge <span class="badge bg-success">New</span></h4>
+
+you can make badge along with button
+     <button class="btn btn-danger">Followers<span class="badge bg-primary">100+</span></button>
+
+you can make and explore to make badge like real with top on notification with postion property go to site for it
+
+you can also make badge like pill using add rounded-pill in it
+ <button type="button" class="btn btn-primary rounded-pill">Notification <span class="badge text-bg-secondary">4</span></button>
+ 
+ explore more badge for more properties....
+
+ <hr>
+
+Next is Component that include -- alert
+you can make these alert in bootstrap using these --
+for this you make a div first
+
+<!-- <div class="alert  bg-primary">Download Failed ! Plz try again.</div> -->
+<div class="alert  alert-danger">Download Failed ! Plz try again.</div>
+<div class="alert  alert-success">Congratulation ! Your score is 50/50 </div>
+
+you can also make a live alert but for this you have to include js for it 
+we study it later then include ----
+
+you can also give link in the alert ----
+
+you can also make icons in it using google , font awesome but it prefer BOOTSTRAP ICONS----
+
+you can also make a alert with dismiss means cross button x 
+for this you have to include btn-close
+<div class="alert  alert-success">Congratulation ! Your score is 50/50
+    <button class="btn-close"></button> </div>
+    you can also include this data-bs-dismiss means -- but it will work with js functionality means in your code in body in script tag you include js link in href so because of this it work 
+    <button class="btn-close" data-bs-dismiss= "alert" ></button> </div>
+
+    <hr>
+    In component -- 
+    BUTTON GROUP -- means we can make a btn group if you have many buttons in it 
+    or 
+    Group a series of buttons together on a single line or stack them in a vertical column
+   for this code like == 
+<div class="container">
+        <h2>button Group demo</h2>
+        <div class="btn-group">
+        <!-- <button class=" btn bg-primary">ONE</button>
+        <button class=" btn btn-outline-success">TWO</button>
+        <button class=" btn bg-secondary">THREE</button> -->
+        <button class=" btn btn-outline-success">ONE</button>
+        <button class=" btn btn-outline-success">TWO</button>
+        <button class=" btn btn-outline-success">THREE</button>
+        </div>
+<br>
+<br>
+it is separate and upper in the group
+        <button class=" btn btn-outline-success">ONE</button>
+        <button class=" btn btn-outline-success">TWO</button>
+        <button class=" btn btn-outline-success">THREE</button>
+    </div>
+<hr>
+next is another Component -- that is navbar
+the bootstrap give a template of navbar so we can use and it is responsive also --
+like first you have to --
+
+--you can also add image in it means logo or other 
+-- to add different options in navbar you can use list in it instead of this you can use 
+anchor tag <a href=""></a> like this
+you can use bg-body-tertiary to make the background like navbar with a light grey color
+
+you can use navbar-brand in anchor tag to make the brand name style same as navbar
+you can use nav-link in achor tag to make the nav options same as navbar so when you hover it in it show bootstrap property
+you can use nav-link disabled to not use is bootstrap property
+
+you can use navbar-expand-lg so that your list go in a row state
+
+<!-- NAVBAR WITH BOOTSTRAP -->
+    <nav class="navbar bg-body-tertiary fixed-top navbar-expand-lg">
+<div class="container-fluid">
+    <a href="#" class="navbar-brand">Brand Name</a>
+    <button class="navbar-toggler" data-bs-toggler = "collapse" data-bs-target = "#navbarNavAltMarkup">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link" href="#">Contact Us</a>
+        <a class="nav-link" href="#">About Us</a>
+    </div>
+</div>
+</div>
+</nav>
+
+
+you can also use form in this like for write and search using bootstrap code
+
+you can also change its color theme of nav bar using differnt property
+
+we can also see our navbar as in Placement term like it include --
+fixed-top
+fixed-bottom
+
+like when you use fixed-top if we give heading in top above navbar it will hide behind navbar because of fixed-top
+to fix this --
+use sticky-top
+
+for check all this property you can refer bootstrap site 
+aria labels for the screen readers 
+
+In Navbar -- 
+for background color == use bg-primary
+for theme -- use data-bs-theme
+
+
+<hr>
+
+Next move to CARD COMPONENT - -
+
+<div class="card" style="width: 18rem;">
+    <img src="photo.jpg" class="card-img-top">
+    <div class="card-body">
+        <h4 class="card-title">this is title</h4>
+        <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet autem voluptates earum odit totam minus odio, error quidem dolorum doloribus sequi quaerat id sunt iste.</p>
+        <a href="#" class="btn btn-primary">Go to</a>
+    </div>
+</div>
+
+
+<hr>
+NEXT IS LAYOUT THAT INCLUDE -- 
+Grid Layout -- when we make a grid in bootstrap 
+in row -- it already divided into 12 units or 12 column system
+means if we give 50 50 space to it then it means 6 or 6 columns
+
+when to use this then first make a container 
+then row class then 
+you know that default it give 12 columns to it then if you write 
+col 6 then it means 6 col or 50%
+
+
+    <div class="container">
+        <h2>Grid System</h2>
+        <div class="row">
+           <!-- <div class="col bg-success" >one</div>
+           <div class="col  bg-danger" >two</div> -->
+              <div class="col-4 bg-success" >one</div>
+                 <div class="col-8 bg-danger" >two</div>
+        </div>
+        <br>
+        <div class="row">
+               <div class="col-md-2 bg-success" >one</div>
+               <div class="col-md-8 bg-danger" >two</div>
+               <div class="col-md-2 bg-primary" >three</div>
+        </div>
+    </div>
+    
+    when you make grid box using these then the responsiveness is not up to the mark so for this use 
+
+    Grid Options -- for Grid responsive 
+    we have grid options and have fixed size so we give acc to that
+    means until that screen size not hit which you set then it occupy 100% width 
+
+    col-md-2 in this whatever size is set is set to it but when go down then it occupy 100% width
+    same as also with other property
+    other example like --
+    
+     <div class="row">
+            <div class="col-md-6 col-xl-3 bg-success">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate possimus rerum ab quidem, alias praesentium maiores iste. Perferendis corporis nam suscipit molestias magni porro eius nisi in necessitatibus exercitationem quam vitae dolorum, id quisquam eligendi et iste atque natus! Porro aspernatur iste adipisci, quos culpa quaerat illo harum ex id voluptatibus. Ea culpa labore ratione nemo modi dolorem nostrum sint!</div>
+            <div class="col bg-primary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, dolores eius quas numquam magnam nihil minus nostrum aliquam placeat, dicta praesentium repellendus iste quisquam, voluptatem tempore? Est, quisquam voluptas et magnam eius unde quaerat atque ullam veniam optio non praesentium corrupti commodi natus, id quod quae iste sunt dolores autem doloribus? Ullam illo excepturi deleniti quaerat neque eveniet consequuntur. Eos!</div>
+            <div class="col bg-danger">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi voluptatum voluptatibus asperiores aliquam recusandae quis totam, exercitationem tempora fugiat animi nam. Inventore, blanditiis accusamus. Perferendis animi, esse mollitia dolorem recusandae facilis odio aliquam nostrum odit omnis at officia placeat! In porro illum, harum enim aliquid, ex corrupti nulla eveniet impedit nihil esse recusandae, repellendus cum error voluptates commodi necessitatibus aliquam.</div>
+        </div>
+
+
+        <hr>
+
+        AS we know bootstrap work on flexbox concept 
+        you know about vertial alignment like align items 
+        so in bootstrap-- for vertical alignment
+        you can do this in normal grid layout that the code is above given
+
+        for this code be like --
+         
+        <div class="row align-items-end">
+<div class="col bg-success align-self-start">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius, impedit. Atque provident quos dolores mollitia sint maxime distinctio nobis eie a doloribus. Sunt illo dignissimos veniam dolore quas consequuntur hic suscipit culpa quae maiores, iure quo obcaecati, animi odit vitae nostrum deleniti.</div>
+<div class="col bg-danger">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius, impedit. Atque provident quos dolores mollitia sint maxime distinctio nobis eius temporibus quisquam! Eveniet cupiditate est vitae officiis aperiam ab quos, sit eius tempore mollitia et autem. Quam iste a doloribus. Sunt illo dignissimos veniam dolore quas consequuntur hic suscipit culpa quae maiores, iure quo obcaecati, animi odit vitae nostrum deleniti.</div>
+<div class="col bg-primary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius, impedit. Atque provident quos dolores mollitia sint maxime distinctio nobis eius oloribus. Sunt illo dignissimos veniam dolore quas consequuntur hic suscipit culpa quae maiores, iure quo obcaecati, animi odit vitae nostrum deleniti.</div>
+<div class="col bg-secondary ">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius, impedit. Atque provident quos dolores mollitia sint maxime distinctio nobis eius temporibus quisquam! Eveniet cupiditate est vitae officiis aperiam ab quos, sit eius tempore mollitia et autem. Quam iste a doloribus. Sunt illo dignissimos veniam dolore quas consequuntur hic suscipit culpa quae maiores, iure quo obcaecati, animi odit vitae nostrum deleniti. Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore et suscipit vitae? Ut, nisi doloremque voluptate tenetur iusto pariatur maiores libero ipsum.</div>
+        </div>
+
+        <hr>
+        NEXT IS FORMS IN BOOTSTRAP --
+        it include --
+        form control
+        select
+        checkbox and radio
+        layout
+
+        for this first write form then give him class mb-3 which is default margin bottom 3 that is in utility section 
+then make normal label and input and give him these class
+ for label -- form-label
+ for input -- form-control
+
+ In utility then in spacing read for margin and padding m for margin and p for padding mb for margin and padding 
+ for large and small font use 
+ sm -- small
+ lg -- lg
+you can give this in form-control 
+
+you can also give these mb-3 in a div to set it margin and padding
+<hr>
+
+Next is Select that is look like DropDown link to create many items 
+for this write normal select then write form-select in class it is imp
+
+you can also use disabled the option  code be like
+
+
+    <div class="mb-3">
+        <select class="form-select "> 
+            <option selected >Choose your city</option>
+            <option value="1">delhi</option>
+            <option value="2">mumbai</option>
+            <option value="3">pune</option>
+        </select>
+    </div>
+
+    <hr>
+
+    NEXT we move to Checkboxes and radio buttons --
+
+    for this write normal code for checkbox then make from-check class in div then 
+    in input -- make form-check-input
+    in short 
+    form-check
+    form-check-input
+    form-check-label
+    
+    same for radio buttons --
+    form-check
+    form-check-input
+    form-check-label
+
+    you can also make switch also using bootstrap --
+    switch are different forms of checkbox 
+    copy code from there and do work
+
+
+    CODE BE LIKE ----
+    
+    <div class="mb-3">
+        <input type="checkbox" id="chek">
+        <label for="chek">Agree</label>
+    </div>
+
+    <div class="mb-3 form-check">
+        <input type="checkbox" id="chek" class="form-check-input">
+        <label for="chek" class="form-check-label">Agree</label>
+    </div>
+
+
+    <hr>
+
+    <div class="mb-3">
+        <label for="rad">male</label>
+        <input type="radio" name="gender" id="rad" value="1">
+        <label for="radi">female</label>
+        <input type="radio" name="gender" id="rad" value="2">
+
+    </div>
+
+    <div class="mb-3 form-check">
+        <label for="rad" class="form-check-label">male</label >
+        <input type="radio" name="gender" id="rad" value="1" class="form-check-input">
+        </div>
+        <div>
+        <label class="form-check-label">female</label>
+        <input type="radio" name="gender" id="rad" value="2" class="form-check-input">
+
+    </div>
+
+    <hr>
+    next is LAYOUT 
+    means the layout you study in grid can use in the form
+
+    as you see that your email and password occupy full width if you want that it occupy half width then use 
+    layout in it 
+    make a div with row class
+    and put email and password code into it
+
+    code be like for it 
+      <div class="row">
+        <div class="mb-3 col-md-6" >
+            <label for="em" class="form-label">Email</label>
+        <input type="text" id="em" placeholder="enter email" class="form-control
+        ">
+        </div>
+
+               <div class="mb-3 col-md-6">
+                 <label for="pass" class="form-label">Password</label>
+        <input type="password" id="pass" placeholder="enter password" class="form-control
+        ">
+               </div>
+    </div>
+    
+
+
+    form -label -- for normal label
+    form-control -- for normal control
+
+    form-check
+    form-check-input
+    form-check-label --- use for radio  , checkboxes and other also 
+
+    for grid -- make container then row class then col class then size 
+    thats it
+
+     Some of the Website does not allow to inspect it 
+    so just copy link of that website and paste in google directly then inspect it or in incognito mode i think
+    or 2nd way is
+    just go to setting and turn of javascript then inspect then on 
+    1st one is preferred
+
+    some things you learn while making the project 
+
+    if you want to set icon of upper title of website then use
+    <!-- <link rel="icon" href=" source name"> -->
+    like this ok
+
+    overflow-hidden -- it means when you use it there is no scroll bar also if there is lot of content on the page
+    there is more properties on overflow you can read it on mdn docs
+
+    vh - view port height-- means screen 100% height 
+
+    the font size of root is 16px by default in rem
+    means 1rem - 16px 
+    2 rem - 32 px
+
+    we give overflow auto to the main-content because there is need it 
+    because it is not required in sidebar or even music player ok 
+
+    the color picker is used to check the color given in the website you can use like an extension also 
+    the other way is take screenshot and paste in color picker website then find color
+
+    the black color is #000
+    the white color is #fff
+
+    if you use display flex then the item in straight line then if you use flexdirection col then it after other 
+    means use arrange item one after another including flex box 
+                                                  or 
+    when you give display flex all div go in straight line but you want it vertical then use flex direction col ok
+
+    we give padding or other thing in rem to make it more responsive so it act as its parent size
+    
+    for icons use  i then font-size -- 1rem
+    for img use  height : 100px;
+
+    APPEARANCE -- you have seen some component like button , range in which what happen they have pre built properties in it 
+    if you want to change these properties then use appearance : none ;
+    and now you can set different properties acc to you 
+
+    next is the document that is QUIRKSMODE.ORG  to style  styling and style the slider
+    it has two parts in range -- straight line is track 
+                                 circle is thumb
+
+    to style the thumb -- we use -webkit-slider-thumb  to use this use :: sign with it 
+    to style the track -- we use -webkit-slider-runnable-track
+    in this use appearance : none;
+    then do styling acc to you 
+
+
+    <!-- SOME NOTES RELATED TO THE WEBSIES
+     
+    -- for black color -- #000
+    for white -#fff
+
+
+overflow -- property for scrolling 
+
+font awesome and google font for requirement
+root element 1rem -- 16px
+while cloning the website you can use color picker site for exact color or you can take screenshot and paste on color picker site for check the official color
+width -- fit-content
+in button you can use border none -- if you want to edit the button
+
+for icon -- give font size 
+for img -- give height
+
+you can use display none or opacity 0 to hide an icon while using the media queries
+
+you can set the button scratch from using appearance property and some quirksmode.com --- 
