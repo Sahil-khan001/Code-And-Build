@@ -1,0 +1,91 @@
+RESPONSIVE WEBSITE TIPS --
+
+use of max-width
+
+mobile -- 200px ...575px
+tablet --575px ...991px
+
+make sure u write media query after css 
+otherwise it can't override it
+
+banner section{
+max-width : 1280px;
+flex-wrap : wrap;
+display:flex;
+margin:auto;
+}
+
+banner items{
+flex-basis:23%;
+margin:1%;
+}
+
+banner items img{
+width: 100%;
+}
+
+for mobile -- flex-basis: 98%;
+for tablet -- flex-basis: 48%;
+
+@media only screen and (min-width:200px) and (max-width:575px);  - for mobile
+@media only screen and (min-width:576px) and (max-width:991px);  - for tablets
+
+Use of --
+
+Padding;
+flex-grow:1;
+
+background-color : transparent;
+
+display:flex;
+
+search_bar -- instead of making search bar using input and then we add search icon into it using absolute so this is not right method instead of make form
+
+form  then put icon into button section then input
+means button then input
+
+input : flex-grow : 1;
+
+if we give a property to a flex child it apply to other child also
+
+.searchBox input : focus{
+outline:none;
+}
+
+if flex:direction column then align-items work as a stretch;
+
+in button use
+
+background-color : transparent;
+border: none;
+
+in phone : login and cart in bottom use 
+
+position fixed 
+bottom : 0px;
+
+
+in header we have no middle so we make it in 100% but the middle part is 1280px 
+
+if want one by one then -- flex-direction : column;
+if want four by four -- flex-basis : 25%; 
+two by two then -- flex-basis : 50%;
+
+
+gap
+margin:bottom; -- to niche dkhalna
+text align 
+
+
+box-shadow ; 0px 0px 10px 2px #ccc
+
+
+IN MAKING FOOTER -- 
+
+use of display flex 
+use of flex grow and gap
+use of grid with gap use of template repeat
+
+
+
+ 
