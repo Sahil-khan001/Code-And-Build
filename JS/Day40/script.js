@@ -105,7 +105,89 @@
 
 // //userid.clear(); -- to clear full set 
 
-const set1 = new Set([10,20,10,30,20]);
-console.log(set1);
- 
+// const set1 = new Set([10,20,10,30,20]);
+// console.log(set1);
+// console.log(typeof set1);
 
+//2nd way of creating a set 
+
+// const set2 = new Set();
+// set2.add(4);
+// set2.add(6);
+// set2.add("sahil");
+// set2.add("rohit");
+
+// console.log(set2.size);
+// //how many unique elements are present in set 
+
+// set2.delete(4);
+
+// console.log(set2);
+
+// console.log(set2.has("rohit"));//it tell whether a element is present or not it return answer in true or false 
+
+// const alreadyId = new set1(["sahil_343" , "sahil@121" , "sahillihas@"])
+
+// let newUser = alreadyId.has("sahil_343");
+// //if it return true it means u can 't use this id it is already reserved 
+
+// set2.clear();
+
+// console.log(set2);
+
+// OPERATIONS WE CAN DO --
+//add 
+//delete
+//has 
+//size 
+//clear
+ 
+//set also have its prototype that is set.prototype 
+
+// let setA  = new Set([1,2,3]);
+// let setB = new Set([3,4,5]);
+// let UnionSet = new Set([...setA , ...setB]);
+
+// convert arr into set -- 
+
+// let arr = [10,30,20,10,40,50,30];
+// const set1 = new Set(arr);
+// console.log(set1);
+
+//yes it convert it into a set with unique values only
+
+//convert set to arr --
+
+// let set1 = new Set([1,2,3,4,5]);
+
+// const arr = [set1];
+// console.log(arr);
+
+//UNION OF TWO SETS
+// let setA  = new Set([1,2,3]);
+// let setB = new Set([3,4,5]);
+// let setC = new Set([...setA , ...setB]);
+// console.log(setC);
+
+// INTERSECTION TWO SETS
+//we do it using filter and logic like --
+
+//  const result = arr.filter() //but here we dont have array then we do is 
+
+// let setA  = new Set([1,2,3]);
+// let setB = new Set([3,4,5]);
+// const result = [...setA].filter((num) => setB.has(num));
+// //u know filter return true or false  
+// //also remember the filter use only on array
+
+// console.log(result);
+   
+
+//how to iterate over set  we using for of loop
+
+let set1 = new Set([2,1,3,4,5,6]);
+
+for(let value of set1){
+  console.log(value);
+}
+//for of loop to iterate over set
