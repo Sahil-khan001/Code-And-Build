@@ -187,7 +187,87 @@
 
 let set1 = new Set([2,1,3,4,5,6]);
 
-for(let value of set1){
+// for(let value of set1){
+//   console.log(value);
+// }
+//for of loop to iterate over set
+
+// u can use forEach also for set it applied on array but u can use it on set also 
+
+// set1.forEach((value) => console.log(value));
+// --------------------------------------------------------
+
+// next is Map -- it it a collection of key value pairs of anytype like function , objects , primitive data types 
+//the point is key is of any time 
+//as we see in object only string is considered
+
+// set(key , value);
+// get(key);
+// has(key);
+// delete(key);
+// clear();
+// size();
+
+// for(let[key, value] of map){console.log(key , value)};
+// map.foreach((value , key) => {
+//   console.log(key , value);
+// })
+
+//type is object 
+//use of set to set the key value pairs
+//make sure of letter to write map function Map okk not map
+
+
+//create key and value in map using set
+// const map1 = new Map(); 
+// map1.set(3, 90);
+// map1.set("rohit" , 45);
+// map1.set(20 , "mohan");
+
+// console.log(map1);
+
+//delete key and value using only key
+// map1.delete(3);
+// console.log(map1);
+
+//get  value using key only get(key)
+// console.log(map1.get(20));
+
+// //check if a key or value is present or not
+// console.log(map1.has(20)); //it return true or false
+
+// console.log(map1.size);
+
+// console.log(map1.clear);
+
+// map1.__proto__ == map1.prototype;
+
+//2nd method to create a map is 
+
+const map1 = new Map([ [4 , "rohit"], ["mohan" , "sohan"]]);
+
+// let value = map1.get(4);
+// console.log(value);
+
+// console.log(map1.has("mohan"));
+
+for(let value of map1){
   console.log(value);
 }
-//for of loop to iterate over set
+
+//using destruture for key value is 
+
+for(let [key , value] of map1){
+  console.log(key , value);
+}
+
+console.log(map1[4]);  //this treat as a object
+console.log(map1["4"]);  //this treat as a object
+console.log(map1.get(4)); //this as a map
+
+//both have diff ways to access and create values that's it 
+
+// Object keys -- string or Symbol
+// map keys -- string , Number , any
+
+map1.forEach((key , value) => console.log(key , value));
