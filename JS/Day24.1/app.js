@@ -228,8 +228,8 @@
 // console.log(b);
 // console.log(a);
 
-//primitive datatypes are immutable 
-//non primitive datatypes are mutable
+//primitive datatypes are immutable -- we know these datatypes stored in stack -- we know here it work on mechanism that is call by value
+//non primitive datatypes are mutable  -- call by reference
 
 // let obj1 = {
 //      id : 1,
@@ -336,7 +336,7 @@
 
 // let zone = "open source";
 // // console.log(zone.slice(0 ,4));
-// // console.log(zone.substring(5,7));
+// // console.log(zone.substring(5,7)); //can't store negative values
 // // console.log(zone.slice(-3 , -1));
 // console.log(zone.substr(5 , 5));
 
@@ -878,23 +878,23 @@
 //it means to open the object so that we can put it into an single object  like we used to to in assign(); properties;
 //like it convert { {a: 1, b: 2} , { c: 3, d: 4} , {e: 5, f: 6} } -- into this { a: 1, b: 2, c: 3, d: 4, e: 5, f: 6 } basically it spread the all objects into the single one
 
-let obj1 = {
-  a:1,
-  b:2
-}
+// let obj1 = {
+//   a:1,
+//   b:2
+// }
 
-let obj2 = {
-  c:3,
-  d:4
-}
+// let obj2 = {
+//   c:3,
+//   d:4
+// }
 
-let obj3 = {
-  e:5,
-  f:6
-}
+// let obj3 = {
+//   e:5,
+//   f:6
+// }
 
-let finalobj = {...obj1 , ...obj2 , ...obj3};
-console.log(finalobj);
+// let finalobj = {...obj1 , ...obj2 , ...obj3};
+// console.log(finalobj);
 
 //DAY  12 LEARNING 
 //OBJECT PART 2 
@@ -1056,6 +1056,8 @@ console.log(finalobj);
 // console.log(user.__proto__.__proto__ == Object.prototype); //true
 // console.log(user.__proto__.__proto__.__proto__ == null); //true
 
+//THIS IS CALLED PROTOTYPE CHAINING --   
+
 // //one thing to remember is u can access properties from down to above like array can take push ,pop or even to string which is in object but the object cannot access properties of array prototype like in object we not use any push pop as you know okk
 
 //DAY 13 LEARNING FUNCTION in js 
@@ -1134,10 +1136,9 @@ console.log(finalobj);
 
 //spread be like 
 // let arr01 = [1,2,3,4];
-// let arr02 = [...arr1];
+// let arr02 = [...arr01];
 
 // console.log(arr02);
-
 
 //we can pass object in function also right 
 
@@ -1160,13 +1161,19 @@ console.log(finalobj);
 //      roll: 3423,
 // }
 
+// or the real syntax be liket this but we use 
+// function fun(obj){
+//   const {name , id , roll} = obj;
+//   console.log(name , id , roll);  
+// }
+
 // function fun({name , id , roll }){
 //  console.log(name,id,roll); 
 // }
 
 // fun(obj);
 
-//PASS BY VALUE  -- if u change anthing in an object it change in real object if not change then it is pass by value basically a copy will be pass
+//PASS BY VALUE  -- if u change anything in an object it change in real object if not change then it is pass by value basically a copy will be pass
 //PASS BY REFERENCE -- if change happen then it is pass by reference basically the address pass 
 
 //we can also change the prototype 
@@ -1181,11 +1188,27 @@ console.log(finalobj);
 // }
 
 
-// obj02.__proto__ = obj01; //in this way we can change other prototype too but this is not right way its too riskty ur code may explode u can use like this 
+// obj02.__proto__ = obj01; //in this way we can change other prototype too but this is not right way its too risky ur code may explode u can use like this 
 // obj02 = Object.create(obj01);
 
 
 // console.log(obj02.__proto__);
+
+// let first = function(){
+//     console.log("this is function");
+// }
+
+// console.log(first.__proto__ == Function.prototype);   //true
+// console.log(first.__proto__.__proto__ == Object.prototype); //true
+// console.log(first.__proto__.__proto__.__proto__ == null); //true
+
+// let string = "sahil khan";
+
+// console.log(string.__proto__ == String.prototype);   //true
+// console.log(string.__proto__.__proto__ == Object.prototype); //true
+// console.log(string.__proto__.__proto__.__proto__ == null); //true
+
+// NOTE : In every datatypes prototype chaining is there 
 
 //DAY 14 IF,ELSE,LOOP IN JS or ADVANCE LOOP
 
@@ -1195,12 +1218,12 @@ console.log(finalobj);
 //      gender : "male",
 // };
 
-// // for(let key in obj){
-// //      console.log(key, obj[key]);
-// // }
+// for(let key in obj){
+//      console.log(key, obj[key]);
+// }
 
 // //but for access it keys , values we do another way also 
-// // console.log(Object.keys(obj));
+// console.log(Object.keys(obj));
 
 // //now we see what the difference between the both 
 
@@ -1208,10 +1231,10 @@ console.log(finalobj);
 // obj2.money = 555;
 // obj2.village = 'kureni';
 
-// // console.log(obj2); //it can print only obj2 property okk but if u want to access obj2 value then u can do that also like 
-// // console.log(obj2.name); 
+// console.log(obj2); //it can print only obj2 property okk but if u want to access obj value then u can do that also like 
+// console.log(obj2.name); 
 // console.log(Object.keys(obj2));  //it can print keys of obj 2 only not the obj ones so it can inherit property from obj but not print it so to solve this we use for in loop 
-// //or 
+// // //or 
 // for(let key in obj2){
 //      console.log(key); //so yeah it can print the inherit keys also apart from its own keys
 // }
@@ -1254,12 +1277,12 @@ console.log(finalobj);
 //      configurable : true,
 // })
 
-// // console.log(obj); //if we print this that it can be name : sahil
+// console.log(obj); //if we print this that it can be name : sahil
 
 // //but if we write false in writable it we not modify it like 
-// // obj.name = "mohit";
+// obj.name = "mohit";
 
-// // console.log(obj);
+// console.log(obj);
 
 // Object.defineProperty(obj , 'name' , {
 
@@ -1331,16 +1354,20 @@ console.log(finalobj);
 // }
 
 // let Customer2 = Object.create(Customer);
-// Customer2.sir_name = "khan",
+// Customer2.sir_name = "khan";
 
 
 // Object.defineProperty(Customer , "acc_no",{
 //      enumerable : false,
 // })
 
-// // for(let key in Customer){
-// //      console.log(key);  
-// // }
+// for(let key in Customer1){
+//      console.log(key);  //print all the keys except acc_nno.
+// }
+
+// for(let key in Customer2){
+//      console.log(key);  //it print all the keys except acc_no.
+// }
 
 // // for(let key in Customer2){
 // //      console.log(key);  // it will print all the keys even if it inherit but only keys which enumerable is true in this case every key have enumerable true except the acc_no so that's why the acc_no key not print okk
@@ -1355,7 +1382,7 @@ console.log(finalobj);
 // //that's why it not print okay NOW U GOT UR ANSWER OKK
 // //CHECK IT 
 
-// // console.log(Object.getOwnPropertyDescriptor(Customer, 'name'));
+// console.log(Object.getOwnPropertyDescriptor(Customer, 'name'));
 // console.log(Object.getOwnPropertyDescriptor(Object.prototype, 'toString')); //when we print its property status now it show that enumberable is false so that's why these keys are not printing OKAY YA THAT IS PROOF 
 
 
@@ -1366,10 +1393,11 @@ console.log(finalobj);
 // const arr = [10,20,30,40,50];
 // arr.name = "sahil";
 // arr.roll= 43;
+// console.log(arr);
 
 // for(let key in arr){
-//        console.log(key); //u know it will store key value pair so that's why only index be store from 0,1
-//      console.log(key , arr[key]); //like it will print the array easily but now what is the problem because of which we say not use for in loop with array 
+//       //  console.log(key); //u know it will store key value pair so that's why only index be store from 0,1
+//     //  console.log(key , arr[key]); //like it will print the array easily but now what is the problem because of which we say not use for in loop with array 
      
 // }
 // //we cannot prefer for in loop with the array
@@ -1384,24 +1412,24 @@ console.log(finalobj);
 // //like arr.name = "sahil", arr.roll_no = 34, if we print it keys then it print values of its index from 0 to something but in this case it print this string that is name , roll no instead of index numeric values that's why we dont use for in loop with the array we use normal array 
 
 //one more thing -- 
-// let customer = {
-//      name:'sahil',
-//      id : 34,
-// }
+let customer = {
+     name:'sahil',
+     id : 34,
+}
 
-// // console.log(Object.getOwnPropertyDescriptor(customer , 'name'));
-// // Object.defineProperty(customer , 'name' , {
-// //      enumerable: false,
-// // })
+// console.log(Object.getOwnPropertyDescriptor(customer , 'name'));
+// Object.defineProperty(customer , 'name' , {
+//      enumerable: false,
+// })
 
-// // console.log(customer);
+// console.log(customer);
 
 // Object.defineProperty(Object.prototype , 'toString', {
 //      enumerable:true,
 // })
 // console.log(Object.getOwnPropertyDescriptor(Object.prototype , 'toString'));
 
-// // console.log(customer); //for all keys u have to use for in loop
+// console.log(customer); //for all keys u have to use for in loop
 
 // for(let key in customer){
 //      console.log(key); //now u see that it print toString because of enumerable : true ;
@@ -1422,7 +1450,7 @@ console.log(finalobj);
 //      console.log(value);
 // }
 
-// //u can use on string as well
+// // //u can use on string as well
 
 // const str = "sahil is goat";
 // for(let value of str){
@@ -1431,14 +1459,15 @@ console.log(finalobj);
 
 // //Dont use for of loop in Object
 
-//  let object = {
-//      name: "sahil",
-//      village : "kureni",
-//  }
+ let object = {
+     name: "sahil",
+     village : "kureni",
+ }
 
-// // for(let value of object){
-// //      console.log(value); //it give error that we cannot iterate on object that 's why we dont use for of loop in object
-// // }
+// for(let value of object){
+//      console.log(value); //it give error that we cannot iterate on object that 's why we dont use for of loop in object
+// }
+
 
 // //but if u want to iterate it then use object.values(obj) eg
 
@@ -1447,7 +1476,7 @@ console.log(finalobj);
 // }
 
 // for(let value of Object.keys(object)){
-//      console.log(value , object[value]);//  u can print like this 
+//      console.log(value , object[value]);//  u can print like this for both the values 
 // }
 
 // //but use for in loop for object not for the array because of wrong keys print 
@@ -1521,11 +1550,10 @@ console.log(finalobj);
 //now move to foreach loop function okk -- 
 
 // const arr =[19,35,22,66];
-// //arr.forEach(require an call_back)
+// // arr.forEach(require an call_back)
 //   arr.forEach(function(num){
 //      console.log(num);  // basically it take a call_back function as an arguments into it 
-//   })
-  
+//   }) 
 
   //u can also use arrow function inside this 
 
@@ -1539,8 +1567,8 @@ console.log(finalobj);
 //u can also add array in it and use it 
 // const arr =[19,35,22,66];
 //   arr.forEach((num , index, arr) => {
-// // console.log(arr[index]);
-// arr[index] = num *2;
+//     arr[index] = num *2;
+// console.log(arr[index]);
 
 //   })  
 
@@ -1590,15 +1618,13 @@ console.log(finalobj);
 // const result = nextui.filter(({marks})=> marks>50);  
 // console.log(result);
 
-
 //NOW MOVE TO THE MAP PART -- 
 //now the difference beween filter and map is in filter you can only filter the value not modify it but in map you can modify the value -- 
 
 // const arr1 = [1,2,3,4,5];
-
-// // const result = arr1.map((num)=>{
-// //    return num*num;
-// // });
+// const result = arr1.map((num)=>{
+//    return num*num;
+// });
 
 // const result = arr1.map((num , index)=> num*index);
 // console.log(result); //u can see in this we just modify the value 
@@ -1634,7 +1660,7 @@ console.log(finalobj);
 
 //lets talk about Reduce 
 //format be like --
- // const result = arr.reduce(callback function , initialization);
+ // const result = arr.reduce(callback function , initialization of accumulator );
 
 //  const arr = [10,20,30,40];
 //  const result = arr.reduce((acc,curr)=>{  //reduce function take arrow function in which one value is accumulator , second is current value  , curr take value one by one and we have to define accumulator also with any value as in this we initialize it with 0 as u see 
@@ -1650,22 +1676,21 @@ console.log(finalobj);
 //   console.log(result);
 
   //real world eg is u can sum it easily and other is 
-
-  //eg - 
-//   let arrstr = ["orange", "apple" , "orange", "apple" , "grapes" , "orange", "apple" , "grapes"];
+  
+//eg -  
+ let arrstr = ["orange", "apple" , "orange", "apple" , "grapes" , "orange", "apple" , "grapes"];
 // //find how many times a specific fruit appear
 // //result should be print in a object form
 
-// const result = arrstr.reduce((acc,curr)=>{
-//     if(acc.hasOwnProperty(curr))              //it check the str one by one if not exist it make it and give it value 1 acc to it
-//       acc[curr]++;
-//    else
-//       acc[curr]=1;
+const result = arrstr.reduce((acc,curr)=>{
+    if(acc.hasOwnProperty(curr)) //it check the str one by one if not exist it make it and give it    value 1 acc to it
+      acc[curr]++;
+   else
+      acc[curr]=1;
+   return acc
+} , {}); //in this the acc is initialize with object that is {}, not 0
 
-//    return acc;
-// }, {});  //in this the acc is initialize with object that is {}, not 0
-
-// console.log(result);
+console.log(result);
 
 //so the reduce it make the value reduce and make it into a single or final value
 

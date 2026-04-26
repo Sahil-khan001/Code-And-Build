@@ -690,6 +690,7 @@
 //it make 2 diff address 
 
 //DESTRUCTOR IN JS -- 
+//Destructure means -- breakdown things  
 
 //if u want specific key value from an object then u can use destructure 
 //3 ways to destructor the object 
@@ -715,11 +716,12 @@
 // const {username , role , ...final} = object;
 
 // console.log(username , role);
-// console.log(final);
+// console.log(final);  // it print in the 
 
 //THESE ARE THE 3 ways u can Destruture the object 
 
 //ARRAY DESTRUCTURING -- 
+//in array destructuring we can't change variable name 
 
 //1st method -- 
 // let arr = [1,3,5,8];
@@ -735,7 +737,7 @@
 // console.log(third);
 //same like the object destruturing all the remaining values go in the other array 
 
-//Destructure means -- breakdown things 
+//Destructure means -- breakdown things  
 
 //how we do the destructuring in the NESTED OBJECTS
 
@@ -758,6 +760,7 @@
 // -- in object -- we can have even functions , array , string , numbers 
 //it include everything 
 
+//if we have an array inside an object then ...
 
 // const {arr : [first]} = obj;
 // console.log(first);
@@ -765,27 +768,524 @@
 
 //FUNCTIONS in OBJECT
 
-let object = {
-     name : "sahil",
-     id : 12,
-     greet : function(){
-          console.log("namaste Duniya");
-     },
-     money :  function(){
-          return 50
-     }
+// let object = {
+//      name : "sahil",
+//      id : 12,
+//      greet : function(){
+//           console.log("namaste Duniya");
+//      },
+//      money :  function(){
+//           return 50
+//      }
+// }
+
+// object.greet();
+
+// console.log(object.money());
+// //when u use return in the functions in the object then 
+// //U HAVE TO USE CONSOLE.LOG() to print that value
+
+// // PROTOTYPE CHAINING -- IN JS INTERVIEW -- 
+
+
+// let user1 = {
+//      username : "sahil",
+//      id : 83,
+// }
+
+// let user2 = {
+//      salary : "34k",
+//      role : "sde"
+// }
+
+// user2.__proto__ = user1; 
+//it means make user 1 proto of user 2 now user 2 have inherit property from user 1 + own property
+//  //basically user 2 inherit the property of user1
+// console.log(user2.username);
+
+// arr.__proto__  > Array.prototype > Object.prototype
+
+// Array.prototype.__proto__  == Object.prototype
+// arr.__proto__.__proto__ == Object.prototype
+// arr.__proto__.__proto__.__proto__ == null
+
+// let arr = [2,3,5,6,7];
+// console.log(arr.__proto__ == Array.prototype);
+// console.log(arr.__proto__.__proto__   == Object.prototype);
+// console.log(arr.__proto__.__proto__.__proto__  ==  null);
+
+//when u create an array/function its prototype attach to it 
+//same as this we have function prototype and its prototype is Object prototype
+// obj1 -- this is object 
+
+//this is Object.Prototype  -- it real name is Object.prototype
+
+//this is Object.__proto__ -- through this syntax we find properties of object prototype
+
+
+//basically if we want to store a number then we do %10 and we store at that location like 1 ,3,4,5,6 suppose all have same location so we make a chaining after chaining then so we do all this using HASHING 
+//basically we find the location at this location which key belongs to which value
+
+
+//NOW TALK ABOUT FUNCTIONS --- 
+
+//  function greet(){
+//      console.log("hello duniya");
+//  }
+
+//  greet();
+
+//  function add(num1 , num2){  //this is parameter 
+//      return num1 + num2;
+//  }
+
+//  let result = add(3,6); //this is argument 
+//  console.log(result);
+
+
+//  let build = function(){
+//      // console.log("the most imp. factor is TRUST");
+// return "time is less";
+// }
+
+//  build();
+
+//  console.log(build());
+
+// let multi = (num1 , num2)=>{
+//      return num1*num2;
+// }
+
+// //more shortcut be like 
+// let multi = (num1 , num2)=> num1*num2; 
+
+// //we use bracket when we have more than 1 parameter if not then we use
+//when u have single parameter than u have
+// console.log(multi(3,5));
+// let cube = num => num*num*num;
+// console.log(cube(5));
+
+// const sum = (num1 , num2)=> num1 + num2; 
+
+//but if we have more and more parameter and argument then we use REST operator
+
+// let number = function(...num){
+//      console.log(num);
+// }
+
+// number(3,3,5,6);
+
+//you can send infinite arguments in this rest operator can store all the values
+
+// let arr1 = [34,5,2,6];
+// let arr2 = [...arr1];
+
+// console.log(arr2);
+
+// let obj = {
+//      name : "sahil",
+//      salary : 345
+// }
+
+
+// function info(obj){
+//      console.log(obj.name , obj.salary);
+// }
+
+// or using destructuring code be like 
+
+// function info({name , salary}){   //using destruturing be like 
+//      console.log(name , salary); // when u want just some values  from an object then destructure is used
+// }
+
+
+// info(obj);
+
+
+// SPREAD OPERATOR -- take out values from an array -- used in obj , function 
+// REST OPERATOR -- collect or store values  -- used in function call 
+
+
+// INHERIT PROPERTY INSIDE OBJECT THEN U CAN USE THIS -- 
+// let user1 = {
+//      a:1,
+//      b:2
+// }
+
+// let user2 = {
+//      c : 3, 
+//      d : 4
+// }
+
+// user2.__proto__ = user1;
+// actually using this is not a right approach instaead of this use --
+
+// user2 = Object.create(user1);  //use this to inherit property form others
+
+// console.log(user2.b);
+
+// LOOPS IN JS -- 
+
+// let obj = {
+//      name : "sahil",
+//      id  : 34,
+//      role : "solana developer"
+// }
+
+
+// for(let key in obj){
+//      console.log(key , obj[key]); //to get the value of key we use obj[key]
+// }
+
+// for(let anyname in obj){
+//      console.log(anyname , obj[anyname]); //to get the value of key we use obj[key]
+// }
+//if we use this it represent in an object
+
+// or 2nd way to get keys and values 
+
+// console.log(Object.keys(obj));
+// console.log(Object.values(obj));
+// console.log(Object.entries(obj)); 
+//if we use this it represent in array 
+// let obj = {
+//      name : "sahil",
+//      id  : 34,
+//      role : "solana developer"
+// }
+
+
+
+//  let obj2 = Object.create(obj);
+//      obj2.money = 50000;
+//      obj2.village = "kureni";
+ 
+
+//      console.log(obj2);
+
+
+//      for(let key in obj2){
+//           console.log(key, obj2[key]);
+//      }
+
+//inherit property then we use 
+// let obj1 = {};
+// ob2 = Object.create(obj);
+// or// bad approach is 
+// ob2.__proto__ = obj1;
+
+
+// let obj  = new Object();
+// obj.name = "sahil";
+// console.log(obj);
+// console.log(typeof obj);
+
+
+// let obj1 = {
+//      name : "sahil",
+//      id  : 34,
+//      role : "solana developer"
+// }
+
+// let obj2 = Object.create(obj1);
+// obj2.village = "kureni";
+
+// //if we  want keys then we do is 
+
+// // 1st method -- 
+// console.log(Object.keys(obj2));  //it only print village but if u want full then use for in loop
+
+// // 2nd method 
+// for(let key in obj2){
+//      console.log(key);  //it  print all 
+// }
+
+// // console.log(Object.getOwnPropertyDescriptor(obj1 , 'name'));
+
+// // Object.defineProperty(obj1 , 'name' ,{
+//      //     writable : false,
+//      // })
+     
+//      // obj1.name  = "khan";
+     
+//      // console.log(obj1.name);
+     
+//      console.log(Object.getOwnPropertyDescriptor(Object.prototype , 'toString'));
+     
+//      Object.defineProperty(Object.prototype , 'toString', {
+//           enumerable : true,
+//      })
+     
+     
+//      for(let key in obj2){
+//           console.log(key);  //now it print all as well as to string also
+//      }
+     
+
+// const arr = [10,20,30,40,50];
+// arr.name = "sahil";
+// arr.roll= 43;
+// console.log(arr);
+
+
+
+// for(let key in arr){
+//      console.log(key);  //it print name , roll that is a problem it have to only print indexing that is keys not the string that why we don't use this in for in 
+// }
+
+//FOR OF LOOP -- 
+
+
+
+//we use for of loop for the array , string not for the object but if u want to use this in the object as well then u can do one thing that is 
+
+// let obj = {
+//      name : "sahil",
+//      Passion : "coding",
+// }
+
+// for(let value of obj){
+//      console.log(value); //it give me an error to solve this we use 
+// }
+
+// console.log(Object.values(obj));
+// or u can do in this way also 
+
+// for(let value of Object.keys(obj)){
+//      console.log(value , obj[value]);
+// } //using this u can get keys , values in for if loop as well but it is not recommended 
+
+
+// CALL BACK FUNCTION -- 
+
+function greet(para){
+     console.log("hello everyone");
+     para();
 }
 
-object.greet();
+// greet(message);
 
-console.log(object.money());
-//when u use return in the functions in the object then 
-//U HAVE TO USE CONSOLE.LOG() to print that value
+// function message(){
+//    console.log("trust that i want from u guys");
+// }
+
+// this is the second way -- put function inside the call 
+// greet(
+// function message(){
+//    console.log("trust that i want from u guys");
+// })
+
+// this is the third way --  put function inside an variable then call 
+
+// let func = function message(){
+//    console.log("trust that i want from u guys");
+// }
+
+// greet(func);
+
+// this is the 4th way -- use arrow function instead of normal 
+// let func = ()=> console.log("arrow function is here .. ");
 
 
+// greet(func);
+
+// this is 5th way -- put arrow function in an call function 
+
+// greet(()=> console.log("arrow function is here .. "));
 
 
+// function fetch(){
+//      console.log("hey you are now gone");
+// }
+
+// setInterval(fetch , 5000);
 
 
+// for each loop is require an  call back funcion remember it 
 
 
+// const arr = [1,5,8,2];
+// arr.forEach(num => console.log(num));
+
+
+// const arr = [1,5,8,2];
+// arr.forEach((num , index) => console.log(num , index));
+// //this gonna use in codebase so remember it okay 
+
+
+// const arr = [1,3,4,6];
+
+// arr.forEach((num , index , arr) => {
+// arr[index] = num*2;
+// console.log(arr[index]);
+// })
+
+
+//YOU CAN WRITE SEPARATE FUNCTION AS WELLL -- 
+
+// let print = (num , index) => console.log(num , index);
+// const arr = [1,5,8,2];
+// arr.forEach(print);
+
+//FILTER -- return only true or false 
+//IT CAN STORE IN VARIABLE TOO
+
+// let arr = [2,4,6,8,10,7,3];
+
+// let evennos = arr.filter(num => {
+//      if(num%2 == 0){
+//           console.log(num);
+//      }
+// });
+
+// console.log(evennos);
+
+// let evennos = arr.filter(num => num%2 == 0);
+// console.log(evennos);
+
+
+const nextui = [
+   {name : "sahil", marks:90 , age : 23},
+   {name : "monu", marks:80 , age : 33},
+   {name : "hitesh", marks:30 , age : 21},
+];
+
+//we are using filter with the call back function 
+// let markss  = nextui.filter( obj=> console.log(obj.marks>50));
+
+//u can also use destruturing here it means u can take out only the specific value that is in this case we want the marks 
+// let markss  = nextui.filter(({marks})=> console.log(marks > 50));
+// console.log(markss);
+//in output it return true or false 
+
+// MAP -- It is used to modify the values not to filter it 
+// let arr = [1,2,3,4,5];
+
+// arr.map( num => console.log(num*num));
+// arr.filter( num => console.log(num*num));
+// let result = arr.filter( (num , index) => num*index);
+// //it give u some error or wrong answer because we can't modify the values into the filter
+
+// console.log(result);
+
+
+// fiter  -- it is used to filter the values 
+// map -- it is modify the values 
+
+
+// for each -- it is not stored in any variable 
+//filter -- it return true or false if true return value 
+
+// let arr = [1,2,3,4,5,6];
+//find even then square of it 
+
+// let result = arr.filter( num => {
+     //      if(num%2 == 0){
+          //           return num;
+          //      }
+          // }).map( num => num*num);
+
+// or the shortcut way to do this is -- 
+
+// let result = arr.filter(num => num%2 == 0);
+// console.log(result);  
+//---------------------------------------------------------------
+
+//MOVE TO THE NEXT DAY that is REDUCE MAPS AND SETS 
+
+// Reduce -- this  function take arrow function in which one value is accumulator that is acc  which we have to define it with some value , second is current value that is curr which take value from array one by one
+//IT MAIN TASK IS TO REDUCE THE VALUE INTO A SINGLE OR FINAL VALUE 
+
+//we can do sum function with it easily like 
+
+//LETS DO THE SUM OF ALL ELEMENT PRESENT IN THIS ARRAY
+// let arr = [10 ,20 , 30 , 40 , 50];
+
+// // let result = arr.reduce((acc ,curr) => acc + curr , 0);
+// // console.log(result);
+
+// //we can also take ( arr , index ) in the parameter ;
+// let result = arr.reduce((acc ,curr , arr ) => acc + curr , 0);
+// // console.log(result , arr);
+// console.log(`the sum of this ${arr} given array is ${result} using the reduce function.`);
+
+//LETS COUNT how many times a fruit appear 
+//  let arrstr = ["orange", "apple" , "orange", "apple" , "grapes" , "orange", "apple" , "grapes"];
+
+
+// const result = arrstr.reduce((acc,curr)=>{
+//     if(acc.hasOwnProperty(curr)) //it check the str one by one if not exist it make it and give it    value 1 acc to it
+//       acc[curr]++;
+//    else
+//       acc[curr]=1;
+//    return acc
+// } , {}); //in this the acc is initialize with object that is {}, not 0
+
+// console.log(result);
+
+// or in short way is 
+//   let arrstr = ["orange", "apple" , "orange", "apple" , "grapes" , "orange", "apple" , "grapes"];
+// const result = arrstr.reduce((acc,curr)=>{
+//     acc.hasOwnProperty(curr)? acc[curr]++:  acc[curr]=1;
+
+//    return acc;
+// }, {});
+// console.log(result);
+
+// let obj = {
+//      name : "sahil",
+//      id : 33,
+//      orange : 1,
+// }
+
+// real world eg of reduce function --
+
+// let arrstr = ["orange", "apple" , "orange", "apple" , "grapes" , "orange", "apple" , "grapes"];
+
+// const result = arrstr.reduce((acc , curr) => {
+// if(acc.hasOwnProperty(curr)){
+//      acc[curr]++;
+// }else{
+//      acc[curr] = 1;
+// }
+// return acc;
+// } , {})
+
+// console.log(result);
+//here acc is object because we want the final result in object right 
+
+
+//Object.hasOwnProperty()  -- it means object have this property or not 
+// eg --
+
+// let obj = {
+//      name :  "sahil",
+//      id : 4,
+// }
+
+// console.log(obj.hasOwnProperty("name"));
+//it means to check whether this obj have name property or not 
+
+
+// let curr = "id";
+
+// obj.hasOwnProperty(curr)
+//      obj[curr] ++; //or u can write obj["orange"]++;
+
+
+     
+//      console.log(obj);
+
+     //this function check whether obj have id or not if yes then increase it by one 
+
+
+     // obj.apple = 1;
+     // obj["apple"] = 1;
+     // obj[curr] = 1;
+     //all three have same definition
+
+
+//set -- collection of unique values and without duplicates
+//value can be any type stirng , number
+
+// add  , delete , has , size , clear
