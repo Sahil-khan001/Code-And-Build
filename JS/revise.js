@@ -847,7 +847,6 @@
 // console.log(merge); //it show both key value pairs of both object
 // console.log(objj1); //if u not use {} empty bracket then in objj1 the changes appeared of merge variable 
 
-
 //shallow copy or SPREAD OPERATOR to the values inside in the object
 
 //shallow copy is same like create two object with same address so if we do one change in an object then it reflect in another
