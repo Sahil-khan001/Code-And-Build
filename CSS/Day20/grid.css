@@ -21,13 +21,13 @@ body{
     /* grid-template-columns: minmax(100px , 200px) minmax(100px , 200px) minmax(100px , 200px) minmax(100px , 200px); */
     /* grid-template-columns: repeat(auto , minmax(100px , 200px ));  */
     /* now if u want to make it responsive like flexwrap means elment one by one then u can use  */
-    /* grid-template-columns: repeat(auto-fill , minmax(100px , 200px));
-    justify-content: center; */
+    /* grid-template-columns: repeat(auto-fill , minmax(100px , 200px)); */ 
+    /* justify-content: center;  */
     /*NOW IT IS RESPONSIVE as flexwrap so for this u can use auto-fill , auto-fit size set acc to 2nd value that is 200px*/
 
-    grid-template-columns: repeat(4 , 1fr);
-    /* align-items: center;
-    justify-items: center; */
+    /* grid-template-columns: repeat(4 , 1fr); */
+    /* /* align-items: center; */
+ /* justify-items: center;  */
     /* basically instead of justify-content here is justify-items for the main axis a
     for the cross axis align items is here
     Also there is a shorthand for both which is place-items : center end; */
@@ -38,8 +38,10 @@ body{
     /* we can use justify-content : left , right , center and we can move whole container one side to other
     SO BASICALLY justify content move whole container
     */
-    /* grid-template-columns: repeat(4 , 100px);
-    justify-content: right ; */
+     grid-template-columns: repeat(4 , 100px); 
+     /* justify-items: center; */
+     /* align-items: center; */
+    /* justify-content:  right;  */
  } 
 
 
@@ -58,6 +60,7 @@ align-self -- it work in cross axis  same as in flexbox
 .box2{
     /* justify-self: center; */
     /* align-self: center; */
+    /* justify-items: center; */
 }
 
 

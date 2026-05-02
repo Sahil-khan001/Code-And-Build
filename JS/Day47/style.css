@@ -1,0 +1,65 @@
+body{
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    }
+
+
+    button{
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+    }
+
+    #red{
+        background-color: red;
+    }
+    #blue{
+        background-color: blue;
+    }
+    #orange{
+        background-color: orange;
+    }
+    #green{
+        background-color: green;
+    }
+    #purple{
+        background-color: purple;
+    }
+
+    /* body{
+background-color: black;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+
+    }
+
+    #grandparent{
+    height: 400px;
+    width: 400px;
+    border: 2px solid wheat;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    }
+
+    #parent{
+    height: 200px;
+    width: 200px;
+    border: 2px solid wheat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+    #child{
+    height: 100px;
+    width: 100px;
+    border: 2px solid wheat;
+    } */

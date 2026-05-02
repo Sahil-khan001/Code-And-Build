@@ -1,3 +1,56 @@
+
+//lets talk about from where these functions are coming 
+
+// console.log("hello world");
+// console.log(Math.random());
+// setinterval ()
+// new Object()
+
+// all these are coming from globalObject
+//this global object is also an Object  
+
+//the global object present at everywhere 
+//for chrome browser -- windows
+//for node.js -- global
+
+// eg -- windows.math.random() its working in chrome console
+
+// eg --
+
+// let obj ={
+//     name : "rohit",
+//     id  : 3,
+
+// }
+
+// console.log(obj.name);
+// //means whenever we get something from an object we used to write its object first like in this obj
+
+// in chrome we have windows object which have everything inside it like all object functions
+
+//YOU CAN ACCESS ALL THOSE WITHOUT MY NAME that is window
+
+//window is a global object also 
+//whatever variable u made it become part of window that is global object 
+
+//at every environment the global have diff name  in browser it is window , in node js it is  global  , 
+//in vs we have to write console.log(global.Math.random());
+//in chrome console we have to write window.math.random();
+
+// so we solve this problem by we used globalThis it works on everyenvironment
+//no we write 
+//globalThis.Math.random() in vs code
+////globalThis.Math.random() in chrome console code
+
+ 
+// basically the this keyword have diff roles acc to environment
+
+// in global scope -- It point window object and in node js it point to global object 
+
+// the this keyword point the global object
+
+// this keyword -- in global scope point toward -- global object 
+
 // "use strict"
 // lets talk about THIS keyword -- 
 
@@ -118,7 +171,7 @@ obj.greet();  //it print their global object is window object not its obj becaus
 
 // obj.greet(); -- in this case the this point the obj because in arrow function the this take obj from surrounding and in the surrounding the object is function and it global object is obj
 
-//note : in this the this keyword search in surrounding it get function scope and the this of function scope is obj
+//note : in this the this keyword search in surrounding it get function and the this of function scope is obj
 // means the this of surrounding object point to which object -- that is the this object in the arrow function that is the final definition of arrow function this
 
 
@@ -131,80 +184,10 @@ obj.greet();  //it print their global object is window object not its obj becaus
 //         this.name = name;
 //         this.age = age;
 //     }
-// }
-
-
+// };
 
 // let a = new Person("Rohit", 20);
 // console.log(a);
 
 
-
-// let greet = ()=>{
-//     console.log(this);
-// }
-
-// greet();
-
-// "use strict"
-
-// let meet = function(){
-//     console.log(this);
-// }
-
-// meet();
-
-//lets talk about from where these functions are coming 
-
-// console.log("hello world");
-// console.log(Math.random());
-// setinterval ()
-// new Object()
-
-// all these are coming from globalObject
-//this global object is also an Object  
-
-//the global object present at everywhere 
-//for chrome browser -- windows
-//for node.js -- global
-
-// eg -- windows.math.random() its working in console
-
-// eg --
-
-// let obj ={
-//     name : "rohit",
-//     id  : 3,
-
-// }
-
-// console.log(obj.name);
-// //means whenever we get something from an object we used to write its object first like in this obj
-
-// in chrome we have windows object which have everything inside it like all object functions
-
-//YOU CAN ACCESS ALL THOSE WITHOUT MY NAME that is window
-
-//window is a global object also 
-//whatever variable u made it become part of window that is global object 
-
-//at every environment the global have diff name  in browser it is window , in node js it is  global  , 
-//in vs we have to write console.log(global.Math.random());
-//in chrome console we have to write window.math.random();
-
-// so we solve this problem by we used globalThis it works on everyenvironment
-//no we write 
-//globalThis.Math.random() in vs code
-////globalThis.Math.random() in chrome console code
-
- 
-// basically the this keyword have diff roles acc to environment
-
-// in global scope -- It point window object and in node js it point to global object 
-
-// the this keyword point the global object
-
-// this keyword -- in global scope point toward -- global object 
-
-
-
+//the benefit of using this keword in perspective of classes and constructor while creating object for the clasess we dont have to make another constructor everytime for the different object ...

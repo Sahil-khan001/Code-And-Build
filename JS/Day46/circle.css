@@ -1,0 +1,40 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+.circle{
+    position: absolute;
+    background-color: blue;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    overflow: hidden;
+    animation: grow 5s forwards;
+    cursor: pointer;
+}
+
+@keyframes grow {
+    0%{
+      transform: scale(1);
+      opacity: 1;
+      font-size: 10px;
+    }
+
+    100%{
+transform: scale(4);
+opacity: 0;
+font-size: 40px;
+    }
+}

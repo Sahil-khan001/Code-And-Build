@@ -1677,20 +1677,19 @@ let customer = {
 
   //real world eg is u can sum it easily and other is 
   
-//eg -  
- let arrstr = ["orange", "apple" , "orange", "apple" , "grapes" , "orange", "apple" , "grapes"];
-// //find how many times a specific fruit appear
-// //result should be print in a object form
+// //eg -  
+//  let arrstr = ["orange", "apple" , "orange", "apple" , "grapes" , "orange", "apple" , "grapes"];
+// // //find how many times a specific fruit appear
+// // //result should be print in a object form
 
-const result = arrstr.reduce((acc,curr)=>{
-    if(acc.hasOwnProperty(curr)) //it check the str one by one if not exist it make it and give it    value 1 acc to it
-      acc[curr]++;
-   else
-      acc[curr]=1;
-   return acc
-} , {}); //in this the acc is initialize with object that is {}, not 0
-
-console.log(result);
+// const result = arrstr.reduce((acc,curr)=>{
+//     if(acc.hasOwnProperty(curr)) //it check the str one by one if not exist it make it and give it    value 1 acc to it
+//       acc[curr]++;
+//    else
+//       acc[curr]=1;
+//    return acc
+// } , {}); //in this the acc is initialize with object that is {}, not 0
+// console.log(result);
 
 //so the reduce it make the value reduce and make it into a single or final value
 
@@ -2824,10 +2823,10 @@ console.log(result);
 
 // CALL BACK FUNCTION -- 
 
-function greet(para){
-     console.log("hello everyone");
-     para();
-}
+// function greet(para){
+//      console.log("hello everyone");
+//      para();
+// }
 
 // greet(message);
 
@@ -2910,11 +2909,11 @@ function greet(para){
 // console.log(evennos);
 
 
-const nextui = [
-   {name : "sahil", marks:90 , age : 23},
-   {name : "monu", marks:80 , age : 33},
-   {name : "hitesh", marks:30 , age : 21},
-];
+// const nextui = [
+//    {name : "sahil", marks:90 , age : 23},
+//    {name : "monu", marks:80 , age : 33},
+//    {name : "hitesh", marks:30 , age : 21},
+// ];
 
 //we are using filter with the call back function 
 // let markss  = nextui.filter( obj=> console.log(obj.marks>50));
@@ -3056,6 +3055,35 @@ const nextui = [
 
 // add  , delete , has , size , clear , union , intersection  , convert from arr to set and vice versa , iteration using for of loop , foreach on set
 
+// let set1 = new Set([1,2,4,5,2,4]);
+// let set2 = new Set([1,2,4,5,2,4]);
+// 
+// let result = [...set1].filter((num) => set2.has(num));
+// console.log(result);
+
+
+// for(let values of set2){
+//   console.log(values);
+// }
+
+// let result = set2.forEach(num => console.log(num));
+// console.log(result);
+// set1.add(3);
+// console.log(set1);
+
+// set1.delete(2);
+// console.log(set1);
+
+// console.log(set1.has(4));
+
+// console.log(set1.size);
+// console.log(set1.clear);
+
+// let sett = new Set();
+
+// console.log(sett);
+
+
 
 //map -- key value pairs -- anytype of keys , 
 
@@ -3064,6 +3092,396 @@ const nextui = [
 //2nd method to create a map
 //for each on map
 
+//this is the 2nd way to create a map 
+// let mat = new Map([[0 , "sahil"] , ["age" , 35] , ["salary" , 50000]]);
 
+// console.log(mat);
+
+// console.log(mat.get(0));
+// console.log(mat.has("age"));
+// console.log(mat.size);
+// mat.delete("salary");
+// console.log(mat);
+
+// let matt = new Map();
+// matt.set("name", "hitesh");
+
+// console.log(matt);
+
+// console.log(mat.forEach((num) => console.log(num)));
+
+// for(let value of mat){
+//   console.log(value);
+// }
+
+
+//how js code works OR JS CODE EXECUTION 
+
+// console.log(x);
+// console.log(b);
+
+// var x = 10;
+// let x = 10;
+
+
+// if we do this   without declare below then it show b is not defined in case of nothing
+// in var -- it show undefined in case of var
+// if we take x -- it show we cannot access x before initialization in case of let
+
+//why it show 3 diff things
+
+// basically code executes take memory and line by line it executes
+
+//it create executon context -- divide into 2 parts memory and code
+
+//lets take an eg. -- 
+
+var x = 10;
+let y = 20;
+const z = 30;
+console.log(x);
+console.log(y);
+console.log(y);
+
+                       //Execution context
+ //memory                                                    //code
+// x : undefined : after it 10 
+// y : 20
+// z : 30
+//this y and z Temporal dead zone
+
+// on screen it print -- 
+
+// ecma script -- earlier only var is used so we give undefined to it 
+//            but these let and const recent added so nothing give to him at first time
+//in x we give undefined , y and z we give nothing then normal print statement executes 
+// then code executes
+
+//JS is synchronous single level/threaded language it means 
+
+// it means code executes line by line single level by level
+//now u understand this code
+
+// console.log(x);
+// console.log(y);
+// var x = 10;
+// let y  = 20;
+
+                        //Execution context
+ //memory                                                    //code
+// x : undefined  
+// y : 20
+
+//the x initialize with undefined then it print undefined while executing 
+//y with nothing it give error because y have nothing to show so it give error of initialiazation first
+//
+
+//when these y and z defined with nothing they go into temporal dead zone when they initialize with values they get out from this temporal zone
+//means phase between declare to the initialization 
+//this is temporal deadzone eg let , const
+ 
+// --------------------------------------
+//Now move to the HOISTING PART -- 
+// JS Code execution
+
+// Js is a synchronous single threaded language.
+
+// Hoisting in JavaScript is the behavior where variable and function declarations are moved to the top of their containing scope during the compilation phase, before the code has been executed.
+
+// This means that JavaScript "hoists" or lifts the declarations (but not the assignments) to the top, so you can refer to them before they are written in the code. However, only the declarations are hoisted, not the assignments or initializations.
+
+// In other words; a variable can be used before it has been declared.
+
+// //
+//Hoisting means all ur declarations goes into the top not defined value just declare like
+//means declaration of all variable are on the top
+//only the declaration part nor value assigned 
+//value assigned at its own place
+//javascript treat in this way -- 
+
+// var x = undefined;
+// let y = ;
+
+// console.log(x);
+// console.log(y);
+// x = 10;
+// y  = 20;
+
+// eg 2 -- let z ;
+//         var x = undefined;
+//         let y ;
+
+
+// console.log(x);
+// z = 50;
+// console.log(y);
+// x = 10 ;
+// y = 3;
+// console.log(z);
+
+//hoisting it is a concept we don't know it acutally doing or not
+//it executes line by line it is a single threaded 
+
+// let take an function --
+
+greet();
+
+function greet(){
+    console.log("hello world");
+}
+//it is working because -- 
+//memory allocate - 
+//greet : function code
+
+//code execution 
+// greet(); it already present in memory allocation so it execute without any error
+
+meet();
+
+let meet = function(){
+    console.log("hello duniya");
+}
+//now this meet(); give error lets see why 
+
+//it give error because lets check execution context - -
+// memory allocation 
+// meet --              //we give nothing because meet with let 
+
+//code execution 
+//now execute meet() and it give error because we have nothing in meet because of let
+//but if we write meet below then it execute in memory allocation meet function is there then in code execution it said to execute and it run without any error 
+
+
+
+let a = 10 ;
+let b = 20 ;
+
+function add(num1 , num2){
+    let result = num1+num2;
+    return result ;
+}
+
+var ans = add(a,b);
+console.log(ans);
+
+//we see about this code in console after debugging that in the let the value is unavailable and in the var it represent undefined 
+//and at the last the call stack is also empty after the result 
+
+
+                    //Execution context
+ //memory                                                    //code
+// a :  then 10
+// b :  then 20
+//add :{full function store here} -- it make their 
+//  own execution context in which we have num1, num2 , resutl
+// or function full copy here but the Element inside this not get memory so for this we do another execution context
+// ans : undefined;
+
+
+//for this add function there is other execution context is made 
+                            //Execution context
+ //memory                                                    //code
+// num1 :   10
+// num2 :   20
+//result :  30 
+
+//in stack we have 
+
+//add{a ,b} -- execution context after getting result it remove this add{} from stack 
+// gec -- global execution context then at last this gec is also remove
+
+
+//lets talk about from where these functions are coming 
+
+// console.log("hello world");
+// console.log(Math.random());
+// setinterval ()
+// new Object()
+
+// all these are coming from globalObject
+//this global object is also an Object  
+
+//the global object present at everywhere 
+//for chrome browser -- windows
+//for node.js -- global
+
+// eg -- windows.math.random() its working in chrome console
+
+// eg --
+
+// let obj ={
+//     name : "rohit",
+//     id  : 3,
+
+// }
+
+// console.log(obj.name);
+// //means whenever we get something from an object we used to write its object first like in this obj
+
+// in chrome we have windows object which have everything inside it like all object functions
+
+//YOU CAN ACCESS ALL THOSE WITHOUT MY NAME that is window
+
+//window is a global object also 
+//whatever variable u made it become part of window that is global object 
+
+//at every environment the global have diff name  in browser it is window , in node js it is  global  , 
+//in vs we have to write console.log(global.Math.random());
+//in chrome console we have to write window.math.random();
+
+// so we solve this problem by we used globalThis it works on everyenvironment
+//no we write 
+//globalThis.Math.random() in vs code
+////globalThis.Math.random() in chrome console code
+
+ 
+// basically the this keyword have diff roles acc to environment
+
+// in global scope -- It point window object and in node js it point to global object 
+
+// the this keyword point the global object
+
+// this keyword -- in global scope point toward -- global object 
+
+// "use strict"
+// lets talk about THIS keyword -- 
+
+
+
+// The this keyword in JavaScript is a special keyword that refers to 
+// the context in which the current code is being executed. 
+// Its value depends on how the function where this is used is called.
+
+
+// 1: Global Context (Outside Any Function)
+// In browsers: window object 
+// In Node.js: Module's exports object or {} 
+
+
+// console.log(this);
+//in chrome it show window.objects
+//in vs code it show{} that is module's exports object
+
+// ****************************************************************
+
+// 2:Inside a Function 
+// i: (Non-Strict Mode)
+// When this is used inside a regular function, it refers to the global object.
+// ii: Strict Mode
+// this will be undefined inside a function.
+
+// function greet(){
+//     console.log(this);  //this  this point undefined it we use this function in strict mode 
+//but if we use this function in  non strict mode than it points window object
+// }
+
+// greet();
+// window.greet();
+ 
+// in non strict mode the this -  it point global object
+// in strict mode the this - it point undefined 
+
+//strict mode -- rules and regulation are high while writing js
+//non -strict mode -- vice versa
+
+// in recent code use see "use strict"
+//latest use "use strict"
+//earlier codebases follow non strict rules 
+// eg- of both are -- 
+
+// a = 3;
+// console.log(a); //in non strict it print it easily but in strict it asked to define a first using let , var
+
+
+// let obj = {
+//     name:10
+// }
+
+// Object.freeze(obj);
+// obj.name = 145;
+// console.log(obj);
+
+// "use strict" also a best way to debugging to use this write this at first line of file 
+//Default mode is Non-Strict mode -- 
+
+// ****************************************************************
+
+// 3: Inside a Method (Object Context)
+// When this is used inside an object’s method, it refers to the object that owns the method.
+
+// const obj ={
+//     name:"Rohit",
+//     age:20,
+//     meet: function(){
+        // console.log(this); 
+//         console.log(this.name);  //if this point to self obj then it print Rohit because it point obj
+//     }
+// }
+
+// obj.meet();  --   if we call this then the present this it represent the const obj itself not the global object  or it point to the obj not the window object 
+//when this is in the obj then it point the obj
+
+//BASICALLY THE LOGIC IS WHOEVER THE OBJECT IS CALLING THE FUNCTION HE BECAME THE GLOBAL OBJECT 
+// window.MessageEvent(); -- it global object is window
+// obj.greet(); -- it global object is obj
+// meet(); -- it global object is undefined  
+//i hope u understand 
+
+// ****************************************************************
+
+// Arrow functions don’t have their own this. 
+// Instead, they inherit this from the surrounding (lexical) scope.
+
+let obj = {
+    name:"rohit",
+    age:11,
+    greet: ()=>{
+        console.log(this); //u can't write here this.name it don't print anything because its global ojbect is window not obj
+    }
+}
+
+obj.greet();  //it print their global object is window object not its obj because it arrow function doesn't have own this also he inherit from lexical scope that is surrounding global scope that is window global scope   
+
+//the point is arrow function point the global object that's it 
+
+//final is in this the surrounding object is the obj and this of this obj pointing to window that is global object so final ans is window object 
+
+
+// let obj = {
+//     name:"rohit",
+//     age:11,
+//     greet: function(){
+        
+//         let ab = ()=>{
+//             console.log(this);
+//         };
+
+//         ab();
+
+//    }
+// }
+
+// obj.greet(); -- in this case the this point the obj because in arrow function the this take obj from surrounding and in the surrounding the object is function and it global object is obj
+
+//note : in this the this keyword search in surrounding it get function and the this of function scope is obj
+// means the this of surrounding object point to which object -- that is the this object in the arrow function that is the final definition of arrow function this
+
+
+
+// Inside a Constructor or Class
+// In constructors and classes, this refers to the instance of the object being created.
+
+// class Person{
+//     constructor(name,age){
+//         this.name = name;
+//         this.age = age;
+//     }
+// }
+
+// let a = new Person("Rohit", 20);
+// console.log(a);
+
+
+//the benefit of using this keword in perspective of classes and constructor while creating object for the clasess we dont have to make another constructor everytime for the different object ...
 
 

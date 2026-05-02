@@ -9,7 +9,7 @@
 body {
   min-height: 100vh;
   overflow: hidden;
-  background: radial-gradient(circle at top, #101d42, #050816 60%, #000);
+  background: radial-gradient(circle at top, #101d42, #050816 70%, #000);
   color: white;
 }
 

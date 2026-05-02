@@ -65,3 +65,5 @@ p{
 }
 
 /* in this way we can set the new font from google font  */
+
+/* the final series for css specificity is -- !important > inline , internal, external css > id>attribute > class > descendent and child selector > elment  */

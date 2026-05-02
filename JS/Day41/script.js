@@ -88,7 +88,7 @@ console.log(y);
 // console.log(x);
 // console.log(y);
 // x = 10;
-//y  = 20;
+// y  = 20;
 
 // eg 2 -- let z ;
 //         var x = undefined;

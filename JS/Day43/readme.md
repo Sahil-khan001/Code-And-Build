@@ -18,9 +18,6 @@ With the object model, JavaScript gets all the power it needs to create dynamic 
 
 
 *******************************************************************
-
-
-
 1: Accessing Element:
 
 
@@ -54,7 +51,7 @@ e: Accessing Using Relationships
    Method: element.parentNode or element.parentElement
    Description: Access the immediate parent of an element.
 
-   ii: Child Nodes:
+   ii: Child Nodes:s
    Method: element.childNodes (includes text nodes) or element.children 
    (only element nodes)
    Description: Access all child nodes of an element.
@@ -71,7 +68,7 @@ e: Accessing Using Relationships
 
 
 
-1.innerHTML 
-2.textContent
-3.innerText 
+1.innerHTML -- include everything -- tag , other also 
+2.innerText -- everything included but it include display none content also
+2.textContent -- strict only required
 
