@@ -85,6 +85,8 @@ data.forEach((obj) => {
   para.textContent = obj.offer;
 
   div1.appendChild(imgdiv);
+
+  
   div1.appendChild(para);
 
   // RESTAURANT SECTION

@@ -82,7 +82,3 @@ Restart.addEventListener('click',()=>{
 //we have to know about we can remove event.listener() after winning
 //like board.removeEventlistener('click' , call_back function);
 
-
-//STEPS TO MAKE THIS TIC TOE -- 
-
-//1. get access of board 

@@ -68,7 +68,7 @@ e: Accessing Using Relationships
 
 
 
-1.innerHTML -- include everything -- tag , other also 
+1.innerHTML -- include everything -- tag , other also -- use it only when u want to include tag also 
 2.innerText -- everything included but it include display none content also
-2.textContent -- strict only required
+2.textContent -- strict only required -- use this if u want only for plain text purpose 
 

@@ -51,7 +51,7 @@ function RandomQuestion(){
 // obj =  { question: "Who has the most centuries in international cricket?", options: ["Sachin Tendulkar", "Virat Kohli", "Ricky Ponting", "Jacques Kallis"], answer: "Sachin Tendulkar" },
 
 //select the form
-const form = document.querySelector('form');
+// const form = document.querySelector('form');
 
 // {/* <div>
 //     <p></p>
@@ -66,8 +66,13 @@ const problem = RandomQuestion();
 const original_answer = {};
 // key value
 
+
+const form_element = document.createElement('form');
+form_element.className = "quizForm";
+
 problem.forEach((obj,index)=>{
    
+
     const div_element = document.createElement('div');
     div_element.className = 'question';
     original_answer[`q${index+1}`]= obj['answer'];  //u can write obj.answer 
@@ -94,7 +99,7 @@ problem.forEach((obj,index)=>{
        div_element.appendChild(document.createElement('br'));
     })
 
-    form.appendChild(div_element);
+    form_element.appendChild(div_element);
 })
 
 
@@ -103,7 +108,10 @@ button.type = 'submit'
 button.className = "submit-btn"
 button.textContent = "Submit";
 
-form.appendChild(button);
+form_element.appendChild(button);
+
+const cont = document.querySelector('.container');
+cont.appendChild(form_element);
 
 
 //  Check the submitted form
@@ -111,8 +119,8 @@ form.appendChild(button);
 
 
 
- 
- form.addEventListener('submit',(event)=>{
+ //this is for the button part to check the answer 
+ form_element.addEventListener('submit',(event)=>{
      
     event.preventDefault();
     const data = new FormData(form);

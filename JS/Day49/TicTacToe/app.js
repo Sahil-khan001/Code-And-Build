@@ -26,8 +26,6 @@ function checkWinner(){
 
 }
 
-
-
 // Print sahi se ho rha hai....
 
 const printer = (event)=>{

@@ -117,7 +117,7 @@
 //     console.log(num);
 // });
 
-//CONVERT NODELIST INTO ARRAY 
+//CONVERT NODELIST INTO ARRAY  then u can use for each for html collections as well 
 // Array.from(obj);
 
 //You can access with list also li
@@ -262,3 +262,8 @@
 // HTMLCollection → getElements... → for loop
 // NodeList → querySelectorAll → forEach
 // Avoid text nodes → always use Element versions
+
+
+// className  , tagName , -- use normal for i loop -- convert into array using Array.from ()  then use forEach with this also 
+
+// querySelectorAll use -- forEach only

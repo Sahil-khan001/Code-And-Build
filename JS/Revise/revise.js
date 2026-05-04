@@ -72,7 +72,6 @@
 //DAY 4 LEARNING -- 
 //now we have arrays , objects in it
 
-
 // let arr = ["sahil khan" , 1 , "delhi"];
 // console.log(arr)
 // console.log( typeof arr)
@@ -3231,7 +3230,7 @@ function greet(){
 }
 //it is working because -- 
 //memory allocate - 
-//greet : function code
+//greet : full function code put into it
 
 //code execution 
 // greet(); it already present in memory allocation so it execute without any error

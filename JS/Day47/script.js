@@ -72,7 +72,7 @@
 
 
 //THIS IS EVENT DELEGATION -- 
-//means i am not putting event on every child 
+//means i am not putting eventlistener on every child 
 //we delegate event to parent now parent know which child is trigger to the event 
 
 //what happened here is whenever we click on any button its event appear in parent  now parent know which child is triggering the event listener we know by default it event bubbling whenever we click on any child it expand outside and after some time it reacch parent then parent know the target in this way event bubbling works also opposite of its is event capture
