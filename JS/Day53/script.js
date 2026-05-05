@@ -120,6 +120,6 @@ fetch(meet);
 
 
 //note :-
-//whenever u fetch data from backend maximum times u got the data in object forms 
+//whenever u fetch data from backend maximum times u got the data in object forms and if u got data in object then u can easily display it on using JS 
 //SetTimeout -- Run only one time
 //SetInterval -- Run again and again 

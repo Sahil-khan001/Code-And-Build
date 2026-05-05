@@ -75,7 +75,7 @@ function DeliverOrder(){
 // placedOrder(preparingOrder);
 //now we can do it ahead for the pickupOrder 
 
-//sor for this we use arrow function 
+//so for this we use arrow function 
 
 placedOrder(()=>{
     preparingOrder(()=>{
