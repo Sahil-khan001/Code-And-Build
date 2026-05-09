@@ -105,9 +105,8 @@ form.addEventListener('submit' ,(event)=>{
     //u can print its keys and values also like -- 
 
     // console.log(data.keys()); //it give iterator but u know how to iterate over the iterator or we can convert it into the arrays and then we get keys and values or we can use for of loop to get the keys and values
-    // console.log(Array.from(data.keys())); //it give iterator but u know how to iterate over the iterator or we can convert it into the array then i give keys
-    // console.log(Array.from(data.values())); //it give iterator but u know how to iterate over the iterator or we can convert it into the array then i give keys
-    // console.log(Array.from(data.entries())); //it give iterator but u know how to iterate over the iterator or we can convert it into the array then i give keys
+    // console.log(Array.from(data.keys())); 
+    // console.log(Array.from(data.values())); 
     
     //if u have iterator then u can use for of loop like to iterate 
     // for(let key of data.entries()){

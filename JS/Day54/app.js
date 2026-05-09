@@ -14,7 +14,7 @@
 
 //web API -- settime out
 //           setInterval 
-    //       fetch 
+    //       fetch -- it move to MICROSTASK QUEUE
     //       DOM 
     //       console    
 
@@ -86,8 +86,8 @@ console.log("I am last");
 
 //it gives priority to the microtask first then it is empty then it give priority to the call back queue 
 
-// In Microtask we have Promises and    only 
+// In Microtask we have Promises like fetch and async function and calls only 
 
-//but in callback we have settimeout , setinterval  and lot more ...
+//but in callback Queue we have settimeout , setinterval  and lot more ...
 
 

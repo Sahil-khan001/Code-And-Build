@@ -1,0 +1,82 @@
+[
+  {
+    "resturantname": "Food Junction",
+    "restuimage": "https://images.unsplash.com/photo-1528605248644-14dd04022da1",
+    "alcoholserves": true,
+    "restuopentime": 10,
+    "restuclosedtime": 22,
+    "rating": "5.5"
+  },
+  {
+    "resturantname": "The Food Spot",
+    "restuimage": "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17",
+    "alcoholserves": false,
+    "restuopentime": 4,
+    "restuclosedtime": 16,
+    "rating": "3.3"
+  },
+  {
+    "resturantname": "The Hungry Bowl",
+    "restuimage": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c",
+    "alcoholserves": true,
+    "restuopentime": 4,
+    "restuclosedtime": 16,
+    "rating": "2.6"
+  },
+  {
+    "resturantname": "The Food Spot",
+    "restuimage": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c",
+    "alcoholserves": true,
+    "restuopentime": 12,
+    "restuclosedtime": 0,
+    "rating": "2.4"
+  },
+  {
+    "resturantname": "The Hungry Bowl",
+    "restuimage": "https://images.unsplash.com/photo-1504674900247-0877df9cc836",
+    "alcoholserves": true,
+    "restuopentime": 7,
+    "restuclosedtime": 19,
+    "rating": "5.3"
+  },
+  {
+    "resturantname": "Urban Tadka",
+    "restuimage": "https://images.unsplash.com/photo-1514933651103-005eec06c04b",
+    "alcoholserves": true,
+    "restuopentime": 2,
+    "restuclosedtime": 14,
+    "rating": "3.8"
+  },
+  {
+    "resturantname": "Urban Tadka",
+    "restuimage": "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17",
+    "alcoholserves": false,
+    "restuopentime": 18,
+    "restuclosedtime": 6,
+    "rating": "2.1"
+  },
+  {
+    "resturantname": "Masala Magic",
+    "restuimage": "https://images.unsplash.com/photo-1514933651103-005eec06c04b",
+    "alcoholserves": false,
+    "restuopentime": 4,
+    "restuclosedtime": 16,
+    "rating": "1.4"
+  },
+  {
+    "resturantname": "Curry Castle",
+    "restuimage": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c",
+    "alcoholserves": false,
+    "restuopentime": 19,
+    "restuclosedtime": 7,
+    "rating": "5.4"
+  },
+  {
+    "resturantname": "Spice Villa",
+    "restuimage": "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17",
+    "alcoholserves": true,
+    "restuopentime": 0,
+    "restuclosedtime": 12,
+    "rating": "5.3"
+  }
+]

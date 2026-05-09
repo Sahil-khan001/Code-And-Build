@@ -176,7 +176,7 @@ form.addEventListener('submit' , (event)=>{
     // console.log(FName , SName , Day , Month , Year);
     
     const first_message = `Hello ${FName} ${SName}`;
-    const second_message = `Your Zodiac Sign is ${zodiacSigns[Month -1]} `; //this is based on month ans we do -1 because array start with 0 index 
+    const second_message = `Your Zodiac Sign is ${zodiacSigns[Month -1]} `; //this is based on month ans we do -1 because array start with 0 index //this month-1 represent 1-1  = 0 
     const third_message = compliments[Day -1]; //because of indexing 
     const fourth_message = victimCardCompliments[Math.floor(Math.random()*victimCardCompliments.length)];
     
@@ -206,3 +206,7 @@ form.addEventListener('submit' , (event)=>{
 //event.preventDefault() -- it is used to not to do refresh page like if we dont use this then form submitted into backend but if we use then we have control of data means now it appears on the SCREEN
 
 
+
+//IMP. LEARNING FROM THIS PROJECT -- 
+//for the random value -- we use the math.random() functions 
+//for the series wise value -- we use the login throught day , month  , year  , modulus and many more 

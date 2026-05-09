@@ -668,7 +668,7 @@
 // let obj = {
 //      name: "sahil",
 //      Id : 39,
-//      account_balance : 100
+//      account_balance : 100,
 //      account number : 37583
 // }
 
@@ -3302,7 +3302,7 @@ console.log(ans);
 
 //the global object present at everywhere 
 //for chrome browser -- windows
-//for node.js -- global
+//for node.js -- some modules 
 
 // eg -- windows.math.random() its working in chrome console
 

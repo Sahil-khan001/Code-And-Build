@@ -93,6 +93,8 @@
 
 // return pr ;
 
+//MEANS INSTEAD OF console.log USED RESOLVE  
+
 //now apply this into our code -- 
 
  
@@ -177,7 +179,7 @@
 
 //it print Items out of stock because if food is not available then write in reject then catch print this 
 
-//if not then it execute full promise 
+//if not then it execute full promise //OTHEWISE it will stop at point of reject or we can say when u got error 
 
 
 // cart = ["pizza" ,"coke" , "sandwich"];

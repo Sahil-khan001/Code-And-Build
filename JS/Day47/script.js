@@ -213,3 +213,4 @@ document.body.style.backgroundColor = event.target.id;
 
 //what is the benefit of all this means event  bubbling -- we optmised our background color generator program move to the upper code for this -----
 
+//the benefit is -- now we are not attach event listener to every child we just have to add event listener to only parent and parent will know which child is triggering 

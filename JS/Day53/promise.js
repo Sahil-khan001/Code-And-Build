@@ -5,7 +5,7 @@
 // console.log(20);
 // console.log(30);
 
-//JS behave also like Asynchronous language -- 
+//But sometime JS behave also like Asynchronous language -- 
 
 //THIS IS ASYNCHRONOUS TASK -- it execute depends on function logic 
 console.log("10");

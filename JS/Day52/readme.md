@@ -47,7 +47,7 @@ Re-parses HTML string
 Can recreate nodes repeatedly (costly)
 Feels like “re-rendering” every loop
 createElement + appendChild
-Adds nodes incrementally
+Adds nodes incrementally  BASED ON THE DATA 
 More efficient, predictable
 📊 Why number of elements depends on data
 data.length === number of cards
@@ -59,6 +59,6 @@ Data is the source of truth; UI is just a projection of it.
 🎯 Final Mental Model (keep this)
 HTML structure = template idea
 JS = factory that builds that structure
-Data = controls how many + what content
+Data = controls how many + what content STRUCTURE WE HAVE TO BUILD 
 CSS = applies based on class names only
-Re-render = manually updating/rebuilding DOM -->
+Re-render = manually updating/rebuilding DOM USING DYNAMIC JS USING CREATING ELEMENT -->

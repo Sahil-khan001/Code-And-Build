@@ -15,7 +15,7 @@ const data = [
     alt: "restaurant2",
     name: "Spice Villa",
     rating: 4.0,
-    food: "Indian, Mughlai",
+    food: "Indian, Mughlai", 
     price: "₹1500 for two",
     place: "Connaught Place",
     distance: "2.1 km",
