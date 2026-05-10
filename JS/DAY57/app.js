@@ -1,9 +1,6 @@
 
 // // const resturant = ["ck dir", "mk2" , "toto"];
 
-// const { createElement } = require("react");
-
-
 // // const jsonObj = JSON.stringify({dhabaname : resturant});
 // // console.log(jsonObj);
 
@@ -63,6 +60,9 @@
 // resturant.push(obj);
 // }
 
+//now we have an resturant array now we convert this array into JSON file like this 
+//we are doing it because if we print resturant in terminal it show all objects correctely but the issue is if we have 100 object we dont copy from there instead of this what we do is we we make a file of all these object like JSON FILE then we copy from that and paste it here easily 
+
 
 // const fs = require('fs');
 
@@ -90,7 +90,8 @@
 
 // Yes, mostly developers use it when they want the JSON file to be human-readable.
 
-// JSON.stringify(data, null, 2)
+// JSON.stringify(data, null, 2) 
+// or JSON.stringify(data, null, 4) 
 
 
 const restaurants = [
@@ -1494,6 +1495,8 @@ function getrestaurant(restaurants){
 
 
 getrestaurant(restaurants);
+//NOW IF U HAVE 100 OBJECTS -- 100 CARDS APPEAR ON UI 
+//BECAUSE JS DOM MANIPULATION DEPENDS ON DATA
 
 //BASICALLY WE MADE THIS FUNCTION TO SHOWCASE U THAT WE JUST PASSED AN ARRAY INTO IT AND WHATEVER THE OBJECT INSIDE INTO IT IT CREATES CARD OF IT OR TAKING  RESTURANT DETAILS IN OJBECT FORM AND THIS FUNCTION CREATE A CARD OF IT 
 //LIKE A FULLY FLEGED CARD 
@@ -1623,58 +1626,57 @@ getrestaurant(restaurants);
 
 
 //JUST FOR REVISION 
+document.querySelector('#Alcohol').addEventListener('click' , ()=>{
 
-// document.querySelector('#Alcohol').addEventListener('click' , ()=>{
+    const result = restaurants.filter((obj) => obj.alcohol);
 
-//     const result = restaurants.filter((obj) => obj.alcohol);
+    document.querySelector('#root').replaceChildren();  //or .innerHTML = "";
 
-//     document.querySelector('#root').replaceChildren();
+    getrestaurant(result);
+})
 
-//     getrestaurant(result);
-// })
+document.querySelector('#Rating').addEventListener('click' , ()=>{
 
-// document.querySelector('#Rating').addEventListener('click' , ()=>{
+    const result = restaurants.filter((obj) => obj.rating > 4.5);
 
-//     const result = restaurants.filter((obj) => obj.rating > 4.5);
+    document.querySelector('#root').replaceChildren();
 
-//     document.querySelector('#root').replaceChildren();
-
-//     getrestaurant(result);
-// })
-
-
-// document.querySelector('#Filters').addEventListener('click' , ()=>{
+    getrestaurant(result);
+})
 
 
-//     document.querySelector('#filterPopup').classList.remove('hidden');
+document.querySelector('#Filters').addEventListener('click' , ()=>{
 
-// })
 
-// document.querySelector('#applyFilter').addEventListener('click' , ()=>{
+    document.querySelector('#filterPopup').classList.remove('hidden');
 
-//     const element = document.querySelector('input[name = "filterOption"]:checked');
-//     const value = element.value;
+})
+
+document.querySelector('#applyFilter').addEventListener('click' , ()=>{
+
+    const element = document.querySelector('input[name = "filterOption"]:checked');
+    const value = element.value;
 
     
-// //a-b -- IS USED FOR ASCENDING  ,  b-a -- IS USED  FOR DESCENDING
-//     if(value === "rating"){
-//         restaurants.sort((a,b) => b.rating - a.rating);
-//     }
-//     else if(value === "highLow"){
-//         restaurants.sort((a,b) => b.price_for_two - a.price_for_two);
-//     }
-//     else if(value === "costLowHigh"){
-//         restaurants.sort((a,b) => a.price_for_two - b.price_for_two);
-//     }
-//     else if(value === "distance"){
-//         restaurants.sort((a,b) => a.distance_from_Customer_house - b.distance_from_Customer_house);
-//     }
+//a-b -- IS USED FOR ASCENDING  ,  b-a -- IS USED  FOR DESCENDING
+    if(value === "rating"){
+        restaurants.sort((a,b) => b.rating - a.rating);
+    }
+    else if(value === "highLow"){
+        restaurants.sort((a,b) => b.price_for_two - a.price_for_two);
+    }
+    else if(value === "costLowHigh"){
+        restaurants.sort((a,b) => a.price_for_two - b.price_for_two);
+    }
+    else if(value === "distance"){
+        restaurants.sort((a,b) => a.distance_from_Customer_house - b.distance_from_Customer_house);
+    }
 
-//       document.querySelector('#root').replaceChildren();
-//       getrestaurant(restaurants);
-//       document.querySelector('#filterPopup').classList.add('hidden');
+      document.querySelector('#root').replaceChildren();
+      getrestaurant(restaurants);
+      document.querySelector('#filterPopup').classList.add('hidden');
 
-// })
+})
 
 
 
@@ -1835,85 +1837,6 @@ getrestaurant(restaurants);
 //    //u have to write folder name and at last .jpeg
 
 //    image.src = resturant.restuimage; //because we have online links that why we use this 
-
-
-
-//    // card-content
-//        const Card_content = document.createElement('div');
-//        Card_content.classList.add('card-content');
-
-//     // Card header
-//        const Card_header = document.createElement('div');
-//        Card_header.classList.add('card-header');
-
-//        const h3 = document.createElement('h3');
-//        h3.textContent = restaurant.resturantname;
-
-//        const rate = document.createElement('span');
-//        rate.textContent = "Rating: " + restaurant.rating;
-//        rate.classList.add('rating');
-
-
-//        Card_header.appendChild(h3);
-//        Card_header.appendChild(rate);
-
-//     // Card footer
-//        const Card_footer = document.createElement('div');
-//        Card_footer.classList.add('card-footer');
-       
-//        const food = document.createElement('span');
-//        food.textContent = restaurant.food_type;
-
-//        const price = document.createElement('span');
-//        price.textContent = "₹"+restaurant.price_for_two;
-
-//        Card_footer.appendChild(food);
-//        Card_footer.appendChild(price);
-
-
-
-
-
-//     //  Card Location
-//     const card_location = document.createElement('div');
-//     card_location.classList.add('card-location');
- 
-//     const location = document.createElement('span');
-//     location.textContent = restaurant.location;
-
-//     const distance = document.createElement('span');
-//     distance.textContent = restaurant.distance_from_Customer_house+"km";
-    
-
-//     card_location.appendChild(location);
-//     card_location.appendChild(distance);
-
-
-//     Card_content.appendChild(Card_header);
-//     Card_content.appendChild(Card_footer);
-//     Card_content.appendChild(card_location);
-
-
-//     card.appendChild(image);
-//     card.appendChild(Card_content);
-
-//     root.appendChild(card);
-
-
-
-
-
-
-   
-
-  
-  
-//   });
-
-// }
-
-// getresturant(resturant);
-
 
 
 // -----------------------------------------------------------------------------------------

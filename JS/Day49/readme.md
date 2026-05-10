@@ -11,4 +11,5 @@ Zero: If a and b are equal (order remains unchanged). -->
 
 const arr = [20, 5, 100, 15];
 arr.sort((a, b) => a - b); // Sorts numerically in ascending order
+arr.sort((a, b) => b -a ); // Sorts numerically in Descending order
 console.log(arr); // Output: [5, 15, 20, 100]
