@@ -331,7 +331,59 @@ console.log(per1);
 
 // emitter is used to remove types from typescript code and convert into js to run file like bun , node js that used emitter to run directly 
 
+// BEST COMMAND FOR DEVELOPMENT
+// npx tsc --watch
 
+// Meaning:
+
+// "Keep watching files and auto compile on save"
+
+// This is what most developers use daily.
+
+// Final Understanding
+// OLD BEGINNER WAY
+// Install globally
+// Compile manually
+// Add options manually
+
+// Commands:
+
+// npm install -g typescript
+// tsc app.ts
+// MODERN PROFESSIONAL WAY
+// Install locally
+// Use tsconfig
+// Use npx
+// Auto compile everything
+
+// Commands:
+
+// npm install typescript --save-dev
+// npx tsc --init
+// npx tsc
+
+
+// IMP. CONFIGURATION SETTING FOR PROJECT -- 
+
+
+//     // Environment Settings
+//     // See also https://aka.ms/tsconfig/module
+//     "module": "es6",
+//     "target": "es6",
+//     "types": [],
+//     // For nodejs:
+//     // "lib": ["esnext"],
+//     // "types": ["node"],
+//     // and npm install -D @types/node
+
+//     // Other Outputs
+//     "sourceMap": true,
+//     "declaration": false,
+//     "declarationMap": false,
+
+//     // Stricter Typechecking Options
+//     "noUncheckedIndexedAccess": true,
+//     "exactOptionalPropertyTypes": true,
  
 // You are mixing 2 different things.
 
