@@ -50,6 +50,11 @@ addbtn.addEventListener("click", () => {
   totalAmt.textContent = result;
 });
 
+
+
+
+
+
 //logic for total
 // let arr = [10 ,30,30];
 

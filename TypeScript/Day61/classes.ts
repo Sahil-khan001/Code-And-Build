@@ -92,8 +92,6 @@
 
 //in this constructor is used to to initialize the value he takes value from object and put it into the class properties 
 
-//when u type tsc he runs all typescript files 
-
 //how to write functions in classes
 
 
@@ -329,11 +327,11 @@ console.log(per1);
 // <script src  = "app.js">
 
 
+// Extra notes by hitesh sir 
+
+// emitter is used to remove types from typescript code and convert into js to run file like bun , node js that used emitter to run directly 
 
 
-
-
-
-
+ 
 
 

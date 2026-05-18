@@ -1,5 +1,5 @@
 <!-- Data store -->
-1: Store the question
+1: Store the question  u have two options either do it by gpt , u can add it manually then convert it into json file using json code 
 2: Option ko store karana: 4 option
 3: Answer
 

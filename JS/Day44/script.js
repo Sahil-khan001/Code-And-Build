@@ -24,3 +24,26 @@
 // // } //what happened it crashes the code but it continuously calling it the function dont have time to show it on screen it crashes then we use now we have to use setinterval
 
 
+// REVISION 
+// function timing(){
+// const noww = new Date();
+// let timer = noww.toLocaleTimeString();
+// let timee = document.querySelector('#root');
+// timee.innerHTML = timer;
+
+// timee.style.color = "red";
+// timee.style.fontSize = "12rem";
+// timee.style.display = "flex";
+// timee.style.alignItems = "center";
+// timee.style.justifyContent = "center";
+// timee.style.height = "100vh";
+// }
+
+
+// timing();
+
+// setInterval(() => {
+//     // timing();
+    
+// }, 1000);
+

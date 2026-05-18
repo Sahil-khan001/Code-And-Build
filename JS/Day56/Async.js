@@ -101,7 +101,7 @@
 // async function greet(){
 //     const order = await placedOrder(cart);
 //     const foodDetails = await preparingOrder(order);
-//     const droplocation = pickupOrder(foodDetails);
+//     const droplocation = await pickupOrder(foodDetails);
 //     DeliverOrder(droplocation);
 // }
 
@@ -196,7 +196,7 @@
 
 //     setTimeout(() => {
 //     resolve("hello this is p1");
-//     }, 8000);
+//     }, 5000);
 // })
 
 // const p2 = new Promise((resolve , reject)=>{

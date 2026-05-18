@@ -93,6 +93,8 @@
 // JSON.stringify(data, null, 2) 
 // or JSON.stringify(data, null, 4) 
 
+//now the data is created in json file now we have to copy it from the json and paste it here in js file 
+
 
 const restaurants = [
     {
@@ -1403,6 +1405,8 @@ function getrestaurant(restaurants){
     const root = document.getElementById('root');
     
     restaurants.forEach(restaurant => {
+
+        
          
         // Create a card
         // 1: Image
@@ -1487,6 +1491,15 @@ function getrestaurant(restaurants){
     card.appendChild(image);
     card.appendChild(Card_content);
 
+      card.addEventListener('click', ()=>{
+
+    root.replaceChildren();
+
+    getrestaurant([restaurant]);
+
+})
+
+
     root.appendChild(card);
     
     });
@@ -1502,7 +1515,7 @@ getrestaurant(restaurants);
 //LIKE A FULLY FLEGED CARD 
 
 
-//Class list -- you can add multiple classes into it 
+//Class list.add -- you can add multiple classes into it 
 //class Name -- you can add only one class
 
 
@@ -1625,82 +1638,88 @@ getrestaurant(restaurants);
 
 
 
-//JUST FOR REVISION 
-document.querySelector('#Alcohol').addEventListener('click' , ()=>{
+// //JUST FOR REVISION 
+// document.querySelector('#Rating').addEventListener('click' , ()=>{
 
-    const result = restaurants.filter((obj) => obj.alcohol);
+//     document.querySelector('#root').innerHTML = "";
 
-    document.querySelector('#root').replaceChildren();  //or .innerHTML = "";
+//    let newrestu =  restaurants.filter((restu) => restu.rating>4.5);
+//    getrestaurant(newrestu);
+// })
 
-    getrestaurant(result);
-})
+// document.querySelector('#Alcohol').addEventListener('click' , ()=>{
 
-document.querySelector('#Rating').addEventListener('click' , ()=>{
+//     document.querySelector('#root').innerHTML = "";
 
-    const result = restaurants.filter((obj) => obj.rating > 4.5);
+//    let alcorestu =  restaurants.filter((restu) => restu.alcohol);
+//    getrestaurant(alcorestu);
+// })
 
-    document.querySelector('#root').replaceChildren();
+// document.querySelector('#Filters').addEventListener('click' , ()=>{
 
-    getrestaurant(result);
-})
-
-
-document.querySelector('#Filters').addEventListener('click' , ()=>{
-
-
-    document.querySelector('#filterPopup').classList.remove('hidden');
-
-})
-
-document.querySelector('#applyFilter').addEventListener('click' , ()=>{
-
-    const element = document.querySelector('input[name = "filterOption"]:checked');
-    const value = element.value;
-
-    
-//a-b -- IS USED FOR ASCENDING  ,  b-a -- IS USED  FOR DESCENDING
-    if(value === "rating"){
-        restaurants.sort((a,b) => b.rating - a.rating);
-    }
-    else if(value === "highLow"){
-        restaurants.sort((a,b) => b.price_for_two - a.price_for_two);
-    }
-    else if(value === "costLowHigh"){
-        restaurants.sort((a,b) => a.price_for_two - b.price_for_two);
-    }
-    else if(value === "distance"){
-        restaurants.sort((a,b) => a.distance_from_Customer_house - b.distance_from_Customer_house);
-    }
-
-      document.querySelector('#root').replaceChildren();
-      getrestaurant(restaurants);
-      document.querySelector('#filterPopup').classList.add('hidden');
-
-})
+//     document.querySelector('#filterPopup').classList.remove('hidden');
 
 
 
 
 
+//     document.querySelector('#applyFilter').addEventListener('click' , ()=>{
+
+//        let result =  document.querySelector('input[name = "filterOption"]:checked').value;
+//      if(result == 'rating'){
+//          document.querySelector('#root').innerHTML = "";
+         
+//          let newrestu =  restaurants.filter((restu) => restu.rating>4.5);
+//          getrestaurant(newrestu);
+//         }
+//         else if(result == 'highLow'){
+            
+//             document.querySelector('#root').innerHTML = "";
+//        let hightolow = restaurants.sort((a,b) => b.price_for_two -a.price_for_two);
+//        getrestaurant(hightolow);
+//      }
+//         else if(result == 'costLowHigh'){
+            
+//             document.querySelector('#root').innerHTML = "";
+//        let lowtohigh = restaurants.sort((a,b) => a.price_for_two -b.price_for_two);
+//        getrestaurant(lowtohigh);
+//      }
+//         else if(result == 'distance'){
+            
+//             document.querySelector('#root').innerHTML = "";
+//        let neardis = restaurants.sort((a,b) => a.distance_from_Customer_house -b.distance_from_Customer_house);
+//        getrestaurant(neardis);
+//      }
+
+//      document.querySelector('#filterPopup').classList.add('hidden');
+
+
+
+//     })
+// })
+
+// document.querySelector('#closeFilter').addEventListener('click' , ()=>{
+//     document.querySelector('#filterPopup').className = "hidden";
+// })
 
 
 
 
 
+// "name": "Fusion Feast",
+//         "rating": 5,
+//         "food_type": "Japanese",
+//         "price_for_two": 1582,
+//         "location": "Safdarjung Tomb",
+//         "distance_from_Customer_house": "5.1",
+//         "offers": 20,
+//         "alcohol": true,
+//         "restaurant_open_time": 16,
+//         "restaurant_close_time": 4
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+//NEW LOGIC -- 
 
 
 

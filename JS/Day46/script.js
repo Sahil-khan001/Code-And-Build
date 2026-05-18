@@ -79,6 +79,4 @@
 // const R = document.querySelector('#result');
 // R.innerHTML = `Result of both is : ${num1 / (num2*num2)}`;
 
-
-
 // })

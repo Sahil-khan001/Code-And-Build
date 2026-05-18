@@ -199,7 +199,7 @@ form.addEventListener('submit' , (event)=>{
         //second option if u want to use data in series wise then u can use % rule 
                  //means whatever the size of data any calculation then modulus by size of data
                  //it will give value from 0 to size - 1 value eg like 20 -- so u have indexing from 0 to 19 now u have data in series 
-  //for eg for the month , day -- [month -1][day -1] for indexing set  , (FName.length * SName.length * Year)%30; 
+  //for eg for the month , day -- [month -1][day -1]  but for this user have to input the Month , day  for indexing set  , (FName.length * SName.length * Year)%30; 
         //this is useful in case u want that username with the same name will get similar data okk
 
 //3. 

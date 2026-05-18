@@ -267,3 +267,11 @@
 // className  , tagName , -- use normal for i loop -- convert into array using Array.from ()  then use forEach with this also 
 
 // querySelectorAll use -- forEach only
+
+
+
+// let list = document.querySelectorAll('#third li');
+
+// list.forEach((val) => {
+//     val.textContent = "blue";
+// })

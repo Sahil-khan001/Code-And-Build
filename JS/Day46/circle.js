@@ -33,7 +33,6 @@
 // circle.style.top = `${y-50}px`;
 
 
-
 // //for the different colors -- 
 // const Color = ["red" , "blue" , "yellow" , "green" , "white" , "purple" , "orange" , "brown" , "aliceblue"];
 // circle.style.backgroundColor = Color[Math.floor(Math.random()*Color.length)];

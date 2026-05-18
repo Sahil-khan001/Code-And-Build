@@ -138,3 +138,25 @@ const quotes = [
 // const random = Math.floor(Math.random()*(max-min +1)+min);
 // console.log(random);
 
+
+
+
+//REVISION 
+// let access = document.querySelector('#quote');
+// let back = document.querySelector('#backcolor');
+
+
+// document.querySelector('#butt').addEventListener('click' , ()=>{
+  
+//   access.innerHTML  =  quotes[Math.floor(Math.random()*quotes.length)];
+
+// let r = Math.floor(Math.random()*255);
+// let g = Math.floor(Math.random()*255);
+// let b = Math.floor(Math.random()*255);
+// back.style.backgroundColor  = `rgb(${r} , ${g} , ${b})`;
+
+
+// })
+
+
+

@@ -23,7 +23,7 @@ const questionBank = [
 
 
 function RandomQuestion(){
-    const data = new Set();
+    const data = new Set([]);
 // use set for unique object
 
     while(data.size!=5){

@@ -62,3 +62,14 @@ JS = factory that builds that structure
 Data = controls how many + what content STRUCTURE WE HAVE TO BUILD 
 CSS = applies based on class names only
 Re-render = manually updating/rebuilding DOM USING DYNAMIC JS USING CREATING ELEMENT -->
+
+
+
+basically to create dynamic js //change dom using js u have these too options 2nd one is recommended
+
+container.innerHTML = "";   // clear
+data.forEach(createCard);   // build again
+
+That manual clear + rebuild = re-render.
+
+So re-render = “you changed the DOM again,” not something the browser does by itself.

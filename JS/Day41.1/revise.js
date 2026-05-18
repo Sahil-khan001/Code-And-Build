@@ -1569,7 +1569,7 @@ let customer = {
 //     arr[index] = num *2;
 // console.log(arr[index]);
 
-//   })  
+//   }  
 
   
 //   console.log(arr); //u can print values like this also okk
@@ -2889,7 +2889,7 @@ let customer = {
 
 // let print = (num , index) => console.log(num , index);
 // const arr = [1,5,8,2];
-// arr.forEach(print);
+// arr.forEach(print); 
 
 //FILTER -- return only true or false 
 //IT CAN STORE IN VARIABLE TOO
@@ -3207,39 +3207,39 @@ console.log(y);
 // y  = 20;
 
 // eg 2 -- let z ;
-//         var x = undefined;
-//         let y ;
+// //         var x = undefined;
+// //         let y ;
 
 
-// console.log(x);
-// z = 50;
-// console.log(y);
-// x = 10 ;
-// y = 3;
-// console.log(z);
+// // console.log(x);
+// // z = 50;
+// // console.log(y);
+// // x = 10 ;
+// // y = 3;
+// // console.log(z);
 
-//hoisting it is a concept we don't know it acutally doing or not
-//it executes line by line it is a single threaded 
+// //hoisting it is a concept we don't know it acutally doing or not
+// //it executes line by line it is a single threaded 
 
-// let take an function --
+// // let take an function --
 
-greet();
+// greet();
 
-function greet(){
-    console.log("hello world");
-}
-//it is working because -- 
-//memory allocate - 
-//greet : full function code put into it
+// function greet(){
+//     console.log("hello world");
+// }
+// //it is working because -- 
+// //memory allocate - 
+// //greet : full function code put into it
 
-//code execution 
-// greet(); it already present in memory allocation so it execute without any error
+// //code execution 
+// // greet(); it already present in memory allocation so it execute without any error
 
-meet();
+// meet();
 
-let meet = function(){
-    console.log("hello duniya");
-}
+// let meet = function(){
+//     console.log("hello duniya");
+// }
 //now this meet(); give error lets see why 
 
 //it give error because lets check execution context - -
@@ -3252,16 +3252,16 @@ let meet = function(){
 
 
 
-let a = 10 ;
-let b = 20 ;
+// let a = 10 ;
+// let b = 20 ;
 
-function add(num1 , num2){
-    let result = num1+num2;
-    return result ;
-}
+// function add(num1 , num2){
+//     let result = num1+num2;
+//     return result ;
+// }
 
-var ans = add(a,b);
-console.log(ans);
+// var ans = add(a,b);
+// console.log(ans);
 
 //we see about this code in console after debugging that in the let the value is unavailable and in the var it represent undefined 
 //and at the last the call stack is also empty after the result 
@@ -3431,15 +3431,15 @@ console.log(ans);
 // Arrow functions don’t have their own this. 
 // Instead, they inherit this from the surrounding (lexical) scope.
 
-let obj = {
-    name:"rohit",
-    age:11,
-    greet: ()=>{
-        console.log(this); //u can't write here this.name it don't print anything because its global ojbect is window not obj
-    }
-}
+// let obj = {
+//     name:"rohit",
+//     age:11,
+//     greet: ()=>{
+//         console.log(this); //u can't write here this.name it don't print anything because its global ojbect is window not obj
+//     }
+// }
 
-obj.greet();  //it print their global object is window object not its obj because it arrow function doesn't have own this also he inherit from lexical scope that is surrounding global scope that is window global scope   
+// obj.greet();  //it print their global object is window object not its obj because it arrow function doesn't have own this also he inherit from lexical scope that is surrounding global scope that is window global scope   
 
 //the point is arrow function point the global object that's it 
 

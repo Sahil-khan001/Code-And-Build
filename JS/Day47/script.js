@@ -83,16 +83,16 @@
 
 // so in code we use this like --
 
-const par = document.querySelector('#root');
+// const par = document.querySelector('#root');
 
-par.addEventListener('click' , (event)=>{
+// par.addEventListener('click' , (event)=>{
 
-    // console.log(event.target.tagName);     ///it print the element tagname which is triggering 
+//     // console.log(event.target.tagName);     ///it print the element tagname which is triggering 
 
-    if(event.target.tagName == "BUTTON"){
-document.body.style.backgroundColor = event.target.id;
-    }
-},false);
+//     if(event.target.tagName == "BUTTON"){
+// document.body.style.backgroundColor = event.target.id;
+//     }
+// },false);
 
 //TO STOP THE EVENT BUBBLING AND THE EVENT CAPTURING we use -- 
 
@@ -213,4 +213,4 @@ document.body.style.backgroundColor = event.target.id;
 
 //what is the benefit of all this means event  bubbling -- we optmised our background color generator program move to the upper code for this -----
 
-//the benefit is -- now we are not attach event listener to every child we just have to add event listener to only parent and parent will know which child is triggering 
+//the benefit is -- now we are not attach event listener to every child we just have to add event listener to only parent and parent will know which child is triggering
