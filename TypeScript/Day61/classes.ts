@@ -333,5 +333,32 @@ console.log(per1);
 
 
  
+// You are mixing 2 different things.
 
+// Case 1 — Element already exists in HTML
+// <button id="btn"></button>
+
+// Then:
+
+// const btn = document.querySelector('#btn');
+
+// works immediately.
+
+// No issue.
+
+// Case 2 — Element does NOT exist yet
+
+// Example:
+
+// <div id="root"></div>
+
+// Then:
+
+// const btn = document.querySelector('#btn');
+
+// returns:
+
+// null
+
+// because button not created yet.
 
