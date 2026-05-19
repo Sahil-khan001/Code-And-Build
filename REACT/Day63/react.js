@@ -30,4 +30,65 @@ root.render(div);
 
 //we have a JSX 
 //because of JSX u can write html in react js and JSX will convert it in react 
+// eg 
+// {/* <div>
+//     <div>
+//         <p></p>
+//         <p></p>
+//     </div>
+// </div> */}
+
+//we do it later 
+//Now move to How we optimize our code 
+
+// for optimization we can do -- 
+// Remove the comment and Spaces 
+// some code is also there that is not been using 
+// React and ReactDom -- we are only using the some portion of it 
+
+//we want Production Ready Code so that we can host on the Server 
+//we want code that save our TIME
+//goal should be to make our file size less as much 
+//because less size  -- fast execution 
+
+//to solve this all problems 
+//  we have Bundlers -- it optimize our code fully and give us a file 
+
+//Bundler like -- webpack , vite , parcel 
+//in these bundler there will be some algorithm that is used to optimize code 
+//we can use any Bundler but in this project we use PARCEL 
+//now we have to install the parcel 
+
+//first we have to make the package json 
+//to make this we use --   npm init 
+
+//package.json -- it is like a meta data
+//data about data -- whatever the data present in this project 
+//is present in the package.json 
+// format of json present in this
+
+
+//NOW WHAT IS NPM -- 
+//npm is node packet manager but in reality it dont have any full form
+
+//whatever the development tools we are using in javascript the database for that tools is present in the npm  
+// eg parce : present here
+//eg typescript : present here
+// react 
+//reactDOM
+
+//whenever u need any dev tools then u can use npm and install it from there 
+
+//it is opensource 
+//u can contribute there also build something from js then put it into the npm so that other user can use it for free 
+//u made a digital clock using js , then u give this code to npm for others users 
+
+
+
+
+
+
+
+
+
 
