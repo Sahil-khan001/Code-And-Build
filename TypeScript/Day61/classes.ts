@@ -414,3 +414,65 @@ console.log(per1);
 
 // because button not created yet.
 
+
+//something more like for input --
+
+//1. use as HTMLInputElement  for the Input ELement 
+
+//2. use of <script type="module" src="weather.js"></script>
+//3. while collect value use this line --- const location:string = place.value.trim();
+
+
+// Important TypeScript Rule
+
+// Whenever you use:
+
+// textContent
+// innerHTML
+// value
+
+// remember:
+
+// Property	Accepts
+// textContent	string
+// innerHTML	string
+// value	string
+
+// So numbers must be converted.
+
+// Better TypeScript Version
+
+// You can also write:
+
+// const totalAmt = document.querySelector<HTMLSpanElement>("#totalAmount");
+
+// if (!totalAmt) {
+//   throw new Error("Element not found");
+// }
+
+// This is the cleaner TS way.
+
+
+// rule 1 -- when see textContent , innerHTML , value then want string 
+// so whatever u put into this add toString(); into it
+
+
+
+
+
+// rule 2 -- when u see arr = arr. --- then use  
+
+// let arr:number[] = [];   USE THIS IN GLOBAL ARRAY 
+
+//   delbtn.addEventListener("click", ():void => {
+//     taskItems.remove();
+
+//     arr= arr.filter((amount:number):boolean=> {   //filer the remaining amount , recalculate it then put it into total amount 
+//       return amount !== amtval;
+//     });
+//     let result = arr.reduce((acc, curr) => {
+//       return acc + curr;
+//     }, 0);
+
+//     totalAmt.textContent = result.toString();
+//   });

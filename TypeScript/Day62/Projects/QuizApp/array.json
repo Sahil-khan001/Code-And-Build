@@ -1,0 +1,52 @@
+[
+  {
+    "ques": "Which HTML tag is used to create a hyperlink?",
+    "options": [
+      "<img>",
+      "<a>",
+      "<p>",
+      "<div>"
+    ],
+    "ans": "<a>"
+  },
+  {
+    "ques": "Which method converts JSON string into JavaScript object?",
+    "options": [
+      "JSON.parse()",
+      "JSON.stringify()",
+      "JSON.convert()",
+      "JSON.object()"
+    ],
+    "ans": "JSON.parse()"
+  },
+  {
+    "ques": "Which HTML tag is used to create a hyperlink?",
+    "options": [
+      "<img>",
+      "<a>",
+      "<p>",
+      "<div>"
+    ],
+    "ans": "<a>"
+  },
+  {
+    "ques": "What does DOM stand for?",
+    "options": [
+      "Document Object Model",
+      "Data Object Management",
+      "Digital Ordinance Model",
+      "Desktop Object Method"
+    ],
+    "ans": "Document Object Model"
+  },
+  {
+    "ques": "Which keyword is used to declare a variable in JavaScript?",
+    "options": [
+      "var",
+      "loop",
+      "print",
+      "define"
+    ],
+    "ans": "var"
+  }
+]
