@@ -2,6 +2,7 @@
 //1. logical &&   == if first is true it can 't check second even if it is a function 
 //   logical ||  == if first is false it check second the function will print 
 
+
 //2. template literals == ` ${}`;
 
 //3. ternary operator = 
@@ -42,9 +43,9 @@
 // const [first , second] = array;
 
 // let [arrFirstElement , arrsecond] = arr;
-// let [arrent , arrd] = arr;
+// let [arrent , arrd , arf4] = arr;
 
-// console.log(arrent , arrd);
+// console.log(arrent , arrd , arf4);
 
 //for destructuring in array the array name in first place should be there 
 
@@ -55,7 +56,7 @@
 // }
  
 
-// let result  = sum(5,2);
+// let result  = sum();
 
 // console.log(result);
 
@@ -76,14 +77,14 @@
 
 //6. Spread and Rest operator 
 
-// let arr1 = [2,5,6,2];
-// let arr2 = [6,2,6,1];
+let arr1 = [2,5,6,2];
+let arr2 = [6,2,6,1];
 
 // let result = [...arr1 , ...arr2];
 // let result = [...arr1 ,100 , ...arr2];  // it show 100 in middle of both these array 
 // let result = [[...arr1 , ...arr2]]; //show values in array container 
 // console.log(result);
-
+``
 // //THIS IS spread operator first it spread the values then it merge the array 
 
 // const arrone = [1,2,3];
@@ -130,10 +131,8 @@ const personArray = [
 ]
 
 
-// let result = personArray.map((person , index)=>{
-
-//     console.log(person.name , index);
-//     // console.log(person.age);
+// let result =personArray.map((val , index) =>{
+//     console.log(val.name , index);
 // })
 
 // //it takes index as wellin parameters
@@ -170,7 +169,6 @@ const personArray = [
 //find() , reduce() , include() , indexOf , findIndex 
 
 let arr = [1,2,3,5,2];
-
 
 //find() -- 
 // let checkarray = arr.find((item , index ) => item === 5);
@@ -219,15 +217,15 @@ let arr = [1,2,3,5,2];
 //import and export values 
 //like u have 3 components like a , b , c and  you want to use b function into c then u can use this 
 
-export function sum(a,b){
-    return a+b;
-}
-//for this normal export function  use import {function name } from path in diff js file 
+// export function sum(a,b){
+//     return a+b;
+// }
+// //for this normal export function  use import {function name } from path in diff js file 
 
 
-export default function mul(a,b){
-    return a*b;
-}
+// export default function mul(a,b){
+//     return a*b;
+// }
 
 //for this export default use import directfunctionname from path in diff js file 
 
