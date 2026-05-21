@@ -15,8 +15,8 @@ const ele2= React.createElement('h2' , {id : "second" , class : "2nd" , style : 
 const div = React.createElement('div' , {} , [ele1 , ele2]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(ele1);
-root.render(ele2);
+// root.render(ele1);
+// root.render(ele2);
 root.render(div);
 
 //whenever we render any element it first clear the previous data then render this element 
@@ -63,9 +63,11 @@ root.render(div);
 //to make this we use --   npm init 
 
 //package.json -- it is like a meta data
-//data about data -- whatever the data present in this project 
-//is present in the package.json 
-// format of json present in this
+//it contain information of version of tools that u used in the project 
+
+
+//package-lock.json --
+//it contains all the exact version details of tools that u used in the project
 
 
 //NOW WHAT IS NPM -- 

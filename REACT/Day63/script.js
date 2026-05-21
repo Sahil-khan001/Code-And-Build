@@ -97,4 +97,3 @@ ReactDOM.render(Ul, document.querySelector("#root"));
 //but like photos , video that is static we kept it in CDN 
 //means the MAIN SERVER give the STATIC DATA to the CDN 
 
-

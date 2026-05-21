@@ -129,3 +129,21 @@
 //so whatever u install from npm it goes into node modules 
 //and information related to this node modules goes into package.json 
 //and the exact version is in the package-lock.json -- exactly which version is going in the project
+ 
+
+// NOTE : -
+// A .gitignore file tells Git which files or folders should not be tracked or uploaded to the repository.
+
+// Example:
+
+// node_modules/
+// .env
+// dist/
+
+// This means:
+
+// node_modules/ → ignore installed packages
+// .env → ignore secret keys/passwords
+// dist/ → ignore build files
+
+// Used to keep the repo clean and secure.
