@@ -1,0 +1,9 @@
+.butt{
+    height: 30px;
+    width: 80px;
+    background-color: black;
+    color:  white;
+    border-radius: 10px;
+    font-weight: bold;
+
+}

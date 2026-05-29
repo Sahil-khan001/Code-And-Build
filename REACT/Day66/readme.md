@@ -205,6 +205,18 @@ a file only have only 1 export default , rather u can use export -
 //we just have to focus on the  Ui formation 
 //and the DOM manipulation part it handled it by itself 
 
+we have seen use case of useState() -- like whenever a data is changing or state is changing like in count example it is NUMBER the count increase as we see in using setfunction with variable count it means whereever the variable value is updating the use state update the variable 
+
+but in case of this project we have an array we know its addresses stored in call stack and value is in heap but in case of number it directly stored in stack so what happened if we trying to use use state in this array the main card taking this array is previous one even if after sorted so for this we gonna use  
+basically the main card it says it can't change the array it says it reference is same 
+because it saw the value on the stack not the heap so for this we have to make an duplicate array like 
+
+note : js manipulate dom again and again but REACT dont manipuate it is more optimized 
+
+//in this case he saw reference is same because we know that in case of array and object they store in reference like address is in reference/stack and value is in the heap so we dont have to change so we make a duplicate like for the array 
+
+setA([...A]);
+//because this one reference is diff now it render it into the main UI
 
 
 
@@ -213,11 +225,3 @@ a file only have only 1 export default , rather u can use export -
 
 
 
-
-
-   https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlvbTcdU77miU3b9OMBIF5GrsWt2eevhGtew&s
-
-
-
-
-   https://t3.ftcdn.net/jpg/03/65/42/00/360_F_365420014_xjsSDkKzrhq4gr9GFzP6S97H7MJyNI5B.jpg
