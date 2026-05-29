@@ -1,5 +1,4 @@
 Remember -- whenever u download anything from npm it goes into node modules 
-//means all the dependencies are gone in the node modules 
 
 //lets talk about veet
 //npm install -- node modules 
@@ -134,6 +133,77 @@ npm install -D parcel
 
 // root.render(callfunc);
 
+
+//SOME TIPS TO MAKE PROJECT 
+
+-- u can use direct height and width in img 
+-- u can link css then do styling
+-- react js same like html just instead of class  -- className  
+
+
+-- You can give className to an HTML element then do styling in it if it is not available 
+--use width , height in px , 
+-- use of position : relative to move top , bottom ,left  , right 
+
+
+// Dont u think writing all the code of different functionality in one page 
+-- the code becomes too messy
+
+so for this we use Modules --
+we are using it muliple time for diff work
+like in this code we have a function of card , header
+/so module say put each function in a new file make new js file and put into it
+//we can put the main one into main file but for other make  a new JS file
+
+
+//it is not a rule but for developer it is good
+//to become code readable
+
+
+//at the end react is a library
+//there is no rule we have to make a diff file but to make readable code u can do this 
+
+
+//so these diff function are COMPONENTS / MODULES 
+//now to put these components 
+
+-- so for this make a component folder and put all compo into  it 
+
+before make component folder 
+make Src folder and put ur final project JS file into it 
+then make Component folder and make new JS file and put function into it with file name that is function name 
+
+//now u think how to connect these too -
+usind module concept -- so we have to import these component 
+but before import we have to write export also so for this we have two option 
+
+-- in component file write -- export default functionName
+-- u can direct write in front of function 
+
+--u can also write .js file to .jsx 
+but u can use any one of them 
+
+-- but the choice is if u are using jsx code then write .jsx file name
+
+//also u have to change the html script src file to diff src file in which u have ur main file 
+
+//for dummy data , repeative things that u are using u have to make a utils folder into src in which u have dummy.js file in which dummy data is there 
+//also u can't use default export in front of these like const , let 
+
+a file only have only 1 export default , rather u can use export -
+-- Means only 1 export default
+-- Multiple export u can use 
+
+-- export default -- import comName from ..
+-- export -- improt {} from ..
+
+-- u can rename the file using as 
+--suppose u alreay use this name into ur myntra file so u can use diff name using as newName using this keyword
+
+//Because of React we can write readable , nor messay code 
+//also it can manipulate DOM in a best efficient way 
+//we just have to focus on the  Ui formation 
+//and the DOM manipulation part it handled it by itself 
 
 
 

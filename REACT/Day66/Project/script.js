@@ -1,11 +1,11 @@
-import React, { cloneElement } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client"
 
 
-const Element = <h1>This is heading 1 using JSX</h1>;
+// const Element = <h1>This is heading 1 using JSX</h1>;
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(Element);
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(Element);
 
 //in JSX -- u can put any JS Expression which is Result Produce 
 //Result can be string , number , array and even object too with accessing
@@ -96,10 +96,15 @@ root.render(Element);
 
 // root.render(callfunc);
 
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
+function Detail(props){
+   return <h1>name is : {props.name} and age is : {props.age}</h1>;
+}
 
-
+let call = <Detail  name = "sahil"  age = "22" />
+root.render(call);
 
 
 
