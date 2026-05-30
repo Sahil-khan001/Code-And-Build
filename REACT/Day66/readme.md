@@ -218,6 +218,52 @@ note : js manipulate dom again and again but REACT dont manipuate it is more opt
 setA([...A]);
 //because this one reference is diff now it render it into the main UI
 
+//when u make another button for filter logo above 499rs then u can do in this way 
+const B = arr.filter((val) => val.price > 499);
+SetA(B);
+
+how it works -- 
+it call the main function and in A vairable it put B value hten what happened 
+where A is used it gonna update with this filter 
+
+Final Rule (Very Short)
+
+✅ If a method returns a new array, directly do:
+
+setA(result);
+
+Examples:
+
+filter()
+map()
+slice()
+concat()
+
+⚠️ If a method changes the existing array, create a new copy:
+
+setA([...A]);
+
+Examples:
+
+sort()
+reverse()
+push()
+pop()
+splice()
+Easy Memory Trick
+
+New Array → setA(result)
+
+const B = A.filter(...);
+setA(B);
+
+Same Array Modified → setA([...A])
+
+A.sort(...);
+setA([...A]);
+
+That's the rule you'll use 90% of the time in React state updates.
+
 
 
 
