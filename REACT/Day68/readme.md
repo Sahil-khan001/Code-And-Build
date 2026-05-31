@@ -31,6 +31,7 @@ basically it render same button 2 times only
    document.body.style.backgroundColor = color;
    now this line also run 2 times when render again and again on same button 
 
+but if we want to render it only one time or want to set acc to us then we use 
 so for this we have useEffect() - 
 
 we do this -- useEffect(()=>{
@@ -114,4 +115,4 @@ React.memo allow this function to be render if there is props value is changing
 
 --use react memo when parent do a lot of changes and u dont know that much changes in the child then react.memo
 
-
+also many people dont use react.memo in project because it increase overhead of project

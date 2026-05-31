@@ -14,10 +14,10 @@ function App() {
   //   setA([...A]);
   // }
 
-  function increment(){
-   const B = A.filter((val) => val.price > 499);
-   setA(B);
-  }
+  // function increment(){
+  //  const B = A.filter((val) => val.price > 499);
+  //  setA(B);
+  // }
 
     return (
         
@@ -35,7 +35,8 @@ function App() {
 
       {/* footer */}
       {/* <button className="butt" onClick={sortt}>Click ME!</button> */}
-      <button className="butt" onClick={increment}>Above499rs</button>
+      {/* <button className="butt" onClick={increment}>Above499rs</button> */}
+      <button className="butt" onClick={()=> setA(A.filter((val)=> val.price > 499)) }>Above499rs</button>
     </div>
     
   );
