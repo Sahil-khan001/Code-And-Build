@@ -1,4 +1,4 @@
-import React , {useState , useEffect} from "react";
+import React , {useState , useEffect, useCallback} from "react";
 import ReactDOM from "react-dom/client";
 
 //Password : hfsdjjfd , setPassword
@@ -15,7 +15,7 @@ function PasswordGenerator(){
     const[Charactertick , setcharactertick] = useState(false);
 
 
-    function generatePassword(){
+    const generatePassword = useCallback(()=>{
         let str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         if(numbertick){
             str+= '0123456789'
@@ -30,11 +30,13 @@ function PasswordGenerator(){
           pass +=  str[Math.floor(Math.random()*str.length)]
         }
         setPassword(pass);
-    }
+    },[length , numbertick , Charactertick])
+
 
     useEffect(()=>{
         generatePassword();
-    }, [length , numbertick , Charactertick])
+    // }, [length , numbertick , Charactertick])
+    }, [generatePassword])  //it means  useEffect only work when there is any change in generateposswod means in length , numbertick , charactertick 
 
     return (
         <>
