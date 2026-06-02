@@ -42,6 +42,8 @@ REMEMBER -- in map like
 Profile.map(()=>{}) 
 //if it is in single line then by default it return the data
 //if it is in multiple line then -- WE HAVE TO USE return () statement 
+//it IS SAME LIKE NORMAL CALLBACK FUNCTION --- IF WE WRITE SINGLE LINE THEN IT RETURN AUTOMATICALLY 
+//but if we have multiple lines then we have to write return into it 
 
  
  //REMEMBER -- one thing when u are writing code in component and u are using any hooks like usestate , useeffect so MAKE SURE U IMPORT IT FROM REACT OKK
@@ -49,9 +51,39 @@ Profile.map(()=>{})
 
  key should be inside opening tag:
 <!-- <div className="Card" key={value.id}> -->
+when u make childElement u have to give key value like this so that we vertify it uniqueness
 
 //if u are using the JS in JSX that is react then make sure it is returning something 
 //Our JSX know how to read array data 
 
+//ALSO THERE IS ONE THING -- 
+when we fetch the data 
+we write its function in useEffect so that we can access the data only once
+
+we can't put it like outside because when there is any rerender in parent it gonna rerender in child as well so it creates fresh call to take data again as we already have data so it is Expensive threat
+
+ u can't use useMemo everwhere -- use when parent do lot of re rendering otherwise dont use it -- it increases Overhead
+code increase , more time taken for execution 
+
+== WE can't use callBack() here because we represent/return the profile data only once 
+
+
+<!-- {
+    Profile.map((value)=>{
+        return (
+            <div className="Card" key = {value.id}>
+                <img src= {value.avatar_url}  />
+                <h2>{value.login}</h2>
+                <a href={value.html_url} target="_blank">Profile</a>
+            </div>
+        )
+    })
+} -->
+
+
+this part is return the array and JSX KNOW how to read the array and get value out of it 
+
+
+//in INput tag we have one thing -- when we have input on ui then it is Direct Dom manipulation but in React REACT should have control over it then it manipulate
 
 
