@@ -86,4 +86,22 @@ this part is return the array and JSX KNOW how to read the array and get value o
 
 //in INput tag we have one thing -- when we have input on ui then it is Direct Dom manipulation but in React REACT should have control over it then it manipulate
 
+.Inp{
+    margin-left: 40vw;
+    height: 30px;
+    padding-left: 10px;
+}//SOME TIPS FOR INPUT
 
+
+usestate -- this is called state variable 
+
+//now we dont want everytime same face / profiles when we enter number of profile to show on UI
+so for this we have different APIs
+
+
+
+https://api.github.com/users?per_page=${count} -- it means per page 30/any people 
+
+https://api.github.com/users/taylorotwell
+
+https://api.github.com/users?since=6000&per_page=20
