@@ -1,0 +1,700 @@
+---ROADMAP--
+
+make ur own products
+
+Micro tools -- 4 day per project
+
+live at domain 
+
+-- find the problem --market research
+-- domain buy -- 
+-- ai writes code
+-- deploy for 0$ - cloudfare pages
+-- seo and live 
+
+
+google ad sense -- put add on our website -- earning start
+
+
+the stack -- ai -- astro -- cloudfare
+
+astro js is owned by cloudflare
+
+
+the biggest problem is -- finding the problem -- online ruler 
+check all websites 
+check all issue 
+solve all issue and make a website
+
+-- go to ahrefs keword generator 
+
+we can check all the keywords on phrase , for question for faq
+
+we make apps for united states -- its cpm cost is high
+like 1 lakh of india is equal to 1000 in US
+keyword strategy -- first space 
+                    keyword then one space
+
+for domain website -- instantdomainsearch.com
+make sure we only take -- .com domain 
+
+we only take .com 
+also in which ruler is present domain 
+
+also if u search somehing if quora and reddit appear then it goldmine and u will get traffic for sure
+
+if domain looks red then it is not available
+
+make sure invest time in domain -- do research
+                                   accurate online compiler
+                                   realOnlinecompiler 
+
+avoid big domain 
+invest time on domain name
+
+dont buy .in , .dev , .ai
+
+from where tobuy domain
+
+note -- in his video already shared how to use ai tools free
+
+domain buy website
+
+namecheap
+godaddy
+
+first write code
+minimum cost 
+
+WATCH CODE WITH AI -- Playlist for ai tool offer 
+this is for free ai tool
+
+now set -- git -- for rollback code because of ai dumb code
+           vs code , node js 
+           free ai tool acc to playlist -- make sure u know how to               use this tool
+
+
+make a folder -- REALONLINERULER.COM -- put this into vs code
+                 claude code for code -- watch ai playlist
+
+
+STEPS --
+
+IN VS CODE OF THIS 
+open terminal -- write claude --claude install
+then install astrojs -- go tot astrodocs installation then copy npm link
+npm create astro@latest   this one
+put this in terminal after it space then .
+npm create astro@latest .  -- like this then install
+then yes yes git repo yes then in root astro js is there
+
+
+Before Coding we use -- Vercel design md -- tomake website better 
+write vercel design md then first link then
+copy command *
+
+npx getdesign@latest add vercel
+
+then in terminal press + icon for another terminal 
+paste this 
+in first terminal we have claude
+
+then in Project folder we have vercel design md --
+ai reads that design md
+
+then we go to skills.sh
+for our ai agent we download some skills
+
+basically our agent know these skills to design any website efficiently
+
+like -- 1st is   Web Design Guildlines
+
+npx skills add https://github.com/nexu-io/open-design --skill web-design-guidelines
+
+this made by vercellabs now our agent use these guildlines to make website perfect 
+
+paste this in same terminal
+then skills install
+then select agent -- we select claude code agent
+install globally / project -- we do project
+then copy to all agent
+
+skills are for claude as well as for other agent as well we see in vs folder structure as well 
+
+claude > skills > web design guildlines as acc to our project 
+
+then we move to tailwind css 
+many agent understand -- tailwind version 3 not able to understand and write tailwind version 4 
+for this we go to tailwind agent skills github 
+
+then skills/tailwind docs 4 
+
+then find command like -- npx skills add  ...
+and paste this in terminal
+select project not globally
+
+then in claude u see -- claude > skills > web design guildlines , tailwind skills agent
+
+
+then move to Astro JS MCP
+
+what we use it -- that our agent use this MCP SERVER to write better astro code 
+
+we know that agent trained on old version of astro but we want to use the latest version  so we use -- MCP SERVER 
+
+the our agent become pro of latest astro version 
+
+then go to astro mcp server then find cli command like claude cli and paste this command in terminal 
+
+claude mcp add --transport http astro-docs https://mcp.docs.astro.build/mcp
+
+then paste in terminal 
+
+then mcp add in claude code
+
+if use gemini cli then prompt then it give command
+
+FINAL STRUCTURE LOOK LIKE BEFORE CODING 
+
+agent -- skills -- tailwind 
+                   web design guildlines
+
+claude -- skills -- tailwind 
+                   web design guildlines
+
+vs code
+node modules
+public
+src
+.gitignore
+astro.config.mjs
+DESIGN.md
+package-lock-json
+package.json
+skills-lock-json
+tsconfig.json
+
+close terminal doublick on page then paste this 
+
+I have initialized a new astrojs project, use astro docs mcp and tailwind-4-docs & web-design-guidelines skills for creating the website. Also use @DESIGN.md file and keep the website design like vercel.
+
+Name: Real Online Ruler
+Domain: realonlineruler.com
+
+Create an online ruler website that will have ruler on the edges, user can select where to place the ruler. we want these 3 calibration methods
+Method 1: Auto-Detect Device
+Method 2: Screen Diagonal
+Method 3: Credit Card Calibration
+   
+My competitor website is https://anruler.com/ and it have some features which we need and we need to make a website better than it. Give me ideas how to make it better. go on to this website and check what exactly we need to make. Do not copy design or ui from that website.
+
+then paste this in claude then claude make website and give u live url 
+make sure -- it give some error so and it handled it itself
+             also check testing of website using playright 
+
+make sure after everyprompt
+u use -- /clear
+because in same session it uses more token and we have limited tokens
+
+
+then it give u live url 
+if it not give u then go to new terminal and write
+npm run dev then ur astro project is deploy and give u live url link
+
+then u check ur website whatever u problems u are facing just write in claude it will fix it 
+
+cm
+in
+px
+
+buttons on click are not working.
+
+the rulers are not in edge, they display after the footer help menu or navbar or left bar menu.
+
+we dont have a manual device selector we have to add it as our competitor website https://anruler.com/ have it
+
+u can write in this way to improve website then 
+
+u can do edit in ur project like this but make sure first use /clear then write every new prompt
+
+problems like -- dark mode , language translation with url change too
+
+make sure ur website is NOT SPA -- SINGLE PAGE APPLICATION 
+IT SHOULD BE MULTIPAGE APPLICATION 
+
+UNTIL IT BUGS FIXES we go for favicon 
+go to logofast for favicon 
+preset then customize according to you 
+
+then u can download png directly from there
+
+theh go to realfaviconGenerator 
+then pick ur favicon 
+then put ur website name -- it should be small
+then Download ur favicon then unzip
+then copy files then put it into vs code
+then go to public directory and paste into it clik on donot ask
+delete previously icon and svg
+then go to again that realffav  website and copy code like <link... in this way 
+
+then /clear in claude 
+then write add this favicon into it 
+then put all copy code from realfav website
+
+then claude set this favicon 
+
+then u can edit ur website acc to u and ur competitor also 
+u can add 
+dark mode with toggle 
+reponsiveness in mobile 
+mobile friendly website-- because maximum use on mobile 
+u can add shortcut for tools in website like D for dark mode and other too ...
+
+now Before Deploying the website we have to do SEO so for this 
+SEO Prompt
+Do the On Page SEO of this Website for
+
+Main Keyword: Online Ruler
+Supporting Keywords: online ruler inches, online ruler in cm, online ruler mm, online ruler cm, free online ruler, online ruler in mm, online ruler camera, mm online ruler, accurate online ruler, 12 inch online ruler, online ruler inches actual size, online ruler to scale, online ruler 12 inch, online ruler tool, online ruler actual size, real online ruler, actual size online ruler
+
+these above keywords, also use proper og meta tags for SEO
+on home page write 600 words about the tool for SEO
+
+u have to put main keyword by urself -- Online Ruler
+then for supporting keywords -- go to ahrefs then write ur main keyword u will se other too then select imp from them and paste it here
+u dont have to put invalid keywords and it take ur website downword
+
+then /clear in claude terminal 
+and paste all this into it 
+
+then it do proper seo and ur website will go in top rank
+
+also after site launch we can do
+google search console
+bing search console
+u can add ur website into this then u can check how much click 
+
+then move to faq section and our competitor dont have it 
+so our seo have more chances now
+
+for faq go to ahref then same main keyword then go to questions 
+then put all those questions with highest traffic rate 
+pick ques from it 
+also go to google with online ruler 
+then scroll then u seee people also ask for then put all those questions also into it 
+and put these question into first priority 
+
+now u have all the question 
+
+FAQ Section Prompt
+add seo friendly FAQ section for these below questions:
+
+Can I use my phone as a ruler?
+Is there a ruler online?
+How to identify 1 inch?
+How to measure cm online?
+Can a smart phone measure?
+Can I use my camera as a ruler?
+Can we measure online?
+how to read a ruler online
+how to view ruler in word online
+how to add a ruler in word online
+how to show ruler in powerpoint online
+how to use online ruler
+how to add ruler in word online
+how to use a ruler online
+
+before giving to claude 
+there is structure format for these faq go to google central search then docs then read about it also u can direct write in this way too 
+
+FAQ Section Prompt
+add seo friendly FAQ section for these below questions:
+
+Can I use my phone as a ruler?
+Is there a ruler online?
+How to identify 1 inch?
+How to measure cm online?
+Can a smart phone measure?
+Can I use my camera as a ruler?
+Can we measure online?
+how to read a ruler online
+how to view ruler in word online
+how to add a ruler in word online
+how to show ruler in powerpoint online
+how to use online ruler
+how to add ruler in word online
+how to use a ruler online
+
+NOTE: Use JSON-LD for FAQ SEO
+example: ```
+ <script type="application/ld+json">
+ {
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [{
+ "@type": "Question",
+ "name": "How to find an apprenticeship?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "<p>We provide an official service to search through available apprenticeships. To get started, create an account here, specify the desired region, and your preferences. You will be able to search through all officially registered open apprenticeships.</p>"
+ }
+ }, {
+ "@type": "Question",
+ "name": "Whom to contact?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "You can contact the apprenticeship office through our official phone hotline above, or with the web-form below. We generally respond to written requests within 7-10 days."
+ }
+ }]
+ }
+ </script>
+```
+
+then /clear it then put this 
+faq into it 
+then it will add faq into it 
+
+now for AD SENSE THESE 4 Pages are Important 
+add privacy policy , about us  , terms and conditions , contact us pages 
+
+then we do /clear and give this to claude also add
+add privacy policy , about us  , terms and conditions , contact us pages this website should be MPA -- multipage page Application for best seo make these pages visible in the home page of the website 
+
+NOTE -- whatever u made any changes make sure 
+go to source control then press + icon to stagechange then write message to commit 
+also u can saw graph too 
+and roll back to previous change too
++ -- stage
+<- -- to discard a change
+ 
+if pages not addes then /clear then write
+i can't find the links to the pages , add these links in the hero section too
+
+if something not addes edit acc to them 
+
+now move to 
+add error pages(404)it means if user to go a diff page then it show if we not add then it show astro 404 error page but we want our website page then write /clear then add error page into claude
+
+then we user go to wrogn page it show ur website page not astro
+like https: localhost: 3354/dddfjdgj
+then it give 404 of ur own website
+
+now move to robot.txt 
+it include a file onto which we told google search engines that our website how to treat or how to crawl
+basically google bots come into our website and read it , make an understanding of our website then basis of that it rank it on google
+
+before robot.txt we have to make sitemap.XML  because link of sitemap.XML we have to give it to robot.txt
+
+all thelinks in our website present in this 
+google bots came to our robot.txt and check url of sitemap.xml then check all the url into it for seo
+it is easy for google to check all url at one place
+
+then we do /clear then create a sitemap.XML for this website 
+
+BASICALLY WE HAVE TO SET EVERYTHING EASY FOR GOOGLE BOTS
+
+then /clear add robot.txt and add sitemap link to it
+
+now we gonna add GOOGLE ANALYTICS CODE into it 
+but first go to google analytics then go to 
+start measuring , create account  , set us currency , timezone india , industry set -- cs , small 1 to 10 emp , select app traffic , user engagement , then select web 
+
+then u have to put ur buy domain link into it then continue then next 
+then u see a tag then copy that tag and go into claude terminal 
+
+/clear then paste this tag then shift + enter 
+then write add this google analytics code 
+in in analytic website do not test do it later after deployment 
+
+INITIAL PRODUCT IS READY AND CHECKLIST IS DONE 
+
+now move to DEPLOY -- before do deploy 
+set up ur cloudflare account 
+
+before buying domain we deploy first 
+because cloudflare gives us a temporary domain to check our website
+
+go into claude terminal /clear
+deploy this website to cloudflare workers
+
+now claude make our website compatible to deploy in cloudflare workers
+
+we go to astro js cloudflare deploy 
+we can do it manually 
+but claude can do it too
+
+but sometime it is not able to login into ur cloudflare account 
+
+first we login wrangler it is a cloudflare cli
+go to new terminal write 
+npx wrangler login 
+then browser open then authorize it then ur wrangler connect to cloudflare
+
+if ur wrangler not working then u can write these commands too
+
+cloudflare workers -- how to deploy it with wrangler
+
+npm install wrangler@latest --same-dev
+
+some time claude ask in which u have to deploy it cloudflare pages or cloudflare workers
+
+we can ask this too claude too
+
+which will be better cloudflare pages or cloudflare workers
+
+--side knowledge -- cloudflare pages -- only contains static website only html , css , js no backend logic 
+
+cloudflare workers -- contains backend , dynamic websites
+
+but this website is static -- cloudflare pages okk
+
+okay then deploy it i have just signed in to cloudflare wrangler
+
+then it give u final website link -- then u can test it on phone , laptop 
+
+in workers free we have -- 100000 req/day
+if u touch it then ur website is viral 
+then u can go for paid ones
+ 
+now u can check ur website --it is working fine 
+with a temporary domain given by cloudflare pages
+
+u can also thinking why to purchase a domain we have already a domain 
+but is sub domain not a main domain and seo of it is very poor
+
+but this investment is worth it -- 1000rs
+
+domain buy -- namecheap -- debit card
+              godaddy -- upi
+
+namecheap is cheaper than anybody at time of renewal
+
+other website too -- hostinger 
+                     bigrock
+  
+make sure u check the spelling right
+ 
+so u can check price on everywhere -- these websites are trustable 
+BIGROCK , hostinger , godaddy
+
+after purchasing go to account and check ur domain also make sure that u OFF autorenew 
+if website working then after 1 year u can renew it 
+
+now we have to connect this domain to cloudflare
+login in 
+then go to overview and click on add a domain 
+type ur domain then next
+then select free plan
+
+then it show some records then delete all the records then select A in type 
+in name -- @
+ippv address -- 8.8.8.8
+
+then save then continue to activation 
+
+then it give u 2 name servers -- 
+look like
+phoenix.ns..
+plato.ns
+
+and put this into BIGROCK
+then go to manage 
+
+
+if u are using hostinger,godaddy
+then can do gpt how to change Name servers companyName
+THEN put ur cloudflare server name into it 
+remove others if have 4 then it takes 24 hours or may be some min sometime
+then go to cloudflare and press i am updated name servers
+then it check name server it takes 10 minutes to check 
+it show -- 
+
+UR domain is now Protected by cloudflare
+now our dns is mangage by cloudflare
+
+now we have to connect our domain with cloudflare pages/workers
+for this go to compute then workers and pages
+then u see ur updated domain then 3 dot then view setting 
+then set up customm domain 
+then put ur domain then continue
+then click activate it take 10 min
+then again set up domain 
+then www.ur domain thenactivate 
+we have to set both domain 
+now ur website is live on ur own domain 
+
+now u have duplicate issue
+that ur domain is live at realonlineruler.com
+but as well as pages.dev live too
+
+so we have to disabled this domain either it is off workers/pages
+it is easy to disabled in workers just setting and disabled
+
+for pages -- we can no index to this website
+means bot have not means disallow crawl this one 
+so it solve our problem of duplicate
+ 
+for this we have to make a _headers into pulic folder and put this context into it 
+
+https://project.pages.dev/*
+  X-Robots-Tag: noindex
+
+make sure before X there is 2 space
+make sure u are using the exact domain for this menas pages.dev ones
+
+make sure u are not copying the version domain it start with a numbe
+r lik https : 35845980/pag
+u have to copy the main domain 
+
+now we have to deploy our changes into cloudflare
+then go to claude and write
+
+add deploy command to package.json
+then it add deploy line into the package.json 
+it makes our deployment easy
+ 
+then
+npm run deploy
+all changes apply in site now
+whatever the changes umade in the code it reflect in project
+
+if u do any change in future it reflect in live site
+
+then how to check it it working or not 
+ 
+then we open our pages.dev website open dev tools then refresh 
+then it show -- 
+x robot tag -- no index
+
+but in main domain 
+it dont have noindex header 
+
+it means we only have 1 domain that google seen now
+
+now we have to tell the google that we made a new site can u rank it
+so for this we have to sign in google search console
+
+then start
+then put ur domain name 
+no https online domain name 
+
+eg realonlineruler.com
+
+then verification 
+then set any DNS provider and remove cloudflare 
+
+now u have to copy that text  
+text like google site verfication 
+ and go to cloudflare and go to domains
+ 
+then overview then domain then DNS then Record then got it then add record
+then type -- txt , name - @
+in content -- put that text into this
+save it then wait for 10 second
+
+then go to again google console then click verify 
+then ur website is verified 
+it show ownership is verified
+then go to property then in left top u dont see icon for 1 week after it appear
+
+then in performance u see the data after 2 days
+
+then go to sitemap then we have to submit the sitemap
+so we get it from robot.txt
+then we have to write domain name then robot.txt
+realonlineruler.com/robot.txt
+then in last it show url we have to copy it 
+
+paste at sitemap and submit it
+then our sitemap is submit in google 
+it show in status -- couldn't fetch 
+after 10 min it show success
+
+then go to url inspection 
+then type full domain name with https : ...
+
+the click on request indexing
+we tell google that plz do indexing of our site 
+if people like it 
+
+now for AD SENSE 
+u have to wait till 4-5 month 
+until 10 users come onto ur website then u apply on adsense then 
+
+now we have submit our site in google search console 
+now go to bing.search
+
+bing webmaster tool
+getstarted then account 
+it automatically add our website 
+now we do indexing in bing search too
+then we go to url submission 
+then go to submit URLs
+then write our website url with https
+then our website at bing now
+ 
+now u have to paste this url everywhere
+
+now for adsenese minimun 10 users per day
+but how we check it we go to google analytics and click test installation then confirm then cross then continue to HOME
+
+then after users come go to adsense.com
+then add sites without https
+then go to sites
+then click on domain then verify site ownership
+then it show adsense copy snippet then copy it 
+
+go to claude /clear
+then paste it and write add this adsense script to header
+
+then u have to open new terminal and write 
+npm run deploy
+
+
+then teh script adding change now we have to deploy it on live site so for this we use 
+
+npm run deploy
+
+all changes reflect in sitenow
+
+now after 10 minutes
+
+ then go to adsense then verifed then click on 1st one out of 3 then submit
+
+also it show ads.txtstatus 
+so for this go into domain copy its code go into project in public folder make a file ads.txt and in this write the copy one code
+then 
+npm run deploy
+all changes reflect in site
+
+THEN IT SEND U EMAIL OF APPROVAL OR DISAPPROVAL 
+IF DISAPPROVAL THEN reapply 
+if approved then go to ads options 
+
+then on autoads
+
+all users u will see in -- google analytics
+but users from google search -- come in google search console
+users from bing search -- come in bing search console
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
