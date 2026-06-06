@@ -3321,6 +3321,9 @@ console.log(y);
 
 //YOU CAN ACCESS ALL THOSE WITHOUT MY NAME that is window
 
+//FOR THE VS CODE -- THE GLOBAL OJBECT IS GLOBAL -- global.Math.random();
+//IN CHROME CONSOLE-- THE GLOBAL OJBECT IS window -- window.Math.random();
+
 //window is a global object also 
 //whatever variable u made it become part of window that is global object 
 

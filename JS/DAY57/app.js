@@ -64,7 +64,7 @@
 //we are doing it because if we print resturant in terminal it show all objects correctely but the issue is if we have 100 object we dont copy from there instead of this what we do is we we make a file of all these object like JSON FILE then we copy from that and paste it here easily 
 
 
-// const fs = require('fs');
+// const fs = require('fs'); 
 
 // const obj = JSON.stringify(resturant , null , 2);
 
@@ -1639,68 +1639,68 @@ getrestaurant(restaurants);
 
 
 // //JUST FOR REVISION 
-// document.querySelector('#Rating').addEventListener('click' , ()=>{
+document.querySelector('#Rating').addEventListener('click' , ()=>{
 
-//     document.querySelector('#root').innerHTML = "";
+    document.querySelector('#root').innerHTML = "";
 
-//    let newrestu =  restaurants.filter((restu) => restu.rating>4.5);
-//    getrestaurant(newrestu);
-// })
+   let newrestu =  restaurants.filter((restu) => restu.rating>4.5);
+   getrestaurant(newrestu);
+})
 
-// document.querySelector('#Alcohol').addEventListener('click' , ()=>{
+document.querySelector('#Alcohol').addEventListener('click' , ()=>{
 
-//     document.querySelector('#root').innerHTML = "";
+    document.querySelector('#root').innerHTML = "";
 
-//    let alcorestu =  restaurants.filter((restu) => restu.alcohol);
-//    getrestaurant(alcorestu);
-// })
+   let alcorestu =  restaurants.filter((restu) => restu.alcohol);
+   getrestaurant(alcorestu);
+})
 
-// document.querySelector('#Filters').addEventListener('click' , ()=>{
+document.querySelector('#Filters').addEventListener('click' , ()=>{
 
-//     document.querySelector('#filterPopup').classList.remove('hidden');
-
-
+    document.querySelector('#filterPopup').classList.remove('hidden');
 
 
 
-//     document.querySelector('#applyFilter').addEventListener('click' , ()=>{
 
-//        let result =  document.querySelector('input[name = "filterOption"]:checked').value;
-//      if(result == 'rating'){
-//          document.querySelector('#root').innerHTML = "";
+
+    document.querySelector('#applyFilter').addEventListener('click' , ()=>{
+
+       let result =  document.querySelector('input[name = "filterOption"]:checked').value;
+     if(result == 'rating'){
+         document.querySelector('#root').innerHTML = "";
          
-//          let newrestu =  restaurants.filter((restu) => restu.rating>4.5);
-//          getrestaurant(newrestu);
-//         }
-//         else if(result == 'highLow'){
+         let newrestu =  restaurants.filter((restu) => restu.rating>4.5);
+         getrestaurant(newrestu);
+        }
+        else if(result == 'highLow'){
             
-//             document.querySelector('#root').innerHTML = "";
-//        let hightolow = restaurants.sort((a,b) => b.price_for_two -a.price_for_two);
-//        getrestaurant(hightolow);
-//      }
-//         else if(result == 'costLowHigh'){
+            document.querySelector('#root').innerHTML = "";
+       let hightolow = restaurants.sort((a,b) => b.price_for_two -a.price_for_two);
+       getrestaurant(hightolow);
+     }
+        else if(result == 'costLowHigh'){
             
-//             document.querySelector('#root').innerHTML = "";
-//        let lowtohigh = restaurants.sort((a,b) => a.price_for_two -b.price_for_two);
-//        getrestaurant(lowtohigh);
-//      }
-//         else if(result == 'distance'){
+            document.querySelector('#root').innerHTML = "";
+       let lowtohigh = restaurants.sort((a,b) => a.price_for_two -b.price_for_two);
+       getrestaurant(lowtohigh);
+     }
+        else if(result == 'distance'){
             
-//             document.querySelector('#root').innerHTML = "";
-//        let neardis = restaurants.sort((a,b) => a.distance_from_Customer_house -b.distance_from_Customer_house);
-//        getrestaurant(neardis);
-//      }
+            document.querySelector('#root').innerHTML = "";
+       let neardis = restaurants.sort((a,b) => a.distance_from_Customer_house -b.distance_from_Customer_house);
+       getrestaurant(neardis);
+     }
 
-//      document.querySelector('#filterPopup').classList.add('hidden');
+     document.querySelector('#filterPopup').classList.add('hidden');
 
 
 
-//     })
-// })
+    })
+})
 
-// document.querySelector('#closeFilter').addEventListener('click' , ()=>{
-//     document.querySelector('#filterPopup').className = "hidden";
-// })
+document.querySelector('#closeFilter').addEventListener('click' , ()=>{
+    document.querySelector('#filterPopup').className = "hidden";
+})
 
 
 

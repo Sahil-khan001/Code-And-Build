@@ -161,7 +161,7 @@
 
 
 // tsc File.name 
-// tsc File.name --targetversion name 
+// tsc File.name --targetversion name --------------------------instead of this make ts config file using tsc init
 //tsc --watch  , ctrl + c
 //tsc init , tsc 
 

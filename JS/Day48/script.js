@@ -104,6 +104,10 @@ form.addEventListener('submit' ,(event)=>{
     //all the data present in this data is in key : value pairs
     //u can print its keys and values also like -- 
 
+
+
+
+    
     // console.log(data.keys()); //it give iterator but u know how to iterate over the iterator or we can convert it into the arrays and then we get keys and values or we can use for of loop to get the keys and values
     // console.log(Array.from(data.keys())); 
     // console.log(Array.from(data.values())); 
