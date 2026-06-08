@@ -94,6 +94,6 @@ ReactDOM.render(Ul, document.querySelector("#root"));
 //but the content is coming from main server that is keep changing acc to location  
 
 //basically the data that is keep changing is stored in main server means the dynamic data that is changing again and again it is coming from main server 
-//but like photos , video that is static we kept it in CDN 
+//but like photos , video that is static we kept it in CDN or small servers
 //means the MAIN SERVER give the STATIC DATA to the CDN 
 

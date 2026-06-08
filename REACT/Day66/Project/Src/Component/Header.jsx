@@ -14,7 +14,7 @@ function Header(){
       <button style={{border : "none" , backgroundColor : "white" , fontSize : "0.9rem" , fontWeight : "bold"}} >STUDIO</button>
     </div>
 
-    <input  type = "text"  placeholder="    Search for Brand , Products"     style={{width : "40%" , height : "35px" , padding : "3px" , outline : "none" , border : "1px solid rgb(245, 245, 246)" , borderRadius : "5px" , backgroundColor :"rgb(245, 245, 246)", margin : "0px 0px 0px 15px" , color : "rgb(170, 170, 170)"}}/>
+    <input  type = "text"  placeholder="Search for Brand , Products"     style={{width : "40%" , height : "35px" , padding : "3px" , paddingLeft : "20px" , outline : "none" , border : "1px solid rgb(245, 245, 246)" , borderRadius : "5px" , backgroundColor :"rgb(245, 245, 246)", margin : "0px 0px 0px 15px" , color : "rgb(170, 170, 170)"}}/>
     
     <div style={{display : "flex" , gap : "12px" , margin : "0px 0px 0px 3%" , fontSize : "1rem" , alignItems : "center", fontWeight : "bold"}}>
         <i  className="fa-solid fa-user-pen"></i>

@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+/* 
 body{
     height: 100vh;
     display: flex;
@@ -20,4 +20,16 @@ body{
     text-align: center;
    
 
+} */
+
+
+.beechmai{
+    height: 150px;
+    width: 400px;
+    /* border:  2px solid black; */
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }

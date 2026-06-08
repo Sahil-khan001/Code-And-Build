@@ -58,6 +58,8 @@ but these password , length , numberChanged created everytime when function call
  UseCallback() is a react hook that lets u cache a function definition between re -renders
 
  when re rendering happening it hold the previous function 
+ //BASICALLY HERE WE ARE USING THE CLOSURE CONCEPT 
+ //HE IS REFERENCING TO OLD VALUES
 eg 
 
     const generatePassword = useCallback(()=>{
@@ -106,3 +108,5 @@ NOTE -- SO WE SEE HOW CLOSURE USE IN CALLBACK HOOK
         setPassword(pass);
 
 it stored this as reference and give us ...
+
+///in this way closure work with the usecallback 

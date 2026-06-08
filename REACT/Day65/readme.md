@@ -96,7 +96,7 @@ const newElement = (
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(newElement);
 
-//WE know our element takes only 1 element at at time so we use div as a one element or we can remove div text also to more accurate 
+//WE know that react takes only 1 element at at time so we use div as a one element or we can remove div text also to more accurate 
 
 //make sure it only run using 
 //npx parcel index.html               --- at this the server is running and give u a local host link 

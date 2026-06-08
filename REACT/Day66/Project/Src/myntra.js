@@ -9,17 +9,17 @@ function App() {
   
   let [A, setA] = useState(cardsData);
   
-  // function sortt(){
-  //   A.sort((a,b) => a.price - b.price);
-  //   setA([...A]);
-  // }
+  function sortt(){
+    A.sort((a,b) => a.price - b.price);
+    setA([...A]);
+  }
 
   // function increment(){
   //  const B = A.filter((val) => val.price > 499);
   //  setA(B);
   // }
 
-    return (
+     return (
         
         <div style={{minHeight: "100vh", width: "100vw", display: "flex", gap: "20px",flexWrap: "wrap" , justifyContent : "center" , paddingTop : "6rem" , paddingBottom : "1rem" , backgroundColor : "rgb(105, 110, 121)"}}>
       {/* Project Contains */}
@@ -34,7 +34,7 @@ function App() {
       }
 
       {/* footer */}
-      {/* <button className="butt" onClick={sortt}>Click ME!</button> */}
+      <button className="butt" onClick={sortt}>Click ME!</button>
       {/* <button className="butt" onClick={increment}>Above499rs</button> */}
       <button className="butt" onClick={()=> setA(A.filter((val)=> val.price > 499)) }>Above499rs</button>
     </div>
