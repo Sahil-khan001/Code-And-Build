@@ -333,3 +333,11 @@ Mostly:
 stable function reference
 
 for optimization.
+
+
+short Definition -- 
+
+usestate() -- used to manage dynamic js + used to update the values
+useeffect() -- used to handle sideeffect + run given function and depends on dependencies  , used to handle re rendering issues
+usecallback() -- use to handle recreation of function new memory allocation , to memoize funciton , used old reference function value with the concept of closure 
+
