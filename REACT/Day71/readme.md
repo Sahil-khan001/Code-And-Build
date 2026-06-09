@@ -64,7 +64,29 @@ plz dont do this otherwise how u gonna update the value so we have to use setRes
 even everytime this function also rerender again and again u can use callback()  to prove that u know callback and stop creation this function again and again 
 
 or 2n option is 
-put this function outside the main function that is in the GLOBAL SCOPE now it will create only once 
+put this function outside the main function that is in the GLOBAL SCOPE now it will create only once
+
+
+ALSO REMEMBER ONE THING -- u can use both useMemo and usecallback() -- because use meme says function only run when there is change in number means its values 
+but in usecallback() -- we use this to stop the creation of function again and again to stop new allocation again and again 
+
+Your main issue is here:
+
+const result = useMemo(()=>{fibo(number)}, [number])
+
+When you use {} inside an arrow function, you must explicitly return something.
+
+Right now your function returns undefined.
+
+Correct version:
+
+const result = useMemo(() => {
+    return fibo(number);
+}, [number]);
+
+OR shorter:
+
+const result = useMemo(() => fibo(number), [number]);
 
 <!-- -- ---------------------------------------------------------------------------------------------------------------- -->
 
@@ -176,12 +198,14 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
     now it allocates new memory and new function this function update values at everwhere but but the old stop function still calling that same settime = time + 1 again and again ur value is 0+1 is 1 everytime 
 
     it sends settime = 1 everytime
-    because this function get old value 
+    because this function have old value set
 
     now we want this old function can take updated values so for this 
     like recent time value that is 1 ,2 
 
     so we have one more thing in state hook that is at the time of update state we have a call back function too
+
+    //Call back function returns a value always remember 
 
     setTime((prevTime) => prevTime + 1);
     it give u the latest value it take latest value from new function and give it here means the callback return a final value it (prevTime) -- this one take latest value from new function and give us latest one
@@ -215,9 +239,129 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
     reference.current = null;
     }
 
+    basically now we have reference of old function if we do clearInterval of that function then stopwatch stop at last updated time 
+
+    //now we check how to reset 
+
+    for this we use old statements 
+
+    function reset(){
+    clearInterval(reference.current);
+    reference.current = null;
+    settime(0);
+    }
+
+    //we just have to write settime = 0
+
+NOTE -- 
+    //it means first delete that old function then 
+    //make it reference null
+    //and settime = 0;
 
 
 
+    //query for reference 
+    for stop -- how u stop time -- how we can stop setInterval -- using clearInterval-- it take reference of setInterval
+    that's why we use useRef() 
+
+    ///NOW TELL ME --
+    //When we click on start button the the time increase by 1 sec 
+    //suppose when we click 2nd time then in 1st first setInteval start then in 2nd 2nd setInterval start and 3rd the third one start and this series going again and again 
+
+    //that's why everyinterval update the value and it moving fast 
+
+    now how to manage these SetInterval -- 
+
+    for this what we do is if we check if a setinterval is working then we can't give permission to others  
+    we use 
+    const [isRunning , setisRunning] = usestate(false);
+
+
+    intially no one interval is running
+    if(!isRunning){
+      start interval 
+
+    }
+
+    setisRunning(true);
+
+    when no interval is executing then we start this interval and condition is true so no other will come
+
+ for stop button
+
+if(isRunning){
+    clearInterval.reference.current 
+    reference.current = null
+
+}
+setisRunning(false);
+
+when clock is running then we do this otherwise nothing happen
+
+const [isRunning , setisRunning] = useState(false);
+isRunning → stores value (true or false)
+setisRunning() → changes that value
+
+Initially:
+
+isRunning = false
+
+means:
+
+❌ Stopwatch is NOT running.
+
+When you click Start
+if(!isRunning)
+
+means:
+
+“If stopwatch is NOT running, then start interval.”
+
+So first time:
+
+!false = true
+
+therefore interval starts.
+
+Then:
+
+setisRunning(true);
+
+means:
+
+✅ “Now stopwatch is running.”
+
+Why this is needed?
+
+Without this check:
+
+Every click on Start creates a NEW interval.
+
+Example:
+
+First click → +1 every second
+Second click → another interval starts
+Third click → another interval starts
+
+Then timer becomes:
+
+1
+3
+6
+9
+
+very fast 😅
+
+So isRunning prevents multiple intervals.
+
+Stop button
+setisRunning(false);
+
+means:
+
+❌ Stopwatch stopped.
+
+Now Start button can create interval again.
 
 
 
