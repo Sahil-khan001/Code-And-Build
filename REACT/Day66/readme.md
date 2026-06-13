@@ -2,7 +2,7 @@ Remember -- whenever u download anything from npm it goes into node modules
 
 //lets talk about veet
 //npm install -- node modules 
-//npm init -- package.json 
+//npm init -- package.json  -- u save to set this by filling up the details 
 
 //we have 2 types of Dependencies 
 

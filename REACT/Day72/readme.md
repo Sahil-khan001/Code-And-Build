@@ -1,7 +1,7 @@
 Today we talk about state Lifting -- 
 
 lets take an example -- 
-suppose u make a funtion in which u have count useState which is used to update the count as a Parent 
+suppose u make a function in which u have count useState which is used to update the count as a Parent 
 
 then what u do is u can't make button in parent u make in the child 
 as a parent u passed ur state variable as a props in child so that child can access count , setcount state variable then ur child access it 
@@ -28,7 +28,7 @@ so that other child2 also get same variable
 this u will face in real life problems like u want to access a variable of a specific child then u put that statevariable into the parent one so that other can access
 
 
-basically if we want that both child access to one thing then we have to give statevairable to unique ancestor like parent 
+basically if we want that both child access to one stateVariable then we have to give statevairable to unique ancestor like parent 
 THIS IS CALLED STATE LIFTING 
 
 

@@ -67,7 +67,7 @@ or 2n option is
 put this function outside the main function that is in the GLOBAL SCOPE now it will create only once
 
 
-ALSO REMEMBER ONE THING -- u can use both useMemo and usecallback() -- because use meme says function only run when there is change in number means its values 
+ALSO REMEMBER ONE THING -- u can use both useMemo and usecallback() -- because use memo says function only run when there is change in number means its values 
 but in usecallback() -- we use this to stop the creation of function again and again to stop new allocation again and again 
 
 Your main issue is here:
