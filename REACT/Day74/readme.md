@@ -34,3 +34,11 @@ and in initially u set profile with null and u print it on ui too but it give er
 ? keyword it means when value is there then print it 
 <{Profile?.login}> -- it means if there is value then go ahead and print login value otherwise stop here
 
+
+//NOW WHAT WE HAVE TO DO IS == 
+we have to add a button when clikc on button then it take u that on that page that is routing page 
+we do it using nav link
+
+
+
+

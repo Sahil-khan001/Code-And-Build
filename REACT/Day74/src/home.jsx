@@ -1,7 +1,21 @@
-import React from "react";
+import React , { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Home(){
-    return (
-        <h1>this is Home js</h1>
+
+    const [name , setname] = useState("");
+
+    return(
+        <>
+        <input 
+        type="text"
+        value={name}
+        onChange={(e)=> setname(e.target.value)}
+        />
+
+        <Link to={`/Github/${name}`}>
+            <button>Go To Profile</button>
+        </Link>
+        </>
     )
 }
