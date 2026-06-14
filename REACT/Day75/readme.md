@@ -1,3 +1,4 @@
+-- REMEMBER THIS REDUX LIBRARY USE WITH DIFF TECHSTACK 
 LETS TALK ABOUT -- REDUX -- 
 
 first we studied -- props drilling
@@ -48,7 +49,42 @@ Slice2 -- we have count = 0 ; reducers -- incre , decre  -- this is made by a co
 when we passing any function call with Dispatch then we have to write Slice with it 
 so slice is attach with the dispatch 
 
--- 
+
+for this we need to download -- 
+react redux and redux toolkit
+
+redux toolkit make store , slice 
+redux -- it is used to attach this toolkit
+
+npm install react-redux
+ npm install @reduxjs/toolkit
+
+ -- NOW WE HAVE TO CREATE A STORE AND SLICE -- 
+ //FIRST SLICE --
+let slice1 have -- Slice1 -- we have    count  = 0 ; reducers -- incre , decre , reset ====== now how to convert this slice into code slice 
+
+ so first we have to create a Slice -- 
+ the code be like -- 
+ import { createSlice } from "@reduxjs/toolkit";
+
+
+const reactslicer = createSlice({
+
+    name : "slice1",
+    initialState : {count: 0},                     //we treat this count as object that's why we use callback in reducers function 
+    reducers : {
+
+        Increment : (state)=>{state.count = state.count + 1}, 
+        Decrement : (state)=>{state.count = state.count - 1},
+        Reset : (state)=>{state.count = 0},
+    }
+})
+
+
+NOW WE CREATE A STORE AND PUT THIS SLICE INTO IT === 
+
+create Store.js
+then import {configStore} from "reduxjs/toolkit"
 
 
 
