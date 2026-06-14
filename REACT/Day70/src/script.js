@@ -2,6 +2,7 @@ import React , {useCallback , useState , useEffect} from "react";
 import ReactDom from "react-dom/client";
 import Header from "./Component/header";
 import Body  from "./Component/Body";
+import Fetch from "./Component/useFetch";
 
 function GithubProfile(){
 return (

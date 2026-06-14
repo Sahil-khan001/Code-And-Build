@@ -341,3 +341,73 @@ usestate() -- used to manage dynamic js + used to update the values
 useeffect() -- used to handle sideeffect + run given function and depends on dependencies  , used to handle re rendering issues
 usecallback() -- use to handle recreation of function new memory allocation , to memoize funciton , used old reference function value with the concept of closure 
 
+
+
+//=====================================================================================================================================
+NOW move to -- CUSTOM HOOKS
+what we want is we dont want code other than JSX Code so what we do is we put this code into diff file and make it as a HOOK like
+
+like in body.js whatever return after return <></> is in the file but whatever outside of it gonna go into another file 
+
+u have to make a file like useFetch.js -- u can write any name but usefetch it look like a hook so use name like this 
+
+then put required code into it then check what are the things that u are using in this  code just return those things in last OR what are things that u are using in JSX and make sure custom hooks returning those things and make sure u  use import usestate , useeffect and export also so use it 
+
+also nothing is change now u are using dynamic data 
+custom hooks -- using pre existing hooks and code 
+custom hooks give u value from returning
+
+Code be like -- 
+*import { useState , useEffect} from "react";
+export default function Fetch(){
+
+const [Profile , setProfile] = useState([]);
+// const [numberOfProfiles , setnumberOfProfiles] = useState("");
+const [ProfileName , setProfileName] = useState("");
+
+async function SearchWithName(name) {
+    try{
+    const data = await fetch(`https://api.github.com/users/${name}`);
+    const finalData = await data.json();
+
+if(finalData.message === "Not Found"){
+   alert("Profile Not Found");
+   return;
+}
+    setProfile([finalData]) ;
+    }catch(err){
+        console.log("YOUR GITHUB API IS COMPLETE");
+    }
+}
+
+async function RandomProfiles(count) {
+    try{
+    let randomm = Math.floor(Math.random()*10000 + 1);
+    const data = await fetch(`https://api.github.com/users?since=${randomm}&per_page=${count}`);
+    const finalData = await data.json();
+
+    setProfile(finalData) ; //because of this function again re render and move to Profile.map line to update it successfully  to show DATA on UI
+    }catch(err){
+        console.log("YOUR GITHUB API IS COMPLETE");
+    }
+}
+
+useEffect(()=>{
+    // SearchWithName("sahil");  //we have to use useEffect here because so it can't give re render issue to us and it run only 1 time acc to dependencies and generally when we fetching data we only fetch it for 1 time
+    RandomProfiles(5);
+
+}, []);
+
+return{Profile , ProfileName , RandomProfiles , SearchWithName , setProfileName}
+}
+
+//now data is there -- now we have to take data acc to our need 
+
+
+
+-- ADVANTAGE u can use this hook anywhere in the code u just have to call it -- like a funciton call 
+
+
+--NOTE : ALWAYS REMEMBER useEffect Execute at last 
+
+in custom hooks -- if there is setdata() -- so it render the custom hooks also first he render the parent.js tooo - ALWAYS REMEMBER 
