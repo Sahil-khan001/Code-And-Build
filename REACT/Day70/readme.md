@@ -116,7 +116,7 @@ function greet(){
 }
 
 this function cannot depend upon anyone then why we need to re render it again and again and allocated memory to it 
-so we use -- useCallback() -- so that it used the old function value and there is no need to re render it again 
+so we use -- useCallback() -- so that it used the old function value and there is no need to re render it again or there is no need to create this function again 
 
 then it be like -- -
 
@@ -338,7 +338,7 @@ for optimization.
 short Definition -- 
 
 usestate() -- used to manage dynamic js + used to update the values
-useeffect() -- used to handle sideeffect + run given function and depends on dependencies  , used to handle re rendering issues
+useeffect() -- used to handle sideeffect + run given function and depends on dependencies  , used to handle re rendering issues 
 usecallback() -- use to handle recreation of function new memory allocation , to memoize funciton , used old reference function value with the concept of closure 
 
 

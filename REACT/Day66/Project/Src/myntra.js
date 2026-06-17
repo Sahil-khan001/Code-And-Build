@@ -7,7 +7,7 @@ import cardsData from "./Dummy/CardsData"
 
 function App() {
   
-  let [A, setA] = useState(cardsData);
+  const [A, setA] = useState(cardsData);
   
   function sortt(){
     A.sort((a,b) => a.price - b.price);
