@@ -12,3 +12,4 @@ const Slice1 = createSlice({
 })
 export const{Increment , Decrement , Reset} = Slice1.actions;
 export default Slice1.reducer;
+

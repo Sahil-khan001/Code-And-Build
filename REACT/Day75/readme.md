@@ -226,21 +226,146 @@ we can also take this in diff way too like Slice1.reducers.Increment but we do i
 
 
 Everything is an Object 
-this store is an Global Object
+this store is an GlobalObject
 
 redux toolkit -- it is used to create slice and store
-react-redux -- if u want to use hooks like useSelector() , useDispatch() 
+react-redux -- if u want to use hooks like useSelector() , useDispatch()  
 it connect redux and react 
 
+this useSelector also known as -- Subscribe to an event -- means listen to an event
 
 
+-- NOW WE SEE THIS THING WORK UNDER THE HOOD/INTERNALS -- 
+
+ 
+
+ in this file
+import { createSlice } from "@reduxjs/toolkit";
 
 
+const Slice1 = createSlice({
+    name : "Slice01",
+    initialState : {count : 0},
+    reducers : {
+       Increment : ((state)=>{state.count = state.count + 1}),
+       Decrement : ((state)=>{state.count = state.count - 1}),
+       Reset : ((state)=>{state.count = 0}),
+    }
+})
+export const{Increment , Decrement , Reset} = Slice1.actions;
+export default Slice1.reducer;
 
 
+this actions contain -- {type : "slice/increment" , payload : }; 
+when any functions goes to it store the store know its type like which slice he belong too
+
+now we see what is this Slice1 like it is also an object also it contains lot of functions like actions , reducers , intitalState 
+
+what is Slice1.actions -- so whenever we dispatch a function it move to store ans we have to determine that this function belong to which slice 
+so normal function will not work so we ac use actions and it tells us that this functions belong to this slice and converted into this form
+this actions contain -- {type : "slice/increment" , payload : }; 
+that's why we export reactslicer.actions so that it tell us this functions belong to this slice 
+
+as we know we have to write slice as well  with the functions in the dispatch so actions do this for us he created by itself and 
 
 
+Store contains -- dispatch , subscribe -- when u get any data from the store it means u are subscribing to an event 
 
+how this dispatch(Increment()) -- how store know that this increment() belong to which slice 
+this increment() contain two thing 1st is type : slice 2nd is payload 
+that's why when we extracted this functions from Slice1.actions it gives this functions two things that is type and payload 
+
+this Slice1 which is creating the slice it itself is an Object contains -- m functions like -- actions , getInitial State , reducer , 
+
+
+we use Slice1.actions -- we know when we pass an functions in dispatch we have to determine the store that this function belong to which slice this actions done this work for us it gives store converted action line that is 
+{type : Slice1 / increment() , payload : undefined }
+
+
+some people write this initial State like this -- 
+
+const initialState = {
+    count : 0 ,
+}
+
+
+const Slice1 = createSlice({
+    name : "Slice01",
+    initialState,
+    reducers : {
+       Increment : ((state)=>{state.count = state.count + 1}),
+       Decrement : ((state)=>{state.count = state.count - 1}),
+       Reset : ((state)=>{state.count = 0}),
+    }
+})
+
+
+this initalState is also an Object 
+we know that Object stored as an reference --
+
+like if we modify and existing Object it can't update on ui
+because it stored as a reference the reference is same it can't update the latest values it take previous value 
+so for this we have to return a new array 
+
+like  
+const initialState = {
+    count : 0 ,
+}
+
+it wants u to return like this new object  {
+    count : 1 , 
+}
+
+
+but u see this code is working but it dont it because object is upating and it have to create a new Object
+so it is because of 
+
+
+const initialState = {
+    count : 0 ,
+}
+
+
+const Slice1 = createSlice({
+    name : "Slice01",
+    initialState,
+    reducers : {
+       Increment : ((state)=>{state.count = state.count + 1}),
+       Decrement : ((state)=>{state.count = state.count - 1}),
+       Reset : ((state)=>{state.count = 0}),
+    }
+})
+
+it is done by Immer 
+IMMER said i am gonna muted/change ur Object without creating a new Object here without giving an problems 
+but behind the scenes it is also created a new Object 
+
+initially what we aare doing is --- 
+
+const Slice1 = createSlice({
+    name : "Slice01",
+    initialState,
+    reducers : {
+       Increment : ((state)=>{
+        return {...state, count : state.count+1}
+       }),
+       Decrement : ((state)=>{state.count = state.count - 1}),
+       Reset : ((state)=>{state.count = 0}),
+    }
+})
+
+in this way we are doing it basically we are returning the new Object
+more internally what happened ...state 
+it open the state {
+    count : 0 ,   then u update 
+    count : 1 ,     both are same so first one is remove and second is remain in this way and ur new object is created 
+}
+new returned object is -- state {
+    count 1 ,
+}
+
+
+NOW BECAUSE OF IMMER we used to write like this --
 
 
 
