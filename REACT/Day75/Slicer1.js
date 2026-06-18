@@ -8,8 +8,9 @@ const Slice1 = createSlice({
        Increment : ((state)=>{state.count = state.count + 1}),
        Decrement : ((state)=>{state.count = state.count - 1}),
        Reset : ((state)=>{state.count = 0}),
+       CustomIncreaser : ((state , actions)=>{state.count+=actions.payload})
     }
 })
-export const{Increment , Decrement , Reset} = Slice1.actions;
+export const{Increment , Decrement , Reset , CustomIncreaser} = Slice1.actions;
 export default Slice1.reducer;
 

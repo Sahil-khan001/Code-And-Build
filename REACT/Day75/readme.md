@@ -368,5 +368,108 @@ new returned object is -- state {
 NOW BECAUSE OF IMMER we used to write like this --
 
 
+const Slice1 = createSlice({
+    name : "Slice01",
+    initialState : {count : 0},
+    reducers : {
+       Increment : ((state)=>{state.count = state.count + 1}),
+       Decrement : ((state)=>{state.count = state.count - 1}),
+       Reset : ((state)=>{state.count = 0}),
+    }
+})
+
+
+Immer -- it crate a DRAFT OF original object 
+then whatever the change we want to do it changes in this Duplicate Object using the old method like ...state
+then at last update all the changes from duplicate one to Original one and return it 
+
+some people also write 
+return state.count = state.count + 1  
+state.count++;
+
+these are wrong it give u error so either write this or this 
+return {...state , count : state.count + 1};
+or
+(state) =>{state.count = state.count + 1};
+
+immer tell us either muted in DRAFT 
+or return me an object in old way like -- {...state , count : ..}
+
+
+now lets make an input searchbar and click button 
+when u click on button - the count value is increases utne sai 
+
+import { useState } from "react"
+
+
+export default function CustomerCustom(){
+    const [Number , setNumber] = useState("");
+    <!-- return (
+        <>
+        <input type="number" placeholder = "Enter the value"  value={Number} onChange={(e)=>{setNumber(e.target.value)}}/>
+        <button>Submit</button>
+        </>
+    )
+} -->
+
+
+now u will be wondering why we use normal state hooks here why not create in Redux store in slice because we make statevariable in Redux Store when we need to use it multiple place 
+but when we have to use  it only at one place then we create using hooks normal state variable 
+
+now we want when we put value into this the count gonna be increases so for this we have to use useDispatch() -- 
+and we have to pass the function into it so for this first we have to add a function into the slice functions 
+
+CustomIncreaser : (state , actions) =>{state.count += }
+
+we know that this action provide two thing type : slice/funciton , 2nd is payload -- it is nothing but arguments that u pass in the functions
+like -- dispatch(CustomIncreaser(number))
+this number represent the payload 
+
+and in slice u have to write in function --
+CustomIncreaser : (state , actions) =>{state.count += actions.payload}
+like in call back it have two property that is state or actions 
+and action have two type or payload 
+
+code be like till now 
+
+import { useState } from "react"
+import { useDispatch } from "react-redux";
+import { CustomIncreaser } from "./Slicer1";
+
+
+export default function CustomerCustom(){
+    const [Number , setNumber] = useState("");
+    const dispatch = useDispatch();
+
+    function handleClick(){
+        dispatch(CustomIncreaser(Number));
+    }
+    return (
+        <>
+        <input type="number" placeholder = "Enter the value"  value={Number} onChange={(e)=>{setNumber(e.target.value)}}/>
+        <button onClick={()=>{handleClick()}}>Submit</button>
+        </>
+    )
+}
+
+import { createSlice } from "@reduxjs/toolkit";
+
+
+const Slice1 = createSlice({
+    name : "Slice01",
+    initialState : {count : 0},
+    reducers : {
+       Increment : ((state)=>{state.count = state.count + 1}),
+       Decrement : ((state)=>{state.count = state.count - 1}),
+       Reset : ((state)=>{state.count = 0}),
+       CustomIncreaser : ((state , actions)=>{state.count+=actions.payload})
+    }
+})
+export const{Increment , Decrement , Reset , CustomIncreaser} = Slice1.actions;
+export default Slice1.reducer;
+
+now if we increment by 2 
+then write 10 in input it show -- 210 instead of 12 why 
+
 
 
