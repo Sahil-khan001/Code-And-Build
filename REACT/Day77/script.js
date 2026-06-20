@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import store from "./store";
-import {Provider} from "@reduxjs/toolkit"
+import Store from "./store";
+import { Provider } from "react-redux";
 import CoinCreate from "./coinCreate";
 
 function Show(){
     return (
-      <Provider store ={store}>
+      <Provider store ={Store}>
       <CoinCreate/>
       </Provider>
     )

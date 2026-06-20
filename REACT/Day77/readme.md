@@ -144,7 +144,7 @@ const slice1 = createSlice({
 })
 
 
-this await fetch('api') -- it is asynchronous 
+this await fetch('api') -- it is asynchronous because we have to wait until we get the data 
 so here we have to left reducer empty 
 here we need extraReducer 
 this builder is object
@@ -198,7 +198,7 @@ now export it
 export default slice1.reducer;
 export {FetchData()}
 
-like there is no functions in reducer so there is no need to export the actions 
+like there is no functions in reducer so there is no need to export the actions like const {} = slice.actions -- 
 
 
 at last we make 2 things --
@@ -255,3 +255,75 @@ import slicer ...
  Here are the two API links from the image:  APIs TO USE FOR THE PROJECT
 https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum,litecoin
 https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20
+
+
+now the final code be like -- 
+import React from "react";
+import ReactDOM from "react-dom/client";
+import Store from "./store";
+import { Provider } from "react-redux";
+import CoinCreate from "./coinCreate";
+
+function Show(){
+    return (
+      <Provider store ={Store}>
+      <CoinCreate/>
+      </Provider>
+    )
+}
+
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Show/>)
+
+in main file we have to write Provider with store whatever wrapup into this can access store data 
+
+import {useDispatch, useSelector} from "react-redux";
+import { FetchData } from "./slicer";
+import { useEffect } from "react";
+import CoinCard from "./coinCard";
+
+
+
+export default function CoinCreate(){
+   
+    const dispatch = useDispatch();
+    const {data , loading , error} = useSelector((state)=> state.slice1)
+
+    useEffect(()=>{
+        dispatch(FetchData(20));
+    },[])
+
+    //how we Display the information of 20 user
+
+    if(loading){
+        return <h1>Data is loading</h1>
+    }
+
+    if(error){
+        return <h1>Error has Occured</h1>
+    }
+
+    return (
+        <>
+
+        <div style={{display : "flex" , justifyContent : "center" , alignItems :"center" , margin : "10px" , flexWrap : "wrap"}}>
+            {
+                data.map((value)=>{
+                    return (<CoinCard key = {value.id} coin = {value}></CoinCard>)
+                })
+            }
+        </div>
+        </>
+    )
+
+
+}
+from this code we just get data from slicer data , loading , error 
+then we check some condition and show data in form of cards
+
+here we are using dispatch(FetchData(20)) in useEffect 
+this fetchData is not an actions 
+we know whatever go with dispatch it go to store then store check it type like slice and execute function 
+
+but in this case it is function not an action so there is an Middleware thing like store dont know how to handle this fetchData function so middleware says call this function not to go to store 

@@ -7,11 +7,11 @@ const FetchData = createAsyncThunk(
     'coin/fetch' ,
     async(args, thunkAPI)=>{
         try{
-            const response = fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${args}`);
-            const data = response.json();
+            const response = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${args}`);
+            const data = await  response.json();
             return data;
         }catch(error){
-            return rejectWithValue(error.message);
+            return thunkAPI.rejectWithValue(error.message);
         }
     }
 )
@@ -23,15 +23,15 @@ const Slice = createSlice({
     reducers : {},
     extraReducers : (builder)=>{
         builder
-        .addCase(Fetch.pending , (state)=>{
+        .addCase(FetchData.pending , (state)=>{
             state.loading = true;
             state.error = null;
         })
-        .addCase(Fetch.fulfilled , (state)=>{
+        .addCase(FetchData.fulfilled , (state, actions)=>{
             state.data = actions.payload;
             state.loading = false;
         })
-        .addCase(Fetch.rejected , (state)=>{
+        .addCase(FetchData.rejected , (state , actions)=>{
             state.error = actions.payload;
             state.loading = false;
         });
