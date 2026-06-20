@@ -4,15 +4,15 @@ import { CustomIncreaser } from "./Slicer1";
 
 
 export default function CustomerCustom(){
-    const [Number , setNumber] = useState("");
+    const [number , setNumber] = useState("");
     const dispatch = useDispatch();
 
     function handleClick(){
-        dispatch(CustomIncreaser(Number));
+              dispatch(CustomIncreaser(Number(number)));  
     }
     return (
         <>
-        <input type="number" placeholder = "Enter the value"  value={Number} onChange={(e)=>{setNumber(e.target.value)}}/>
+        <input type="number" placeholder = "Enter the value"  value={number} onChange={(e)=>{setNumber(e.target.value)}}/>
         <button onClick={()=>{handleClick()}}>Submit</button>
         </>
     )

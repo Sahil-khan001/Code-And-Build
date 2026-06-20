@@ -470,6 +470,21 @@ export default Slice1.reducer;
 
 now if we increment by 2 
 then write 10 in input it show -- 210 instead of 12 why 
+    dispatch(CustomIncreaser(Number));
+    this is because of this type of this is string 
+    it add as a string 2 + "10" -- 210 we have to convert it into number like this 
+        dispatch(CustomIncreaser(Number(number)));
+        
+now it will work 
+
+
+--NOW U SEE FROM DIFFERENT COMPONENT U CAN USE SAME COUNT STATE VARIABLE from the store acc to requirements 
+BOTH ARE MANUPULATING  THE COUNT PERFECTLY 
+
+useselector -- whatever changes happend in state count variable it gonna reflect in the count too 
+
+
+
 
 
 
