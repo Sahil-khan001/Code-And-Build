@@ -327,3 +327,117 @@ this fetchData is not an actions
 we know whatever go with dispatch it go to store then store check it type like slice and execute function 
 
 but in this case it is function not an action so there is an Middleware thing like store dont know how to handle this fetchData function so middleware says call this function not to go to store 
+
+now it call the fetch now it go to fetch createAsync function 
+
+const FetchData = createAsyncThunk(
+    //Action : type : payload 
+    'coin/fetch' ,
+    async(args, thunkAPI)=>{
+        try{
+            const response = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${args}`);
+            const data = await  response.json();
+            return data;
+        }catch(error){
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    }
+)
+
+now this FetchData that is createAsyncThunk execute all dispatch for every value like data , loading , error 
+then he do dispatch(data)
+{'coin/fetch/pending , payload : undefined}   it dispatch this request   
+then this dispatch go to store store check it type but there is no type there is 
+{'coin/fetch/pending , payload : undefined} 
+so there is no specific slice so it give this to every sliceReducer
+then whatever sliceReducer needs this it will handle this
+
+we are saying reducer because in slice at last we export slice.reducer that's why
+also in extraReducers there is no slice type 
+so store sends this case to extraReducer where there is no slice type
+
+whoever extraReducer want this it pass these cases
+
+so createAsyncThunk do dispatch by itself 
+then when data is come then he gain do dispatch and send it to store then store send it to extraReducer who want this 
+
+like this {'coin/fetch/fufilled , payload : data} 
+then store send this to all extraReducer because there is no typename of slice
+then it check it type with this extraReducer
+
+
+const Slice = createSlice({
+    name : "slice1",
+    initialState : {data : [] , loading : false , error : null },
+    reducers : {},
+    extraReducers : (builder)=>{
+        builder
+        .addCase(FetchData.pending , (state)=>{
+            state.loading = true;
+            state.error = null;
+        })
+        .addCase(FetchData.fulfilled , (state, actions)=>{
+            state.data = actions.payload;
+            state.loading = false;
+        })
+        .addCase(FetchData.rejected , (state , actions)=>{
+            state.error = actions.payload;
+            state.loading = false;
+        });
+    }
+})
+
+
+it check with this okk coin/fetch/fulfilled match with second addCase and it will handle this case
+same as with 3rd case 
+that's why we write here to check it type and handle case 
+
+FetchData.pending -- we match with this with our action type if it is true then it execute
+here fetchData is  'coin/fetch' , it is from fetch function 
+it measn coin/fetch/pending 
+
+
+now the question is why we not take slice name of it only action type 
+
+const FetchData = createAsyncThunk(
+    //Action : type : payload 
+    'coin/fetch' ,
+    async(args, thunkAPI)=>{
+        try{
+            const response = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${args}`);
+            const data = await  response.json();
+            return data;
+        }catch(error){
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    }
+)
+
+why not slice because we have to send it to every extraReducer if we know slice then we can send it very efficiently
+
+this is not an error they do it intentionally
+
+suppose u have a component that show only data of name and age -- it is in slice1
+and we have a diff component that show only data of its POST -- it is in slice2
+
+now we have to fetch the full data 
+now in this case wehave to dispatch both the component so that's why 
+
+here they dont mention any type in fetch data like we have it fetch it from multiple slices so that why we 
+
+put no specific slice name we send it to all extrareducer only so that it get data by only matching its type 
+
+
+
+
+WHAT DO U MEAN BY LIVE API PROJECT - WHAT ISSUE WE GOT IT LATER -- 
+
+
+-- data.name 
+later it changed it to data.solana.name 
+
+so our project dont work 
+like whenever there is a update on original API our previously used API will not work 
+
+
+
