@@ -253,6 +253,114 @@ then chai === chai  no need
 so keys help us to uniquely identify 
 
 
+//LETS TALK ABOUT -- 
+
+1. dont make keys on the basis of array index
+like this code 
+{data.map((value , index)=> < key = {index}Child/>)}
+//plz dont do this 
+
+Remember -- the state of child component is attached  to its key 
+//state is attach to its keys
+
+
+
+so we have some code in this code we are defining keys on the basis of array index  in the child component then what happened 
+
+import React, { useState } from "react";
+import ReactDOM from "react-dom/client";
+import Child from "./child";
+
+
+function Parent2(){
+
+    const [languages , setlanguages] = useState(["JS" , "TS" , "JAVA"]);
+
+    return (
+  <>
+  {
+    languages.map((value, index)=><Child key={index} value = {value} />)
+  }
+  <br></br>
+  <br></br>
+  <button onClick={()=>{setlanguages(["C++" , ...languages])}}>Add languages</button>
+  </>
+    )
+}
+
+// export default Child;
+
+import { useState } from "react";
+
+function Child({value}){
+    const [count , setcount] = useState(0);
+    return (
+       <>
+        <h1>{value}: {count}</h1>
+        <button onClick={()=>setcount(count + 1)}>Increment</button>
+        <button onClick={()=>{setcount(count - 1)}}>Decrement</button>
+          </>
+    )
+}
+
+export default Child;
+
+
+so what happened we increment every child with some number and it is based on key that is based on array index 
+we got an issue when we click on add languages 
+languages is added with some increment number same is 2nd one is some number the last one got empty 
+its because of array index based indexing
+because we add lanugages in first place so he set increment acc to first place
+
+
+INITIAL --                                      LATER -- 
+js - 4                                          C++ - 4
+ts - 3                                          js - 3
+java - 5                                        ts - 5
+                                                java - 0
+
+
+from this example we see defing the key on the basis of array index is create issue like this 
+that's why we dont have to array index based keys 
+
+state is attached to its key -- state know i have to re render the this key component 
+across re render state holds its value
+
+so make sure u are giving the key based on something else with uniqueness
+ALSO IN MODERN REACT -- it give keys automatically by itself 
+
+now how u give diff keys in this eg u can give the value itself because each lanugage is different 
+
+languages.map((value, index)=><Child key={value} value = {value} />)
+now it will work perfectly
+
+
+AT LAST WHY NOT TO USE THE KEY BASED ON ARRAY INDEX
+
+key     :       0            1                 2                3                         4
+                js            java             ts                c++                      bun
+state_var :     3             5                6                 8                         9
+
+
+these keys based on array based indexing 
+numbers are state variable 
+suppose if we reshuffle all the lanugages then still it get wrong state variable 
+because state variable is attach to the key 
+
+so that's why we dont have to use keys based on array indexing 
+
+in React -- if we change anything using statevariable it it only re render the required component and change its values not the whole code re render 
+same in case of js it change and re render only the required component 
+
+at the end if react doing it on required component it have to tell js to do this so in real js is doing it 
+
+
+
+
+
+
+ 
+
 
 
 
