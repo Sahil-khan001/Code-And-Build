@@ -6,7 +6,7 @@ export default function GroceryCard({value}){
      <a href={value.action.link}>
      <img className="w-36 h-45 object-cover" src={"https://media-assets.swiggy.com/swiggy/image/upload/" + value?.imageId}/>
      </a>
-     <h2>{value.action.text}</h2>
+     <h2 className="text-center">{value.action.text}</h2>
      </div>
     )
 

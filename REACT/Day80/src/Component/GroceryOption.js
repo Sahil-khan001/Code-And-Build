@@ -11,7 +11,7 @@ export default function GroceryOption(){
         
             <div className="max-w-[80%]  container mx-auto flex  gap-4 mt-6 flex-nowrap overflow-x-auto  ">
                   {
-                    GroceryGridCards.map((value)=><GroceryCard key={value.id} value = {value} />)
+                    GroceryGridCards.map((value)=><GroceryCard key={value?.id} value = {value} />)
                   }
             </div>
         

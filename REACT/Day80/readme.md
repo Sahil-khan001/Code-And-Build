@@ -61,7 +61,7 @@ basically it send data in html file
 
 SO THIS IS SERVER SIDE RENDERING --
 
-SUPPOSE U MAKE A REQUEST TO THE SERVER TO ANY WEBSITE --
+SUPPOSE U MAKE A REQUEST TO THE SERVER FOR  ANY WEBSITE --
 
 Server give u HTML file then css then js 
 then js have some fetch api then u request for this data then ur full page load and show 
@@ -69,8 +69,8 @@ then js have some fetch api then u request for this data then ur full page load 
 but in SERVER SIDE RENDERING --
 IT do all these tasks at server side html , csss, fetch operation 
 and at last gives u final HTML DOCS WITH FULL DATA 
-there is no call again and again 
-THAT EXACTLY NEXT JS DO 
+there is no call again and again to the server 
+THAT EXACTLY NEXTJS DO 
 
 
 
@@ -99,7 +99,7 @@ also make sure u are using ? if image and data is there then show me otherwise i
                 </a>
 
 
-                make sure u can use ? so that if it dont exist then dont go ahead
+                make sure u can use ? so that if data is dont exist then dont go ahead
 
                 Why?
 
@@ -241,3 +241,131 @@ allow container width to grow
 
 THAT creates horizontal scroll.
 <!-- =========================================================================================== -->
+
+
+now move to the next section --
+
+option -- ? it used for -- if that link is not exist then dont give me ERROR
+
+{value.info.id} -- if  there is no link exist of info then dont go ahead and dont give me error THAT IS WHAT OPTION KEYWORD DO -- 
+
+NOTE : u can use shrink : 0  or flex-none ------ u can use any of them 
+
+
+suppose u have -- mediaFiles : [
+{
+    name : "sahil",
+    age : 34 
+},
+    {
+        name : "khan",
+        age : 22,
+    }
+]
+
+mediaFiles[0].name;  ------ remember this analogy 
+
+sometime in some images u set context with the help of absolute and left : 0 , bottom : 4
+ALSO sometime u have to add 
+gradient color to it - so syntax be like u can check on tailwind site 
+
+bg-gradient-to-t from-black h-16 bottom-3 left-0 right-0
+U CAN set acc to u 
+
+NOW MOVE TO THE ROUTING CONCEPTS --
+
+what happenend when we click on a resturant more details about it open with menu
+when click on 2nd restu it also open in same format with diff
+
+so we can say we just have to make a single component in a format just the data is changing nothing else 
+
+THE RESTURANT PAGE WE WILL BE BUILD BY MANUALLY -- there is no problem
+but for the next page to fetch the data what to do
+
+and when we click on diff resturant then it will show -- restu details acc to  it
+so there is an api call with diff restu id full api same just change in resturant id 
+
+so we need just restu id 
+and when u were on resturant page then the restu id come with it with every restu data we can show this restu id by seeing data in JSON object
+
+   "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
+                    "info": {
+                      "id": "622616",
+                      "name": "Domino's Pizza",
+                      "cloudinaryImageId": "RX_THUMBNAIL/IMAGES/VENDOR/2026/6/5/855cd7a0-9c4e-473a-b8fc-904b36e24aea_622616.JPG",
+                      "locality": "3rd Sector",
+                      "areaName": "Rohini",
+                      "costForTwo": "₹400 for two",
+                      "cuisines": [
+                        "Pizzas",
+                        "Italian",
+                        "Pastas",
+                        "Desserts"
+
+
+                        suppose this api data u getall these info now u make a card 
+                        also now u have resturant id 
+
+now when we click button of that resturant we know where we have to route from where we have to fetch the data which api call we have to call we just want the resturant id 
+Now the Api with the resturant id we will direct to that specific resturant page 
+
+
+first we show the card using this data
+"info": {
+                      "id": "622616",
+                      "name": "Domino's Pizza",
+                      "cloudinaryImageId": "RX_THUMBNAIL/IMAGES/VENDOR/2026/6/5/855cd7a0-9c4e-473a-b8fc-904b36e24aea_622616.JPG",
+                      "locality": "3rd Sector",
+                      "areaName": "Rohini",
+                      "costForTwo": "₹400 for two",
+                      "cuisines": [
+                        "Pizzas",
+                        "Italian",
+                        "Pastas",
+                        "Desserts"
+
+
+then we call this API with specific resturant id --
+
+https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=28.7040592&lng=77.10249019999999&carousel=true&third_party_vendor=1
+
+
+now this resurant id is for Dominos pizza -- 622616
+then it redirected to specific dominos page or menu 
+
+what we are doing intially we have the data present in a file we just importing it use it directly
+data.map((value)) -- like this and show on ui
+
+but now we dont have have data what we do it we fetch our data with the swiggy live api after fetching the data save into useState variable then show it on UI
+
+here usestate is used to store the dynamic js 
+
+this is our first API -- https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=28.7040592&lng=77.10249019999999&carousel=true&third_party_vendor=1
+
+we fetch the data using async function within the useeffect 
+
+now it showing failed to fetch the data due to CORS policy 
+What is this CORS policy -- 
+
+what happen when we directly type api in browser he gets us data it means 
+swiggy is requesting to its server to get data
+
+but now u make clone frontend and make request  then server gets the data but what happen
+brower see that origin of urswiggy clone and server is different  
+then by default it cannot full the information 
+
+all the permission is in swiggy header is in the server it allows permission to access the data so in this server it disallowed that's why we cannot access it 
+
+other api like github , weather api they work because in their server header section they allowed to access it 
+
+so we study it about in backend about CORS 
+in simple if both origin is same then it allowed 
+                     or 
+in server answer in header it should be written cross origin allowed then it allowed 
+
+
+
+
+
+
+

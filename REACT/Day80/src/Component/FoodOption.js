@@ -11,9 +11,8 @@ export default function FoodOption() {
         </h1>
       </div>
 
-      <div className="max-w-[80%] container mx-auto mt-6 overflow-x-auto">   //this is for the horizontal scroll bar
-
-        <div className="grid grid-rows-2 grid-flow-col gap-2 w-max">   //imp is grid-flow-col , w-max as much as u can
+      <div className="max-w-[80%] container mx-auto mt-6 overflow-x-auto"> 
+        <div className="grid grid-rows-2 grid-flow-col gap-2 w-max">  
 
           {
             imageGridCards.map((value) => {
