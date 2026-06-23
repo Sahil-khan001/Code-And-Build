@@ -363,6 +363,26 @@ in simple if both origin is same then it allowed
                      or 
 in server answer in header it should be written cross origin allowed then it allowed 
 
+Origin means -- both deployed in same domain or both frontend or backend by same company
+in our case frontent is mine , other is their
+
+TO SOLVE THIS PROBLEM we use -- third party server basically the problem is browser we know server giving us data but because of browser we cannot access it so this server gets the data show some modification in own header section means it allowed Cross origin then browser give access to it also 
+
+SO THE API IS -- cors-anywhere.herokuapp.com
+it allowed u to do cross origin 
+
+code be like -- 
+const proxyServer = "https://cors-anywhere.herouaapp"
+const swiggy = "put swiggy api here "
+const response = await fetchData(proxyServer + swiggy);
+const data = response.json();
+setData(data);
+
+
+in this way we gonna access the data 
+now u can easily show it on ui
+
+
 
 
 

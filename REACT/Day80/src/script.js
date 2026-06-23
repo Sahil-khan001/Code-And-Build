@@ -4,6 +4,9 @@ import Header from "./Component/header";
 import FoodOption from "./Component/FoodOption";
 import GroceryOption from "./Component/GroceryOption";
 import DineOutOption from "./Component/DineOutOptions";
+import Banner from "./Component/banner";
+import Cities from "./Component/Cities";
+import Footer from "./Component/Footer";
 
 function Show(){
     return(
@@ -12,6 +15,9 @@ function Show(){
       <FoodOption/>
       <GroceryOption/>
       <DineOutOption/>
+      <Banner/>
+      <Cities/>
+      <Footer/>
      </>
     )
 }
