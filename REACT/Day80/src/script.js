@@ -1,24 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Header from "./Component/header";
-import FoodOption from "./Component/FoodOption";
-import GroceryOption from "./Component/GroceryOption";
-import DineOutOption from "./Component/DineOutOptions";
-import Banner from "./Component/banner";
-import Cities from "./Component/Cities";
-import Footer from "./Component/Footer";
+import Home from "./Component/Home";
+import RestaurantOption from "./Component/ResturantOpt";
+import {BrowserRouter , Routes , Route} from "react-router-dom";
 
 function Show(){
     return(
-     <>
-     <Header/>
-      <FoodOption/>
-      <GroceryOption/>
-      <DineOutOption/>
-      <Banner/>
-      <Cities/>
-      <Footer/>
-     </>
+   <BrowserRouter>
+   <Routes>
+
+    <Route path="/" element = {<Home/>} ></Route>
+    <Route path="/restaurant" element = {<RestaurantOption/>} ></Route>
+   </Routes>
+   
+   </BrowserRouter>
     )
 }
 

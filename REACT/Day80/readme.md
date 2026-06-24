@@ -382,10 +382,431 @@ setData(data);
 in this way we gonna access the data 
 now u can easily show it on ui
 
+Why this happens
+
+Browser blocks direct request to Swiggy because of:
+
+CORS Policy
+
+So you used a proxy server:
+
+https://cors-anywhere.herokuapp.com/
+
+But that proxy requires manual activation.
+
+Solution
+
+Open this URL in browser:
+
+https://cors-anywhere.herokuapp.com/corsdemo
+
+Then click:
+
+Request temporary access to the demo server
+
+After that:
+
+Refresh your React app
+
+Then data should come.
+
+Another important thing
+
+Swiggy APIs sometimes block browser requests completely.
+
+So even after proxy access, it may still fail.
+
+In real-world projects developers usually:
+
+create their own backend (Node.js/Express)
+fetch API from backend
+frontend calls backend
+
+Because many public APIs block direct frontend requests.
 
 
 
+total we have -- proxy url -- target url 
+first write proxy url and we have to say proxy url get me data from this target URL by bypass CORS POLICY
+
+
+<!-- ======================================================================================================================= -->
+first api  == 
+
+https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=28.7040592&lng=77.10249019999999&carousel=true&third_party_vendor=1
+
+
+//Use external API is not good after sometime it change structure again and again sometime data in cards[2] sometime [3] or [4]
+Better to create own backend using express 
+
+HOW TO WORK WITH LIVE API PERFECTLY --
+
+1. Safe Initial State
+
+YOUR OLD:
+
+const [Data , setData] = useState();
+
+NEW:
+
+const [Data, setData] = useState([]);
+
+Why?
+Because .map() only works on arrays.
+
+If Data is:
+
+undefined
+
+then:
+
+Data.map()
+
+crashes.
+
+2. Dynamic Restaurant Search
+
+YOUR OLD:
+
+data?.data?.cards[2]
+
+Problem:
+Swiggy changes indexes dynamically.
+
+Sometimes:
+
+cards[2]
+
+contains restaurants.
+
+Sometimes:
+
+cards[4]
+
+contains restaurants.
+
+So I added:
+
+const restaurantData = data?.data?.cards?.find(
+  (item) =>
+    item?.card?.card?.gridElements?.infoWithStyle?.restaurants
+);
+
+What this does:
+
+Loop through all cards
+Find the one containing restaurants
+
+This is the MOST IMPORTANT fix.
+
+3. Fallback Empty Array
+
+I added:
+
+|| []
+
+here:
+
+setData(
+  restaurantData?.card?.card?.gridElements?.infoWithStyle
+    ?.restaurants || []
+);
+
+Why?
+
+If API fails or data missing:
+
+undefined
+
+becomes:
+
+[]
+
+So .map() still works safely.
+
+4. Optional Chaining in map
+
+OLD:
+
+Data.map()
+
+NEW:
+
+Data?.map()
+
+Why?
+
+If Data somehow becomes undefined again,
+React won't crash.
+
+5. Added console.log(data)
+console.log(data);
+
+Why?
+
+To inspect Swiggy API structure.
+
+Very important during API debugging.
+
+6. Added UI Improvements
+
+I added:
+
+object-cover
+rounded-xl
+
+for better image styling.
+
+Also:
+
+restaurant name
+rating
+MAIN THING YOU LEARNED
+
+Most important concept from this bug:
+
+Never trust API structure blindly
+
+Instead of:
+
+"data is always at index 2"
+
+do:
+
+"find the correct data dynamically"
+
+This is real-world React/API debugging.
+
+<!-- 
+
+Yes, every time after some time you may need to click that again because:
+
+cors-anywhere.herokuapp.com
+
+is only a FREE public demo proxy server.
+
+It is not meant for permanent production use.
+
+================================================================================================================== -->
+now move to Routing -- 
+now we want we we click on specific resturant it gets us there
+when we write /restaurant we get into restaurants for this React routeris used 
+
+we want this resturant page show when we write /resturant on url means when we do routing 
+
+so we have to use routing
+first npm install react-router-dom@6
+clear all parcel and cache 
+import {BrowserRouter , Routes , Routes} from react-router-dom
+
+then put all component in Home js means default /
+and set /rest  diff acc to u 
+
+u can use Link first import 
+so that when u click on image u can route to diff page without reloading the page 
+
+
+Some tips -- 
+
+u can use svg for diff icons 
+just write code of it by GPT
+
+when text is in same line u can use 
+<span> tag too
+
+u can use join(" ") -- if u want space in all the words 
+{data.value.join(" ")}
+whatever the array it is returning now there is a space between them 
+
+u can set transtition and hover properties too
+in main div --
+className "transform  transition  duration-200  hover:scale-95"
+
+now talk about issue -- 
+when u click on image the data is fetching and showing u 
+but when u click first u see a blank white page then instantly data appears this
+
+it make user experience bad -- we want something to print like data is loading or some data may be that appear first 
+or u can show 
+Shimmer Effects -- it feels something is gonna show here
+previously user show some spinner effect like loading type that but that is not much effective 
+
+
+export default function RestaurantOption(){
+    const [Data , setData] = useState([]);
+
+        async function FetchData(){
+            try{
+           const proxyServer = "https://cors-anywhere.herokuapp.com/";
+           const swiggy =  "https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=28.7040592&lng=77.10249019999999&carousel=true&third_party_vendor=1";
+            const response = await fetch(proxyServer + swiggy);
+            const data = await response.json();
+            setData(data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        }catch(error){
+            console.log(error);
+        }
+    }
+            
+            
+    useEffect(()=>{          
+    FetchData();
+     },[]);
+
+// console.log(Data);
+    return (
+<
+IN this code Initially the Data is empty then after some time the data is on the UI
+but to show some written or shimmer effect we can write 
+
+if(Data.length === 0){
+    return <h1>Data is Loading</h1>
+}
+
+when user click on image 
+for somemilleconds it show this data is loading then data
+
+we do it for fake so user have hope ya data is comming 
+
+
+NOw how we do shimmer effect -- 
+if(Data.length === 0){
+    return <Shimmer/>
+}
+
+export default function Shimmer(){
+    return (
+
+        basically we have to make same div with proper height and width with gray color at max so it look real 
+    )
+}
+
+
+Yes. Keep these simple shimmer rules in mind:
+
+Basic Shimmer Rules
+1. Match Real UI Structure
+
+If real card has:
+
+image
+title
+rating
+button
+
+then shimmer should also have same blocks.
+
+Example:
+
+<div className="image"></div>
+<div className="title"></div>
+<div className="rating"></div>
+2. Use Gray Background
+
+Most common:
+
+bg-gray-300
+
+or
+
+bg-gray-200
+3. Add Animation
+
+Most used:
+
+animate-pulse
+
+This creates loading effect.
+
+4. Use Rounded Corners
+
+Looks modern:
+
+rounded-xl
+rounded-2xl
+5. Keep Proper Spacing
+
+Use:
+
+gap
+mt
+p
+
+Bad spacing = ugly shimmer.
+
+6. Responsive Layout
+
+If real UI uses:
+
+grid
+flex
+cards
+
+then shimmer should use same layout.
+
+7. Never Put Real Content
+
+No text/images.
+
+Only empty blocks:
+
+<div className="h-5 w-40 bg-gray-300"></div>
+8. Reuse with map()
+
+Never repeat manually 10 times.
+
+Use:
+
+Array(10).fill("").map()
+9. Full Page vs Component
+Component shimmer
+
+Only one card loading.
+
+Full page shimmer
+
+Whole screen layout loading.
+
+10. Main Logic
+loading ? <Shimmer /> : <RealData />
+
+This is the core concept.
+
+Golden Rule
+
+Shimmer should look like:
+
+“fake version of real UI before data arrives”
+
+<!-- =====================================================================================================================
+ -->
+
+now we see routing when we click on restaurants all restu appear now we want 
+like we are using routing + fetching data from live api
+
+WE know everyrestu that we are fetching have their own id 
+and that id we want to go into specific resturants
+
+we have to used in this api -- 
+
+
+https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.7040592&lng=77.10249019999999&restaurantId=622616&submitAction=ENTER
 
 
 
+Note -- By default whenever we do routing the previous state and data is vanished that's why it reload again 
+when we go into 3rd page of routing and go back then it reloads again because of point -- 
+Basically it removes all the previously state because they are not stored anywhere 
 
+so we need to solve this -- 
+SO here REDUX STORE HELPS us store all the information so that when we go back it dont reloads the page agains 
+it fetch the data ASAP from store 
+
+U can use Local storage too
+like once u fetch the data it stored into ur system 
+u can use useQuery too
+
+problem statement -- when back then it reloads the page again 
+in 1st time it gonna reloads but not in back
+
+
+when we go from 1 route to another by default it remove all the states , data of previously route 
