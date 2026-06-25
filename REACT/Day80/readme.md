@@ -864,22 +864,118 @@ basically we have to use the logic to solve a problem
 
 eg 2 sometime we have 2 variable for one value how to handle this case
 
+<!-- <p className="font-bold text-base">{"₹" + ((items?.defaultPrice || items?.price) / 100)}</p> --> like this 
+<!-- ============================================================================================================= -->
+React / Frontend Debugging Template
 
+Save this in your mind.
 
+1. First Check Data
+console.log(data)
 
+Always check:
 
+array or object?
+undefined?
+empty?
+API response shape?
 
+Most bugs start here.
 
+2. Handle Undefined
+Use Optional Chaining
+data?.price
 
+Prevents crash before API loads.
 
+3. Handle Missing Values
+Use Fallback
+a || b
 
+Example:
 
+items.defaultPrice || items.price
+4. Before Using map()
+data?.map()
 
+Because API data comes later.
 
+5. Loading State
+if(!data) return <Shimmer/>
 
+OR
 
+if(data.length === 0) return <Shimmer/>
+6. Conditional Rendering
+condition ? true : false
 
+Example:
 
+isVeg ? "Veg" : "Non Veg"
+7. Golden Questions While Debugging
+
+Whenever stuck ask:
+
+1. What data do I have?
+2. What data do I expect?
+3. Which line crashes?
+4. Which value is undefined?
+5. Is API loaded yet?
+6. Array or object?
+8. Most Common React Errors
+Undefined Error
+Cannot read property of undefined
+
+Meaning:
+
+Data not loaded yet
+
+Fix:
+
+?.
+NaN Error
+
+Meaning:
+
+undefined + math operation
+
+Fix:
+
+a || b
+map is not a function
+
+Meaning:
+
+Not an array
+
+Fix:
+Check API response properly.
+
+9. Professional Thinking Pattern
+
+Instead of:
+
+Why error coming?
+
+Think:
+
+Which value is breaking?
+Why is it undefined?
+What cases are possible?
+10. Real Developer Rule
+Build → Break → Debug → Repeat
+
+This is how frontend developers improve.
+
+Not by memorizing syntax.
+
+<!-- ==================================================================================================== -->
+
+Now lets add the IMP. functionality in Code that is -- 
+-- FILTER BUTTON FOR VEG AND NON VEG 
+-- SEARCH FUNCTIONALITY 
+
+u search any dish , restu it gives u Result 
 
 
 
