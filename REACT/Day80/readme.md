@@ -33,6 +33,7 @@ so this data is coming from server side rendering and give us html file
 
 HOW These Images are coming -- actually in swiggy server side rendering is happening means data is fetching in server side and it send u a html file with the data present 
 
+server side -- all files executing , all fetching operation then at last give a final HTLM DOCS File 
 
 it send html file with the Object and there is no need to fetch data from anywhere
 it render it server side and sent  u a html file 
@@ -77,7 +78,6 @@ THAT EXACTLY NEXTJS DO
 now we have to take out data acc to ourself form this server side re rendering html file
 search imagegrid then take out all data
 then make utils fooddata.js then remove unnessary part and make same like data in an array in the form of OBJECTS so that we can access it easily
-
 when u have lot code -- u can disable stick scroll 
 
 now lets make the middle part 
@@ -351,7 +351,7 @@ what happen when we directly type api in browser he gets us data it means
 swiggy is requesting to its server to get data
 
 but now u make clone frontend and make request  then server gets the data but what happen
-brower see that origin of urswiggy clone and server is different  
+brower see that origin of ur swiggy clone and server is different  
 then by default it cannot full the information 
 
 all the permission is in swiggy header is in the server it allows permission to access the data so in this server it disallowed that's why we cannot access it 
@@ -485,7 +485,7 @@ cards[4]
 
 contains restaurants.
 
-So I added:
+So I added this condition:
 
 const restaurantData = data?.data?.cards?.find(
   (item) =>
@@ -614,6 +614,7 @@ just write code of it by GPT
 when text is in same line u can use 
 <span> tag too
 
+suppose a element return an array with diff name then u can use join(", ")
 u can use join(" ") -- if u want space in all the words 
 {data.value.join(" ")}
 whatever the array it is returning now there is a space between them 
@@ -788,10 +789,69 @@ and that id we want to go into specific resturants
 
 we have to used in this api -- 
 
-
 https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.7040592&lng=77.10249019999999&restaurantId=622616&submitAction=ENTER
 
+https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.7040592&lng=77.10249019999999&restaurantId=862163&submitAction=ENTER
 
+know we have to read the data and fetch it properly to show on UI
+
+Note : we have also one problem 
+when fetching data from these nested APIs what happened
+
+eg menuItems?.ItemsCard?.info --
+
+in some case what happend after menuItems  this ItemsCard is not present direcly it first go into other object then ItemsCard
+means it be liek -- menuItems > categories > ItemsCard 
+so how can we handle this situation 
+the code be like -- 
+
+
+    if("categories" in value){
+        return(
+            <div className="w-full"  >
+            <p className="font-bold text-lg" >{value?.title}</p>
+            <div>
+            {
+                value?.categories.map((ittems)=><MenuCard key={ittems.title} value = {ittems}  />)
+            }
+
+            </div>
+            </div>
+        )
+    }
+
+u have to make like this make sure u are passing this within the same component
+
+Now all restaurant menu appear now we have to add ARROW UP AND DOWN key align with the title means in front of it 
+when u click on arrow it open when u reclick it close so for this FUNCTIONALITY we have to use hooks --
+
+the code like -- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NEW PROBLEM STATEMENT -- 
 
 Note -- By default whenever we do routing the previous state and data is vanished that's why it reload again 
 when we go into 3rd page of routing and go back then it reloads again because of point -- 
@@ -809,4 +869,4 @@ problem statement -- when back then it reloads the page again
 in 1st time it gonna reloads but not in back
 
 
-when we go from 1 route to another by default it remove all the states , data of previously route 
+ 

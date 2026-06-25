@@ -13,7 +13,7 @@ export default function FoodOption() {
 
       <div className="max-w-[80%] container mx-auto mt-6 overflow-x-auto"> 
         <div className="grid grid-rows-2 grid-flow-col gap-2 w-max">  
-
+ 
           {
             imageGridCards.map((value) => {
               return (
