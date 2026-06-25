@@ -6,7 +6,7 @@ export default function MenuCard2({items}){
 
 <div className="w-[70%]">
 <p className="font-bold ">{items?.name}</p>
-<p className="font-bold text-base">{"₹"+items?.price/100}</p>
+<p className="font-bold text-base">{"₹" + ((items?.defaultPrice || items?.price) / 100)}</p>
 <span className="text-sm text-green-700 font-bold">{"★" + items?.ratings?.aggregatedRating?.rating}</span>
 <span className="text-sm text-gray-500">{"("+items?.ratings?.aggregatedRating?.ratingCountV2+")"}</span>
 <p className="text-gray-500 text-sm overflow-hidden mt-2 h-10">{items?.description}</p>

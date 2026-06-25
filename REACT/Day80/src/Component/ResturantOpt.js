@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Shimmer from "./Shimmer";
+import {Shimmer} from "./Shimmer";
 import { Link } from "react-router-dom";
 
 export default function RestaurantOption() {

@@ -3,7 +3,7 @@ import MenuCard2 from "./menuCard2"
 
 export default function MenuCard({value}){
 
-    const[isOpen , setisOpen] = useState(false);
+    const[isOpen , setisOpen] = useState(true);
 
 
     if("categories" in value){
@@ -27,7 +27,7 @@ export default function MenuCard({value}){
         <p className="font-bold text-base ">{value?.title}</p>
         <button className="text-xl" onClick={()=>setisOpen(!isOpen)} >{isOpen? "˄" : "˅"}</button>
         </div>
-        <div className="h-3.5 rounded w-[95%] text-center bg-gray-100 border-gray-300 ml-3"></div>
+        <div className="h-3.5 rounded w-[95%] text-center bg-gray-100 border-gray-300 ml-3 animate-pulse"></div>
             </div>
         )
     }

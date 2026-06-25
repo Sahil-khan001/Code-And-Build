@@ -827,6 +827,44 @@ when u click on arrow it open when u reclick it close so for this FUNCTIONALITY 
 
 the code like -- 
 
+    if(!isOpen){
+        return (
+        <div className="w-full">
+        <div className="flex justify-between mr-12 ml-10">
+        <p className="font-bold text-base ">{value?.title}</p>
+        <button className="text-xl" onClick={()=>setisOpen(!isOpen)} >{isOpen? "˄" : "˅"}</button>
+        </div>
+        <div className="h-3.5 rounded w-[95%] text-center bg-gray-100 border-gray-300 ml-3 animate-pulse"></div>
+            </div>
+        )
+    }
+
+
+
+return (
+<!-- <div className="w-full">
+ <div className="flex justify-between  mr-12 ml-10">
+ <p className="font-bold text-base ">{value?.title}</p>
+ <button className="text-xl" onClick={()=>setisOpen(!isOpen)} >{isOpen? "˄" : "˅"}</button>
+ </div> 
+<div>
+
+    {
+        value?.itemCards?.map((items)=><MenuCard2 key = {items?.card?.info?.id}  items = {items?.card?.info} />)
+    }
+</div>
+
+
+</div>
+
+)
+} -->
+
+basically we have to use the logic to solve a problem 
+
+eg 2 sometime we have 2 variable for one value how to handle this case
+
+
 
 
 

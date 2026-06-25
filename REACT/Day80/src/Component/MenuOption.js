@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import MenuCard from "./menuCard";
 import MenuCard2 from "./menuCard2";
+import { Shimmer } from "./Shimmer";
 
 export default function MenuOption(){
 
@@ -40,6 +41,10 @@ setData(filterData);
   useEffect(()=>{
     FetchData();
   },[])
+
+  if(Data.length === 0){
+    return <Shimmer/>
+  }
 
       return (
         <>
