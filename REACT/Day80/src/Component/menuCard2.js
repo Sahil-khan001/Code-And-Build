@@ -1,20 +1,51 @@
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import  {addItems , Increment , Decrement} from "../Store/Slice";
 
 
 export default function MenuCard2({items}){
+
+    // const [count , setcount] = useState(0);
+
+    const Dispatch = useDispatch();
+    const items = useSelector(state => state.slicer.items);
+    const elements = items.find(item => item.id === items.id);
+    const count = element ? elements.quantity :0;
+
+
+
+    function handleAdditems(){
+        Dispatch(addItems(items));
+    }
+    function handleIncrementitems(){
+        Dispatch(Increment(items));
+    }
+    function handleDecrementitems(){
+        Dispatch(Decrement(items));
+    }
+
     return (
    <div className="flex w-full justify-between mb-4 items-center border-b border-gray-300 p-10">
 
 <div className="w-[70%]">
 <p className="font-bold ">{items?.name}</p>
 <p className="font-bold text-base">{"₹" + ((items?.defaultPrice || items?.price) / 100)}</p>
-<span className="text-sm text-green-700 font-bold">{"★" + items?.ratings?.aggregatedRating?.rating}</span>
+<span className="text-sm text-green-700 font-bold">{"★" + (items?.ratings?.aggregatedRating?.rating || 'N/A')}</span>
 <span className="text-sm text-gray-500">{"("+items?.ratings?.aggregatedRating?.ratingCountV2+")"}</span>
 <p className="text-gray-500 text-sm overflow-hidden mt-2 h-10">{items?.description}</p>
 </div>
 
 <div className="w-[20%] relative">
     <img className="h-36 w-full object-cover rounded-2xl" src={"https://media-assets.swiggy.com/swiggy/image/upload/"+items.imageId}></img>
-    <button className="absolute top-30 left-6 right-0 border border-gray-500 w-[68%] rounded bg-white text-green-600 font-bold h-9   ">ADD</button>
+    { (count === 0) ? ( < button onClick={()=>handleAdditems()} className="absolute top-30 left-6 right-0 border border-gray-500 w-[68%] rounded bg-white text-green-600 font-bold h-9">ADD</button>) : 
+   ( <div className="absolute top-30 text-xl  left-6 right-0 border border-gray-500 w-[68%] rounded bg-white text-green-600 font-bold h-9 flex items-center justify-center gap-3 ">
+     <button onClick={()=>handleDecrementitems()}>-</button>
+     <span>{count}</span>
+     <button onClick={()=>handleIncrementitems()} >+</button>
+    </div>
+   )
+    }
+   
     <p className="w-full text-center text-xs text-gray-400  absolute top-40 left-2 right-0">Customisable</p>
 </div>
 </div>

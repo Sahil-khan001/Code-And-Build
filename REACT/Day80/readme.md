@@ -977,13 +977,133 @@ Now lets add the IMP. functionality in Code that is --
 
 u search any dish , restu it gives u Result 
 
+lets add the filter functionality -- 
+we have 3 conditions -- 
+
+1. Non Veg and Veg Off -- it means we have to show the whole data 
+2. Veg is ON -- it means show only data of veg and turn off Non Veg button  
+3. NOn-Veg is ON -- it means show only data of Non-veg and turn off Veg 
+
+for this we take StateVariable that is -Selected 
+and with some logic we have to make button and code be like
+    
+    <div className="max-w-[50%] container mx-auto flex gap-5 my-15">
+        <button className= {`border py-1 px-6 rounded text-sm ${selected === 'veg' ? "bg-green-600" : "bg-gray-400"} `} onClick={()=>setselected(selected === 'veg' ? null : 'veg')}>Veg</button>
+        <button className= {`border py-2 px-8 rounded text-sm ${selected === 'nonveg' ? "bg-red-600" : "bg-gray-400"}`}onClick={()=>setselected(selected === 'nonveg' ? null : 'nonveg')}>Non-Veg</button>
+    </div>
+
+    now how do filter the itemCard on which veg and nonveg appear
+    so for this we have an option in api data in particular item there is a option isVeg : 1 so we have to use it for the filter the items like their is no written isNonveg : 1 so we have to use isveg in both if there is isveg : 1 then it is veg otherwise nonveg 
+
+    now we can apply filter on itemcard if there is isveg : 1 then show it otherwise not 
+    code be like 
 
 
+    if(foodSelected === 'veg'){
+        return (
+       <div className="w-full"> 
+       <div className="flex justify-between  mr-12 ml-10">
+       <p className="font-bold text-base ">{value?.title}</p>
+       <button className="text-xl" onClick={()=>setisOpen(!isOpen)} >{isOpen? "˄" : "˅"}</button>
+       </div> 
+       <div> 
+    {
+        value?.itemCards?.filter((food)=> "isVeg" in food?.card?.info).map((items)=><MenuCard2 key = {items?.card?.info?.id}  items = {items?.card?.info} />)
+    }
+     </div>
+    </div>
+        )
+
+    }
+
+    if(foodSelected === 'nonveg'){
+         return (
+       <div className="w-full"> 
+       <div className="flex justify-between  mr-12 ml-10">
+       <p className="font-bold text-base ">{value?.title}</p>
+       <button className="text-xl" onClick={()=>setisOpen(!isOpen)} >{isOpen? "˄" : "˅"}</button>
+       </div> 
+       <div> 
+    {
+        value?.itemCards?.filter((food)=> !("isVeg" in food?.card?.info)).map((items)=><MenuCard2 key = {items?.card?.info?.id}  items = {items?.card?.info} />)
+    }
+     </div>
+    </div>
+        )
+    }
 
 
+    but it didn't work on nested loop for this u have to use the -- 
+    send the same props into the categories so that it check into subFolders too code be like also we send this props because we have to send 2 props in parameter 
+
+    
+    if("categories" in value){
+        return(
+            <div className="w-full"  >
+            <p className="font-bold text-lg" >{value?.title}</p>
+            <div>
+            {
+                value?.categories.map((ittems)=><MenuCard key={ittems.title} value = {ittems}  foodSelected={foodSelected}/>)
+            }
+
+            </div>
+            </div>
+        )
+    }
 
 
+NOW MOVE TO NEXT FUNCTIONALITY THAT IS SEACH BAR -- 
 
+what we observe is when we type in search bar it give us recomendation 
+basically all this data is coming from an API  
+if u want this then type then inspect then in network data + in headers the api is appearing it look like this -- 
+
+
+https://www.swiggy.com/dapi/menu/pl/search?lat=28.7040592&lng=77.10249019999999&restaurantId=16866&isMenuUx4=true&query=tan&submitAction=ENTER
+
+we just type -- tan there 
+the api is look like this 
+
+https://www.swiggy.com/dapi/menu/pl/search?lat=28.7040592&lng=77.10249019999999&restaurantId=16866&isMenuUx4=true&query=tan&submitAction=ENTER
+
+in this whatever u write it after query=tan if u look at there
+means we have to write it here and it give us recommendation 
+we just need restaurant id and something to write here 
+
+there is a also a problem this api directly dont give u data even with PROXY because  
+it required SOME COOKIES concept that we discuss later in backened
+//cookies means that this user is real user or not , it uses our website or not that what cookies tells 
+
+so we can't do the API RIGHT now 
+so the alternative is WE CAN IMPLEMENT OUR OWN SEARCH FUNCTIONALITY -- 
+
+like we have data of all resturant and all with name and others DETAILS == 
+what we do is we stored all this data into object 
+
+then whatever we search we check if it is match with our resturant data name 
+for this we have touse the routing also 
+
+this api will not work so what we do is 
+
+    async function FetchData() {
+    try {
+      const proxyServer = "https://cors-anywhere.herokuapp.com/";
+      const swiggy = `https://www.swiggy.com/dapi/menu/pl/search?lat=28.7040592&lng=77.10249019999999&restaurantId=${id}&isMenuUx4=true&query=${food}&submitAction=ENTER`;
+      const response = await fetch(proxyServer + swiggy);
+      const data = await response.json();
+
+      this will not work so what we do now is -- 
+
+we use simple api which give us data then what we do is -- 
+
+we make an input to get the text what user type and we use useState to store that value to use later 
+
+then we create two state one for full menu and other for after filter the menu data
+then what we do it 
+we check if food.length <2 we have to show the full restu details 
+then we fittered items data.name include food we use tolowercase in both side make sure no error sometime user type in capital sometime in lowercase so we fix
+now next is we have to solve duplicate issue for this what we do is we use map we can use set too but it is use for primtiive value not for non primitive like object so map is good it store in keyvalue pairs 
+we just show data that's it 
 
 NEW PROBLEM STATEMENT -- 
 
@@ -1000,7 +1120,353 @@ like once u fetch the data it stored into ur system
 u can use useQuery too
 
 problem statement -- when back then it reloads the page again 
-in 1st time it gonna reloads but not in back
+in 1st time it gonna reloads but not in back again it have to show data instantly 
+so for this is we have data then we can easily show it on ui with redux or other technologies too
+
+--ALSO WE HAVE TO IMPLEMENT A FUNCTIONALITY THAT IS WHEN WE CLICK ON ADD IT SHOW IN CART 
+WE DO IT USING REDUX 
+
+when we click on add it increment by 1 and there appears two buttons - and + so for this code with the logic is 
+ { (count === 0) ? ( < button onClick={()=>setcount(count + 1)} className="absolute top-30 left-6 right-0 border border-gray-500 w-[68%] rounded bg-white text-green-600 font-bold h-9">ADD</button>) : 
+   <!-- ( <div className="absolute top-30 text-xl  left-6 right-0 border border-gray-500 w-[68%] rounded bg-white text-green-600 font-bold h-9 flex items-center justify-center gap-3 ">
+     <button onClick={()=>{setcount(count - 1)}}>-</button>
+     <span>{count}</span>
+     <button onClick={()=>{setcount(count + 1)}} >+</button>
+    </div>
+   )
+    } -->
 
 
+    now the next is is the increment and decrement we are doing is appeared in CART ALSO IT SHOW ON DIFF PAGE 
+    SO WE USE ROUTING TO ROUTE TO DIFF PAGE -- 
+
+    ALSO WE NEED A CENTRALISED STORE WHERE WE STORE ALL THE INCREMENT AND DECREMENT VALUE 
+    IT GOES INTO CENTRALISED STORE THEN THERE IS CHECKOUT PAGE 
+    IT READ THAT CENTRALISED STORE VALUE USING USESELECTOR -- 
+
+    WE KNOW THEN WHEN WE ADD ON DATA  ON INCRE IT APPEAR ON CHECKOUT ROUTE BUT HOW CHECKOUT READ THAT VALUE 
+    IT READ USING THE MIDDLE MAN THAT IS STORE AND CHECKOUT READ VALUE FROM STORE 
+
+    BOTH ON DIFF ROUTE , NO PARENT , NO CHILD , NOTHING RELATION 
+    WHENEVER WE ADDON DATA WE SAY DISPATCH IT ON THE STORE 
+    THEN CHECKOUT WILL ACCESS IT USING USESELECTOR 
+
+    THAT'S WHY WE GIVE IMPORTANCE TO REDUX -- MANY TIMES WE HAVE TO SHARE THE DATA WITHIN MULTIPLE ROUTING , MULTIPLE COMPONENT 
+    SO HERE WE NEED THE REDUX 
+    WE JUST MADE A CENTRALISED STORE ANYONE CAN ACCESS IT 
+
+    now redux store -- 
+    npm install @reduxjs/toolkit
+    npm install react-redux
+
+
+    now in slice we have to make 
+    initialstate is {items : []}
+
+    THIS IS KEY AND ARRAY  IN THE OBJECT 
+    basically we pickup full object of info like restu name with its details 
+    when we click on add 
+    it details save into store like the full object 
+    we are sending this so that checkout check the object one by one and print the value too in the object
+
+    so this items : [] we take this so that we can send multiple objects into it 
+
+    now we have functions in reducers -- 
+    when we click on add it send an object and store it 
+    if we resend it then it didn't store it  again IT increase its quantity by 1 we check it using when both the id are match 
+
+
+    when we click on button everytime object is gone 
+    when we click on add -- it set count 1 to that object
+    when we click on increments -- it tells object is already there just increase their count by 1 
+
+    he make 3 reducer function because 
+    everytime object is going but 
+    when it reach second it then this functions helps what we have to do with them 
+    either we have increase their value by 1 or what
+
+    when a object is coming from data to store how store will now what we have to do with this object 
+    WE BASICALLY ADD INFORMATION WITH THIS OBJECT WHAT U HAVE TO DO WITH THIS OBJECT LIKE ADD , INCRE , DECRE
+
+
+    SIMPLE IS -- BASICALLY HOW  THIS OBJECT IS INTERACT WITH THIS CART 
+    EVERYTIME WE HAVE TO SEND THE OBJECT THAT IS OBVIOUS
+    THEN WE HAVE ONLY THREE OPTIONS -- EITHER ADD THIS , INCREMENT QUANTITIY , DECREMENT/REMOVE ITEMS
+
+    EVERYTIME WE HAVE TO SEND THE OBJECT SO THAT HE KNOW WHICH OBJECT I HAVE TO ADD , INCRE , DECRE
+
+
+    CODE BE LIKE TILL NOW -- 
+
+  import { useState } from "react";
+import { useDispatch } from "react-redux";
+import  {addItems , Increment , Decrement} from "../Store/Slice";
+
+
+export default function MenuCard2({items}){
+
+    const [count , setcount] = useState(0);
+    const Dispatch = useDispatch();
+
+    function handleAdditems(){
+        setcount(1);
+        Dispatch(addItems(items));
+    }
+    function handleIncrementitems(){
+        setcount(count + 1);
+        Dispatch(Increment(items));
+    }
+    function handleDecrementitems(){
+        setcount(count - 1);
+        Dispatch(Decrement(items));
+    }
+
+    <!-- return ( -->
+   <!-- <div className="flex w-full justify-between mb-4 items-center border-b border-gray-300 p-10">
+
+<div className="w-[70%]">
+<p className="font-bold ">{items?.name}</p>
+<p className="font-bold text-base">{"₹" + ((items?.defaultPrice || items?.price) / 100)}</p>
+<span className="text-sm text-green-700 font-bold">{"★" + (items?.ratings?.aggregatedRating?.rating || 'N/A')}</span>
+<span className="text-sm text-gray-500">{"("+items?.ratings?.aggregatedRating?.ratingCountV2+")"}</span>
+<p className="text-gray-500 text-sm overflow-hidden mt-2 h-10">{items?.description}</p>
+</div>
+
+<div className="w-[20%] relative">
+    <img className="h-36 w-full object-cover rounded-2xl" src={"https://media-assets.swiggy.com/swiggy/image/upload/"+items.imageId}></img>
+    { (count === 0) ? ( < button onClick={()=>handleAdditems()} className="absolute top-30 left-6 right-0 border border-gray-500 w-[68%] rounded bg-white text-green-600 font-bold h-9">ADD</button>) : 
+   ( <div className="absolute top-30 text-xl  left-6 right-0 border border-gray-500 w-[68%] rounded bg-white text-green-600 font-bold h-9 flex items-center justify-center gap-3 ">
+     <button onClick={()=>handleDecrementitems()}>-</button>
+     <span>{count}</span>
+     <button onClick={()=>handleIncrementitems()} >+</button>
+    </div>
+   )
+    }
+   
+    <p className="w-full text-center text-xs text-gray-400  absolute top-40 left-2 right-0">Customisable</p>
+</div>
+</div>
+); -->
+}
+
+
+WHEN WE CLICK ON ADD ITEMS -- IT CALL HANDLEADDITEMS  SAME AS WITH OTHERS TOO 
+
+
+NOW WE HAVE THE DATA IN THE FORM OF OBJECT 
+{
+id : 234,
+name : "Tandoori"
+category : "slicer"
+QUANTITY : 2
+}
+we add one thing into this which is quantity means
+
+when this "Tandoori" comes for the second time then we increase its quantity by one 
+
+NOW CODE FOR THESE 3 FUNCTIONS ARE -- 
+
+import {createSlice} from "@reduxjs/toolkit"
+
+const cart = createSlice({
+    name : "Slice1",
+    initialState : {
+        items : []
+    },
+    reducers : {
+    addItems : (state)=>{
+    state.items.push({...actions.payload , quantity : 1})
+
+    },
+    Increment : (state)=>{
+    const element = state.items.find((item)=> item.id === actions.payload.id)
+    element.quantity +=1;
+    },
+    Decrement : ()=>{
+    const element = state.items.find((item)=> item.id === actions.payload.id)
+    if(element.quantity > 1){
+        element.quantity -= 1;
+    }
+    else{
+        state.items = state.items.filter((item)=> item.id!=actions.payload.id);
+    }
+    },
+    }
+})
+
+
+export const {addItems , Increment , Decrement} = cart.actions;
+export default cart;
+
+
+now when we click on add it appear on cart 
+but same items not add to the cart so for this what we do is 
+
+code be like -- 
+
+we have to make a count variable look like this 
+const cart = createSlice({
+    name : "Slice1",
+    initialState : {
+        items : [],
+        count : 0
+    },
+    reducers : {
+    addItems : (state , action)=>{
+    state.items.push({...action.payload , quantity : 1})
+    state.count++;
+
+    },
+    Increment : (state , action)=>{
+    const element = state.items.find((item)=> item.id === action.payload.id)
+    element.quantity +=1;
+    state.count++;
+    },
+    Decrement : (state , action)=>{
+    const element = state.items.find((item)=> item.id === action.payload.id)
+    if(element.quantity > 1){
+        element.quantity -= 1;
+    }
+    else{
+        state.items = state.items.filter((item)=> item.id!=action.payload.id);  
+    }
+     state.count--;
+    },
+    }
+})
+
+
+export const {addItems , Increment , Decrement} = cart.actions;
+export default cart.reducer;
+
+OR EITHER WE HAVE TO GO DO SOMETHING WITH THE QUANTITY TO SHOW IT ON UI
+
+now when we click on cart it move to the checkout routing page 
+-- so we have to make a route for it 
+the code be like -- 
+
+
+import { useSelector } from "react-redux";
+
+export default function Checkout(){
  
+     const data = useSelector((state)=> state.Slice1.items);
+
+    return (
+        <>
+
+        {
+            data.map((value)=>{
+                return (
+                    <div key={value.id}>
+                    <h1>{value.name}</h1>
+                    <h1>{value.quantity}</h1>
+                   </div>
+                )
+            })
+        }
+        
+        
+        </>
+
+
+    )
+}
+
+
+-- OTHER THINGS TO UNDERSTAND -- 
+
+THE LOCAL VARIABLE THAT IS  -- const [count , setcount] = useState(0);
+these show value on ui until u are on SAME PAGE 
+when u Re route to diff page it disappear 
+
+NOW THE ISSUE IS -- 
+when u are search about tandoori paneer two tandoori paneer appear but when u click on add only add in 1st one not 2nd
+although they are SAME
+
+SO THEY MUST BE HAVE SAME STATE 
+both id are same but 
+but they are in diff count means
+both refers to diff count 
+so there should be same count 
+so we have to remove this count 
+
+
+export default function MenuCard2({items}){
+
+    const [count , setcount] = useState(0);
+    const Dispatch = useDispatch();
+
+    function handleAdditems(){
+        setcount(1);
+        Dispatch(addItems(items));
+    }
+    function handleIncrementitems(){
+        setcount(count + 1);
+        Dispatch(Increment(items));
+    }
+    function handleDecrementitems(){
+        setcount(count - 1);
+        Dispatch(Decrement(items));
+    }
+
+    instead of local state that is count we have to use of that redux state  like -- 
+
+
+
+export default function MenuCard2({items}){
+
+    // const [count , setcount] = useState(0);
+
+    const Dispatch = useDispatch();
+    const items = useSelector(state => state.slicer.items);
+    const elements = items.find(item => item.id === items.id);
+    const count = element ? elements.quantity :0;
+
+
+
+    function handleAdditems(){
+        Dispatch(addItems(items));
+    }
+    function handleIncrementitems(){
+        Dispatch(Increment(items));
+    }
+    function handleDecrementitems(){
+        Dispatch(Decrement(items));
+    }
+
+    <!-- return (
+   <!-- <div className="flex w-full justify-between mb-4 items-center border-b border-gray-300 p-10">
+
+<div className="w-[70%]">
+<p className="font-bold ">{items?.name}</p>
+<p className="font-bold text-base">{"₹" + ((items?.defaultPrice || items?.price) / 100)}</p>
+<span className="text-sm text-green-700 font-bold">{"★" + (items?.ratings?.aggregatedRating?.rating || 'N/A')}</span>
+<span className="text-sm text-gray-500">{"("+items?.ratings?.aggregatedRating?.ratingCountV2+")"}</span>
+<p className="text-gray-500 text-sm overflow-hidden mt-2 h-10">{items?.description}</p>
+</div> --> -->
+
+--
+
+now we are reading the value from the directly from the STORE -- 
+if the comming object is already present then give me its quantity 
+otherwise it it is not present then 0
+
+NOW THERE IS NO NEED TO MAKE LOCAL STORAGE
+
+note -- now if u re route here again then value will be there 
+means data from central store will be maintained 
+but for local it is vanished
+
+POINT REMEMBER IT -- WE USE HERE DIFF COUNT BECAUSE 1ST IS
+IT ONLY UPDATING IN 1 TYPE OF TANDOORI BECAUSE BOTH REFERSE DIFF COUNT 
+2ND IS WHEN RE ROUTE THEN THE VALUE DISAPPEAR 
+
+WHEN ROUTING -- THE LOCAL STATE VANISH
+BUT IF U WANT IT 
+THEN PUT IT INTO THE GLOBAL STORE USING SLICE 
+
+--HOMEOWORK --
+1. DESIGN THE CHECKOUT PAGE
+2. MAKE THE SITE RESPONSIVE
+3. APPLY SAME CONCEPT OF REDUX STORE WHILE ROUTING BACK TO A PAGE

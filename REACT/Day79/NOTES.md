@@ -36,7 +36,7 @@ border-t-2 -- it means border top 2px
 
 Margin -- 
 m-1 -- here 1 points to 4px , 0.25 rem , 4px to all side            -- 16px == 1rem
-px-1 -- horizontal margin
+mx-1 -- horizontal margin
 mx-1 -- horizontal margin
 my-1 -- vertical margin
 mt , mb , ml , mr 

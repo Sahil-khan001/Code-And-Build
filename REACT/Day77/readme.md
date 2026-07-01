@@ -319,7 +319,7 @@ export default function CoinCreate(){
 
 
 }
-from this code we just get data from slicer data , loading , error 
+from this code we just get access of states from slice data , loading , error 
 then we check some condition and show data in form of cards
 
 here we are using dispatch(FetchData(20)) in useEffect 
@@ -345,7 +345,7 @@ const FetchData = createAsyncThunk(
 )
 
 now this FetchData that is createAsyncThunk execute all dispatch for every value like data , loading , error 
-then he do dispatch(data)
+then he do dispatch(data) it basically handle all the case 
 {'coin/fetch/pending , payload : undefined}   it dispatch this request   
 then this dispatch go to store store check it type but there is no type there is 
 {'coin/fetch/pending , payload : undefined} 

@@ -1,9 +1,10 @@
 import { useState } from "react"
 import MenuCard2 from "./menuCard2"
 
-export default function MenuCard({value}){
+export default function MenuCard({value , foodSelected}){
 
     const[isOpen , setisOpen] = useState(true);
+    
 
 
     if("categories" in value){
@@ -12,7 +13,7 @@ export default function MenuCard({value}){
             <p className="font-bold text-lg" >{value?.title}</p>
             <div>
             {
-                value?.categories.map((ittems)=><MenuCard key={ittems.title} value = {ittems}  />)
+                value?.categories.map((ittems)=><MenuCard key={ittems.title} value = {ittems}  foodSelected={foodSelected}/>)
             }
 
             </div>
@@ -32,10 +33,41 @@ export default function MenuCard({value}){
         )
     }
 
+    if(foodSelected === 'veg'){
+        return (
+       <div className="w-full"> 
+       <div className="flex justify-between  mr-12 ml-10">
+       <p className="font-bold text-base ">{value?.title}</p>
+       <button className="text-xl" onClick={()=>setisOpen(!isOpen)} >{isOpen? "˄" : "˅"}</button>
+       </div> 
+       <div> 
+    {
+        value?.itemCards?.filter((food)=> "isVeg" in food?.card?.info).map((items)=><MenuCard2 key = {items?.card?.info?.id}  items = {items?.card?.info} />)
+    }
+     </div>
+    </div>
+        )
 
+    }
+
+    if(foodSelected === 'nonveg'){
+         return (
+       <div className="w-full"> 
+       <div className="flex justify-between  mr-12 ml-10">
+       <p className="font-bold text-base ">{value?.title}</p>
+       <button className="text-xl" onClick={()=>setisOpen(!isOpen)} >{isOpen? "˄" : "˅"}</button>
+       </div> 
+       <div> 
+    {
+        value?.itemCards?.filter((food)=> !("isVeg" in food?.card?.info)).map((items)=><MenuCard2 key = {items?.card?.info?.id}  items = {items?.card?.info} />)
+    }
+     </div>
+    </div>
+        )
+    }
 
 return (
-<div className="w-full">
+<div className="w-full"> 
  <div className="flex justify-between  mr-12 ml-10">
  <p className="font-bold text-base ">{value?.title}</p>
  <button className="text-xl" onClick={()=>setisOpen(!isOpen)} >{isOpen? "˄" : "˅"}</button>
@@ -49,6 +81,5 @@ return (
 
 
 </div>
-
 )
 }

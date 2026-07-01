@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 export default function Header(){
     return (
         <header className="bg-[#FF5200] font-sans">
-            <div className="flex justify-between container mx-auto  py-8">
+            <div className="flex justify-between max-w-[80%] container mx-auto  py-8">
                 <img className="w-40 h-12" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/portal/static-assets/images/swiggy_logo_white.png" />
                <div className="font-bold text-white text-base flex gap-10 items-center">
                 <a target="_blank" href="https://www.swiggy.com/corporate/">Swiggy Corporate</a>

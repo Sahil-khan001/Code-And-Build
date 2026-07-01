@@ -2,7 +2,7 @@ LETS TALK ABOUT TAILWIND IN CSS --
 
 with the help of tailwind u dont need to leave html just write direct css in html also no need to make a css file 
 
-.gitignore file tells github whatever files .gitignore is taking not to put in GITHUB as well as in PRODUCTION CODE 
+.gitignore file tells github whatever files .gitignore is taking not to put in GITHUB  as well as in PRODUCTION CODE 
 
 --for the tailwind css installation -- go to official website check framework u want use tailwind with and follow instruction properly acc to given 
 

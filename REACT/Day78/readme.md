@@ -350,10 +350,19 @@ because state variable is attach to the key
 so that's why we dont have to use keys based on array indexing 
 
 in React -- if we change anything using statevariable it it only re render the required component and change its values not the whole code re render 
-same in case of js it change and re render only the required component 
+same in case of js it change and re render the whole code that is wrong  
 
-at the end if react doing it on required component it have to tell js to do this so in real js is doing it 
+at the end if react doing it on required component it have to tell js to do this so how js is doing it vice versa that is wrong 
 
+const VDom = <h1>Hello Coder Army</h1>  --- this element is created by react , virtual dom
+
+const RDom = document.createElement('h1');  -- this element is created by JS , RealDOM
+RDom.innerText = "Hello Coder Army";
+
+console.log(VDom);
+console.dir(RDom);
+
+through this example se can see that virtual dom is light weight contains some files and real dom it heavy weight means it contains lots of other file 
 
 
 

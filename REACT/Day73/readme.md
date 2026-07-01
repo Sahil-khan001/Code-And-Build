@@ -130,5 +130,31 @@ also u can write anywhere these nav link in another page as they also part of br
 
 whatever u write outside the routes is shown everywhere in the page either u are on any page
 
+Outlet in React Router is like a placeholder where child pages/components will appear.
+
+Example:
+
+<Route path="/" element={<Layout />}>
+   <Route path="home" element={<Home />} />
+   <Route path="about" element={<About />} />
+</Route>
+function Layout() {
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+    </>
+  )
+}
+
+Now:
+
+If URL is /home → Home component will show inside <Outlet />
+If URL is /about → About component will show inside <Outlet />
+
+So in simple words:
+
+Outlet = “show nested route component here.”
+
 
 
