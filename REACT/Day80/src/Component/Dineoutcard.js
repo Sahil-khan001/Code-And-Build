@@ -2,7 +2,7 @@ import { DineoutData } from "../Utils/dineout"
 
 export default function DineOutCard({value}){
  return (
-    <div className="shrink-0 w-82 h-85 border-2 rounded-2xl relative">
+    <div className="shrink-0 w-82 h-85 border shadow rounded-2xl relative">
      <a target="_blank" href= {value.cta.link} >
      <img className="w-full h-47 object-cover rounded-t-2xl" src={"https://media-assets.swiggy.com/swiggy/image/upload/" + value?.info?.mediaFiles[0]?.url} />
      <p className="absolute top-39 left-3  text-white font-bold text-base z-10 " >{value?.info?.name}</p>

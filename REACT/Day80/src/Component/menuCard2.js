@@ -22,7 +22,7 @@ export default function MenuCard2({items}){
     function handleDecrementitems(){
         Dispatch(Decrement(items));
     }
-
+    console.log(items);
     return (
    <div className="flex w-full justify-between mb-4 items-center border-b border-gray-300 p-10">
 

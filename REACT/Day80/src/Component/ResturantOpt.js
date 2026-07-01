@@ -38,8 +38,8 @@ export default function RestaurantOption() {
 
   return (
     <>
-    
-       <div className="max-w-[80%] container mx-auto grid grid-cols-4 gap-5 mt-10 ">
+      <div className="bg-gray-100 min-h-screen py-10">
+       <div className="max-w-[80%] container mx-auto grid grid-cols-4 gap-5  ">
      {
      Data?.map((value) => {
      return (
@@ -55,6 +55,7 @@ export default function RestaurantOption() {
           )
         })
     }
+      </div>
       </div>
     </>
   );

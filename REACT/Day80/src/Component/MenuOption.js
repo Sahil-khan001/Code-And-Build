@@ -52,7 +52,8 @@ setData(filterData);
 
       return (
         <>
-      <div className="max-w-[55%] mx-auto my-10">
+      <div className="bg-gray-100 min-h-screen py-10">
+      <div className="max-w-[55%] mx-auto">
         <Link to={`/city/delhi/${id}/search`}>
         <p className="w-full py-5 text-xl font-semibold rounded-2xl text-center bg-gray-200 text-gray-600 hover:bg-gray-300 transition-all duration-200 shadow-sm cursor-pointer">Search for dishes 🔍</p>
         </Link>
@@ -71,6 +72,7 @@ setData(filterData);
         }
 
 
+        </div>
         </div>
         </>
     )
