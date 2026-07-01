@@ -38,7 +38,8 @@ export default function RestaurantOption() {
 
   return (
     <>
-       <div className="max-w-[80%] container mx-auto grid grid-cols-4 gap-5 mt-10  ">
+    
+       <div className="max-w-[80%] container mx-auto grid grid-cols-4 gap-5 mt-10 ">
      {
      Data?.map((value) => {
      return (

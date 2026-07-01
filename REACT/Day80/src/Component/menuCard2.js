@@ -8,10 +8,9 @@ export default function MenuCard2({items}){
     // const [count , setcount] = useState(0);
 
     const Dispatch = useDispatch();
-    const items = useSelector(state => state.slicer.items);
-    const elements = items.find(item => item.id === items.id);
-    const count = element ? elements.quantity :0;
-
+    const details = useSelector((state) => state.Slice1?.items || []);
+  const element = details.find(item => item.id === items.id);
+  const count = element ? element.quantity : 0;
 
 
     function handleAdditems(){

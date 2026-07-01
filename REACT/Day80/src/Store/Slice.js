@@ -25,8 +25,8 @@ const cart = createSlice({
     else{
         state.items = state.items.filter((item)=> item.id!=action.payload.id);  
     }
-     state.count;
-    },
+    state.count--;
+    }
     }
 })
 

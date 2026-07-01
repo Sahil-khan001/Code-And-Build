@@ -4,6 +4,7 @@ import MenuCard from "./menuCard";
 import MenuCard2 from "./menuCard2";
 import { Shimmer } from "./Shimmer";
 import SearchFood from "./SearchFood";
+import { Shimmer2 } from "./Shimmer2";
 
 export default function MenuOption(){
 
@@ -46,7 +47,7 @@ setData(filterData);
   },[])
 
   if(Data.length === 0){
-    return <Shimmer/>
+    return <Shimmer2/>
   }
 
       return (
