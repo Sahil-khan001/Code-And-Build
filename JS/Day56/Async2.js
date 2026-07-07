@@ -92,7 +92,7 @@
 
 //how this works in MEMORY EXECUTION -- 
 
-//we have call stack in which we have GEC -- global execution -- which work is to execute code from line to line fully 
+//we have call stack in which we have GEC -- global execution Context -- which work is to execute code from line to line fully 
 //we have web api in which all the asynchronous task come in then move to either circular queue and microtask queue then 
 
 //then we execute code from top to bottom like then in our recent eg it skips all then start with function call then it comes in then greet comes into call stack then move to await part now we have to wait for 5 second instead of waiting u know js is a synchronous language so it is going to work SO GEC send the await  function to Microtask queue as we know promises goes into Microstask queue 

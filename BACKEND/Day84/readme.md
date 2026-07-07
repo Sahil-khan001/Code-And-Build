@@ -1,6 +1,7 @@
-lets talk about express 
-how we make server 
-like what is server , software ,application or what -- 
+ what is Server -- hardware,software
+ it have 2 definition -- 1st in form of hardware -- where we can deploy our whole code in the physical cpu 
+ software --  this is the main software that basically provide the services that client want 
+we provide specific data acc to user need
 
 client -- who wants services    server -- who provides services to client 
 
@@ -78,7 +79,6 @@ portnumber -- 16 bit number
 we use this so that we can find specific person , devices to whom we have to give the data 
 
 Socket -- IP + Port number is called socket
-
 
 when we create a request using HTTP -- then 
 there is socket created
@@ -206,6 +206,14 @@ const server = http.createServer((req, res)=>{
 })
 
 then u have to req the url then server will respond acc to it 
+
+but if we do all these things in Node.js LATER it will become too complex 
+so to solve these problems we have  EXPRESS.JS
+
+because it have more functinality then node js and optimization too
+
+Physical Server is -- it is like CPU , memory , ram , OS where we deploy our whole code.
+which we can touch by our hand
 
 
 

@@ -15,7 +15,7 @@ file  -- read , write , delete
 Network call  -- fetch data , port including add or receive we are including the hardware 
 
 but we know js have access to GLOBAL OBJECT
-global object have access to all these timer , settimeout , network call
+global object have access to all these timer , settimeout , network call but implementation in LIbuv 
 
  Now we want a language that interact and talk with SYSTEM
 
@@ -40,14 +40,14 @@ like in js u write -- setTimeout(()=>{
     console.log("hi")
 } , 2000)
 
-basically js will not understand this it goes to v8 engine then v8 give to libuv and libuv can access this give it to os and libuv dont have their own timer it give to os and said os tell me after 3 second then os tell it then libuv then v8 and it print "Hi"
+basically js will not understand this it goes to v8 engine then v8 give to libuv and libuv can access this give it to os and libuv dont have their own timer it have to taken from os and said os tell me after 3 second then os tell it then libuv then v8 and it print "Hi"
 
 google browser have diff -- v8 engine + other file -- than can access to os  for diff os they have diff implementation 
 but libuv is cross platform it can run on any os 
 
 Remember one thing -- whenever u are using any system resource then u have to access the OS it is mandatory
 make sure u should give access of System to OS it is better and effiecient too
-otherwise it is too risky 
+otherwise it is too risky if u do it by urself as we know 
 
 --  WE KNOW C, C++ INTERACT WITH HARDWARE THAT IS OS 
 IN LIBUV ALSO C SAYS OS GIVE ACCESS TO TIMER , SETTIMEOUT 
@@ -94,9 +94,11 @@ and then it executes
 
 in frontened we use web api instead of libuv that's the difference just
 
+<!-- ===================================================================================================================== -->
+
 Now talk about how we read the file -- 
 
-const fs = require("./)
+const fs = require("fs")
 fs.readfile("./data.json" , (err , res)=>{
     console.log(res);
 })
@@ -113,7 +115,14 @@ what is this fs -- it is file system
 it is a part of node js like in node js we have v8 engine , libuv , it also consist other modules too like fs --file system , crypto , zlib(the libuv info there) all these are existing 
 
 we just have to require() this and use it ..
+u can read this file into synchrous way like one by one execution js waits until it get data
+code be like -- 
 
+const data = fs.readfileSync("./data.json" , "utf-8");
+console.log(data);
+
+
+ALL THE AYSNCHRONOUS TASK HANDLED BY LIBUV , OS WILL HELP IN THESE CASES 
 
 
 

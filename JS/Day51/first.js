@@ -209,4 +209,5 @@ form.addEventListener('submit' , (event)=>{
 
 //IMP. LEARNING FROM THIS PROJECT -- 
 //for the random value -- we use the math.random() functions 
-//for the series wise value -- we use the login throught day , month  , year  , modulus and many more 
+//for the series wise value -- whatever the user input the value on the basis of it we are giving him signs , whatever -- day-1 , month-1 
+

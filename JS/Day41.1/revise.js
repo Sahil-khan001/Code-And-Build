@@ -3354,6 +3354,7 @@ console.log(y);
 // the context in which the current code is being executed. 
 // Its value depends on how the function where this is used is called.
 
+// ================================================================================
 
 // 1: Global Context (Outside Any Function)
 // In browsers: window object 
@@ -3380,6 +3381,7 @@ console.log(y);
 // greet();
 // window.greet();
  
+//window object is a global object
 // in non strict mode the this -  it point global object
 // in strict mode the this - it point undefined 
 

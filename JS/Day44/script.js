@@ -25,25 +25,25 @@
 
 
 // REVISION 
-// function timing(){
-// const noww = new Date();
-// let timer = noww.toLocaleTimeString();
-// let timee = document.querySelector('#root');
-// timee.innerHTML = timer;
+function timing(){
+const noww = new Date();
+let timer = noww.toLocaleTimeString();
+let timee = document.querySelector('#root');
+timee.innerHTML = timer;
 
-// timee.style.color = "red";
-// timee.style.fontSize = "12rem";
-// timee.style.display = "flex";
-// timee.style.alignItems = "center";
-// timee.style.justifyContent = "center";
-// timee.style.height = "100vh";
-// }
+timee.style.color = "red";
+timee.style.fontSize = "12rem";
+timee.style.display = "flex";
+timee.style.alignItems = "center";
+timee.style.justifyContent = "center";
+timee.style.height = "100vh";
+}
 
 
-// timing();
+timing();
 
-// setInterval(() => {
-//     // timing();
+setInterval(() => {
+    // timing();
     
-// }, 1000);
+}, 1000);
 

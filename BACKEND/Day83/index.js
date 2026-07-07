@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 
-console.log("this is file reading");
+console.log("we are reading a json file using libuv through os");
 
 fs.readFile("./data.json", "utf-8" , (err, res)=>{
     console.log(res);

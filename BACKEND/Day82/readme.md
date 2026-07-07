@@ -168,8 +168,6 @@ Difference between CJS AND MJS
     2. require() , module.exports= sum                                   2. import and export
     3. Synchronous                                                       3. asynchronous 
     4. Non-Strict                                                        4. Strict
-    5. 
-
 
     synchronous --
     we have more require
@@ -206,12 +204,95 @@ either it have to import one by one , second option is make a index.js file whic
   then we export this so first.js can import this 
 
   instead of 3 require we done our work in 1 require by just creating a index.js file 
-  
+
+Lets discuss about -- 
+Process : threaded , multithread , asynchronous  , single core , octo core , parallelism , concurrent 
 
 
-  
+single processor -- at one time u can run only 1 process -- either yt/music/pubg
+but u see all tasks works together fine just because of context Swithching 
+
+for sometime it run task1 , then task2 , then task3 and repeat this  
+all these tasks runs in fast way we can't even realise
+
+and in this way the single processor can handle these 3 tasks simultaneiously 
+also we can say this CONCURRENTLY -- means the tasks not run parallely but concurrently execute stop switch to another 
+
+Dual core -- means we have 2 processor -- p1 - yt ,
+                                          p2 - music , 
+means 2 processor execute parallely 
+THIS IS CALLED PARALLELISM
+
+--suppose we have a game of 20gb and we have 8 gb ram so how this 20gb of game run in 8gb so basically we use virtual memory that is fragementation we just take the important part from it means we get only memory to run the recent tasks and remove the unecessary part only the requirement code 
+
+like we open a website we see some component so we just need limited code to show that on ui not the full code we want remaining code when we click on that component not unnessary the full code
+
+when PROCESS execute -- it need cpu , memory 
+in process -- we have threads - that is smallest unit of tasks
+one thread only become a part of one process
 
 
+suppose we have a process it have some tasks --
+1. edit a video 
+2. transfer a file
+3. install app
+
+so we know in a process we have multiple threads -- t1 , t2 , t3 
+so process gives these tasks to them one by one to execute 
+
+if u have single processor then -- in threads context switching happening 
+octacore processor then -- threads work in parallel means every thread have one p1 all thread work parallely
+
+ALSO WE DONT HAVE ACCESS TO THIS LIKE PROCESS AND ASSIGNED TASKS TO IT ACC TO U --
+IT IS BASED ON SYTEM , SYSTEM WILL DO OTHERWISE PROBLEMS HAPPENED
+
+TAKE AN EXAMPLE -- 
+
+suppose u have pizza hut -- it this as a SERVER
+in this u have -- pizza(10 min) , coke(2 min) , pasta(5min)
+
+IF WE HAVE A SYNCHRONOUS BEHAVIOUR 
+
+then u have frontend he request  -- 1: pizza  -- it takes 10 min
+                                    2: coke  -- it takes 12 min
+                                    3: pasta -- it takes 17 min
+
+if someone make request and we respond LIKE THIS THEN NO ONE COME ON OUR SITE
+
+as we know we can write servers in js means it is synchronous then we face this problem 
+BUT we know it have aynchronous behaviour too and web api handle it bascially the browser can do the multitasking 
+
+if we do the ASYNCHRONOUS BEHAVIOUR -- 
+-- 1: pizza  --                     1: pizza --  it takes 10 min
+                                    2: coke  -- it takes 2 min
+                                    3: pasta -- it takes 5 min 
+
+pizza-- say okk after 10 min come
+coke -- say okk after 2 min come
+
+the highest time we are taking is 10 minutes too
+but there must be multiple chef in kitchen means multicore 
+
+remember node js is single threaded 
+but from where he get multithread 
+
+--MAKE PROJECTS AS MUCH U CAN 
+EXCALLIDRAW.COM
+
+HOW M MAKE DIFF THAT DIFF SHAPES
+we know we have properties in event 
+first click , final clck 
+intial cordinate and last cordinate then u cn amke a shapes 
+
+
+
+
+
+
+
+
+
+                                  
 
 
 

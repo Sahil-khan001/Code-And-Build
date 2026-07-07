@@ -17,3 +17,11 @@
 
 // var b = 55;
 // console.log(b);
+
+
+let arr = [2,3,2,6];
+
+if(arr.hasOwnProperty(99)){
+    console.log("it is available");
+}
+return console.log("false");

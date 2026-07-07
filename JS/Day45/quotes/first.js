@@ -64,24 +64,6 @@ const quotes = [
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     
     
     // //  Chnage the background color in every 5 second
