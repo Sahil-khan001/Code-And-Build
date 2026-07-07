@@ -12,7 +12,6 @@ app.post("/contact", (req, res)=>{
     res.send("ur request is here and data is submitted");
 })
 
-
 app.listen(4000 , ()=>{
     console.log("Server is listening at 4000...");
 })
