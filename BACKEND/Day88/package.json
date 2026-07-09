@@ -1,0 +1,15 @@
+{
+  "name": "day88",
+  "version": "1.0.0",
+  "description": "so in this project lets do work on more request too --",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "bookstore.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
