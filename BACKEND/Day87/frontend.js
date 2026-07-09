@@ -1,6 +1,6 @@
-const response1 = await fetch('https://www.apiExample.com');
+const response1 = await fetch('https://localhost:4000');
 
-const response2 = await fetch('https://www.apiExample.com' , {
+const response2 = await fetch('https://localhost:4000' , {
     method : 'POST',
     headers : {
         'Content-Type' : 'application/json'
@@ -8,7 +8,7 @@ const response2 = await fetch('https://www.apiExample.com' , {
     body : JSON.stringify({name : "john" , age : 30})
 });
 
-const response3 = await fetch('https://www.apiExample.com' , {
+const response3 = await fetch('https://localhost:4000' , {
     method : 'PATCH',
     headers : {
         'Content-Type' : 'application/json'

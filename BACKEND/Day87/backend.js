@@ -1,15 +1,15 @@
 const express = require("express");
 
 const app = express();
-
+app.use(express.json());
 
 app.get("/user" , (req, res)=>{
-    res.send("hey i am from server thanks for using the GET request");
+    res.send("hey i am from server thanks for using the GET request here is ur DATA");
 })
 
 app.post("/contact", (req, res)=>{
     console.log(req.body);
-    res.send("ur request is here and data is submitted");
+    res.send("we got ur data and it is submitted");
 })
 
 app.listen(4000 , ()=>{

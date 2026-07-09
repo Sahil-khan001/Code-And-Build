@@ -145,6 +145,111 @@ app.post("/user", (req, res)=>{
 
 so it depends upon this req because this contain lot of info like which method , content because of it postman understand this 
 
+Now the next thing if we use the POST method in the POSTMAN site means data is coming in backend from frontend request along with it 
+we can do this in POSTMAN we have to select POST then the body and write data in JSON format like {name : "Sahil"}
+and click on send 
+
+then data is coming if we print it using 
+console.log(req.body); -- it show undefined 
+
+for this we have to do PARSING first -- when data is coming from frontend then we have to use it -- 
+app.use(express.json());
+
+Now we understand the read difference between JAVASCRIPT OBJECT and JSON(JavaScript Object Notation) -- 
+
+we have also seen that when we fetch the data we have to write this line too --
+
+const data = fetch(https://www.api.in);
+const finalData = data.json();  -- we have to write this line to take the final data 
+
+lets talk about this line --
+app.use(express.json()); -- other say this is MIDDLEWARE and Parse is happening
+-- we have json format data we have to convert this into JS object 
+
+lets tak about js Objects--
+js object have lot of properties .proto , constructor 
+
+JSON -- it is written in string format , it is text based format 
+Js -- Object 
+
+now the ques is can JS object is understand by other servers that is written in node js , python , java
+
+suppose in frontend we make a form and submit it  and send to it backend server as a Js Object 
+can backend written in python understand this 
+
+now the python can never understand this JS object its different properties
+so it is make sure that we can't send our data as in Js object 
+we have to make a universal lanugage in which we send data so any backend can understand this -- 
+
+we have to send in JSON -- 
+
+in JSON we have to write key value pair also the key we have to write in "" like -- 
+{
+  "name" : "sahil",
+  "age" : 23, -----------u can't put here comma as well but in js u can 
+}
+
+but in JS we can write -- 
+{
+  name : "sahil",
+  age : 34,
+}
+
+even in JSON we can write -- 
+[10,20,30]  -- array as well and we can send this as well 
+
+NOW u know both JSON and JS Object is 
+
+
+also in JSON we can't send the function , undefined 
+JSON valid in two format only -- Object form {} , Array form []
+
+
+body : JSON.stringify({name : "sahil" , age : 34});
+now this line represent what -- 
+it convert this JS object into JSON  as a String -- 
+then after convert it look like -- 
+
+'{"name" : "sahil" , "age" :34}'  -- now any backend lanugage can understand the string so now it make sense
+
+so everytime when we send data from frotend to backend we have to convert it into JSON 
+because JSON represent as a string 
+any lanugage understand string easily
+
+at the end data flow in bits means binary 0 and 1 
+so it is easy to convert this string into binary 
+
+its hard to convert the JS object into binary 
+because there so many properties along in JSON like proto , constructor 
+
+now the data at backend is in JSON(string format) now we want final data in JS object acc to diff lanugage python , java 
+because at end we want data show in JS object 
+to convert again We use PARSER
+
+perviously who convert our js object into JSON it is this line
+JSON.stringify({name : "sahil" , age : 32})
+it convert this JS object into JSON 
+
+then later parser using this line -- app.use(express.json());
+ to convert it back 
+
+also sometime this when u convert this JSON to JS using express.json() then what happened 
+everything convert into object string to normal but this number    "age" : 32  -- it covert as age : '32'  means this 32 act as string 
+so check it -- 
+
+this Header part tell us what type of data u are sending   JSON , HTML , 
+headers:{
+'Content-Type' : 'application/json' or 'application/HTML'
+}
+
+body : JSON.stringify({name : "object" , age : 34})
+
+NOW make the BOOKSTORE -- 
+
+
+
+
+
 
 
 
