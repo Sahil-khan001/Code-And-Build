@@ -246,11 +246,95 @@ body : JSON.stringify({name : "object" , age : 34})
 
 NOW make the BOOKSTORE -- 
 
+code be like --
+const express = require('express');
+
+const app= express();
+
+const BookStore = [{id : 1 , name : "Rich dad poor dad"},
+    {id : 2 , name : "friends"},
+    {id : 3 , name : "SSB by col rajveer"},
+]
+
+app.get("book" , (req,res)=>{
+    // console.log()
+    res.send(BookStore);
+})
+
+app.get("book/:id" , (req,res)=>{
+    const id = parseInt(req.params.id);
+    const Book = BookStore.find(info => info.id === id);
+    res.send(Book);
+})
+
+app.listen(5000 , (req , res)=>{
+    console.log("Server is listening at PORT 5000");
+})
+
+-- code be like this 
+now what happen when we use both place get then then 
+
+this localhost:5000/book/3  -- it work and give us id 3 info 
+but when we use app.use at both place then like 
+
+app.use("book" , (req,res)=>{
+    // console.log()
+    res.send(BookStore);
+})
+
+app.use("book/:id" , (req,res)=>{
+    const id = parseInt(req.params.id);
+    const Book = BookStore.find(info => info.id === id);
+    res.send(Book);
+})
+
+it give us info about all Books 
+why --
+
+because previously we discuss about that it check routing from top to bottom
+so it check ("/book")
+then ("/book/:id")
+
+so it think that the next part after /book is in nested part so he print all the books 
+
+but in app.get , app.post , app.put , app.patch , app.delete it behaves diff with routing 
+it check the full routing till end then check
+
+Now we using the POST -- 
+
+and send some data from frontend and push it to the Bookstore 
+using this code 
 
 
+app.post("/book" , (req , res)=>{
+    BookStore.push(req.body);
+    res.send("hey ur data is received and push to BookStore");
+})
 
 
+but it didn't update in this 
+
+const BookStore = [
+    {id : 1 , name : "Rich dad poor dad"},
+    {id : 2 , name : "friends"},
+    {id : 3 , name : "SSB by col rajveer"},
+]
+
+when when we do get in post there we can see but not here 
+because it show on ram not on ui
+for this u have to read the file and u have to know the operation 
+
+if we restart the server then this new id : 4 disappear 
+because when we start the server it tell remove old memory data and restart with new one
+
+because data is in RAM if we do clear then all data is vanished from RAM
+here we have to use the MONGO DB means a database 
 
 
+app.use -- it can accept everytype of request
+res.send("hey ur data is received and push to BookStore"); -- we use this line so that user have ASSURANCE OF DATA
+
+if u want to do this BACKEND Effectively then treat everything like a functional call 
+function taking argument and return something -- THIS IS REAL GAME
 
 
