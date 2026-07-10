@@ -305,7 +305,17 @@ if we do express.json() -- it means it convert for every request because it is i
 now it pass next()
 now when we go in any request we can fulfill it 
 now these request have to tension free in order to fulfill request 
-*>|
+
+also we can put the authorization and authentication into the middleware
+so whenever any user is come we have to authenticate he is the real one or not
+so that we can fulfill its request -- get , post ,put , patch , delete
+SO we can put authentication as well in the middleware 
+either we have to put authentication code in every request then 
+
+MIDDLEWARE -- it is piece of code 
+we use this code at every request so we just make a common code for this and put it into app.use and this is Middleware
+
+remember --middleware is not security 
 
 
 
