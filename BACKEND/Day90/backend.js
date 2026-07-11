@@ -1,6 +1,8 @@
 const express = require('express');
 
 const app = express();
+app.use(express.json());
+
 
 const FoodMenu = [
   { id: 1, food: "Chowmein", category: "veg", price: 500 },
@@ -19,13 +21,60 @@ const FoodMenu = [
   { id: 14, food: "Shawarma", category: "non-veg", price: 600 },
   { id: 15, food: "Butter Chicken", category: "non-veg", price: 900 }
 ];
+//admin food goes into this
+
+
 let AddtoCart =[];
+//user food goes into this 
 
 
-app.get('/food' , (req,res)=>{
-    res.send(FoodMenu);
+app.use("/admin" , (req,res, next)=>{
+     //Admin Authentication here
+    //we have to authenticate that admin is real or not , right now we just use simple logic later we do 
+    // this is Dummy Code 
+    const token = "ABCDEF";
+    const Access = token === "ABCDEF" ? 1:0;
+
+    if(!Access){
+        res.status(403).send("Permission Denied");
+    }
+
+    next();
 })
 
+app.get('/food' , (req,res)=>{
+    res.status(200).send(FoodMenu);
+})
+
+app.post('/admin' , (req , res)=>{
+    //admin can add item in the foodMenu 
+   
+        FoodMenu.push(req.body);
+        res.status(201).send("Permission Access , Items added Successfully");
+})
+
+app.delete('/admin/:id' , (req, res)=>{
+    //admin can delete food from the menu
+
+    const index = FoodMenu.findIndex(info => info.id === parseInt(req.params.id));
+    FoodMenu.splice(index , 1);
+    res.status(200).send("Permission Access , Items Successfully Deleted");
+
+})
+
+app.patch('/admin' , (req , res)=>{
+   //admin can make small update in the FoodMenu
+   
+    const food = FoodMenu.find(info => info.id === req.body.id);
+
+    if(req.body.food)
+        food.food = req.body.food;
+
+    if(req.body.price)
+        food.price = req.body.price;
+    res.status(200).send("small change is updated");
+
+})
 
 
 app.listen(3000 , (req , res)=>{
