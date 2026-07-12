@@ -211,7 +211,7 @@ let obj1 = {
 }
 let obj2 = obj1;
 
-obj.name = "hitesh"
+obj2.name = "hitesh"
 then it reflect in obj1 too because of object reference 
 
 <!-- =---------------------------------------------- -->
@@ -239,7 +239,7 @@ then if not get Access then we send response and if he get access then
 we do next() -- it means go to next route handler/request handle it will handle ur requests 
 that what middleware do pass the request to request handler....
 
-now because of middleware our code looks good --
+now because of middleware our code looks clean --
 otherwise we have to write same code at every request 
 <!-- ============================================================================================= -->
 Before Middlware used code be like -- 
@@ -272,7 +272,7 @@ const FoodMenu = [
 
 let AddtoCart =[];
 //user food goes into this 
-
+   
 app.get('/food' , (req,res)=>{
     res.status(200).send(FoodMenu);
 })
@@ -504,6 +504,152 @@ In production level code u see something like this ...
 
 <!-- ============================================================================= -->
 now try to implement other features of crud backend -- 
+
+user feature be like -- 
+it can add item to cart
+delete item from cart
+see all item in cart
+
+code be like --
+
+//User operation 
+
+app.get("/cart" , (req , res)=>{
+    if(AddtoCart.length === 0){
+        res.status(404).send("Item not exist in the Cart");
+    }else{
+    res.status(200).send(AddtoCart);
+    }
+})
+
+app.post("/user/:id" , (req , res)=>{
+      const foodItem = FoodMenu.find(info => info.id === parseInt(req.params.id));
+      if(foodItem){
+       AddtoCart.push(foodItem);
+       res.status(201).send("Items Added in the Cart");
+      }
+      else{
+        res.status().send("Items are out of Stock");
+      }
+})
+
+app.delete("/user/:id" , (req , res)=>{
+     const id = parseInt(req.params.id);
+     const index = AddtoCart.findIndex(info => info.id === id);
+
+     if(index !== -1){
+        AddtoCart.splice(index  , 1);
+        res.status(200).send("Item Deleted Successfully");
+     }
+     else{
+        res.status(404).send("Item Not exist");
+     }
+})
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++= -->
+
+Now move to Error Handling -- 
+
+some time 
+when u connect with the database using these request it give u error like -- 
+when u parse the data in js object it give u error --
+app.get("/dummy" , (req , res)=>{
+try{
+    JSON.parse("invalid Json");
+    res.send("data convert successfully");
+}
+catch(err){
+    res.send("Some Error Occured");
+}
+})
+
+it parse only the Valid Json if it is not valid then it throw the error
+we want it give response but it didn't so we have to use try and catch 
+
+
+now we see how to write in correct way
+JSON.parse('{"name" : "rohit"}');
+we know json is in string format so at last '' this is we want 
+now it convert it fully because this is right json format
+
+what happen generally --
+ FoodMenu.find(info => info.id === parseInt(req.params.id));
+ when we try to connect with the databases like in this foodMenu 
+ generally it throw error to so to not to do this we use --
+ try and catch 
+
+
+when we connect with the database in order to get the data like this line
+
+then what happen sometime it give error too and because of this error we can't respond to and request so that's why we use try and catch 
+
+why we use express.json() instead of JSON.parse(JSON) --
+because data coming from frontend in the form of stream in 0,1
+but our JSON.parse(JSON) want all data at once not in the form of stream
+also they have some other issue as well 
+
+but express.json() parse in stream data as well 
+
+it send error like -- throw new Error (Db can't connected);
+res.send("connected");
+
+this response will not work -- we have to solve the error first
+and 
+catch will solve the error
+
+this throw line will send anyone to u so u have to handle this 
+for this u have to use try and catch for this 
+now 
+
+summary -- whenever u have any error -- like while connecting with db
+while parsing the json into js 
+other ...
+
+so these will throw problems in this line --
+throw new Error (any error came from anwhere like this );
+
+so to handle this u have to use -- try and catch in every request in code
+catch will handle this otherwise u will get error like -- 500 server error , or other too 
+while connnecting with db and anything in code use this try and catch code be like --
+
+app.post("/user/:id" , (req , res)=>{
+    try{
+        const foodItem = FoodMenu.find(info => info.id === parseInt(req.params.id));
+        if(foodItem){
+         AddtoCart.push(foodItem);
+         res.status(201).send("Items Added in the Cart");
+        }
+        else{
+          res.status(404).send("Items are out of Stock");
+        }
+    }catch(err){
+        res.send("Some error : " , err);
+    }
+})
+
+
+so now if any error come then catch will handle it 
+so in every REQUESt use try and catch 
+
+<!-- ----------------------------------------------------------------------------------------------------------- -->
+NOW MOVE to the DATABASE --
+
+right now we add in array data basically in ram whenever we try to add something it add when try to add another data it add but prev one got remove because it is ram every time it refresh it remove prev data so we need database --
+EVERY time server restart the data is gone -- 
+
+database is store data in an organise way
+ so that we can manage data effieciently , we can run queries on it , we can take out data acc to ur need from an large database 
+
+ suppose u are on window screen where lots of files and folders are there they are look like databases but can we run queries on it no we can't take folders and data acc to ur need ---
+
+MONGO DB -- 
+
+
+
+
+
+
+
+
 
 
 

@@ -1,4 +1,5 @@
 const express = require('express');
+const {auth} = require('./middleware/auth');
 
 const app = express();
 app.use(express.json());
@@ -28,19 +29,7 @@ let AddtoCart =[];
 //user food goes into this 
 
 
-app.use("/admin" , (req,res, next)=>{
-     //Admin Authentication here
-    //we have to authenticate that admin is real or not , right now we just use simple logic later we do 
-    // this is Dummy Code 
-    const token = "ABCDEF";
-    const Access = token === "ABCDEF" ? 1:0;
-
-    if(!Access){
-        res.status(403).send("Permission Denied");
-    }
-
-    next();
-})
+app.use("/admin" , auth);
 
 app.get('/food' , (req,res)=>{
     res.status(200).send(FoodMenu);
@@ -74,6 +63,45 @@ app.patch('/admin' , (req , res)=>{
         food.price = req.body.price;
     res.status(200).send("small change is updated");
 
+})
+
+
+//User operation 
+
+app.get("/cart" , (req , res)=>{
+    if(AddtoCart.length === 0){
+        res.status(404).send("Item not exist in the Cart");
+    }else{
+    res.status(200).send(AddtoCart);
+    }
+})
+
+app.post("/user/:id" , (req , res)=>{
+    try{
+        const foodItem = FoodMenu.find(info => info.id === parseInt(req.params.id));
+        if(foodItem){
+         AddtoCart.push(foodItem);
+         res.status(201).send("Items Added in the Cart");
+        }
+        else{
+          res.status(404).send("Items are out of Stock");
+        }
+    }catch(err){
+        res.send("Some error : " , err);
+    }
+})
+
+app.delete("/user/:id" , (req , res)=>{
+     const id = parseInt(req.params.id);
+     const index = AddtoCart.findIndex(info => info.id === id);
+
+     if(index !== -1){
+        AddtoCart.splice(index  , 1);
+        res.status(200).send("Item Deleted Successfully");
+     }
+     else{
+        res.status(404).send("Item Not exist");
+     }
 })
 
 
