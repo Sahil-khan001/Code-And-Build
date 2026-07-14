@@ -643,13 +643,114 @@ database is store data in an organise way
 
 MONGO DB -- 
 
+database is a physical place where we stored the data in the organise way in form of tables rows and columns
+then we have DBMS(Application) -- which basically manage the database in order to take and store information acc to user need 
+or it depends on the REQUEST from backend(server)
+
+so Mongo Db is same like -- dbms(application)
+In loosely way -- we call database + dbms as DATABASE
+
+NOw tell me why EXCEL -- it is not a database because in this we don't do multiple overwrite at same time 
+and there is no filteration like in name col we can write -- number also instead of name 
+
+when 1000+ request on write operation it make excel hangs
+
+Now sql -- structured query lanugages
+we have -- 
+
+Structured data                                                  
+balance , text , numbers                                         
+
+we can run queries on the structured data like give me numbers > 5
+
+
+Unstructured Data
+video , image 
+
+we can't run queries on the unstructured data like give 
+we can't say give me video in which dog is present we can't do it 
+so that's why we put this into unstructured data 
 
 
 
+when we fetch data from api we get image in cdn link form not like others like in text , numbers
+at the end video also saved in 0,1
+but the issue is we can't run queries on the video 
+we can get using ai ml algo but it takes too much time 
+so it stored in big binary data 
+
+so all our video and image stored in file storage system 
+and link of that we put into the database 
+we can't directly put video and images in database 
+
+because video size is big in binary 
+ and if we need to run queries than we take data from secondary memory and put it into ram to run queries it takes only 1gb so acc to it we just check only 2 rows each row 500mb
+ so it takes so much time
+
+ because video is unstructured 
+
+ but if we put link of storage system then it only takes 1kb and easily do it 
+
+Storage system - aws , google cloud 
+cloud(there is another hardisk) is secondary memory 
+
+Semi Structure -- it is also there
+metadata + acutal video 
+
+so we can store the metadata because it is in structured format.
+metadata- structured data -- it contains creation times , video format , video quality , video length 
+we can run queries on this structure data 
+we can make column like length 
+queries like -- latest video , recent uploaded , old video , show video that have length more than 20 min
+
+u use unstructure when u can't put metadata onto it -- 
+
+this is sql -- we can run queries on it -- like 
+select * from tableName where balance > 5000 ;
+
+SO THIS IS SQL DATABASE -- structured query language 
+
+now we move to MONGO DB -- why we switch to it -- 
+why mongo db -- 
+
+sql database is used in -- banks , transaction , bank transaction 
+ bank trust sql db because of this property 
+ sql use  -- ACID PROPERTY -- atomicity , consistency , isolation , Duarability
 
 
+ atomicity -- suppose we have            per1                  per 2
+ and per1 want to send 1000rs to per2 then 
+
+ steps are 
+ 1. Read balance of per1
+ 2. write -- balance of per1 - 1000
+ 3. Read balance of per2
+ 4. write -- balance of per2 + 1000
+
+ so automicity says treat this all steps as a single unit
+ otherwise transaction should be rollaback to person account 
+
+ 2. consistency -- before and after data should be consistent -
+ per 1                     per2
+ 5000 , 3000               4000 , 4000 
+ 8000                      8000
+
+ there is not any inconsisteny means change in balance before and after
+
+ 3. Isolation -- both transacton done independently , there should not be any disturbance
+   a                  b
+   4000              2000
+           c
+           4000
+
+    suppose a give 1000 to b -- 8000 at c
+    but at same time b read c -- when he at 4000 and b gave 2k to it so c is 6000
+    but it has to be 10000 so there is not interfere in both transaction 
 
 
+4. Durability -- if there is any bomb put on server still data should be anywhere
+   for this they use -- replicas of data at diff geographical location at diff continent
+   
 
 
 
