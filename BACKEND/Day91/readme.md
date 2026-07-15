@@ -164,7 +164,100 @@ this server told all another server lock ur read operation until i complete this
 then after this original Server update all other servers with update value 
 
 in this way SYNC between all three maintained
+in this way it work in SQL db
 
+SAME IN MONGO db we use these technique -- 
+we use MONGO DB -- for social Media Applicationss
+
+in mongo db --
+suppose virat upload an image -- this is write operation 
+the original server/master server done this 
+and there is comment again coming and coming so master server need to update it again to another replicas server so he do then 
+suppose he is updating at between some one come and he saw at server 3 there is only 500 comments 
+in original server there is 1000 so if anything this happen then there is no problem at all
+
+because we are not stopping to others from read others server like in sql db when master slave do write operation he stop read operation on other server 
+
+but in mongodb there is opposite
+
+ALL THIS IS DISTRIBUTED SYSTEM --
+
+now what is CAP THEOREM -- it applies on distributed system --
+out of this 3 properties only 2 were apply at one time 
+
+consistency -- at every server there should be same data 
+when someone read data give him ATMOST RECENT DATA also 
+if dont have update data then give him ERROR same like we do in Sql db for transaction one like we lock the other server so it give error 
+
+
+Availability -- any request -- read and write -- we have to reponse with the data either it is new or old but there should be response , availability is there 
+
+
+Partition Tolerance -- suppose if connection between the server is break or network partition is there 
+then what u do at that time --
+in sql db in transaction one-- u said that server is down 
+
+but in mongo db -- it tell ok network partition is there no worry just take the data from any server 
+later when all joined then we figure it out 
+
+MONGO DB -- it is No sql -- it means not only sql
+it means it can behave like sql db too 
+
+consisteny -- always there is same data at every server/node
+availability -- it is not mandatory that all server have same data so but when there is any request we have to response it either with recent or old data 
+partition tolerance -- when this network of server breaks then what behave u want from this server 
+if availability -- then give him old data from any server again 
+
+when partition tolerance happen -- then only one thing is run Consisteny or Availability it depends on system configuration 
+
+we use mongo db -- for social media website 
+suppose we have comments and nested comments -- we can implement this on mongo db in an array --
+then make another array for nested comments
+
+but in sql db how we make an array , nested one too == we can't implement this there
+so mongodb ispreferred
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Definitions --
+## CAP Theorem
+
+The CAP theorem, also known as Brewer’s theorem, is a principle that applies to distributed databases and systems. It states that a distributed system can simultaneously guarantee at most two out of the following three properties:
+
+### Consistency
+
+**Definition:** Every read receives the most recent write or an error. In other words, all nodes in the system reflect the same data at the same time.
+
+**Implication:** After an update, every client sees the update immediately. This is similar to the behavior of a single-node database.
+
+### Availability
+
+**Definition:** Every request (read or write) receives a response—regardless of whether the response contains the most recent data.
+
+**Implication:** The system is always operational and responsive. However, during certain failures, the data returned might not be up-to-date.
+
+### Partition Tolerance
+
+**Definition:** The system continues to operate even if network partitions (communication breakdowns between nodes) occur.
 
 
 
