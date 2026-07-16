@@ -348,11 +348,26 @@ now there is a network call and we say insert this document into my collection
 and there is promise that if someone data is not stored give him a message 
 
 //we can insert many data as once too
+     const store = await collection.insertMany([{a:1} , {b:2} , {c:3}]);
+     console.log("Data sending into db : " , store);
 
 
+we have to wrap into in array for this 
 
+h.w -- checkout more mongo operation 
+and use it go to mongo collection and check it out
 
+if u insert something u want to see it in db then go to compass and see in ur db 
 
+also here we using mongodb storage that is provided by aws on a server 
+here we are using url of server
+
+instead of server storage if we want to use local storage then url be like --
+mongodb://localhost:27017
+
+so u can make ur localstorage into db with the help of mongo DB
+
+<!-- ----------------------------------------------------------------------------------------- -->
 
 
 

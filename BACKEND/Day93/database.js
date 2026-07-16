@@ -13,12 +13,16 @@ async function run() {
 
     //u can perform crud operation here
     //to get data from database 
-    const Result = await collection.find({}).toArray();
-    console.log("Result are : " , Result);
+    // const Result = await collection.find({}).toArray();
+    // console.log("Result are : " , Result);
 
     //to insert the data
-     const store = await collection.insertOne({name : "sahil" , aim : "ai developer"});
-     console.log("Data sending into db : " , store);
+    //  const store = await collection.insertMany([{name : "sahil" , aim : "ai developer"} , {name : "hitesh" , age : 23 }]);
+    //  console.log("Data sending into db : " , store);
+
+     //we can filter the data
+     const filt = await collection.find({age : 23}).toArray();
+     console.log(filt);
 
   } catch (err) {
     console.error(err);
