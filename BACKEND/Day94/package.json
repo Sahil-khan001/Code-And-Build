@@ -1,0 +1,14 @@
+{
+  "name": "day94",
+  "version": "1.0.0",
+  "description": "Lets talk about Moongoose -- \r basically it provide feature + optimization --",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "i": "^0.3.7",
+    "mongoose": "^9.7.4"
+  }
+}
