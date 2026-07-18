@@ -134,9 +134,8 @@ STEPS are --
 create model means we have to create collections same like table in sql
 
 before this we have to make the cluster too 
- await mongoose.connect('mongodb://127.0.0.1:27017/test');
-
- because this is CLUSTER  
+ await mongoose.connect('mongodb://127.0.0.1:27017/test'); --this is CLUSTER that is making
+ 
  after cluster we have to make the database then the collections 
   
   like in compass we first created the cluster then database then collections then document then field
@@ -196,4 +195,85 @@ before this we have to make the cluster too
  this code create documnent with following data and save it too
  so total we have 3 ways to write this
 
- now move to 
+ note : one thing u have notice -- 
+  const User = mongoose.model("BookStore", bookSchema);
+here we make the collection name -- BookStore 
+but in real databases it show -- bookstores
+why s at last + lower letter 
+so it is done by Mongo DB -- lower + s  -- no worry about it 
+
+
+    const bookSchema = new Schema({
+        username: { type: String, required: true },
+        age: { type: Number, required: true },
+        bookName: { type: String, required: true },
+        id: { type: Number, required: true },  // ← Changed to Number
+    });
+
+    if u put required true in schema then u have to send this detail compulsory
+
+now move to ---
+in real database the data show like this -- 
+
+_id
+6a5b70f21fd5380f7b67330d
+username
+"sahil"
+age
+23
+bookName
+"DeathNote"
+id
+1
+__v
+0
+
+here we see --v this is version --means how many times this document modify 
+
+now till now we seen how to insert data --
+now how to take out data -- 
+for this code be like -- 
+
+
+    const Documents = await User.find({});
+    console.log(Documents);
+
+
+-- now 
+we can find document by particular field -- 
+code be like-- 
+
+    const Specific = await User.find({username : "sahil"});
+    console.log(Specific);
+
+
+-- now we see howto do this with api with server -- 
+for this -- 
+first u have to make a model folder and make users.js 
+put all code of collection creation , schema creation all in users.js
+
+and ur database file -- only contain 
+const mongoose = require('mongoose');
+
+async function main() {
+   await mongoose.connect("mongodb+srv://communication981171_db_user:mongodb@cluster01.lfcg0o2.mongodb.net/?appName=Cluster01/Store");
+ 
+
+main()
+    .then(() => { console.log("Mongoose is connecting with the database") })
+    .catch((err) => { console.log(err) });
+
+now u go ur server.js file 
+now u add 
+require('./database file');
+
+now what happend 
+when u run nodemon server.js 
+then it show port no 3000 is listening 
+then it show 
+connected to DB
+
+so its a wrong approach if any user is come and make request earlier then server can't fulfill it request because it still not connecting DB 
+
+so what we can do is -- 
+code be like 
