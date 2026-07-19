@@ -219,7 +219,7 @@ api level validation
 
 // app.post("/info" , async (req , res)=>{
 //     await User.create(req.body);
-//     res.send("stored successfully");
+//     res.send("User Registered Successfully");
 // })
 
 
@@ -228,3 +228,22 @@ before creating the data in backend can we validate the date
 means whatever data we are going to send first validate then create/store
 
 for this --
+like in first name we mention in schema validation -- required : true
+can we check here 
+that data consist of firstname or not --
+
+
+benefit is --
+if we do at schema level than what happened we have high bill 
+soo much network call
+all validation at schema level 
+
+why not at api level otherwise for each quiery pay the money --
+now how we write code for field that have required : true;
+
+const mandatoryField = ["firstName" , "email", "age"];
+
+const isAllowed = manatoryField.every((k) => Object.keys(req.body).includes(k));
+if(!isAllowed)
+throw new Error("Field Missing");
+
