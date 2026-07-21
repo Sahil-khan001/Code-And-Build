@@ -1,7 +1,7 @@
 we know that js have not access to 
 
 set timeout
-fetch data  etc.. because they all are part of web api 
+fetch data  etc.. because they all are part of web api in browser or in node js part of libuv
 
 node js -
 
@@ -23,6 +23,7 @@ LIBUV IS USED TO INTERACT AND USE THESE OS PART THINGS TIMER ETC.
 
 the code of LIBUV is written in c language it helps u to use these timer , file , network call
 there is 97% contribution by c language in libuv repo
+and we know to interact with hardware we need low level language like c , c++ so libuv is here...
 
  what is libuv -- it is c LIBRARY that provides support for Asynchronous I/O.
 it can access to these timer , file , network call
@@ -34,7 +35,7 @@ v8 engine give us final data
 
 at the end the OS give u data after fetching 
 
-note : basically these low level language know how to interact with the system like c , c++
+note : basically these low level language know how to interact with the system/os like c , c++
 
 like in js u write -- setTimeout(()=>{
     console.log("hi")

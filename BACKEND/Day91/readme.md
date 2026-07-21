@@ -86,7 +86,7 @@ there is no need to make multiple tables
 - No Need for joins
 - No Need for data Normalization 
 
---it is similar to json but have little difference
+--it is similar to json it is bjson but have little difference
 
 {
     "id" : 1,
@@ -94,9 +94,9 @@ there is no need to make multiple tables
     "city" : "delhi",
 }
 
+we can store date into it 
+
 we call this COLLECTIONS 
-
-
 
 but in sql we call tables 
 also Mongo Db dont use ACID PROPERTY 
@@ -128,15 +128,17 @@ we have to collect data from both the table which is time consuming so that's it
 but in Mongo DB -- 
 we can easily do it 
 
+
 Sharding -- 
-It means -- distribute data onto different server not copy 
+It means -- distribute data onto different server not copy one like replica every server have new data 
 At every server there is new data from id 1 to 100 , from id 101 to 200 
+-- every time new data is come we put it into the new server -- 
 
 Replica --
 Replica -- means 2 or 3 copies of that a particular server/database with the data 
 
 suppose sharding is there of servers also we have to make replica of it too
-so it takes time + cost too  -- but it is worth it of 
+so it takes time + cost too  -- but it is worth it of either than loss of data 
 
 suppose data is lost -- then it create too much problems 
 because everyday there is so many request are coming so we have to make sure it can't go on a single 
@@ -152,7 +154,6 @@ so SYNC is imp. there between all 3 server
 
 when ever we do write , update operation we have to update all the server 
 that is an imp. thing here
-
 
 in SQL Db - for transaction for bank -- that follow acid property
 there should be STRONG SYNC there we can't take risk
@@ -176,7 +177,7 @@ and there is comment again coming and coming so master server need to update it 
 suppose he is updating at between some one come and he saw at server 3 there is only 500 comments 
 in original server there is 1000 so if anything this happen then there is no problem at all
 
-because we are not stopping to others from read others server like in sql db when master slave do write operation he stop read operation on other server 
+because we are not stopping to users from read others server like in sql db when master slave do write operation he stop read operation on other server 
 
 but in mongodb there is opposite
 
@@ -195,7 +196,7 @@ Availability -- any request -- read and write -- we have to reponse with the dat
 
 Partition Tolerance -- suppose if connection between the server is break or network partition is there 
 then what u do at that time --
-in sql db in transaction one-- u said that server is down 
+in sql db in transaction one(in the bank system)-- u said that server is down 
 
 but in mongo db -- it tell ok network partition is there no worry just take the data from any server 
 later when all joined then we figure it out 
@@ -203,7 +204,7 @@ later when all joined then we figure it out
 MONGO DB -- it is No sql -- it means not only sql
 it means it can behave like sql db too 
 
-consisteny -- always there is same data at every server/node
+consisteny -- always there is same/most recent data at every server/node
 availability -- it is not mandatory that all server have same data so but when there is any request we have to response it either with recent or old data 
 partition tolerance -- when this network of server breaks then what behave u want from this server 
 if availability -- then give him old data from any server again 
@@ -214,8 +215,9 @@ we use mongo db -- for social media website
 suppose we have comments and nested comments -- we can implement this on mongo db in an array --
 then make another array for nested comments
 
-but in sql db how we make an array , nested one too == we can't implement this there
+but in sql db how we make an array we can do this in sql too but it tooo complex tooo redundancy, nested one too == we can't implement this there
 so mongodb ispreferred
+
 
 
 

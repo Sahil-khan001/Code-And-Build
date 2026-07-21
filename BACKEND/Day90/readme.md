@@ -641,9 +641,7 @@ database is store data in an organise way
 
  suppose u are on window screen where lots of files and folders are there they are look like databases but can we run queries on it no we can't take folders and data acc to ur need ---
 
-MONGO DB -- 
-
-database is a physical place where we stored the data in the organise way in form of tables rows and columns
+Database is a physical place where we stored the data in the organise way in form of tables rows and columns
 then we have DBMS(Application) -- which basically manage the database in order to take and store information acc to user need 
 or it depends on the REQUEST from backend(server)
 
@@ -715,6 +713,7 @@ why mongo db --
 
 sql database is used in -- banks , transaction , bank transaction 
  bank trust sql db because of this property 
+ sql follow ACID property -- 
  sql use  -- ACID PROPERTY -- atomicity , consistency , isolation , Duarability
 
 

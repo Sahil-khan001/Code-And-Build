@@ -173,7 +173,7 @@ so we have to authenticate the user first
 THe issue is IF we login into a application -- using email and password --
 then in that application if we want to use other feature so we need to authenticate ourself --
 
- for this solution is --
+we have some methods for this -- 
  1. old way is -- Every time we have to send the email and password and get the info
  because other user dont have password 
 
@@ -199,7 +199,7 @@ BUt -- if someone steal ur session id then it can steal ur data too
 also if we store in memory/server than we have to share it with others also 
 like we have to maintain this info suppose we have to 
 
-can we have any solution through which we cannot store this record
+3. can we have any solution through which we cannot store this record
 --eg like resturant -- it gave u a token u take it -- restu dont have to store a record of it
 after food ready u give him token and it give u food 
 no record maintain and everything works
@@ -225,6 +225,55 @@ we have public and private key
  
 we own have private key , but all others have my public key
 if u have encrypted using private key then u can decrypt it by public key only 
+
+
+-- we have 
+me -- i have to send 100rs to bank
+we have private key, public key 
+
+
+
+hacker -- he have public key
+
+
+
+
+bank2 -- he have public key 
+
+--we send the data from me first i convert it into hashcode  then encrypt it using private key 
+
+then bank2 got he first decrypt it using public key and convert into hashcode 
+if same then okk
+
+now hacker also have -- public key he can also decrypt it 
+
+--- now because of this Digital Signature(public and private keys) -- hacker cannot do anything 
+
+
+Digital Signature -- convert ur message into Hashcode
+--then encrypt it using ur Private key
+
+key is string 
+private key  , public key -- converts ur message into hashcode
+
+
+Everyone have their own private and public key 
+
+
+DIGITAL SIGNATURE SAYS-- whatever message send to u-- 1. it is safe properly , integrity is maintain , and
+2. It is send by me 
+
+the hashcode u encrypted by private key -- it is Digital Singature 
+
+
+
+
+
+
+
+
+
+
 
 
 

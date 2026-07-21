@@ -177,7 +177,7 @@ now the ques is can JS object is understand by other servers that is written in 
 suppose in frontend we make a form and submit it  and send to it backend server as a Js Object 
 can backend written in python understand this 
 
-now the python can never understand this JS object its different properties
+now the python can never understand this JS object and  its different properties
 so it is make sure that we can't send our data as in Js object 
 we have to make a universal lanugage in which we send data so any backend can understand this -- 
 
@@ -243,6 +243,7 @@ headers:{
 }
 
 body : JSON.stringify({name : "object" , age : 34})
+<!-- ==================================================================================================================================================== -->
 
 NOW make the BOOKSTORE -- 
 

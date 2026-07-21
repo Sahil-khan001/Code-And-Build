@@ -314,8 +314,10 @@ either we have to put authentication code in every request then
 
 MIDDLEWARE -- it is piece of code 
 we use this code at every request so we just make a common code for this and put it into app.use and this is Middleware
+instead of putting in every request we put it in middleware that is app.use()  
+whenever any request is comming it first go in app.use means it can pass through middleware first 
 
-remember --middleware is not security 
+remember --middleware is not security , its piece of code , it helps other request by becoming a common man 
 
 
 

@@ -154,11 +154,20 @@ app.get("/book" , (req, res)=>{
 in Swiggy project also we use this work on this type of api 
 to filter the data 
 
+<!-- ------------------------------------------------- -->
 
+get -- we can use Query Parameter with it , no body 
+post , put , patch -- body use -- for sensitive data  , can't use query parameter here
+delete -- no body 
 
+note : when JSON data go from client to server using POST it is in number itself with the help of express.json() but 
+when we pass api like this 
+https://localhost:5000/book?author=alen&name=rohan 
+it act as string and we have to convert it -- using ParseInt
+IN ROUTING just we need to convert 
+else it convert by itself
 
-
-
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
 
 

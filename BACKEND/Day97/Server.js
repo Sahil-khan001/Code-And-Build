@@ -28,7 +28,7 @@ app.post("/register" , async (req , res)=>{
 app.post("/login" , async (req , res)=>{
     
       try{
-          const people = await User.findById(req.body._id);
+          const people = await User.findOne({email : req.body.email});
       
           if(!(req.body.email === people.email))
               throw new Error("Invalid Credentials");

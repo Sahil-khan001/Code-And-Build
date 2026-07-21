@@ -128,7 +128,7 @@ STEPS are --
 
 2. Then Create schema for it 
 
-3. create database -- cluster already created after cluster just write database name /database_name
+3. create database -- cluster already created after cluster just write database name /database_name or , {db : "database_name"}
 
 3. We have to create the model === collections(table creation);
 create model means we have to create collections same like table in sql
@@ -234,7 +234,6 @@ now till now we seen how to insert data --
 now how to take out data -- 
 for this code be like -- 
 
-
     const Documents = await User.find({});
     console.log(Documents);
 
@@ -243,14 +242,16 @@ for this code be like --
 we can find document by particular field -- 
 code be like-- 
 
-    const Specific = await User.find({username : "sahil"});
+    const Specific = await User.find({username : "sahil"} , {marks , { gt > 80}});
     console.log(Specific);
+
+    with find u can use mongodb query operators too - lt , gt , lte , gte , ne 
 
 
 -- now we see howto do this with api with server -- 
 for this -- 
-first u have to make a model folder and make users.js 
-put all code of collection creation , schema creation all in users.js
+first u have to make a model folder and make model_name.js 
+put all code of collection creation , schema creation all in model_name.js and export the model access
 
 and ur database file -- only contain 
 const mongoose = require('mongoose');
@@ -274,6 +275,114 @@ then it show
 connected to DB
 
 so its a wrong approach if any user is come and make request earlier then server can't fulfill it request because it still not connecting DB 
+we have to write code in diff way --
+final code be like -- 
 
-so what we can do is -- 
-code be like 
+so we have total 3 files
+1. Database file -- in which mongoose connect with the database  --- Accessing the Database
+2. Model Creation -- means the Collection ---  Accessing the Collection 
+
+we have to import both these file like the db function , model access into server.js file -- 
+
+3. Server file(server.js) -- now the normal code 
+
+final code look like -- 
+const express = require('express');
+const main = require('./database');
+const User = require('./Model/BookStore');
+
+
+const app = express();
+app.use(express.json());
+
+app.get("/info" , async (req , res)=>{
+    const info = await User.find({});
+    res.send(info);
+})
+
+app.post("/info" , async (req, res)=>{
+   try{
+    await User.create(req.body);
+    res.status(201).send("Successfully saved in Db");
+
+}catch(err){
+     res.status(500).send(err.message  + "error is there");
+}
+})
+
+main()
+.then(()=>{console.log("Connected with Db")
+app.listen(5000 , (req , res)=>{
+console.log("Server Listening at port 3000");
+})
+})
+.catch((err)=>{console.log(err)});
+
+
+-- make sure in each request u are using try and catch to error handling 
+
+note -- in post request if user try to add some other key value -- it is not possible -- it depends on schema we made so no user can send anything in database
+Now we have control over the database --
+if we send -- it only store values acc to its schema other key value will kick out 
+LATER -- we see when someone send data and also add other key value pair for THOSE users we create a RED FLAG
+we do it later guys
+
+Remember -- await User.DeleteOne -- this await means there is a network call goes in db
+then it takes time to response of that network call so it takes time 
+
+now move to -- 
+we have covered get and post request
+now move to delete and update -- 
+
+for delete we have two things-- deleteOne() , deleteMany()
+
+for update -- we have -- updateOne() , updateMany()
+
+now code be like --
+
+//delete using normally 
+// app.delete("/info" , async (req , res)=>{
+//     await User.deleteOne({age : 53});
+//     res.status(200).send("deleted Successfully");
+// })
+
+//delete using query parameter
+// app.delete("/info" , async (req , res)=>{
+
+//     try{
+//         await User.deleteOne(req.body);
+//         res.status(200).send("deleted Successfully");
+//     }catch(err){
+//         console.log("error");
+//     }
+    
+// })
+
+//delete using query parameter 
+// app.delete("/info", async (req, res) => {
+//     try {
+//         const result = await User.deleteOne(req.query.username);
+        
+//         if (result.deletedCount === 0) {
+//             return res.status(404).send("No user found to delete");
+//         }
+        
+//         res.status(200).send("Deleted Successfully");
+//     } catch (error) {
+//         res.status(500).send("Error: " + error.message);
+//     }
+// });
+
+//single document will update based on filter
+// app.put("/info" , async (req , res)=>{
+//     await User.updateOne({username : "khan"} , {age : 21});
+//     res.status(200).send("updated successfully");
+// })
+
+//all documents that have same filter will updatee
+// app.put("/info" , async (req , res)=>{
+//     await User.updateMany({username : "sharique"} , {age : 40});
+//     res.status(200).send("updated successfully");
+// })
+
+

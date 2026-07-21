@@ -16,9 +16,8 @@ app.get("/book" , (req,res)=>{
 
 
 app.get("/book/:id" , (req,res)=>{
-    const id = parseInt(req.params.id);
-    const Book = BookStore.find(info => info.id === id);
-    res.send(Book);
+     const book = BookStore.find(info => info.id === parseInt(req.params.id));
+     res.send(book);
 })
 
 app.post("/book" , (req , res)=>{

@@ -89,7 +89,7 @@ for Backened -- we have diff server
 
 -- like Some people use more frontend part only -- so lets scale it -- we can increase its RAM 
 we can purchase high ram PLAN
--- like some people use more backened part only -- so we can scale it 
+--like some people use more backened part only -- so we can scale it 
  --like some people use more database then we can scale it -- 
  now we purchase 50tb plan we can scale it 
 
@@ -103,8 +103,6 @@ it consist of all code that is --
 4. Payment 
 5. DB
 
-
-
 MICROSERVICES -- 
 Diff Codebase for Diff Services 
 1. frontend -- it have diff codebase 
@@ -115,11 +113,8 @@ Diff Codebase for Diff Services
 
 all are connected via API -- application programming Interface 
 
-
-
 Disadvantage of MICROSERVICES -- 
 1. we need to pay diff costs of different Server 
-2. 
 
 
 Disadvantage of MONOLITH -- 
@@ -127,8 +122,6 @@ Disadvantage of MONOLITH --
 like in backend if u choose javascipt then u have to write whole code in Javascript in backend
 in Payment 
 in Auth too 
-
-
 
 
 MICROSERVICES --
@@ -146,7 +139,8 @@ it depends on which techstack u are best at
  API's -- it is nothing but how two codebase talk to each other using Functions or others
                         or 
                         It is a way to talk between two codebases within the system 
-
+                        or 
+                        it is a function call 
 
 here auth call the payment function to get details
 
@@ -181,7 +175,7 @@ MICROSERVICE --
 6. Bug Issue -- one service blame to others for a bug 
 7. Server Failure -- if server fail then others services are still going
 8. Maintainence  -- hard to maintainence , diff codebase , diff problems
-9. Debugging -- multiple codebase , multiple server , hard to debug , communiction problems too
+9. Debugging -- multiple codebase , multiple server , hard to debug , sometime communiction problems too
 10. Cost -- cost is high due to different server
 
 

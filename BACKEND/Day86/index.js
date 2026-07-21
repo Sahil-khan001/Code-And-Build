@@ -1,10 +1,25 @@
-const express = require('express')
+const express = require('express');
+
 
 const app = express();
 
-app.use((req, res)=>{
-    res.send("hey this message is from server side , hey this is 2nd time , hey this is 3rd time");
+app.use("/Home" , (req, res)=>{
+    res.send("Home page");
 })
+
+app.use("/Abo*t" , (req, res)=>{
+    res.send("this is about page");
+})
+
+app.use("/Contact/:id" , (req, res)=>{
+    console.log(req.params);
+    res.send("this is Contact page");
+})
+
+app.use("/" , (req, res)=>{
+    res.send("this is default page");
+})
+
 
 
 app.listen(4000 , ()=>{

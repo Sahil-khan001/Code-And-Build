@@ -4,7 +4,6 @@ const app = express();
 app.use(express.json());
 
 
-
 app.use("/user" , (req, res , next)=>{
    console.log(`Date is ${Date.now()} Method is ${req.method} Url is ${req.url}`)
     next();

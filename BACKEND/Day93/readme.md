@@ -22,7 +22,7 @@ it includes some other functionality too --
    1. install mongodb drivers on system and make some portion of our secondary memory to database 
 
    2. to make database on the server 
-     mongo db provides us server which have storage that act as database and we can put our data into it 
+     in mongo db aws provides us server which have storage that act as database and we can put our data into it 
      in future if user increases then mongo db handle it we just have to purchase their plan and we can scale the database 
 
 
@@ -111,6 +111,7 @@ frontend                            backend ------            mongodb
 when we have request from frotend to get and submit data -- request come in backend -- backend do this work to submit data on mongodb or take data from mongodb  and then give it too frontend to fulfill its request 
 
 so for this we have to download drivers into system --
+because now we are using node js instead of compass to take/put data on real database 
 for this we have to install it from npm -- go to npm docs and take command from there
 npm i mongodb
 
@@ -239,7 +240,7 @@ Close Connection
 <!-- ======================================================================================================================= -->
 
 --- NOW --
-we know whenever backend connects with database/cluster and want to get data from db
+we know whenever backend connects with database/cluster  and whenever there is a network call  between backend and database and want to get data from db
 then it have to use await -- means to wait data is comming 
 
 when we write this line -- 
@@ -285,7 +286,7 @@ to get data from database
 
     it print all the data 
 
-now we discuss these 2 lines --
+    now we discuss these 2 lines --
     
     const db = client.db("Schools");
     const collection = db.collection("Classes");
@@ -294,7 +295,7 @@ now we discuss these 2 lines --
 
     now if database and collection dont exist then it throw error or make database and collection by own
 
-So answer is : it create by their own 
+So answer is : it create by their own IF IT IS NOT AVAILABLE 
 
 
 <!-- ------------------------------------------------------------------------------------------------- -->

@@ -34,7 +34,7 @@ app.get("/book/:id" , (req , res)=>{
 
 app.post("/book" , (req, res)=>{
   BookStore.push(req.body);
-  res.send("ur assurance is here");
+  res.send("ur assurance is here for receiving the data");
 })
 
 app.patch("/book" , (req , res)=>{
@@ -66,7 +66,7 @@ app.delete("/book/:id" , (req, res)=>{
 
        const index = BookStore.findIndex(info => info.id === id);
 
-       const book = BookStore.find(info => info.id  === id);
+    //    const book = BookStore.find(info => info.id  === id); -- this wont work 
        
           BookStore.splice(index,1);
           
