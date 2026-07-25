@@ -559,5 +559,101 @@ when we console it it print all key , string all
 
 Now move the EXPRESS ROUTER == 
 
+we know if we make a production level backend
+then it have minimum 40 to 50 api 
+if we make all these in just one index.js file 
+then code become messy
+
+LETS TAKE AN EXAMPLE --
+
+Insta api --
+
+
+
+-- Register , Login , Logout 
+-- User Feed , User Edit , User Delete
+-- Comment , Comment Delete , Comment Edit 
+-- Story Upload , Story Delete , Story Edit
+
+-- here we can add multiple api acc to task 
+  but what we do is Grouping like --
+
+we put this in Authentication folder
+we put this in User folder
+we put this in Comment Folder
+we put this in Story Folder
+so that in main file code not become messy -- 
+
+so here we need ROUTING so how we do it -- 
+now how we do in real codebase it --
+
+first make a folder routes
+
+so we take similar api like -- 
+register , login 
+then make AuthRouter.js  , we can set name acc to us
+and put these 2 api there 
+also import classes ,library what used in those api  
+then EXPORT those api 
+and import in main.js file 
+
+<!-- ---------------------------------------------------------------------------- -->
+now in Router code how to write --
+just some changes 
+
+const RouterName = express.Router();
+
+u can put any name at RouterName like -- AuthRouter
+
+now u have to put api here like
+app.post("/register" , async (req , res)=>{
+})
+
+instead of this app we have to write RouterName like 
+AuthRouter.post("/register" , async (req , res)=>{
+})
+
+at last module.exports = AuthRouter ;
+
+import in main.js file like this--
+app.use("/" , AuthRouter);
+app.use("/" , UserRouter);
+
+
+now user come with if 
+/info then it first check in AuthRouter then UserRouter
+means by default it check all routes -- 
+can we optimize it like -- 
+
+
+we can change initalpath --
+app.use("/auth" , AuthRouter);
+app.use("/user" , UserRouter);
+
+when check api if they have common intial path then we put it here 
+also we can add path acc to us too if no path matching like this /auth 
+like in api we have /login /register then what we do is -- we add /auth
+so if req is comming /auth/register then it can find it easily 
+
+so that we have less and less time On Routing to ful fill our request 
+
+also here in main file we use app.use because 
+app.use can take any request as we know 
+whenever any request is coming first go through from here 
+
+why we need express router because without it also our code is working 
+but it becomes too messy and very low Code Readibility 
+so that's why we use express router for optmization -- 
+also because of routing there is no delay okk 
+
+
+
+
+
+
+
+
+
+
 
 
