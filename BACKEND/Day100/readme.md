@@ -75,5 +75,68 @@ we can make a DB where we store the token which is already remove
 so that if it came later it not able to fulfill its request 
 now the server can invalidate the token with the help of block list that is present in DB
 we know that some token have long expiry day so until then we have to kept them in block list
-we have to  
+we have to kept them until its expiry is done , one its done then we remove it from db
+now if it that token come again after expiry then server understand this is expire so it ENVALIDATE him 
 
+now the issue is --
+
+1. we want that token is remove from DB when it expire 
+2. also there is db call from server to verify the token , we dont want this 
+   u can create ur own data structure like set , array
+   it also have an issue like there are so many request , we have to traverse over the data and select which one have to remove from the DB
+   we know we have replica also there like total 3 server each one have to perform that operation we dont know onto which server request is coming 
+
+  SO TO SOLVE THIS PROBLEM WE HAVE REDIS -- 
+  It is a DATABASE and it is very FAST
+  if mongodb fulfill a query in milleconds then redis do in microsecond 
+
+  HOW -- 
+  we know MONGOdb stored data in secondary memory that is SSD
+  also when we have to run queries then first data come into RAM
+  then we run queries 
+
+
+  but in REDIS data stored directly in RAM
+  we know the secondary storage operation are slow so that's why we store it in RAM
+  so REDIS is in Memory Database 
+  but RAM is volatile 
+  so we can't put data for PERMANENT we put those data that is valid for some time like TOKEN 
+  becaues it expire in 1hr , 1 day 
+  so for this CASE Redis is best 
+
+  it doesn't means we dont want mongodb no 
+  redis use case is different 
+  we use redis for temporary data , that u want to hold 
+
+  Also behind the scene the redis stored the data in Secondary Memory for backup
+  whole data is in the Memory but backup in Secondary memory 
+
+   also u can't put redis in node js application
+   otherwise fight for RAM issue  node js want ram , redis want ram it create issue
+   for this we have to make another Serve for REDIS he uses that server RAM 
+
+   Also Redis is expensive it needs more cost for RAM
+
+
+   suppose we go on a website we make a request server give u data from mongodb
+   we know we have 3 Server so when server give data to client he give to redis too 
+   so when client againt request for same page now mongo dont call DB AGAIN now Redis give him data as FAST 
+   so for same page everytime we dont call db again REDIS will do our WORK 
+
+   until what maximum time the redis hold the data
+   it depends on node js application like we have to tell me keep this data till 3 days , 2 days 
+   we have to tell him
+
+   like the way mongoDB do Sharding and Replica of server/Database when data is increases 
+   in sharding -- in server 1 data is from 1 to 100 , in server 2 from 100 to 200 ,
+   in replica -- same data in all server -- then load balancer will help if so many request are there
+
+   In Same Way Redis make their own sharding and replica when needed 
+
+   we can't use redis as secondary storage it will take more cost
+   
+   IN real company -- if u implement more and more feature and make user experience good
+   then there is high cost too , company is in Loss so we have to make sure
+   there should be optimal optimization 
+
+   now we see how to use Redis in LogOut -- 
