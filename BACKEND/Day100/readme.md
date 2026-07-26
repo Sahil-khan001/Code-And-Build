@@ -39,7 +39,8 @@ code be like --
 
 authRouter.get("/logout" , async (req , res)=>{
 
-    res.cookie("token" , null , {expires : new Data(Date.now())});
+    res.cookie("token" , null , {expires : new Date(Date.now())}); 
+                 or instead of this u can use this also --   res.clearCookie("token");
     res.status(200).send("Logout Successfully");
 
 })
@@ -140,3 +141,18 @@ now the issue is --
    there should be optimal optimization 
 
    now we see how to use Redis in LogOut -- 
+
+   so what we do is in redis we gonna store that token/token copy when server replace the old token with new one we put old token in redis so that later it can't access any request --
+
+   in future if client come with any token then first we check that token present in Redis or not 
+   if present then we have to delete it also 
+   so this work is done Automatically by Redis we just have to add a timestamp with it 
+   after this TIMESTAMP the redis will delete that TOKEN
+
+   now we have to make account in Redis 
+   also we have 2 option either use redis server/storage or install redis on local machine 
+   but for window we have to download docker so instead of this what we do is 
+   we use Redis server like same we use mongodb server that is hosted on aws server
+
+   we 
+
