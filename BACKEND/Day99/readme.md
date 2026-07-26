@@ -601,6 +601,8 @@ and import in main.js file
 now in Router code how to write --
 just some changes 
 
+const express = require('express');
+
 const RouterName = express.Router();
 
 u can put any name at RouterName like -- AuthRouter
@@ -635,7 +637,23 @@ also we can add path acc to us too if no path matching like this /auth
 like in api we have /login /register then what we do is -- we add /auth
 so if req is comming /auth/register then it can find it easily 
 
-so that we have less and less time On Routing to ful fill our request 
+if we add comment router code be like -- 
+
+const express = require('comment');
+const CommentRouter = express.Router();
+
+CommentRouter.get("/comment/info" , async (req, res)=>{
+})
+
+CommentRouter.patch("/comment/update" , async (req, res)=>{
+})
+
+module.exports = CommentRouter;
+
+in Main file it be like --
+app.use("/Comment" , CommentRouter);
+
+so that we have less and less time On Routing to fulfill our request 
 
 also here in main file we use app.use because 
 app.use can take any request as we know 
@@ -644,7 +662,9 @@ whenever any request is coming first go through from here
 why we need express router because without it also our code is working 
 but it becomes too messy and very low Code Readibility 
 so that's why we use express router for optmization -- 
-also because of routing there is no delay okk 
+also because of routing there is no delay because we know Js is fast it execute fast so no delay problems 
+
+
 
 
 
