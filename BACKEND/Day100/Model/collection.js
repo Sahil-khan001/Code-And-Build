@@ -13,7 +13,6 @@ const DataSchema = new Schema({
     }
 }, {timestamps : true})
 
-
 const User = mongoose.model("user", DataSchema);
 
 module.exports = User;

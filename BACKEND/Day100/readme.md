@@ -20,6 +20,7 @@ if client have a token that server give them which is working after verification
 when we go to logout route
 then server give him again token which is invalid 
 so client remove previous token and adapt the new one 
+now other request he can't do + now he have to login again 
 
 code be like -- 
 
@@ -148,11 +149,232 @@ now the issue is --
    if present then we have to delete it also 
    so this work is done Automatically by Redis we just have to add a timestamp with it 
    after this TIMESTAMP the redis will delete that TOKEN
+   because most of thing in redis is automated
 
    now we have to make account in Redis 
    also we have 2 option either use redis server/storage or install redis on local machine 
    but for window we have to download docker so instead of this what we do is 
    we use Redis server like same we use mongodb server that is hosted on aws server
 
-   we 
+    so we use Redis server -- 
+    so that when we put our code into Production level 
+    than we dont have to worry about the because we already connected with the Redis 
+
+    now we created account on redis and choose the free plan and get 30mb ram 
+    now to connect with redis db
+    we first install redis locally using npm then what we do is --
+
+    first make a config folder then redis.js
+    file then copy code from redis docs 
+    code be like 
+
+    const redis = require('redis');
+const redisClient = redis.createClient({
+    username: 'default',
+    password: '1avduhfvws4xI9jVIqx64Oy2ZJ2z3ihK',
+    socket: {
+        host: 'mom-reassuring-appealing-80205.db.redis.io',
+        port: 12443
+    }
+});
+
+const connectReddis = async () =>{
+await redisClient.connect();
+console.log("Connected to Reddisdb");
+}
+connectReddis();
+
+this username , password , at which host we give to the db in order to connect with them 
+through this code we connected to reddis Database
+
+
+now we know before server is listening we make sure
+that server is connected to mongodb and Reddisdb
+
+so for that we have to write code 
+like we have code for this like --
+
+main()
+.then(()=>{console.log("Db is connected)
+app.listen(1000 , async (req, res)=>{
+    console.log("server is listening");
+})
+})
+.catch((err)=>{
+    console.log("error" + err.message);
+})
+
+we can put our redis connnection into it but can we write this whole code in optimise way --
+yes the code be like --
+
+const InitializeConnection = async ()=>{
+  await redisClient.connect();
+  console.log("Connected to Reddisdb");
+
+  await main();
+  console.log("Connected to DB");
+
+  app.listen(1000 , async (req, res)=>{
+    console.log("server is listening");
+}) 
+}
+
+InitializeConnection();
+
+Instead of this can we write optimize code throught which these promise run parallely--
+await redisClient.connect();
+console.log("Connected to Reddisdb");
+
+await main();
+console.log("Connected to DB");
+
+-------------------------to----------------
+await Promise.all([redisClient.connect() , main()])
+it took this in an array and says -- they both connected to db parallely
+previously we have to wait for them for one then it run and connected then the second one
+if one of them is not connected it will give ERROR
+
+final code be like --
+for connection --
+
+const InitializeConnection = async ()=>{
+    try{
+        await Promise.all([redisClient.connect() , main()]);
+        app.listen(2000 , (req, res)=>{
+            console.log("Server is listening");
+        })
+    }catch(err){
+            console.log("Error " + err.message);
+        }
+}
+
+for redis.js file --
+
+const redis = require('redis');
+const redisClient = redis.createClient({
+    username: 'default',
+    password: '1avduhfvws4xI9jVIqx64Oy2ZJ2z3ihK',
+    socket: {
+        host: 'mom-reassuring-appealing-80205.db.redis.io',
+        port: 12443
+    }
+});
+
+
+module.exports = redisClient;
+
+now from this redisClient we can do anything --
+Now move to the Logout --
+we make sure that before logout --
+user is authenticate or not using middleware 
+why we need it
+
+
+
+now whatever token we block we have to put it in Reddis to make sure they dont make any request in Future
+we can store in key value pair too using set in Reddis
+mongodb want to store data in document in json format but reddis want to store in key value pair
+
+MongoDb want -- data in Document
+SQL want -- data in Table format
+
+Reddis want -- data in key value format
+so that we can easily find item
+because we know data present in RAM in key value
+he uses hashmap so that we can fetch data efficiently fast because it store light weight data
+
+the value be anything -- string , object
+the key must be unique 
+so how we write key value in reddis db like
+key: token:gjlkgjlfjsdkfsdjl;
+value : "blocked";
+corresponding to it we can write value as well 
+AT THE END we have to block the value 
+that's how people stored key value pair
+
+
+now the final code be like --
+
+AuthRouter.post("/logout" , async (req , res)=>{
+    try{
+    const token = req.cookies.token;
+    await redisClient.set(`token:${token}`, "blocked");
+    await redisClient.expire(`token:${token}` , 1800);
+
+    res.cookie("token" , null , {expires : new Date(Date.now())});
+    res.send("Logged Out Successfully");
+    }catch(err){
+        console.log("Error " + err.message);
+    }
+})
+
+
+here what happend -- the old token that will be blocked we put in redis db and set expiry of it
+suppose if a token expiry is after 3 days
+but here u expire it in 30 minutes HardCore then 
+then this token later access other request as well 
+so we put the exact expiry time in redis db so that no issue create later 
+
+now we have to take out expiry time from it 
+for this first we have to decode the jwt 
+
+like first
+
+const token = req.cookies.token;
+console.log(token);
+
+const payload = jwt.decode(token);
+console.log(payload);
+
+so this token give us token as 'ghsfjskldfjsdlfjsdlfjsmfljcsddflkjsfljsd'
+payload give us -- '_id' : 'djsfkdjldkjfsdfksjdlfkjsdlfk'
+                  email_id : 'sahil@gmail.com"
+                  iat : 39548584498,
+                  exp : 83535443,
+
+this iat : gives us creation time from 1st jan 1970
+this exp : gives us expire time at this second it will expire 
+both value in seconds 
+
+so this payload.exp gives us expiry time --
+but we have to use expireAt because the given exp calculate from 1jan 1970 
+code be liek --
+
+await redisClient.expire(`token : ${token}` , payload.exp);
+
+now it will remove from redis at its expiry time 
+diff b.w -- expire -- it calculate it from current time then expire it 
+            expireAt -- it calculate it from 1st jan1970
+
+
+Now Suppose if a user send fraud token that have expiry after 1 year then 
+because we are not checking it 
+for this -- we have to authenticate the user first --
+using middleware like auth 
+
+now we put token in the block list 
+now suppose u go for any get request first u authenticate urself then server fulfill ur request 
+but in authentication we not mention that the token is in the blocklist or not
+
+for this in auth we have to mention that this token is mention in our redis or not so Authentication code be like -- 
+first import redisClient in auth then code be like --
+
+const IsBlocked = await redisClient.exists(`token : ${token}`);
+
+if(IsBlocked){
+    throw new Error("Token is invalid it is Blocked Already");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 

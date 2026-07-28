@@ -1,11 +1,9 @@
 const express = require('express');
-
 const AuthRouter = express.Router();
 const User = require("../Model/collection");
 const bcrypt = require('bcrypt');
 const valid = require('../validation/validation');
 const jwt = require('jsonwebtoken');
-
 
 AuthRouter.post("/register" , async (req , res)=>{
 try {
@@ -55,6 +53,5 @@ AuthRouter.get("/logout" , async (req, res)=>{
         console.log("Error" + err.message);
     }
 })
-
 
 module.exports = AuthRouter;
