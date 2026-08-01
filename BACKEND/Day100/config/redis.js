@@ -8,10 +8,11 @@ const redisClient = redis.createClient({
     }
 });
 
-const connectReddis = async () =>{
-await redisClient.connect();
-console.log("Connected to Reddis");
-}
-connectReddis();
+//to connect to the redis DB we have to use this in anywhere to connect with DB
+// redisClient.connect();
+
+module.exports = redisClient;
+
+
 
 

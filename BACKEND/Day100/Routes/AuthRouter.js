@@ -4,6 +4,7 @@ const User = require("../Model/collection");
 const bcrypt = require('bcrypt');
 const valid = require('../validation/validation');
 const jwt = require('jsonwebtoken');
+const redisClient = require("../config/redis");
 
 AuthRouter.post("/register" , async (req , res)=>{
 try {
@@ -46,8 +47,25 @@ AuthRouter.post("/login" , async (req , res)=>{
 
 AuthRouter.get("/logout" , async (req, res)=>{
     try{
-    //   res.cookie("token" , null , {expires : new Date(Date.now())})
-    res.clearCookie("token");
+        //token access
+        const token = req.cookies.token;
+
+        //creation and expiry time from token 
+        const payload = jwt.decode(token);
+        console.log(payload);
+
+        //store token in redis in key value pair
+        await redisClient.set(`token : ${token}` , "blocked");
+
+        //set expiry in redis db to remove ontime from 1 jan 1970
+        await redisClient.expireAt(`token : ${token}`, payload.exp);
+
+        //send new cookie with instant expiry two option use clearCookie or expires time
+        res.cookie("token" , null , {expires : new Date(Date.now())});
+
+       //  or 2nd option using ClearCookie
+        // res.clearCookie("token");
+        
       res.status(200).send("Logout Successfully");
     }catch(err){
         console.log("Error" + err.message);

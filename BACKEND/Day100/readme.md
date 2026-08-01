@@ -247,6 +247,7 @@ const InitializeConnection = async ()=>{
             console.log("Error " + err.message);
         }
 }
+IniitalizeConnection();
 
 for redis.js file --
 
@@ -364,6 +365,415 @@ const IsBlocked = await redisClient.exists(`token : ${token}`);
 if(IsBlocked){
     throw new Error("Token is invalid it is Blocked Already");
 }
+
+it is most imp. code too it check whether the this token present in Blocked State ornot
+
+so we see a after applying Redis now the old token is not able to access other request 
+so redis is simple --
+also to get info from redis DB by putting the key we can get info from redis DB --
+we can use -- 
+await redisClient.get(`token : ${token}`);
+
+<!-- ------------------------------------------------------------------------------------------- -->
+
+Now move to the RATE LIMITER --
+it is a part of HLD and why it is necessary --
+suppose a insta user want some info 
+and he do get request -- 10000 req in 1 min 
+he write code in frontend and make a loop and make requests 
+and suppose most user do it they want to crash our System 
+
+like in github they set only 100 req in one hour 
+they are tracking us how many request 
+we have to find how many time a user make a request
+we put a count around a user how many time he is making a request 
+-- this code we put in RATE LIMITER
+
+--
+when a user come on our website we set how much requests he can make in 1 hour/how many times he hit our api
+
+-- if there is more request then it can crash our server 
+   because it take more RAM to execute more function 
+
+
+   ---Now the solution is 
+   1. Token Bucket Algo -- it failed too 
+
+-- so there is 
+    Client                   Token Bucket                 then Server
+
+when client make request then it goes into bucket then it goes into Server 
+means when token put into server then it fulfill request otherwise not
+ 
+if anyone come with token bucket and move direcly to the Server then server can't fulfill its request 
+
+This is TOKEN Bucket Algorithm --
+suppose a hacker is come with 5 lakh requests then all 5 lakh token put into server 
+now because of this if real USers fulfill request then he is not able to do it because there is no token in bucket because of it users have bad experience
+
+this algo/approach  is failed 
+
+2. Fixed Window Algo --
+now move to other algo that is --
+
+now what we do is the server set no of request per hour
+suppose if it is a authenticate user then he is doing lot of request then we can found him and we can set no of request per hour 
+
+but suppose he is not an authenticate user he make request on login page again and again then how can server find him
+we know who ever make request we can find out his IP address using req.ip
+because we know its a cs rule that whenever we make request we have to send own ip address and his ip address 
+
+so we find it IP address and we can store it in Redis DB
+so in Redis DB -- 
+we store the I.P address , no of count , Total time to live 
+no of count -- how many time a request is come from a particular address
+total time to live -- we know we have 1 hour - 60 requests 
+means he can only make request under this 60 min
+
+            Redis DB 
+I.p           value               TTL/expire time
+12.1.1.12       1                       60 min
+
+
+so Rate limiter  is a piece of code that check when a request is coming from client
+so RL check in Redis Database that this particular Ip address it have time ornot how many request he have then after checking if valid then he increase it count under the time value 
+if new Ip address come then ratelimiter registered it fully allot 60 minutes
+when this time over then it automatically remove from redisDB
+
+now we want that in 60 min user can do 60 request 
+ALSO between two request there is time gap of 10 seconds
+
+so what we do is 
+WE CAN SOLVE ALSO COOLING PERIOD TOO LIKE LEETOCODE ANS SUBMISSION -- 
+we store request creation time suppose a request is coming at 12:01:04
+then it make another request at 12:01:08 so Rata limiter reject it it check in db then it know it only 4 second reject it 
+then again another request at 12:01:14 now it will accept increase the count + replace old time with this 
+now where we store this time 
+also we have to convert this time into seconds -- this 12:01:03
+so what we do is we find this time  by Date.now() then divide by 1000 to convert into seconds then we store in value means parallel to NO OF COUNT  like --
+value = count : 23586989;
+
+it stored as a string in value , Now we have to convert it also in number for that we use --
+str = 2:23566757565
+str.split(":").map(Number);
+it gives value into an array = [2 ,23566757565]
+
+Now this Algo is FIXED WINDOW 
+means no of request are between 12:00 to 12:59 only after it automatically remove 
+<!-- --------------------------------------------------------------------------------- -->
+
+Now move to the 
+Sliding Window --
+what happened in FIXED WINDOW -- 
+we know we can make 60 req in 1 hour , Suppose a user do one request at 12:00 and another 59 request at 12:59
+then in next hour at 1:00 he do 60 request 
+so total in 2 minutes he make 119 request 
+which is not good for our server , not a right thing
+
+so we need that if a user make 59 req at 12:59 then it can make another 60 req at 1:59 it should be like this so 
+
+for this we have Sliding window Algorithm 
+in which the time frame window increase 
+suppose a user make a request at 12:05 then another request he can make 60 req till 1:05 and it calculate the previous request as well
+then if he request at 12:10 then till 1:10 he can make 60 req
+like if user make 59 req at 12:59 then it do 60 req till 1:59
+he can't make 60 req at 1:01 because here at every request the sliding window increases
+
+Now move to the Fixed Window Implementation --
+we use 
+app.use(rateLimiter);
+means whenever any request is coming first we check using Ratelimited user limitation on Request 
+
+we put it before the heavy request like
+app.use("/auth" , AuthRouter);
+app.use("/user" , UserRouter);
+
+now we write Rate Limiter Code it acts as a middleware so in middleware the code be like 
+const rateLimiter = async (req , res , next)=>{
+      
+      //store the ip address in redis db
+    const ip = req.ip;
+
+    const count = await redisClient.incr(ip);
+    //this incrment function gives us how many times this ip address making request
+    it set the value of ip address as count if it it is new then it registered this ip address and set value as Count 
+
+    if(count > 60){
+        throw new Error("User Limit Exceeded");
+    }
+
+    if(count == 1){
+        await redisClient.expire(3600);
+    }
+
+    next();
+}
+
+const count = await redisClient.incr(ip);
+here instead of this we can do this with diff methods too 
+like set , get but this process takes too much time 
+so we use .incr 
+it tells us count acc to its ip address , it increases every time when request it from same ip and if it is new then it registered it 
+
+
+Suppose we have so many request from diff ip address then in this case we scale our server
+like AWS have autoscalling features when we enable it it make too many server 
+loadbalancer is diff it tell request onto which server u have to go 
+
+now this const ip = req.ip;
+if we do req from postman then it give ip like this ::1
+because it is local req so it give in ipv6 format 
+if u give him normal request then it give in proper format
+
+now u can implement the cooling time period as well --
+const count = await redisClient.incr(10);
+
+if ip address not exist --
+we have to set ip address then invalue set no.of count and current time in second , ttl/expire
+so we use -- await redisClient.set(ip , `1: ${Date.now()/1000}`);
+await redisClient.expire(3600);
+
+if exist --
+we use get to find the count of it if it is > 60 then we do exceed limit
+if it is less than 60 then we do update time then check 
+its a logic game
+<!-- ============================================================================= -->
+
+Now move to the SLIDING WINDOW -- 
+
+in sliding window we check total no of request in the last one hour include the recent request 
+
+whenever we make a request we check in the last one hour in the Sliding window 
+
+if we make a request at 12:10 then we have to check all req between 11:10 to 12:10 
+we can solve it using queue
+
+suppose we make a req --
+11:05 , 11:10 , 11:15 , 11:20 , 11:40 , 11: 50 , 12:10 , 12:15
+
+now we have to remove 11:05 , 11:10 
+because we only only check all the req between 11:15 to 12:15
+
+if queue do this operation then it will take time 
+so is there any way to do this using AUTOMATION
+
+we know we have to store the req time 
+so that we can remove the one who dont lie in that one hour category
+
+11:05 , 11:10 , 11:15 , 11:20 , 11:40 , 11: 50 , 12:10 , 12:15 
+if we store like this and remove it using queue it takes time
+like for every remove we have to make a await call 
+so much data call so it takes time --
+
+so we store these time in 
+set 
+Normal set contain unique values like -- 1:04 , 1:14 , 2:00 , 1:08
+but we store in Sorted Set --
+then it contain sorted unique values --
+
+11:05 , 11:10 , 11:15 , 11:20 , 11:40 , 11: 50 , 12:10 , 12:15 
+like this -- 
+
+but we know a set can contain other datatypes values as well so how we sorted then --
+sorted_set = 1 "rohit" 43 "khan"
+
+so for this case we sort this onthe basis of Score we make a score with a number and basis of it we sort 
+score : 1  value : "rohit"
+score : 2  value : 4
+score : 3  value : 110
+
+now it sort on basis of score 
+also ur score can be duplicate but ur value can't be duplicate 
+
+now u can use Range Query do delete from a specific score to other score at ONCE
+it need only 1 request call
+there is no need to call again and again 
+
+so we stored like --
+
+key : Ip address
+score : current_time(in seconds from 1st jan1970)
+
+so this score is the current time -- 
+
+-- bascially we stored this current time in second then with the help of range query we remove unnessecary score that we dont need like
+
+1:05         1:15              1:29                1:59            2:05                2:08               2:10
+12325      12327            12329                  12340            12350                12370            12390
+
+now if we want all req in 1 hour then we do   0   to       12327
+remove req which lies in this parameter 
+
+suppose we store -
+    key         score             value 
+192.31.21.6     123456             rohitnegi_08
+
+
+Now in value what we put --
+value : currentTime(second)
+
+some say we can put username 
+another req come at 123460 with rohitnegi_08 then what happened 
+we know value can't be same 
+so it updated the time not the count 
+so we have to use currentTime(second);
+we have to put this in value because everytime it changes 
+
+the issue with the currentTime(second) is suppose user make 100 req at same time and if we are putting current time in value then we know values are same so it update the current time not the count so the count value only increase by 1 
+in actually
+so it failed now 
+second option is Math.random
+
+we know math.random() also depend upon system clock means the current time 
+it is not random their logic works on current time 
+suppose if we store math.random with the score then what happened 
+we know it depends if at a particular second suppose hacker make so many requests then what happened 
+
+it is possible that at this time the math.random() value may collide because it also extract random based on that second 
+
+so we can't put math.randow 
+so u can take a big random number 
+that can decrease the problem 
+
+u have to understand that there is no perfect System 
+there must be any loop there 
+
+
+so we can use crypto library-- it generate the random number 
+
+now u can also make ur OWN library of random number generator like --
+take a water tank and put some fish into this -- 
+then every time u click picture of that tank the unique image is there 
+
+Now on that particular image u can put algorithm -- it can generate random number 
+
+Now move to the code part that is of sliding window of RL --
+
+now make a file in middleware that is rateLimiter.js now the code be like --
+
+//windowSize = expiry time of all req in seconds
+
+const windowSize = 3600;
+const maxReq = 60;
+
+const rateLimiter = async (req , res , next)=>{
+    try{
+    
+     const key = req.ip;
+     const current_time = Date.now()/1000;
+     const window_time = current_time - windowSize;
+
+     await redisClient.zRemRangeByScore(key , 0 , window_time);
+
+     const numberOfRequests = await redisClient.zCard(key);
+     //it tell us total no of value 
+
+     if(numberofRequests > maxReq){
+        throw new Error("User limit Exceeded");
+     }
+
+
+     
+
+
+
+    }catch(err){
+        console.log("error " + err.message);
+    }
+}
+
+window_time 
+suppose current_time is 1:20 
+then the window time is 1:20 - 60 min means 12:20 
+it means remove all the time before 12:20
+the current we get it in seconds and window time also in second 
+
+now how we write code for remove code based on score as we discuss
+it remove from one particular score to given score 
+code be like--
+await redisClient.zRemRangeByScore(key , 0 , window_time);
+
+so it remove all the score between 0 to window_time 
+that we will be give in time 
+1:20 - 60min = 12:20 the time we get in second 
+so we say remvove all score between 0 to 324353
+then it remove 
+
+
+const total_no_of_req = redisClient.zCard(key);
+//total no of value present so value is no of requests 
+
+if req is under total no of req then we do -- 
+await redisClient.zadd(key , [{score : current_time , value : `${current_time}: ${Math.random()}`}]);
+this z tell us this is sorted set 
+and add  this req into this -- 
+
+now the imp. is the TTL u have to increase it by 60 min by every request
+now 
+await redisClient.expire(key , windowSize);
+
+
+u can write code like this here --
+if(NumberOfReq == 1){
+await redisClient.expire(key , windowSize);
+}
+
+then this will not work it same like old problem 
+it means for every req the expire time is 60 min 
+
+suppose at 12:59 -- it do 58  req
+at 1pm the key expire 
+then new key will make req 50 at 1:01 -- this will do if we write this code 
+
+we want if we make a request at 12:59 then key will make req till 1:59
+means every key in ttl by 60 min 
+
+whenver any req is coming from that particular key then we have to increase ttl by 60 min 
+when new req is coming -- total time of particular key increase by 60 min 
+so we have to write 
+await redisClient.expire(key , windowSize);
+
+<!-- ---------------------------------------------------------------------- -->
+so final code is -- 
+
+//expire time that is windowSize
+const windowSize = 3600;  //that is 60min
+const maxReq = 60;
+
+const rateLimiter = async (req , res , next)=>{
+    try{
+    
+     const key = `IP${req.ip}`;
+     const current_time = Date.now()/1000;
+     const window_time = current_time - windowSize;
+
+     await redisClient.zRemRangeByScore(key , 0 , window_time);
+
+     const numberOfRequests = await redisClient.zCard(key);
+     //it tell us total no of value 
+
+     if(numberofRequests > maxReq){
+        throw new Error("User limit Exceeded");
+     }
+
+     await redisClient.zAdd(key , [{score: current_time , value : `${current_time} : Math.random()`}]);
+
+     await redisClient.expire(key , windowSize);
+     next();
+    }catch(err){
+        console.log("error " + err.message);
+    }
+}
+
+this code give error u have to write -- 
+const key = `IP:${req.ip}`;
+
+normal req.ip give me -- ::1
+but this one give in full format 
+
+the BEST WAY TO DEBUG IS -- 
+comment all line of code and check code line by line -- 
+and check at what line we got error 
 
 
 

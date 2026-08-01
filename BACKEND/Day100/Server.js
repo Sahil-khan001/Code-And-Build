@@ -7,17 +7,23 @@ const AuthRouter = require('./Routes/AuthRouter');
 const UserRouter = require('./Routes/UserRouter');
 const valid = require("./validation/validation");
 const main = require('./database');
+const redisClient = require('./config/redis');
 require('dotenv').config();
 
 app.use("/auth" , AuthRouter);
 app.use("/user" , UserRouter);
 
 
-main()
-.then(()=>{console.log("Connected to DB")
-    app.listen(2000 , (req , res)=>{
-        console.log("Server is listening at PORT no : 2000");
+const initializeConnection = async ()=>{
+
+    try{
+   await Promise.all([redisClient.connect() , main()]);
+
+    app.listen(1000 , (req , res)=>{
+         console.log("server is listening at port 1000");
     })
-}).catch((err)=>{
-    console.log("Error " + err.message);
-})
+    }catch(err){
+        console.log("error " , err.message);
+    }
+}
+initializeConnection();

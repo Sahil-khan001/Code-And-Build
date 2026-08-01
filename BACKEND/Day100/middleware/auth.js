@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
 const User = require('../Model/collection')
+const redisClient = require("../config/redis");
+
 
 
   const auth =  async (req, res , next)=>{
@@ -12,6 +14,11 @@ const User = require('../Model/collection')
    const id = payload.id;
    if(!id){
       throw new Error("id is not found");
+   }
+
+   const isBlocked = await redisClient.exists(`token : ${token}`);
+   if(isBlocked){
+      throw new Error("Already present in redis , Invalid Token");
    }
 
  const result = await User.findById(id);
