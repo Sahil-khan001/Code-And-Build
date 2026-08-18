@@ -1,18 +1,12 @@
-const redis = require('redis');
-const redisClient = redis.createClient({
-    username: 'default',
-    password: '1avduhfvws4xI9jVIqx64Oy2ZJ2z3ihK',
+const { createClient }  = require('redis');
+
+const redisClient = createClient({
+     username: 'default',
+    password: 'E4RKwyirVYWgU0TSXGJN75XAalvKP2Bg',
     socket: {
-        host: 'mom-reassuring-appealing-80205.db.redis.io',
-        port: 12443
+        host: 'brick-gigantic-rosemary-13627.db.redis.io',
+        port: 11542
     }
 });
 
-//to connect to the redis DB we have to use this in anywhere to connect with DB
-// redisClient.connect();
-
 module.exports = redisClient;
-
-
-
-

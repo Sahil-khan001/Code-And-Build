@@ -1,18 +1,23 @@
 const {Schema , mongoose} = require('mongoose');
 
-const DataSchema = new Schema({
+const TwitterSchema = new Schema ({
+
+    firstName : {
+        type : String,
+    },
+
     email : {
         type : String,
         unique : true,
-        required : true,
+        required : true
     },
+
     password : {
         type : String,
-        unique : true,
-        required : true
+        required : true,
     }
-}, {timestamps : true})
+})
 
-const User = mongoose.model("user", DataSchema);
+const Users = mongoose.model("FINALDB" , TwitterSchema);
 
-module.exports = User;
+module.exports = Users;

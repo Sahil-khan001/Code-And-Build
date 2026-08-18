@@ -1,34 +1,27 @@
+const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
-const User = require('../Model/collection')
-const redisClient = require("../config/redis");
+const redisClient = require('../Config/Redis');
 
+const auth = async (req , res , next)=>{
 
-
-  const auth =  async (req, res , next)=>{
- const token = req.cookies.token;
+    const token = req.cookies.tokenn;
     if(!token){
-        throw new Error("token is not found");
+        throw new Error("Invalid token");
     }
-   const payload =  jwt.verify(req.cookies.token , process.env.SECRET_KEY);
 
-   const id = payload.id;
-   if(!id){
-      throw new Error("id is not found");
-   }
+    const isBlocked = await redisClient.exists(`token : ${token}`);
+    if(isBlocked){
+        throw new Error("Already exists in redis so it is blocked")
+    }
 
-   const isBlocked = await redisClient.exists(`token : ${token}`);
-   if(isBlocked){
-      throw new Error("Already present in redis , Invalid Token");
-   }
+    const payload = jwt.verify(token , process.env.SECRET_KEY );
+    if(!payload){
+        throw new Error("Invalid Credentails");
+    }
 
- const result = await User.findById(id);
- if(!result){
-    throw new Error(" no result");
- }
- req.result = result ;
+    req.result = payload;
 
- next();
+    next();
+}
 
-  }   
-
-  module.exports = auth;
+module.exports = auth;
