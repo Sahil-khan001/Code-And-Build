@@ -13,5 +13,4 @@ function valid(data){
     }
 }
 
-
-module.exports = valid ;
+module.exports = valid;

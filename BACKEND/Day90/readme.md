@@ -661,15 +661,12 @@ balance , text , numbers
 
 we can run queries on the structured data like give me numbers > 5
 
-
 Unstructured Data
 video , image 
 
 we can't run queries on the unstructured data like give 
 we can't say give me video in which dog is present we can't do it 
 so that's why we put this into unstructured data 
-
-
 
 when we fetch data from api we get image in cdn link form not like others like in text , numbers
 at the end video also saved in 0,1
@@ -715,7 +712,6 @@ sql database is used in -- banks , transaction , bank transaction
  bank trust sql db because of this property 
  sql follow ACID property -- 
  sql use  -- ACID PROPERTY -- atomicity , consistency , isolation , Duarability
-
 
  atomicity -- suppose we have            per1                  per 2
  and per1 want to send 1000rs to per2 then 

@@ -276,7 +276,7 @@ now whatever token we block we have to put it in Reddis to make sure they dont m
 we can store in key value pair too using set in Reddis
 mongodb want to store data in document in json format but reddis want to store in key value pair
 
-MongoDb want -- data in Document
+MongoDb want -- data in Document or json format 
 SQL want -- data in Table format
 
 Reddis want -- data in key value format

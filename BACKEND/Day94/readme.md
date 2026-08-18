@@ -339,7 +339,6 @@ for delete we have two things-- deleteOne() , deleteMany()
 for update -- we have -- updateOne() , updateMany()
 
 now code be like --
-
 //delete using normally 
 // app.delete("/info" , async (req , res)=>{
 //     await User.deleteOne({age : 53});

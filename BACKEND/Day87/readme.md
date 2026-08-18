@@ -8,7 +8,6 @@ app.use("/user" , (req, res)=>{
     res.send("Hey this is Data from Server");
 })
 
-
 app.listen(4000 , ()=>{
     console.log("Server is listening at 4000...")
 })
@@ -26,8 +25,6 @@ etc ///
 
 <!-- --------------------------------------------------
  -->
-
-
  now we use app.get("/user" , (req, res)=>{
     res.send("fetching the data using get")
  })
