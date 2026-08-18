@@ -1,75 +1,71 @@
+
 const express = require('express');
-const AuthRouter = express.Router();
-const User = require("../Model/collection");
+const valid = require('../validator/validation');
 const bcrypt = require('bcrypt');
-const valid = require('../validation/validation');
+const Users = require('../Model/Collection');
 const jwt = require('jsonwebtoken');
-const redisClient = require("../config/redis");
+const AuthRouter = express.Router();
+const auth = require('../Middleware/auth');
+const cookieParser =require('cookie-parser');
+const redisClient = require('../Config/Redis');
 
 AuthRouter.post("/register" , async (req , res)=>{
-try {
-    valid(req.body);
 
-    req.body.password = await bcrypt.hash(req.body.password , 10);
-
-    await User.create(req.body);
-    res.status(200).send("Registered Succesfully");
-} catch (error) {
-    console.log("Error " + err.message)
-}
+    try{
+        valid(req.body);
+      
+        req.body.password = await bcrypt.hash(req.body.password , 10);
+      
+        await Users.create(req.body);
+        res.status(201).send("Registered Successfully");
+    }catch(err){
+        console.log("error " + err.message);
+    }
 })
 
 AuthRouter.post("/login" , async (req , res)=>{
 
-    try {
-        const people =   await User.findOne({email : req.body.email});
-
-     if(!people){
-        throw new Error("invalid Email");
-    }
-    
-    const isMatch = await bcrypt.compare(req.body.password , people.password);
-    
-    if(!(isMatch)){
-       throw new Error("invalid passowrd");
-   }
-
-
-   //jwt 
-   const token = jwt.sign({id : people._id  , email : people.email} , process.env.SECRET_KEY);
-    res.cookie("token" , token);
-
-   res.status(200).send("Login Successfully");
-    } catch (err) {
-        console.log("Error " + err.message)
-    }
-})
-
-AuthRouter.get("/logout" , async (req, res)=>{
     try{
-        //token access
-        const token = req.cookies.token;
-
-        //creation and expiry time from token 
-        const payload = jwt.decode(token);
-        console.log(payload);
-
-        //store token in redis in key value pair
-        await redisClient.set(`token : ${token}` , "blocked");
-
-        //set expiry in redis db to remove ontime from 1 jan 1970
-        await redisClient.expireAt(`token : ${token}`, payload.exp);
-
-        //send new cookie with instant expiry two option use clearCookie or expires time
-        res.cookie("token" , null , {expires : new Date(Date.now())});
-
-       //  or 2nd option using ClearCookie
-        // res.clearCookie("token");
+        const check = await Users.findOne({email : req.body.email});
+     
+        if(!check){
+         throw new Error("Invalid Email");
+        }
         
-      res.status(200).send("Logout Successfully");
+        const checkPass = await bcrypt.compare(req.body.password , check.password);
+        
+        if(!checkPass){
+         throw new Error("Invalid Password");
+        }
+     
+        const token = jwt.sign({id : check._id , firstName : check.firstName} , process.env.SECRET_KEY);
+        res.cookie("tokenn" , token);
+     
+        res.status(201).send("Login Successfully");
     }catch(err){
-        console.log("Error" + err.message);
+        console.log("error " + err.message);
     }
+
 })
 
+AuthRouter.get("/logout" , auth , async (req , res)=>{
+
+  try{
+     const token = req.cookies.tokenn;
+     const payload  = jwt.decode(token);
+
+    await redisClient.set(`token : ${token}` , "blocked");
+     await redisClient.expireAt(`token : ${token}` , payload.exp);
+
+    res.cookie("token" , null , {expires : new Date(Date.now())});
+    // res.clearCookie("tokenn");
+    res.status(200).send("Logout Successfully");
+  }catch(err){
+    console.log("error " + err.message);
+  }
+
+})
 module.exports = AuthRouter;
+
+
+

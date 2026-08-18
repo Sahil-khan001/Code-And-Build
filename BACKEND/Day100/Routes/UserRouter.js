@@ -1,17 +1,16 @@
 const express = require('express');
-const User = require('../Model/collection');
-const auth = require('../middleware/auth')
-const jwt = require('jsonwebtoken');
-
 const UserRouter = express.Router();
 
+const auth = require("../Middleware/auth");
 
-UserRouter.get("/info" ,auth , async (req , res)=>{
-try{
+UserRouter.get("/info" , auth , async (req , res)=>{
+    try{
     res.status(200).send(req.result);
-}catch(err){
-    console.log("Error " + err.message)
-}
+
+    }catch(err){
+        console.log("error " + err.message);
+    }
+
 })
 
 module.exports = UserRouter;
