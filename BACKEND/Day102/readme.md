@@ -91,8 +91,39 @@ the architecture of MCP be like --
 frontend --- backend(it only takes normal api , authorization that's it)
 ---connected to MCP Server 
 
-Mcp server---------Db(it store the prev history of data as well)
+Mcp server---------Db(it store the prev history of data as well with the new question we attach the old data too)
 it is connected to --------------llm as well(when ever mcp gets ques he give to that llm and take intent in json format to fetch data from particular Api)
+it is connected to final LLMs (it takes history of data , new question , data related to that particular ques then final LLMs give the final Context with the answer attach to it provided by api plus some other context provided added by itself)
+
+this MCP server is connected to different different API's to fetch data from particular api 
+we have different mcp server with different api's
+we call particular server to fetch data and give data 
+like in main MCP server there is -- 
+getWeather("Delhi");
+then another mcp sever have function of it or internal thingss that fetch daata from particular weather api 
+
+the main Server is MCP server or sometime we call it as MCP Client
+the real mcp server is who fetch the real data
+that is connected to MCP Client
+
+MCP server is just a Javascipt code that's it --
+
+for the usecase go to Mcp server --  read the docs 
+understand the code there --
+and use it ...
+
+we have also other example of Claude Desktop version like we told claude to read a file on the desktop we know we have backened and we know backend is connected to MCP client and it is connected to different MCP servers like read , write , delete 
+then mcp client call read server and give data
+
+also mcp client make multiple api call as well 
+so we can call to multiple mcp server as well 
+
+
+
+
+
+
+
 
 
 
