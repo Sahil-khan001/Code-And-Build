@@ -116,7 +116,7 @@ we have also other example of Claude Desktop version like we told claude to read
 then mcp client call read server and give data
 
 also mcp client make multiple api call as well 
-so we can call to multiple mcp server as well 
+so we can call to multiple mcp server as well at same time 
 
 
 
