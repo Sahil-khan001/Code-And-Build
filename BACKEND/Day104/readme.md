@@ -105,6 +105,203 @@ Now there is no rules of first make req then response
 
 imp.point -- tcp connection upgraded to websocket connection remember it -- 
 
+what is socket.io -- 
+
+we prefer express js over node js for server 
+in same way -- 
+
+it is a library that enables low latency , bidirectional communication between a client and a server 
+it is build over websocket 
+
+the code which is written by websocket we can write that code easily using socket
+
+EARLIER -- in some browser and company the websocket code dont work
+but socket.io which convert ur browser into http long polling  
+
+problems with websocket -- 
+didn't work with corporaate firewaalls , old browser or mobile network disable it also 
+
+if in any company the webssocket is disable 
+then socket convert that browser or company into http long polling we know everyone follow it 
+so socket gives us flexibility to write code
+
+in websocket 
+we have to write some code over websocket that the connection is still alive or not
+like there is client or server or not
+
+like server is sending data again and again to client
+but 
+client is not there -- so resource are using wastage
+like we have to break the connection 
+
+so we have to write code for this over websocket 
+but in SOCKET.IO , this check automatically
+like he send ping request again and again in midway to check it is still alive or not 
+
+in websocket -- suppose due to network issue client gone and come after some time
+and server sending data again and again 
+server think client got the data but it didn't so 
+
+means if packet is not received to client then server dont get acknowledgement 
+but it is done by socket.io 
+acknowledgement also done here
+like whenever client got packet the server got acknowledge
+
+-- Now move to the code part --
+--
+first we have to make a server --
+
+const express = require('express');
+const app = express();
+
+const {Server} = require('socket.io');
+
+app.get('/' , (req , res)=>{
+
+})
+
+
+
+
+
+const server = app.listen(3000, (req , res)=>{
+    console.log("server is listening at port 3000")
+})
+
+//upgrade to websocket sserver 
+const io = new Server()
+
+
+
+here what we do is we upgraded our server to webssocket server using this line --const io = new Server(server);
+also whaatever request we get -- if it is related to websocket then it is solve by io server 
+otherwise if it is normal request then normal server will attend it 
+Now we connected our socket server to normal server 
+
+now the issue in this code is -- 
+suppose the socket server not able to attach with the normaal sserver after listening
+sos what we do is --
+we creaate sserver using http
+
+const http = require('http');
+
+const server = http.createServer(app);
+const io = new Server(server);
+
+//how to connect with the websocket code be like -- 
+io.on("connection" , (socket)=>{
+
+})
+
+
+server.listen(3000 , ()=>{
+    console.log("server is listening");
+})
+
+
+
+//suppose we have 3 client everyone waant to connect with the websocket 
+all connected via different socket.id and everyone have different socket id so it uniqely identify
+
+whenever aany requesst is ccoming we can find itss detail under 
+req. parameter 
+
+also once we connect to socket we have to disconnect too --
+code be like -- 
+
+io.on('connection' , (socket)=>{
+
+
+    socket.on('disconnect' , ()=>{
+        console.log("disconnected from server");
+    })
+})
+
+for message code be like -- 
+
+io.on('connection' , (socket)=>{
+
+    socket.on('message' , (data)=>{
+        io.emit('new message' , data);
+    })
+
+    socket.on('disconnect' , ()=>{
+        console.log("disconnect from server");
+    })
+})
+
+
+  socket.on('message' , (data)=>{
+        io.emit('new message' , data);
+    })
+
+this socket.on is individual socket listening a message 
+io.emit when forward message at everywhere\
+emit meaans send to everyone 
+on means to receive or listen 
+socket.on -- it means individual socket come with any message in key value pairs 
+io.emit -- it is webssocket server and it is saying that to send this message to everyone 
+
+io.on('connection', socket => {
+  socket.emit('request', /* … */); // emit an event to the socket
+  io.emit('broadcast', /* … */); // emit an event to all connected sockets
+  socket.on('reply', () => { /* … */ }); // listen to the event
+});
+
+Now move to the Chat Application -- 
+first we build the frontend part using normaal html and csss
+then we have to attach the socket into client side 
+so for this we have to add this code -- 
+
+we have other option too 
+like first install socket io client connect this to backend url 
+or
+passte thiss code in frontend 
+<!-- <script src="/socket.io/socket.io.js"></script>
+<script>
+  const socket = io();
+</script> -->
+
+
+basically we connected frontend to backend
+
+
+-- we know whenever we hit on any api from frontend the backend send data in JSON
+now we see how to send file like index.html or other instead of Json
+
+for this u have to install
+npm i path 
+then
+
+const path = required('path');
+
+app.get('/' , (req , res)=>{
+    res.sendFile(path.join(__dirname , 'index.html'));
+})
+
+from backend we are opening index.html file 
+
+
+also this
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  const socket = io();
+</script>
+
+connected to 
+io.on('connection');
+
+
+
+
+
+
+
+
+ 
+
+
+
 
 
 
