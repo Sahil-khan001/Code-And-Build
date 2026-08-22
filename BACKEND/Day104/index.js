@@ -15,7 +15,8 @@ res.sendFile(path.join(__dirname , 'index.html'));
 io.on("connection" , (socket)=>{
 
     socket.on('message' , (data)=>{
-    io.emit('new-message' , data);
+    // io.emit('new-message' , data);
+    socket.broadcast.emit('new-message' , data);
     })
 
     socket.on('disconnect' , ()=>{

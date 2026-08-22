@@ -291,6 +291,31 @@ also this
 connected to 
 io.on('connection');
 
+   socket.on('message' , (data)=>{
+    io.emit('new-message' , data);
+    })
+
+this individual socket is listening at messsage key 
+
+we can send message to individuaal socket or all socket 
+socket.emit -- this individual socket broacast messaage onthis key 'messaage'
+io.emit -- here we brodcasting this message to every connected socket to it 
+
+when u write 
+io.emit
+it broadcast message to all socket connected to them
+even itself too 
+but if u want that it broadcast message to others not itself then write 
+socket.broadcast.emit('new-message' , data);
+
+it means the message we send to server the server send this message to everyone except me
+
+note -- whatever we are building its a feature of live chat 
+it not store ur old chats if u want them then u have to use database to store it 
+
+
+
+
 
 
 
