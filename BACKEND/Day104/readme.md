@@ -437,9 +437,45 @@ io.on("connection" , (socket)=>{
 now whoever join the room can see message and reply it --
 also if a room is not create with a particulaar id then it creaated at that time --
 
+SUpposse now we want to send message to a private person not in privaate room 
+so we need only socket id of that particular person we can easily send private messaage to him
 
+for this-- 
+ socket.to(room).emit('new-message' , msg);
+instead of this room -- 
+we have to mention socket_id of that particular person 
 
+for this we dont have to make room first 
+we jusst need socket id
+but behind the scene it also follow room system
 
+we know that socket id is changing again and again 
+so what we do is --
+
+we can't store every user socket id 
+so we have to find the common thing that are constant like usernaame , itss mobile number 
+username which is constant
+
+suppose we do this --
+socket.emit('message' , {receiver:9191 , msg : "hello bhai kese ho"});
+we send this from frontend but how sockerServer/whatsapp server know this what is 9191 
+for this -- 
+whenever we connected to whatsapp server 
+on server side we have to manage this like we have to 
+make a list of phone number along with its socket id once we store socket id along with it number we can easily send perssonaal messsaage 
+
+so we need only db to store the phone number along with its socket id db like redis
+then we pass
+socket.to(socket_id).emit('new-message' , msg);
+
+in phone the db be like -- 
+phone number ------------ socket_id
+phone -- [socketId1, socketId2 , socketId3 , socketId4]
+we have to mention all socket id of tab 
+
+we know socket is creation of ip address + port number 
+socketID is generating when u connect with the webssocket server
+at that time ur server store ur ssocketId along with ur phone number
 
 
 
