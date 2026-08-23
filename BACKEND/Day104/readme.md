@@ -308,10 +308,140 @@ even itself too
 but if u want that it broadcast message to others not itself then write 
 socket.broadcast.emit('new-message' , data);
 
-it means the message we send to server the server send this message to everyone except me
+Note -- NOW it means the message we send to server the server send this message to everyone except me
+because of socket.broadcast  
 
 note -- whatever we are building its a feature of live chat 
 it not store ur old chats if u want them then u have to use database to store it 
+
+
+-- Now the next feature is --
+if u want to display the sender message on right and receiving one on the left then we can do it too -- 
+the function that is sending messaage we have to edit it in -- 
+
+code be like -- 
+function sendMessage(){
+    const msg = messageInput.value;
+    socket.emit('message' , msg);
+     const element = document.createElement('div');
+    element.textContent = msg;
+    element.style.textAlign = 'right';
+    messageDisplay.appendChild(element);
+    messageInput.value = '';
+  }
+
+
+now can we build a feature what we broadcast display to all only people in a specific groups --
+like we created a room in which other people can join it just with the room id like in backend we have to create it 
+so for this we have -- 
+socket.on('join-room' , (room)=>{
+    socket.join(room);
+})
+
+code for frotend -- 
+
+  function joinRoom(){
+  const room = roomNumber.value;
+  socket.emit('join-room' , room);
+  }
+
+const roomNumber = document.getElementById('roomInput');
+
+backend --
+socket.on('join-room' , (room)=>{
+    socket.join(room);
+})
+
+now we join the room but how can we send the message to the room --
+for this we have to send the 3 things -- 
+join room , room number , ur message
+
+full code be like 
+frontend --
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Chat Application</title>
+</head>
+<body>
+    <h1>CHAT APP</h1>
+    <input type="text" placeholder="Enter ur Room Number" id="roomInput">
+    <button onclick="joinRoom()">Join</button>
+    <div id="messageDisplay" style="height: 50vh; width: 50vw; background-color: antiquewhite;margin-bottom: 50px; margin-top: 30px;"></div>
+    <input type="text" placeholder="Enter ur Message here" id="messsage" style="height: 10vh; width: 40vw; font-size: large;">
+    <button style="height: 10vh; width: 10vw; border-radius: 20px; " onclick="sendMessage()">Send</button>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  const socket = io();
+
+  const messageDisplay = document.getElementById('messageDisplay');
+  const messageInput = document.getElementById('messsage');
+  const roomNumber = document.getElementById('roomInput');
+  let roomId = null ;
+
+  function sendMessage(){
+    const msg = messageInput.value;
+    socket.emit('message' , {room : roomId , msg});
+     const element = document.createElement('div');
+    element.textContent = msg;
+    element.style.textAlign = 'right';
+    messageDisplay.appendChild(element);
+    messageInput.value = '';
+  }
+
+  function joinRoom(){
+  const room = roomNumber.value;
+  roomId = room;
+  socket.emit('join-room' , room);
+  }
+  
+  socket.on('new-message' , (data)=>{
+    const element = document.createElement('div');
+    element.textContent = data;
+    messageDisplay.appendChild(element);
+  })
+
+</script>
+
+</body>
+</html>
+
+backend --
+
+io.on("connection" , (socket)=>{
+
+    
+    // socket.on('message' , (data)=>{
+    //     // io.emit('new-message' , data);
+    //     socket.broadcast.emit('new-message' , data);
+    // })
+
+    socket.on('message' , ({room,msg})=>{
+        // io.to(room).emit('new-message' , msg);
+        socket.to(room).emit('new-message' , msg);
+    })
+
+    socket.on('join-room' , (room)=>{
+    socket.join(room);
+    })
+
+    socket.on('disconnect' , ()=>{
+    console.log("disconnected from server");
+    })
+})
+
+
+now whoever join the room can see message and reply it --
+also if a room is not create with a particulaar id then it creaated at that time --
+
+
+
+
+
+
 
 
 
