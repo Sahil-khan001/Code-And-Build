@@ -142,6 +142,24 @@ turn server is taking costing and we have to spend money on it because it doing 
 here in diaagram there is signaaling -- we already connected in websocket so if we want to transfer data then we can use it emit() then .on()
 so here signaling is haappneing
 
+so -- we have ICE Candidate -- 
+these all are candidate and falling mechanissms --
+
+-- Private Address
+-- Stun Server -- Public Address
+-- Turn Server -- own address
+
+first start with private address then stun server then turn server 
+
+Now letss Start the Project --
+
+we have frontend --
+in which we have local video , remote video 
+incoming caaall with accept and reject button 
+ssome controls 
+
+
+
 
 
 
