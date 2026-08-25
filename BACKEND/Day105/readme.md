@@ -26,8 +26,9 @@ so for this what we do is --
 
 here we use websocket server 
 as such there is no server in webRTC provided but we have to use this to solve the problem 
+like we have to use the websocket in order to send the ip addresss , port number that's why we need it 
 
-in real world we connect on a whatsapp -- throught sockets 
+in real world we connect on a whatsapp -- throught sockets and its server
 then we click on video call -- it started 
 in backend what happened --
 
@@ -54,9 +55,12 @@ so from sender side we have to send the codecs algo , tell the receiver i use th
 before the ip address, port number come ussing stun server
 we send Sesssion Description Protocol (media , format); to the receiver so that we know receiver browser supportss this algo or not 
 
-sdp contains codecs algo which we use for compress file 
-so if receiver it able to do it then it got video easily 
+sdp contains codecs algo which we use for compress file
+Now receiver got that algo meanss codec it check that it is compatible with codec or not or conformable with audio/video
 
+<!-- =============================================================================================================== -->
+
+NOW THE SCALING PART -- WHAT WE DO IF WE WANT TO SCALE OUR WEBRTC APPLICATION
 suppose we have more poeple who want to join video they came
 they share own ip , port , sdp all together 
 but there is an problem that there we one persson have to send their video to all other personss
@@ -109,6 +113,8 @@ suppose there are 1000 people in a meeting --
  it is SCALABLE and less CPU intensive 
 
  So this is Scalaability and we understand it 
+
+ ===================================================================================================================/
  now move to the TURN SERVER --
 
  if a router is connected to muliple devicess within a saame network aand thosse devices have own privaate address
@@ -151,14 +157,198 @@ these all are candidate and falling mechanissms --
 
 first start with private address then stun server then turn server 
 
+
+<!-- ========================================================================================================== -->
+---SHORT -- stun server give us ip address , port number
+if we are in private network then we can send ip ,port no using private addressss
+if both device have firewall then we have to use the turn server but we have to pay the cost for it 
+if both have no firewaall we can send ip/port using PUBLIC 
+later we connected through any waay we can send video info to other and vice versaa 
+
+BEFORE PROJECT --
+Ice Candidate --
+can 1 -- private address
+can 2 -- stun - public address
+can 3 -- turn server ip/port no
+
+Client send two thingss to 2nd device 
+1. 1st is 
+in the form of streaams/chunks one by one 
+send private address 
+send public address/port no
+send turn server ip/port no
+via 
+connected throught websocket server 
+
+2nd is 
+client send offer that this is our requirements to compress file algo we use -- 2nd client accept that offer and give him answer
+Offer that is Sdp -- session dessciption protocol
+algo that used to compresss file audio/video
+
+Once he send all ice candidate addressses and once he connected then we dont need any websocket we directly send data to client and vice verssa
+but first we need webssocket sserver to connect both client --
+
+<!-- =========================================================================================================== -->
+
+
 Now letss Start the Project --
 
 we have frontend --
-in which we have local video , remote video 
-incoming caaall with accept and reject button 
-ssome controls 
+we have a container div
+in which we have local video , remote video
+then we have 2 button to accept and reject button of incoming call
+then we have some controls and button we have start call and end call button 
+
+then we haave backend -- 
+we first access of allbuttons then
+we have ICE SERVERS -- {
+      {
+            urls:
+      }
+      {
+       urls:
+       username:
+       credentiaals
+      }
+
+}
+
+this consist of stun server url
+turn server 
+but we know turn server is a paid service 
+so for free we use twillo it provide $15 worth free server services just go to ssign up then login then u have account_id , authtoken copy it 
+then there is a scipt run with thi account id , aauthotken it generaate url aand 
 
 
+copy account sid and auth token from twilio 
+so that u can create username or password/credientals for turn server 
+u have to generate this first run some code with account id and auth token
+it generaate url username credentialss 
+
+
+Now on ui we have 
+2 frames - client 1 and client 2 
+buttons are cameraa , start call , end call
+
+2nd is incoming call 
+it show accept and reject option  
+if we accept incoming call then we have to give access of 
+access of camera , mic 
+and show it on ui
+self video also 
+
+
+for access of camera and ui we have free api in browser
+navigator.mediaDevices.getUserMedia{
+      video : {width : 1280 , height : 720},
+      audio : true ,
+}
+
+it is free we can write true we want access of video and camera
+after got access of video and cameraa 
+whatever data is coming  from media access then we have to show on ui too
+
+ localStream = await navigator.mediaDevices.getUserMedia{
+      video : {width : 1280 , height : 720},
+      audio : true ,
+}
+
+localvideo.srcObject = localStream;
+startBtn.disabled = true;
+
+from this we learn how to access to media and show it on ui
+
+Now move to the -- 
+create PeerConnection -- 
+and we have to pass the iceServer 
+
+this rtc peer connection do all these things to fetch data addresses/port no from stun , turn server 
+like rtc call their api to get data
+they handle everything through which address we make aa connection everything
+
+--also we have to send our self video to the client as well
+through this line -- localvideo.srcObject = localStream;
+well see ourself on ui 
+but we have to send our self video to the client as well
+for this rtc peerconnection help us -- 
+like localStream.gettrack().forEach(track =>{
+      pc.addTrack(track , localStream);
+})
+
+in localStream video is coming in chunkss we are adding this in pc to ssend client 
+
+now the other client video we have to sshow it on ui for thaat
+ rtcPeerConnection give us client video --
+ pc.ontrack = event  =>{
+      remoteVideo.srcObject = event.Streams[0]
+ }
+
+also we have to send the candidate as well 
+pc.onicecandidate({candidaate})
+
+Now we handle the offer -- 
+setdescription of offer and create a answer for it 
+
+incoming call reject --
+currentOffer = null;
+incoming call set as hidden
+
+hangup --
+pc.close(); 
+pc = null
+
+remoteVideo = null
+locaalstream track = stop
+
+<!-- ============================================================================ -->
+u can't memorize whole code FLOW IS IMP.
+
+the most imp. thing is -- 
+
+ADDRESS -- icecandidate -- private , public , Turn server 
+IN which language we talk to each other -- Offer , Answer
+
+all these things is handled by RTCPeerConnection 
+ 
+
+all thing is generaated in WEBRTC but he dont know how to ssend this data to other client that where Socket is coming 
+we use socket to send details 
+
+
+we know if we want to talk to anyone wewant its address
+it iss handle by icecaanditate it have other candidate like can we connect through public , private address or we need turn server 
+
+in which language we talk -- offer accepted and rejected , answer we have to ssend 
+
+all these things handled by rtcPeerConnection -all these thing done by it how to make connection finding public , private ip aaddress , offer generaate 
+
+then all thesse things handle by webrtc 
+it generaates all daata 
+
+
+then we use socket to send all these data to another client
+then rtcPeerConnection analyze  which connection best for him public , private , turn 
+the video call start now we dont need any server like socket
+
+-- we also leaarn two things --
+like relay 
+to write same code for 3 types we usse relay to make it sshort
+
+in routing we do like -
+app.use('/server' , Server);
+
+it only contain one file that is Server.js
+suppose instead of one file if we want that on ui it render whole folder which contain index , css , js file then we uss
+app.use(static , folder name )
+u can gpt it for this 
+
+in turn server -- 
+the credentials will expire after 1hour call got disconnect 
+we saw this in real world too it got disconnect 
+now turn server dont access to u u have to again connect with turn using diff credentiaals
+
+
+ 
 
 
 

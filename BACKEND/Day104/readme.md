@@ -47,7 +47,6 @@ syn
 syn + ack
 ack 
 then server said i send u full data basicaally giving him ack
-
 all these thing done in http 1.0 
 
 but in http2.0
@@ -477,6 +476,65 @@ we know socket is creation of ip address + port number
 socketID is generating when u connect with the webssocket server
 at that time ur server store ur ssocketId along with ur phone number
 
+<!-- --------------------------------------------------------------------------------------- -->
+notess -- 
+Yes, but one important distinction:
+
+io.on("connection", (socket) => {
+    socket.on("disconnect", () => {
+        console.log("disconnected");
+    });
+});
+What happens?
+
+When your server starts with Socket.IO:
+
+const io = new Server(server);
+
+io represents your Socket.IO server.
+
+Then:
+
+io.on("connection", (socket) => {
+
+means:
+
+"Whenever a new client connects to my Socket.IO server, run this function and give me that client's socket."
+
+So:
+
+Client A connects
+      ↓
+"connection" event happens
+      ↓
+Socket.IO creates/assigns a socket connection for A
+      ↓
+(socket) represents A's connection
+
+Then:
+
+socket.on("disconnect", () => {
+
+means:
+
+"If this particular client/socket disconnects, run this callback."
+
+How does the client disconnect?
+
+Usually the client can explicitly do:
+
+socket.disconnect();
+
+Or it can disconnect automatically because the browser closes, network is lost, etc.
+
+So remember:
+
+io = Socket.IO server
+socket = one client's connection
+connection = new client connected
+disconnect = that client's connection ended
+
+And yes, each connected client gets its own socket object on the server.
 
 
 
