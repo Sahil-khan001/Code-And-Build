@@ -1,5 +1,5 @@
 const valid = require("../utils/validator");
-const User = require("../Model/Collection");
+const User = require("../Model/user");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const redisClient = require("../config/redis");

@@ -150,9 +150,114 @@ like we have to first be a admin like middleware check us then we can make a use
 like only admin can go through this path and he can make someone else register as admin 
 
 now u will be wondering then how the first man admin can registered 
-u can directly change in database manually for the first one because u have access of it 
+u can directly change in database manually for the first one because u have access of it
+later we have to go through this path to make someone admin 
+
+till now we created schema of user  -- 
+
+Now we gonna create schema for the PROBLEM creation-
+the schema be like -- 
+
+const problemSchema  = new Schema({
+    title : {
+        type : String,
+        required : true
+    },
+    description : {
+        type : String,
+        required : true
+    },
+    difficulty : {
+        type : String,
+        enum : ['easy' , 'medium' , 'hard'],
+        required : true,
+    },
+    tags : {
+        type: String,
+        enum : ['Array' , 'Linkedlist' , 'Dp' , 'Graph']
+    },
+    visibleTestCases: [
+         {
+            input:{
+                type : String,
+                required : true
+            },
+            output : {
+                type : String,
+                required : true
+            },
+            explanation : {
+                type : String,
+                required : true
+            }
+         }
+
+    ],
+    hiddenTestCases: [
+         {
+            input:{
+                type : String,
+                required : true
+            },
+            output : {
+                type : String,
+                required : true
+            }
+         }
+
+    ],
+    startCode : [ 
+        {
+            language : {
+                type : String,
+                required : true
+            },
+            initialCode : {
+                type : String,
+                require : true
+            }
+        }
+    ],
+    problemCreator : {
+        type : Schema.Types.ObjectId,
+        ref : 'user',
+        required : true
+    }
+
+})
+
+Now we have to add on more thing that iss -- 
+who is problemCreator -- like we have mutiple admin and user so to find that particular user or creator of this problem- 
+we refer to user Schema or pointing towards different schema to find that particular User who created this problem
+otherwise we have to store all the user info there which takess too much memory so we refer to previous Schema for the ObjectId and if we have Objectid then we find out other info too like who created it name and other stuff -
+
+now move to routes part -- 
+-- const express = require('express');
+
+const problemRouter = express.Router();
+
+problemRouter.post("/create", problemCreate);
+problemRouter.patch("/:id" , problemUpdate);
+problemRouter.delete("/:id" , problemDelete);
+
+problemRouter.get("/:id" , problemFetch);
+problemRouter.get("/" , getAllProblem);
+problemRouter.get("/user" , solvedProblem);
 
 
+now for these --
+
+problemRouter.post("/create", problemCreate);
+problemRouter.patch("/:id" , problemUpdate);
+problemRouter.delete("/:id" , problemDelete);
+
+these only done by admin only so we need admin here\
+
+Note -- some people get schema problem like how to think about it 
+        just think about what data u have to store 
+        like in problem creation we have to store the problem title , description , tagss , difficulty , visibletestcases , hidden tesst cases just think about it 
+
+        
 
 
 
