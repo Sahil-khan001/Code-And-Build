@@ -257,7 +257,208 @@ Note -- some people get schema problem like how to think about it
         just think about what data u have to store 
         like in problem creation we have to store the problem title , description , tagss , difficulty , visibletestcases , hidden tesst cases just think about it 
 
-        
+
+
+now we have to add reference ssolution in the problem schema for the 
+so if any paid user came we can provide real solution to him
+
+now we created the route as well for now we move to function part that are in controllers also we have 
+like we have to create a problem 
+we can to create aa problem , updaate aand delete the user musst be admin so we aadd admin middlwareinto it to implement it 
+
+how we check whether solution is right or wrong 
+like user can input tesstcassess whatever the ansswer he receive he check with reference solution 
+
+now to create problem -- only admin can create a problem
+data fetch from req.body
+
+is it right to store the all the data from user to store in db Directly
+no , we have to make sure that we are validating the data at db level or api level also checks
+
+also the user send the reference solution in all language like c++ , javaa , python etc
+we have to check it also -- 
+for that user also send the vissible and hiddent tesst cassess if this ref ssolu passs on this testcases like their output is right then we can store the ref ssolution
+
+now where we run all these things --
+we need JUDGE0 because it haave all languaage compiler 
+
+first whatever we get into reference solution we have to iterate over it -- 
+
+in refsol weg get = [
+    {
+        language : "C++",
+        completeCode : "c++ code"
+    },
+    {
+        language : "java",
+        completeCode : "java code"
+    },
+]
+
+how to iterate over it with the de -- 
+for(const {language , completeCode} of refsol){
+
+}
+
+basically we know about Judge 0 
+so we give 
+lan : c++
+code : c++ code
+input : 33
+output : 34
+
+we give this to judge 0 in return it give us result 
+then we sure to store the reference solu to sstore in db 
+
+how things work in judge 0 
+go to judge0 docs the docs are very simple and easy to read
+start with free plan it generaate aapi key , url 
+
+also we gonna use axios which is js lib
+if we move to submission part -- 
+while submitting the code we have to give the -- 
+source_code : "ghjhdfjkdj"
+LanguageId : every lan have a id 
+stdin : we have to write this instead of input 
+aand there are total 33 but we aare not going to use aall -- 
+
+but we have to follow its format that is imp because we have to pass it --
+like -- 
+source_code
+languageId
+Setin 
+expected_output
+
+Now the thing is we give source code for lnaguade id we maake a function but for setin , output 
+we have to send the testcases sso what we do is
+
+we wrap up into a batch -- 
+it contains all the testcases -- 
+testcase1 + code
+testcase2 + code
+testcase3 + code
+we wraap this into batch and we give it -- 
+we can't hit api again and again for diff aapi
+otherwise our daily limit will expired 
+
+code for submission be like -- 
+
+            const submissions = visibleTestCases.map((input , output)=>({
+             source_code : completeCode,
+             language_id : LanguageId,
+             stdin : input,
+             expected_output : output
+            }))
+
+            every time we are sending same code and id but diff input and output means diff testcases
+behind it look like -- 
+const submission = [
+    {
+             source_code : completeCode,
+             language_id : LanguageId,
+             stdin : input,
+             expected_output : output
+    },
+    {
+             source_code : completeCode,
+             language_id : LanguageId,
+             stdin : input,
+             expected_output : output
+    },
+    {
+             source_code : completeCode,
+             language_id : LanguageId,
+             stdin : input,
+             expected_output : output
+    }
+]
+
+this is batch submission 
+
+
+
+const submitBatch = async (submisssions)=>{
+
+}
+now after submit this batch to Judge0 judge0 give us status and token as response
+if we get status 3 then response is right 
+
+the output look like -- 
+{
+  "submissions": [
+    {
+      "language_id": 46,
+      "stdout": "hello from Bash\n",
+      "status_id": 3,
+      "stderr": null,
+      "token": "db54881d-bcf5-4c7b-a2e3-d33fe7e25de7"
+    },
+    {
+      "language_id": 71,
+      "stdout": "hello from Python\n",
+      "status_id": 3,
+      "stderr": null,
+      "token": "ecc52a9b-ea80-4a00-ad50-4ab6cc3bb2a1"
+    },
+    {
+      "language_id": 72,
+      "stdout": "hello from Ruby\n",
+      "status_id": 3,
+      "stderr": null,
+      "token": "1b35ec3b-5776-48ef-b646-d5522bdeb2cc"
+    }
+  ]
+}
+
+so it give us status id and token -- 
+this status have diff meaning correspon to their id --
+id : 1 -- in queue
+id : 2 -- Processing
+id : 3 -- Accepted 
+
+also if we have 3 testcases in batchsubmission then judge0 give uss 3 tokens
+then in future if we take this token and give to judge0 then it give us answer we can check it using status id 
+like the code is runing processsing queuign faailed accepted 
+because it take time to run code so it give u token he said come later 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Now we are going to implement Judge0 --
+we see when we create problem at that time we submit the problem and we got the result -- 
+
 
 
 
