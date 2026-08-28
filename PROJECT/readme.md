@@ -538,6 +538,27 @@ we have to change it to false
 judge0 think that is in encoded form but in reality it not when judge0 decoded it its meaning is change 
 so we have to change it 
 
+now it is working fine we can create problem and can store in db
+
+<!-- ---------------------------------------------------------------------------- -->
+
+Now move to the other api 
+like update , delete , get problem by id and all
+
+for update when we click on update a new window will open with prev data already loaded --
+then we can update our data ..'
+when we got updated data first we check the whole data is working then we put our data
+
+so in code we take old code too 
+to make sure it is working 
+like in update we pass whole code not specific otherwise we have to check specific pass -- 
+
+also we pass {runValidators : true , new : true} --
+we know when we update something in db by default we have Validator dont run sso we need to run them write this while updating something --  
+new : true -- it means the document u receive after update return it 
+so that we can validate data in db as well as api level 
+
+
 
 
 

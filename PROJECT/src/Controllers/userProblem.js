@@ -57,4 +57,45 @@ const CreateProblem = async (req , res) => {
     }
 }
 
-module.exports = CreateProblem;
+const UpdateProblem = async (req , res)=>{
+
+    const id = req.params.id ;
+    const {title , description , difficulty , tags , visibleTestCases , hiddenTestCases , startCode , referenceSolution , problemCreator} = req.body;
+
+    try{
+        if(!id){
+          return res.status(400).send("missing Id field");
+        }
+
+    const DsaProblem = await Problem.findById(id);
+    if(!DsaProblem){
+       return res.status(404).send("ID is not present");
+    }
+
+   const newProblem =  await Problem.findByIdAndUpdate(id , {...req.body} , {runValidators : true , new : true});
+   res.status(200).send(newProblem);
+    }catch(err){
+        res.status(404).send("error "+ err.message);
+    }
+}
+
+const DeleteProblem  = async (req , res)=>{
+
+    try{
+const id = req.params.id;
+if(!id)
+    return res.status(404).send("Id is missing");
+
+const deletedProblem = await Problem.findByIdAndDelete(id);
+if(!deletedProblem){
+    return res.status(404).send("Problem is Missing")
+}
+
+res.status(200).send("Problem Successfully Deleted");
+
+    }catch(err){
+        res.status(500).send("error "+ err);
+    }
+}
+
+module.exports = {CreateProblem, UpdateProblem , DeleteProblem};
