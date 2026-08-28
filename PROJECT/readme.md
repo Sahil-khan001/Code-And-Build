@@ -418,46 +418,150 @@ id : 3 -- Accepted
 
 also if we have 3 testcases in batchsubmission then judge0 give uss 3 tokens
 then in future if we take this token and give to judge0 then it give us answer we can check it using status id 
-like the code is runing processsing queuign faailed accepted 
-because it take time to run code so it give u token he said come later 
+Basically it a 2step process in which 
+first it give us token 
+then we take this token to there and it give us final output -- accept , queue , tle , with status 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+we have to send all tokens at once separate by comma -- fjkfjodskfjdjsgjdffjbgfldkjfsdkfj , ghsofjdmjghofdkljcasadlkfjsadsf , sgjsosfkjsofslkjdsfoklsjfsd
 
 Now we are going to implement Judge0 --
 we see when we create problem at that time we submit the problem and we got the result -- 
+
+code be like -- 
+const waiting = async(timer)=>{
+    setTimeout(() => {
+        return 1;
+    }, timer);
+}
+
+const submitToken = async (resultToken)=>{
+    
+    const options = {
+      method: 'GET',
+      url: 'https://judge0-ce.p.rapidapi.com/submissions/batch',
+      params: {
+        tokens: resultToken.join(","),
+        base64_encoded: 'false',
+        fields: '*'
+      },
+      headers: {
+        'x-rapidapi-key': process.env.JUDGE0_KEY,
+        'x-rapidapi-host': 'judge0-ce.p.rapidapi.com'
+      }
+    };
+    
+    async function fetchData() {
+        try {
+            const response = await axios.request(options);
+            return response.data;
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    
+    
+     while(true){
+    
+     const result =  await fetchData();
+    
+      const IsResultObtained =  result.submissions.every((r)=>r.status_id>2);
+    
+      if(IsResultObtained)
+        return result.submissions;
+    
+      
+      await waiting(1000);
+    }
+}
+
+
+here we use waiting function so that after 1 second the fetchData() function call it again if we didn't get the result Obtained 
+
+although this function return one an array with the status id > 2
+
+
+
+            const testResult = await submitToken(resulttoken);
+            //this testResult get an array with the objects having status_id > 2
+
+            for(const test of testResult){
+                if(test.status_id != 3){
+                    return res.status(400).send("Error Occured");
+                }
+            }
+
+
+this gives response if status id is not 3
+-- we use return here so that this loop not running in behind again and we get out of this function 
+
+
+Now this loop take one by one another language --
+if it is completeted 
+it means we can store this reference solution in the db now 
+
+also make sure that u store this in the db outside the loop
+many made the same mistake dont do it 
+
+also we have to send one more thing that iss Problem Creator 
+await Problems.create({
+    ...req.body,
+    problemCreator : req.result._id
+})
+
+this ressult._id refer to the auth result in which we have info about user
+
+now we have to run the code 
+to saved a problem --
+
+but it give u error 
+when status_id is not 3
+
+to check the error and to solve the error
+console the submit ressult and token 
+it give u error because of staatus id is s6 
+compilation error 
+to solve this s
+
+replace -
+base64_encoded : false;
+
+why -- base64 is when u encode data like in jwt token
+it be like -- kjfskjfjfssssfkljasfklfjsdaslskfjgfkljgaskf,jdasfklj , gkjkfj
+sso it is base64 encode 
+
+so here we can set it true
+
+but in submit submission 
+the data in submission is not in encoded form 
+they why u set base64_encoded : true
+we have to change it to false
+judge0 think that is in encoded form but in reality it not when judge0 decoded it its meaning is change 
+so we have to change it 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

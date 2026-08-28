@@ -5,11 +5,13 @@ const main = require('./config/Database');
 const cookieParser = require('cookie-parser')
 const userRouter = require('./Routes/userAuth');
 const redisClient = require('./config/redis');
+const problemRouter = require("./Routes/problemCreator");
 
 app.use(express.json());
 app.use(cookieParser());
 
 app.use('/user' , userRouter);
+app.use('/problem' , problemRouter);
 
 const initializeConnection = async ()=>{
 
