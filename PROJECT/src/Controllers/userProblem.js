@@ -98,4 +98,24 @@ res.status(200).send("Problem Successfully Deleted");
     }
 }
 
-module.exports = {CreateProblem, UpdateProblem , DeleteProblem};
+const getProblemById = async (req , res)=>{
+
+    try{
+        const id = req.params.id;
+        if(!id){
+          return res.status(404).send("id is missing");
+        }
+        
+        const getProblem = await Problem.findById(id);
+        if(!getProblem){
+          return res.status(404).send("problem is missing");
+        }
+        res.status(200).send(getProblem);      
+    }catch(err){
+        res.status(500).send("error "+ err.message);
+    }
+}
+
+ 
+
+module.exports = {CreateProblem, UpdateProblem , DeleteProblem , getProblemById};

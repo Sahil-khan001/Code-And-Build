@@ -1,7 +1,7 @@
 const express = require('express');
 const problemRouter = express.Router();
 const  adminMiddleware = require("../middleware/adminMiddleware");
-const {CreateProblem, UpdateProblem , DeleteProblem} = require("../Controllers/userProblem");
+const {CreateProblem, UpdateProblem , DeleteProblem , getProblemById} = require("../Controllers/userProblem");
 const userMiddleware = require("../middleware/userMiddleware");
 
 problemRouter.post("/create", adminMiddleware , CreateProblem);

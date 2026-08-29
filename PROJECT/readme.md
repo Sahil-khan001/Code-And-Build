@@ -558,12 +558,67 @@ we know when we update something in db by default we have Validator dont run sso
 new : true -- it means the document u receive after update return it 
 so that we can validate data in db as well as api level 
 
+now move to the Delete api -- 
+firt we check the id present or not 
+then we can delete directly by -- .findByIdAndDelete(id);
+
+NOte -- make sure u are using the status code like for missing u use 404 and for internal server use 500 
+
+in delete we gonna implement the confirmation like 
+we have to type the delete in the blank then it gonna confirm and delete it 
+we implement this functionaaality in frontend later 
 
 
+now move to the getallProblems -- for this 
+we gonna use .find({});
 
+in leetcode there is lazy loading happening -- 
+data is coming one by one -- 
+like think suppose u are fetching data from db -- suppose it loads instantly 
+it crash ur system -- 
+like we use sfu algo socketandrtc only selective video is there in same way here we usse == 
+here we use two buttons like right and left arrow -- 
+when we click on right it take next 10 problems this is called PAGINATION
+we are creating the pages -- 
+now how do we implement this functionality -- 
 
+like we have an end point -- 
+host:3000/problem/getAllProblem?page=1&limit=10
 
+we send these parameter in end point 
+now the ques is -- 
+if we are on page1 how we move to page 2 -- for this 
+we use skip()
 
+await Problem.find().skip(10).limit(10);
+then next we do 
+await Problem.find().skip(20).limit(10);
+
+there is just some logics --
+const page = 2;
+const limit = 10 ;
+const skip = (page-1)*limit;
+
+this is called pagination functionality -- 
+we can implement filter also -- 
+await Problem.find({difficulty : 'easy'});
+or 
+await Problem.find({
+    difficulty : "easy",
+    tags : "array"
+})
+await Problem.find({
+    votes : { $gte : 100},
+    tags : {$in : ["array" , "hashmap"]}
+})
+
+Make sure u are using mongodb Operator to filter out data correctly using these tags
+like $eq , $neq , $lte , $in
+
+now move to the next api
+that show problemsolvedbyUser -- 
+
+for this how we do 
 
 
 
