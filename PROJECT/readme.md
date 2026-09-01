@@ -69,7 +69,7 @@ forgot-password
 Google-Signup
 
 now how can we do email-verify -- u can do it using otp 
-u can do it using like user have to click on link to verify 
+u can do it using like user hbave to click on link to verify 
 when we click on link it contains token when it send on backened it verify the email
 for reset -- first input original password then new pass then again new 
 
@@ -618,15 +618,155 @@ like $eq , $neq , $lte , $in
 now move to the next api
 that show problemsolvedbyUser -- 
 
-for this how we do 
+for this how we do like we have to show it on ui -- 
+like same like pagination -- 
+
+-- with the help of some logic -- 
+same as previously -- page , skip , limit 
+
+when we click on submit -- 
+we have to submit our code -- for this we have to stored our code in db
+becausse if u want solvedproblem means it is somewhere in db 
+u fetch it then u can show it on ui -- 
+
+it means we have to make a schema first to submit ur code 
+schema be like -- 
+
+problem_id
+user_id
+code 
+language
+Time 
+Memory 
+Status : pending|accepted|
+testCases : how much u pass
+
+we have to store all these thingss
+
+letss make a schema because while submitting the code we need all these details -- 
+submission.js -- 
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const submissionSchema = new Schema({
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'user',
+    required: true,
+  },
+  problemId: {
+    type: Schema.Types.ObjectId,
+    ref: 'problem',
+    required: true,
+  },
+  code: {
+    type: String,
+    required: true,
+  },
+  language: {
+    type: String,
+    required: true,
+    enum: ['javascript', 'c++', 'java'],
+  },
+  status: {
+    type: String,
+    enum: ['pending', 'accepted', 'wrong', 'error'],
+    default: 'pending'
+  },
+  runtime: {
+    type: Number,  // milliseconds
+    default: 0
+  },
+  memory: {
+    type: Number,  // kB
+    default: 0
+  },
+  errorMessage: {
+    type: String,
+    default: ''
+  },
+  testCasesPassed: {
+    type: Number,
+    default: 0
+  },
+  testCasesTotal: {  
+    type: Number,
+    default: 0
+  }
+}, { 
+  timestamps: true
+});
+
+
+submissionSchema.index({userId:1 , problemId:1});
+
+
+const Submission = mongoose.model('submission',submissionSchema);
+
+module.exports = Submission;
+
+also we can't believe on this things -- 
+run time complexity , other  complexity -- we know behind the scene it give us complexity based on judge0 submission , sometime it give different sometime it give diff complexity
+
+now we have to check that other api is working or not -- 
+for update , for delete it working by putting it id --
+and in update we are sending full data
+
+for api like getProblemById we we put our id and get that problem but the data we are getting in frontend it include 
+hidden testcases , solution , reference solution which we want to make priceable how to ssolve this - 
+
+code be like -- 
+
+const problem = await Problem.findById(Id).select('_id , title , description , difficulty ,tags , visbibleTestCases , startCode , referenceSolution);
+
+with the help of .select we can get field acc to us -- 
+ 
+for api --
+get all problems we use .select too -- 
+because we want all problems like in leetcode happen so for that we use .select so that onlyspecific thing appear on screen
+
+now next api is problem solved by user -- 
+but first we need to submit problem in db either it is wrong or right
+
+now move to the submission code -- 
+whenever we submit code no matter what it is wrong or right we see it later in our history
+we can see it later too what testcases are failed , code , all info
+so we havve to stored it too -- 
+either it is right or wrong
+
+some people ssotre run time thingss too but it doesn't make sense
+when we click on run -- then we run only visible test cases
+when we click on submission -- then we run hidden test caases too 
+
+now move to sumbit routes -- 
+const express = require
+const submitRouter = express.Router[];
+
+submitRouter.post
+here we have to fetch the problem from problem id so that we can get hidden test cases -- 
+becausse while submit the code user only send code but how we check it on judge0
+we want testcases for that we need problem that is in db
+
+
+now where we submit code -- 
+so for submission of code  , we first first direclty store in db with pending state then we give it too judge then when judge give us answer then we gonna update it in db 
+
+becausse sometime judge dont give us answer --
+suppose it crash then wht hppened we can't get answer so we directly store in db
+
+-- no system is perfect -- we hve to compromise with it 
+now we have to store the code of user in db that's it
 
 
 
+CODE BE LIKE -- 
 
+HERE we what we did -- 
+-- WE SUBMIT THE CODE IN DB AND MAKE STATUS PENDING
+THEN WE SEND THI  CODE IN JUDGE0 BY USING INTERNAL HIDDEN TEST CASES THEN WE GET RESULT  
+THEN WE GONNA UPDATE THE SUBMIT RESULT STATUS AND MORE--
 
-
-
-
+CODE BE LIKE -- 
 
 
 

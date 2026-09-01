@@ -105,8 +105,7 @@ const getProblemById = async (req , res)=>{
         if(!id){
           return res.status(404).send("id is missing");
         }
-        
-        const getProblem = await Problem.findById(id);
+        const getProblem = await Problem.findById(id).select('_id title description difficulty tags visibleTestCases startCode referenceSolution');
         if(!getProblem){
           return res.status(404).send("problem is missing");
         }
@@ -116,6 +115,19 @@ const getProblemById = async (req , res)=>{
     }
 }
 
+const getAllProblem = async (req , res)=>{
+    try{        
+        const getProblem = await Problem.find({}).select('id  title  difficulty tags');
+        if(getProblem.length == 0){
+          return res.status(404).send("problem is missing");
+        }
+        res.status(200).send(getProblem);      
+    }catch(err){
+        res.status(500).send("error "+ err.message);
+    }
+}
+
+
  
 
-module.exports = {CreateProblem, UpdateProblem , DeleteProblem , getProblemById};
+module.exports = {CreateProblem, UpdateProblem , DeleteProblem , getProblemById , getAllProblem};

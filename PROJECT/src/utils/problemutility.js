@@ -42,11 +42,18 @@ async function fetchData() {
 
 }
 
-const waiting = async(timer)=>{
-    setTimeout(() => {
-        return 1;
-    }, timer);
-}
+// const waiting = async(timer)=>{
+//     setTimeout(() => {
+//         return 1;
+//     }, timer);
+// }
+
+
+const waiting = (timer) => {
+    return new Promise(resolve => {
+        setTimeout(resolve, timer);
+    });
+};
 
 const submitToken = async (resultToken)=>{
     
@@ -55,7 +62,7 @@ const submitToken = async (resultToken)=>{
       url: 'https://judge0-ce.p.rapidapi.com/submissions/batch',
       params: {
         tokens: resultToken.join(","),
-        base64_encoded: 'false',
+        base64_encoded: 'true',
         fields: '*'
       },
       headers: {
@@ -73,19 +80,27 @@ const submitToken = async (resultToken)=>{
         }
     }
     
-    
-     while(true){
-    
-     const result =  await fetchData();
-    
-      const IsResultObtained =  result.submissions.every((r)=>r.status_id>2);
-    
-      if(IsResultObtained)
-        return result.submissions;
-    
-      
-      await waiting(1000);
+    let attempts = 0;
+
+while (attempts < 10) {
+
+    const result = await fetchData();
+
+    if (!result || !result.submissions) {
+        throw new Error("Invalid response from Judge0");
     }
+
+    const IsResultObtained =
+        result.submissions.every((r) => r.status_id > 2);
+
+    if (IsResultObtained) {
+        return result.submissions;
+    }
+
+    attempts++;
+
+    await waiting(1000);
+}
 }
 
 module.exports = {getLanguageById , submitBatch , submitToken};
