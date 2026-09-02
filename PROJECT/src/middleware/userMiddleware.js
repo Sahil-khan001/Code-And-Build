@@ -19,8 +19,8 @@ const userMiddleware = async (req , res , next)=>{
         if(!payload){
             throw new Error("Invalid credentials");
         }
-        const user = await User.findById(payload._id);
-        req.result = user;
+        const result = await User.findById(payload._id);
+        req.result = result;
         next();
     }catch(err){
         res.status(401).send("error " + err.message);

@@ -806,16 +806,37 @@ await user.save()
       await req.result.save();
     }
     
+--now move to this API
+problemRouter.get("/problemSolvedByUser", userMiddleware , solvedAllProblembyUser);
 
 
+-- which problem solved by user -- 
+for this we calculate total no of problem solved.length 
+it tells total no of problem -- 
+
+how he know which problem he solve for this -- 
+code be like -- 
+
+const solvedAllProblembyUser = async (req , res)=>{
+  
+    try{
+      const count = req.result._id;
+      res.status(200).send(count);
+    }
+    catch(err){
+      res.status(500).send("Server Error");
+    }
+}
+
+now how we get All solved problem  -- 
 
 
+.populate -- it means whom it is refering too --
 
-
-
-
-
-
+now we add one more functionality that is run code -- 
+but in run code we dont store code in db
+also in run code we run the code with visible test cases --
+code be like -- 
 
 
 
