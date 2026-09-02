@@ -769,6 +769,43 @@ THEN WE GONNA UPDATE THE SUBMIT RESULT STATUS AND MORE--
 CODE BE LIKE -- 
 
 
+now in the user.js we have one more field that is -- 
+problemSolved : {
+  type : [string];
+} 
+
+like in leetcode we see the problem we solved 
+same in that way we have to write problem solved here -- 
+ 
+ problemSolved : {
+    type : [{
+      type:Schema.Types.ObjectId,
+      ref : 'problem'
+    }],
+    unique : true
+ }
+
+ it means how many problem u solved till now -- 
+ we check it using by problemId
+
+now what we do is --
+when we submit our problem before submit we check whether this 
+like we take out problemId from Submission and check whether this problem is present in user or not --
+if it is present in user then we dont push otherwise push
+
+note : this line means save this  in db 
+await user.save()
+
+
+    // ProblemId ko insert karenge userSchema ke problemSolved mein if it is not persent there.
+    
+    // req.result == user Information
+
+    if(!req.result.problemSolved.includes(problemId)){
+      req.result.problemSolved.push(problemId);
+      await req.result.save();
+    }
+    
 
 
 

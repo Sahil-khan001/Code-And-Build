@@ -3,6 +3,7 @@ const Submission = require("../Model/submission");
 const User = require("../Model/user");
 const {getLanguageById , submitBatch , submitToken} = require("../utils/problemutility");
 
+
 const submitCode = async (req,res)=>{
    
     // 
@@ -89,14 +90,17 @@ const submitCode = async (req,res)=>{
 
     await submittedResult.save();
     
-//     // ProblemId ko insert karenge userSchema ke problemSolved mein if it is not persent there.
+    //     // ProblemId ko insert karenge userSchema ke problemSolved mein if it is not persent there.
     
-//     // req.result == user Information
+    //     // req.result == user Information
+if (!req.result.problemSolved) {
+    req.result.problemSolved = [];
+}
 
-//     if(!req.result.problemSolved.includes(problemId)){
-//       req.result.problemSolved.push(problemId);
-//       await req.result.save();
-//     }
+if (!req.result.problemSolved.includes(problemId)) {
+    req.result.problemSolved.push(problemId);
+    await req.result.save();
+}
     
 //     const accepted = (status == 'accepted')
 //     res.status(201).json({

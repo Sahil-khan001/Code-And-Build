@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const redisClient = require('../config/redis');
 require('dotenv').config()
+const User = require('../Model/user');
 
 
 const userMiddleware = async (req , res , next)=>{
@@ -18,7 +19,8 @@ const userMiddleware = async (req , res , next)=>{
         if(!payload){
             throw new Error("Invalid credentials");
         }
-        req.result = payload;
+        const user = await User.findById(payload._id);
+        req.result = user;
         next();
     }catch(err){
         res.status(401).send("error " + err.message);
