@@ -17,10 +17,10 @@ const submitCode = async (req,res)=>{
         return res.status(400).send("Some field missing");
       
 
-      if(language==='cpp')
-        language='c++'
+      // if(language==='cpp')
+      //   language='c++'
       
-      console.log(language);
+      // console.log(language);
       
     //    Fetch the problem from database
        const problem =  await Problem.findById(problemId);
@@ -107,6 +107,8 @@ const submitCode = async (req,res)=>{
       runtime,
       memory
     });
+
+    // res.status(201).send("problem submitted successfully");
        
     }
     catch(err){
@@ -129,8 +131,8 @@ const runCode = async(req,res)=>{
    //    Fetch the problem from database
       const problem =  await Problem.findById(problemId);
    //    testcases(Hidden)
-      if(language==='cpp')
-        language='c++'
+      // if(language==='cpp')
+      //   language='c++'
 
    //    Judge0 code ko submit karna hai
 

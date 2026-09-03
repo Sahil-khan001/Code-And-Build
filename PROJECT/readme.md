@@ -836,7 +836,157 @@ now how we get All solved problem  --
 now we add one more functionality that is run code -- 
 but in run code we dont store code in db
 also in run code we run the code with visible test cases --
+and just show the ans -- 
+
+-- Now move to the DB OPTIMISATION -- 
+suppose we have to delete a user leetcode profile -- 
+first authenticate user -- 
+then delete it from db 
+we have to delete its submission code too 
+code be like-- 
+
+const deleteProfile =async (req , res)=>{
+   try{
+       const userId = req.result._id;
+      
+    // userSchema delete
+    await User.findByIdAndDelete(userId);
+
+    // Submission se bhi delete karo...
+    
+    // await Submission.deleteMany({userId});
+    
+    res.status(200).send("Deleted Successfully");
+
+    }
+    catch(err){
+      
+        res.status(500).send("Internal Server Error");
+    }
+}
+
+
+now we have one more thing --
+pre and post -- 
+
+this code we put into schema after schema it run after normal one -- 
+
+userSchema.post('findOneAndDelete', async function (userInfo) {
+    if (userInfo) {
+      await mongoose.model('submission').deleteMany({ userId: userInfo._id });
+    }
+});
+this is mongodb code -- 
+this code run for sure after this line -- await User.findByIdAndDelete(userId)
+this line delete user from db; and give info regarding that user -- 
+we put that info in this new code it goes into submission one and delete code
+pre -- it run before normal schema
+
+now move to the -- 
+submit part 
+for a particular problem how many code i have Submitted -- 
+to find this -- 
+we send user id and problem id -- 
+
+but Suppose in real world -- 
+we have 10cr submission there -- 
+how much time it will take for find particulr user and their problem
+althugh we know index apply on _id not on problem
+like we only apply indexing on unique thing -- 
+
+so here user_id or problem_id is not unique 
+so we make compound index by mixing them too
+user_idproblem_id -- which make him unique 
+now how we apply -- 
+
+u can make any field indexing -- 
+index:true;
+dont apply indexing on every field -- memory fill issue
+
+only apply where u are accessing the data more -- 
+
+now we do this -- 
+submissionSchema.index({userId:1 , problemId:1});
+
+now when we search data using userId, problemId we can get that data in log n time because of indexing 
+because it sorted data we can apply indexing on user id too after compund index
+just to get data faster we do this -- 
+code be like --
+
+const submittedProblem = async(req,res)=>{
+
+  try{
+     
+    const userId = req.result._id;
+    const problemId = req.params.pid;
+
+   const ans = await Submission.find({userId,problemId});
+  
+  if(ans.length==0)
+    res.status(200).send("No Submission is persent");
+
+  res.status(200).send(ans);
+
+  }
+  catch(err){
+     res.status(500).send("Internal Server Error");
+  }
+}
+<!-- -------------------------------------------------------------------------------------------------------------------------- -->
+
+Now we add cooldown for 10 seconds for after every submitted problem 
+for this we use ratelimiter with redis 
 code be like -- 
 
+const redisClient = require('./redisClient');
 
+const submitCodeRateLimiter = async (req, res, next) => {
+    const userId = req.result._id;
+    const redisKey = `submit_cooldown:${userId}`;
+
+    try {
+        // Check if user has a recent submission
+        const exists = await redisClient.exists(redisKey);
+
+        if (exists) {
+            return res.status(429).json({
+                error: 'Please wait 10 seconds before submitting again'
+            });
+        }
+
+        // Set cooldown period
+        await redisClient.set(redisKey, 'cooldown_active', {
+            EX: 10, // Expire after 10 seconds
+            NX: true // Only set if not exists
+        });
+
+        next();
+    } catch (error) {
+        console.error('Rate limiter error:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+module.exports = submitCodeRateLimiter;
+
+
+
+<!-- ----------------------------------------------------------------------------------------------- -->
+
+React -- 
+in hooks --the usestate only re render the function in which we do a change 
+not whole function 
+
+
+useCallback -- it hold the old func value with the help of closure also the func dont re render until there is change in ui
+useRef -- it do not re render the function and hold the old value it dont show this on ui otherwise he have to rerender whole ui
+but behind he hold the value
+
+useEffect -- it run at last , like fetch data , it depend on dependencies too
+
+daisy ui explore 
+
+<!-- -------------------------------------------------------------------------------------------------------------- -->
+
+Now move to the FRONTEND -- 
 

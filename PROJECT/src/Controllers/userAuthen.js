@@ -3,6 +3,7 @@ const User = require("../Model/user");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const redisClient = require("../config/redis");
+const Submission = require("../Model/submission");
 require('dotenv').config();
 
 const register = async (req , res)=>{
@@ -101,5 +102,25 @@ const adminRegister = async (req , res)=>{
     }
 }
 
+const deleteProfile =async (req , res)=>{
+   try{
+       const userId = req.result._id;
+      
+    // userSchema delete
+    await User.findByIdAndDelete(userId);
 
-module.exports= {register , login , logout , getProfile , adminRegister};
+    // Submission se bhi delete karo...
+    
+    // await Submission.deleteMany({userId});
+    
+    res.status(200).send("Deleted Successfully");
+
+    }
+    catch(err){
+      
+        res.status(500).send("Internal Server Error");
+    }
+}
+
+
+module.exports= {register , login , logout , getProfile , adminRegister , deleteProfile};
