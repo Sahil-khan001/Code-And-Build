@@ -73,7 +73,7 @@ const logout  = async (req , res)=>{
     }catch(err){
         res.status(503).send("error "+ err.message);
     }
-}
+} 
 
 const getProfile = async (req , res) => {
     try{

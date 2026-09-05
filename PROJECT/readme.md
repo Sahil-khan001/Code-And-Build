@@ -989,4 +989,5 @@ daisy ui explore
 <!-- -------------------------------------------------------------------------------------------------------------- -->
 
 Now move to the FRONTEND -- 
+for the frontend notes u can refer Frontend readme.md file 
 

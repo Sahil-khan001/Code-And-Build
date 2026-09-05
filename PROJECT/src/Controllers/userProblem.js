@@ -84,7 +84,7 @@ const UpdateProblem = async (req , res)=>{
 const DeleteProblem  = async (req , res)=>{
 
     try{
-const id = req.params.id;
+  const id = req.params.id;
 if(!id)
     return res.status(404).send("Id is missing");
 
